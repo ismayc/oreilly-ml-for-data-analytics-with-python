@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+clean_headers.R
+slide_content.Rmd
+slide_content_cleaned-old.Rmd
+slide_content_cleaned.qmd

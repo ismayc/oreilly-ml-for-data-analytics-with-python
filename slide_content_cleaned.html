@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;Chester Ismay">
+
+<title>Slide content breakdown</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="slide_content_cleaned_files/libs/clipboard/clipboard.min.js"></script>
+<script src="slide_content_cleaned_files/libs/quarto-html/quarto.js"></script>
+<script src="slide_content_cleaned_files/libs/quarto-html/popper.min.js"></script>
+<script src="slide_content_cleaned_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="slide_content_cleaned_files/libs/quarto-html/anchor.min.js"></script>
+<link href="slide_content_cleaned_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="slide_content_cleaned_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="slide_content_cleaned_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="slide_content_cleaned_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="slide_content_cleaned_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#intro-getting-started-with-machine-learning-for-data-driven-decisions" id="toc-intro-getting-started-with-machine-learning-for-data-driven-decisions" class="nav-link active" data-scroll-target="#intro-getting-started-with-machine-learning-for-data-driven-decisions">Intro: Getting Started with Machine Learning for Data-Driven Decisions</a>
+  <ul class="collapse">
+  <li><a href="#how-is-machine-learning-used-in-business" id="toc-how-is-machine-learning-used-in-business" class="nav-link" data-scroll-target="#how-is-machine-learning-used-in-business">How is Machine Learning Used in Business?</a></li>
+  <li><a href="#practical-applications-of-ml-in-business-analytics" id="toc-practical-applications-of-ml-in-business-analytics" class="nav-link" data-scroll-target="#practical-applications-of-ml-in-business-analytics">Practical Applications of ML in Business Analytics</a></li>
+  <li><a href="#python-for-machine-learning-in-business-analytics" id="toc-python-for-machine-learning-in-business-analytics" class="nav-link" data-scroll-target="#python-for-machine-learning-in-business-analytics">Python for Machine Learning in Business Analytics</a></li>
+  <li><a href="#walkthrough-and-exercise-1-setting-up-the-python-environment-for-ml" id="toc-walkthrough-and-exercise-1-setting-up-the-python-environment-for-ml" class="nav-link" data-scroll-target="#walkthrough-and-exercise-1-setting-up-the-python-environment-for-ml">Walkthrough and Exercise #1: Setting Up the Python Environment for ML</a></li>
+  </ul></li>
+  <li><a href="#module-1-understanding-data-and-preprocessing-for-machine-learning" id="toc-module-1-understanding-data-and-preprocessing-for-machine-learning" class="nav-link" data-scroll-target="#module-1-understanding-data-and-preprocessing-for-machine-learning">Module 1: Understanding Data and Preprocessing for Machine Learning</a>
+  <ul class="collapse">
+  <li><a href="#the-role-of-data-in-machine-learning-and-exploratory-data-analysis-eda" id="toc-the-role-of-data-in-machine-learning-and-exploratory-data-analysis-eda" class="nav-link" data-scroll-target="#the-role-of-data-in-machine-learning-and-exploratory-data-analysis-eda">The Role of Data in Machine Learning and Exploratory Data Analysis (EDA)</a></li>
+  <li><a href="#how-data-is-collected-and-prepared-for-ml" id="toc-how-data-is-collected-and-prepared-for-ml" class="nav-link" data-scroll-target="#how-data-is-collected-and-prepared-for-ml">How Data is Collected and Prepared for ML</a></li>
+  <li><a href="#exploring-and-understanding-your-data-eda" id="toc-exploring-and-understanding-your-data-eda" class="nav-link" data-scroll-target="#exploring-and-understanding-your-data-eda">Exploring and Understanding Your Data (EDA)</a></li>
+  <li><a href="#how-data-insights-shape-business-strategy" id="toc-how-data-insights-shape-business-strategy" class="nav-link" data-scroll-target="#how-data-insights-shape-business-strategy">How Data Insights Shape Business Strategy</a></li>
+  <li><a href="#walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-matplotlib" id="toc-walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-matplotlib" class="nav-link" data-scroll-target="#walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-matplotlib">Walkthrough and Exercise #2: Exploring and Preprocessing Data with Pandas &amp; Matplotlib</a></li>
+  </ul></li>
+  <li><a href="#module-2-supervised-learning-for-business-decisions" id="toc-module-2-supervised-learning-for-business-decisions" class="nav-link" data-scroll-target="#module-2-supervised-learning-for-business-decisions">Module 2: Supervised Learning for Business Decisions</a>
+  <ul class="collapse">
+  <li><a href="#supervised-learning-how-machines-learn-from-examples" id="toc-supervised-learning-how-machines-learn-from-examples" class="nav-link" data-scroll-target="#supervised-learning-how-machines-learn-from-examples">Supervised Learning: How Machines Learn from Examples</a></li>
+  <li><a href="#key-supervised-learning-algorithms" id="toc-key-supervised-learning-algorithms" class="nav-link" data-scroll-target="#key-supervised-learning-algorithms">Key Supervised Learning Algorithms</a></li>
+  <li><a href="#walkthrough-and-exercise-3-build-a-regression-model-for-pricing-optimization" id="toc-walkthrough-and-exercise-3-build-a-regression-model-for-pricing-optimization" class="nav-link" data-scroll-target="#walkthrough-and-exercise-3-build-a-regression-model-for-pricing-optimization">Walkthrough and Exercise #3: Build a Regression Model for Pricing Optimization</a></li>
+  <li><a href="#introduction-to-classification-techniques" id="toc-introduction-to-classification-techniques" class="nav-link" data-scroll-target="#introduction-to-classification-techniques">Introduction to Classification Techniques</a></li>
+  <li><a href="#walkthrough-and-exercise-4-implement-a-classification-model-for-customer-segmentation" id="toc-walkthrough-and-exercise-4-implement-a-classification-model-for-customer-segmentation" class="nav-link" data-scroll-target="#walkthrough-and-exercise-4-implement-a-classification-model-for-customer-segmentation">Walkthrough and Exercise #4: Implement a Classification Model for Customer Segmentation</a></li>
+  <li><a href="#model-evaluation-and-tuning" id="toc-model-evaluation-and-tuning" class="nav-link" data-scroll-target="#model-evaluation-and-tuning">Model Evaluation and Tuning</a></li>
+  <li><a href="#business-applications-of-supervised-learning" id="toc-business-applications-of-supervised-learning" class="nav-link" data-scroll-target="#business-applications-of-supervised-learning">Business Applications of Supervised Learning</a></li>
+  </ul></li>
+  <li><a href="#module-3-unsupervised-learning-and-pattern-discovery-in-business" id="toc-module-3-unsupervised-learning-and-pattern-discovery-in-business" class="nav-link" data-scroll-target="#module-3-unsupervised-learning-and-pattern-discovery-in-business">Module 3: Unsupervised Learning and Pattern Discovery in Business</a>
+  <ul class="collapse">
+  <li><a href="#exploring-unsupervised-learning-and-its-business-applications" id="toc-exploring-unsupervised-learning-and-its-business-applications" class="nav-link" data-scroll-target="#exploring-unsupervised-learning-and-its-business-applications">Exploring Unsupervised Learning and Its Business Applications</a></li>
+  <li><a href="#clustering-for-customer-insights" id="toc-clustering-for-customer-insights" class="nav-link" data-scroll-target="#clustering-for-customer-insights">Clustering for Customer Insights</a></li>
+  <li><a href="#walkthrough-and-exercise-5-exploring-k-means-clustering-for-customer-segmentation" id="toc-walkthrough-and-exercise-5-exploring-k-means-clustering-for-customer-segmentation" class="nav-link" data-scroll-target="#walkthrough-and-exercise-5-exploring-k-means-clustering-for-customer-segmentation">Walkthrough and Exercise #5: Exploring K-Means Clustering for Customer Segmentation</a></li>
+  <li><a href="#association-rule-learning-for-market-basket-analysis" id="toc-association-rule-learning-for-market-basket-analysis" class="nav-link" data-scroll-target="#association-rule-learning-for-market-basket-analysis">Association Rule Learning for Market Basket Analysis</a></li>
+  <li><a href="#walkthrough-and-exercise-6-market-basket-analysis-with-apriori-algorithm" id="toc-walkthrough-and-exercise-6-market-basket-analysis-with-apriori-algorithm" class="nav-link" data-scroll-target="#walkthrough-and-exercise-6-market-basket-analysis-with-apriori-algorithm">Walkthrough and Exercise #6: Market Basket Analysis with Apriori Algorithm</a></li>
+  <li><a href="#real-world-business-applications-of-unsupervised-learning" id="toc-real-world-business-applications-of-unsupervised-learning" class="nav-link" data-scroll-target="#real-world-business-applications-of-unsupervised-learning">Real-World Business Applications of Unsupervised Learning</a></li>
+  </ul></li>
+  <li><a href="#module-4-implementing-and-evaluating-ml-models" id="toc-module-4-implementing-and-evaluating-ml-models" class="nav-link" data-scroll-target="#module-4-implementing-and-evaluating-ml-models">Module 4: Implementing and Evaluating ML Models</a>
+  <ul class="collapse">
+  <li><a href="#picking-the-right-ml-approach" id="toc-picking-the-right-ml-approach" class="nav-link" data-scroll-target="#picking-the-right-ml-approach">Picking the Right ML Approach</a></li>
+  <li><a href="#model-training-and-evaluation-metrics" id="toc-model-training-and-evaluation-metrics" class="nav-link" data-scroll-target="#model-training-and-evaluation-metrics">Model Training and Evaluation Metrics</a></li>
+  <li><a href="#walkthrough-and-exercise-7-exploring-cross-validation-for-model-evaluation" id="toc-walkthrough-and-exercise-7-exploring-cross-validation-for-model-evaluation" class="nav-link" data-scroll-target="#walkthrough-and-exercise-7-exploring-cross-validation-for-model-evaluation">Walkthrough and Exercise #7: Exploring Cross-Validation for Model Evaluation</a></li>
+  <li><a href="#hyperparameter-tuning-for-model-optimization" id="toc-hyperparameter-tuning-for-model-optimization" class="nav-link" data-scroll-target="#hyperparameter-tuning-for-model-optimization">Hyperparameter Tuning for Model Optimization</a>
+  <ul class="collapse">
+  <li><a href="#grid-search-vs.-randomized-search" id="toc-grid-search-vs.-randomized-search" class="nav-link" data-scroll-target="#grid-search-vs.-randomized-search">Grid Search vs.&nbsp;Randomized Search</a></li>
+  <li><a href="#why-does-hyperparameter-tuning-matter" id="toc-why-does-hyperparameter-tuning-matter" class="nav-link" data-scroll-target="#why-does-hyperparameter-tuning-matter">Why Does Hyperparameter Tuning Matter?</a></li>
+  </ul></li>
+  <li><a href="#walkthrough-and-exercise-8-hyperparameter-tuning-with-gridsearchcv" id="toc-walkthrough-and-exercise-8-hyperparameter-tuning-with-gridsearchcv" class="nav-link" data-scroll-target="#walkthrough-and-exercise-8-hyperparameter-tuning-with-gridsearchcv">Walkthrough and Exercise #8: Hyperparameter Tuning with GridSearchCV</a></li>
+  <li><a href="#deploying-ml-models-in-business-settings" id="toc-deploying-ml-models-in-business-settings" class="nav-link" data-scroll-target="#deploying-ml-models-in-business-settings">Deploying ML Models in Business Settings</a>
+  <ul class="collapse">
+  <li><a href="#challenges-in-ml-deployment" id="toc-challenges-in-ml-deployment" class="nav-link" data-scroll-target="#challenges-in-ml-deployment">Challenges in ML Deployment</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Slide content breakdown</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Chester Ismay </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="intro-getting-started-with-machine-learning-for-data-driven-decisions" class="level1">
+<h1>Intro: Getting Started with Machine Learning for Data-Driven Decisions</h1>
+<section id="how-is-machine-learning-used-in-business" class="level2">
+<h2 class="anchored" data-anchor-id="how-is-machine-learning-used-in-business">How is Machine Learning Used in Business?</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Machine learning (ML) as a tool for predictive analytics<br>
+</li>
+<li>Automating data-driven decision-making<br>
+</li>
+<li>Enhancing business operations and customer insights</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>Definition and Importance</em><br>
+Machine learning is a subset of artificial intelligence that enables computers to learn patterns from data and make predictions or decisions with minimal human intervention.</p>
+<p>It transforms how businesses approach decision-making by automating insights and optimizing operations.</p>
+<p><em>Why ML for Business?</em><br>
+ML plays a crucial role in industries such as <strong>finance, marketing, and supply chain management</strong>, where predictive analytics can:<br>
+- <strong>Uncover trends</strong> in customer behavior<br>
+- <strong>Forecast demand</strong> for products and services<br>
+- <strong>Personalize customer interactions</strong></p>
+<p>By leveraging ML, businesses can <strong>increase efficiency, drive profitability, and gain a competitive advantage</strong> in today’s data-driven world.</p>
+<p>Now, let’s explore <strong>real-world applications of ML</strong> and how different industries are putting it to work.</p>
+<hr>
+</section>
+<section id="practical-applications-of-ml-in-business-analytics" class="level2">
+<h2 class="anchored" data-anchor-id="practical-applications-of-ml-in-business-analytics">Practical Applications of ML in Business Analytics</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Data-driven business decision-making<br>
+</li>
+<li>Real-world examples
+<ul>
+<li>Customer segmentation (Retail)<br>
+</li>
+<li>Fraud detection (Finance)<br>
+</li>
+<li>Demand forecasting (Supply Chain)</li>
+</ul></li>
+</ul>
+<p><strong>Script</strong><br>
+<em>ML in Action: Driving Business Success</em><br>
+Machine learning is revolutionizing industries by helping businesses make <strong>strategic, data-driven decisions</strong>. Here’s how ML is being applied across different sectors:</p>
+<p><em>Customer Segmentation in Retail</em><br>
+E-commerce platforms like Amazon use <strong>clustering algorithms</strong> to group customers based on their <strong>purchasing behavior, browsing history, and preferences</strong>.<br>
+🔹 <strong>Outcome:</strong> More personalized marketing campaigns, improved product recommendations, and higher customer retention.</p>
+<p><em>Fraud Detection in Finance</em><br>
+Banks and financial institutions use <strong>anomaly detection models</strong> to identify unusual patterns in spending behavior.<br>
+🔹 <strong>Outcome:</strong> ML helps flag suspicious transactions in real-time, reducing fraud and improving financial security.</p>
+<p><em>Demand Forecasting in Supply Chain</em><br>
+Retail giants like Walmart and Target apply <strong>predictive analytics</strong> to anticipate product demand based on <strong>historical sales data, seasonal trends, and external factors (e.g., weather patterns).</strong><br>
+🔹 <strong>Outcome:</strong> Optimized inventory management, reduced stockouts, and cost savings from minimizing overstock.</p>
+<p>Machine learning’s ability to <strong>analyze vast datasets and recognize patterns</strong> is what makes it such a valuable tool for businesses. Next, let’s explore the programming tools that enable these applications.</p>
+<hr>
+</section>
+<section id="python-for-machine-learning-in-business-analytics" class="level2">
+<h2 class="anchored" data-anchor-id="python-for-machine-learning-in-business-analytics">Python for Machine Learning in Business Analytics</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Essential ML libraries in Python
+<ul>
+<li><strong>Scikit-learn</strong>: Machine learning algorithms and model evaluation<br>
+</li>
+<li><strong>Pandas</strong>: Data manipulation<br>
+</li>
+<li><strong>NumPy</strong>: Numerical computing<br>
+</li>
+<li><strong>Matplotlib &amp; Seaborn</strong>: Data visualization</li>
+</ul></li>
+</ul>
+<p><strong>Script</strong><br>
+<em>Why Python for ML?</em><br>
+Python is the <strong>leading</strong> programming language for machine learning due to its:<br>
+✅ <strong>Ease of use</strong> – Simple syntax makes it beginner-friendly<br>
+✅ <strong>Flexibility</strong> – Works for both small-scale analytics and large enterprise applications<br>
+✅ <strong>Rich ecosystem</strong> – A vast collection of libraries streamline ML development</p>
+<p><em>Key ML Libraries for Business Applications</em><br>
+1️⃣ <strong>Scikit-learn</strong> – A powerful library with ML algorithms for <strong>classification, regression, clustering, and model evaluation</strong>.<br>
+2️⃣ <strong>Pandas</strong> – A data analysis toolkit used for <strong>cleaning, manipulating, and structuring business data</strong>.<br>
+3️⃣ <strong>NumPy</strong> – Supports <strong>numerical computations</strong> essential for handling large datasets.<br>
+4️⃣ <strong>Matplotlib &amp; Seaborn</strong> – Provide <strong>visualization tools</strong> to generate insights from ML models.</p>
+<p>By leveraging these libraries, businesses can <strong>build predictive models, extract insights, and make data-driven decisions efficiently</strong>.</p>
+<p>Now that we understand the essential ML tools, let’s set up the Python environment and get hands-on with machine learning.</p>
+<hr>
+</section>
+<section id="walkthrough-and-exercise-1-setting-up-the-python-environment-for-ml" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-1-setting-up-the-python-environment-for-ml">Walkthrough and Exercise #1: Setting Up the Python Environment for ML</h2>
+<p>By completing this exercise, you will be able to:<br>
+✅ <strong>Install and import essential ML libraries</strong><br>
+✅ <strong>Verify successful package installation</strong><br>
+✅ <strong>Load a sample dataset for ML exploration</strong></p>
+<hr>
+</section>
+</section>
+<section id="module-1-understanding-data-and-preprocessing-for-machine-learning" class="level1">
+<h1>Module 1: Understanding Data and Preprocessing for Machine Learning</h1>
+<section id="the-role-of-data-in-machine-learning-and-exploratory-data-analysis-eda" class="level2">
+<h2 class="anchored" data-anchor-id="the-role-of-data-in-machine-learning-and-exploratory-data-analysis-eda">The Role of Data in Machine Learning and Exploratory Data Analysis (EDA)</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Machine learning (ML) depends on high-quality data<br>
+</li>
+<li>The <strong>“Garbage In, Garbage Out”</strong> principle<br>
+</li>
+<li>Understanding <strong>structured vs.&nbsp;unstructured data</strong> in business</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>Why Does Data Matter in Machine Learning?</em> Think of machine learning as <strong>a high-performance race car</strong>—where <strong>data is the fuel</strong>.<br>
+- If you use <strong>clean, high-quality fuel</strong>, the car runs smoothly and reaches peak performance.<br>
+- If you use <strong>low-quality fuel</strong> (messy, inconsistent data), the engine misfires, and the car breaks down.</p>
+<p>This is why the <strong>“Garbage In, Garbage Out” (GIGO) principle</strong> applies—poor-quality data leads to inaccurate models, unreliable predictions, and bad business decisions.</p>
+<p><em>Types of Business Data</em> To fuel our ML models, we work with two main data types:<br>
+📊 <strong>Structured Data</strong> – Organized, tabular data such as customer transactions, sales records, or financial reports.<br>
+📂 <strong>Unstructured Data</strong> – Text, images, and audio, like social media reviews, customer support emails, or recorded phone calls.</p>
+<p>Understanding these <strong>data types</strong> is the first step in building <strong>trustworthy</strong> ML models. But before models can learn, data needs to be <strong>collected and cleaned</strong>—let’s explore how.</p>
+<hr>
+</section>
+<section id="how-data-is-collected-and-prepared-for-ml" class="level2">
+<h2 class="anchored" data-anchor-id="how-data-is-collected-and-prepared-for-ml">How Data is Collected and Prepared for ML</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Common data sources for business ML applications<br>
+</li>
+<li>Why preprocessing is essential<br>
+</li>
+<li>Key techniques for data cleaning</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>Where Does Business Data Come From?</em><br>
+Machine learning models <strong>don’t generate insights from thin air</strong>—they rely on <strong>high-quality, relevant data</strong>. In business, data comes from various sources:</p>
+<p>📊 <strong>Internal Data:</strong> CRM systems, sales reports, website analytics<br>
+🌍 <strong>External Data:</strong> Market research, economic indicators, social media sentiment<br>
+🔧 <strong>Automated Data:</strong> Internet of Things (IoT) sensor readings, financial APIs, automated surveys</p>
+<p><em>Why Data Preprocessing is Critical</em><br>
+Imagine you’re making <strong>a fruit smoothie</strong>. If the ingredients are <strong>rotten, unwashed, or have seeds</strong>, your smoothie will taste terrible. <strong>Data preprocessing</strong> ensures our data is <strong>clean, structured, and usable</strong>, just like preparing fresh ingredients before blending.</p>
+<p><em>Key Data Cleaning Techniques</em><br>
+✔ <strong>Handling Missing Data:</strong> Fill missing values with averages or remove incomplete records<br>
+✔ <strong>Standardizing Formats:</strong> Convert dates, categories, and numerical scales into a uniform structure<br>
+✔ <strong>Removing Duplicates:</strong> Prevent biased results from repeated entries<br>
+✔ <strong>Managing Outliers:</strong> Identify extreme values that could distort the model</p>
+<p>Once data is clean, the next step is <strong>understanding its patterns</strong> through <strong>Exploratory Data Analysis (EDA)</strong>.</p>
+<hr>
+</section>
+<section id="exploring-and-understanding-your-data-eda" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-and-understanding-your-data-eda">Exploring and Understanding Your Data (EDA)</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Exploratory Data Analysis (EDA) is essential for ML<br>
+</li>
+<li>Methods for summarizing and visualizing data<br>
+</li>
+<li>Identifying trends and business insights</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>What is EDA and Why is It Important?</em><br>
+Think of EDA as <strong>a detective investigating a case</strong>—before jumping to conclusions, we need to <strong>analyze the evidence (data)</strong> and identify important clues.</p>
+<p>EDA helps answer <strong>critical business questions</strong>, such as:<br>
+📌 <strong>Which customer segments generate the most revenue?</strong><br>
+📌 <strong>How do sales trends fluctuate over time?</strong><br>
+📌 <strong>What factors correlate with customer churn?</strong></p>
+<p><em>EDA Techniques for Business ML</em><br>
+🔹 <strong>Summarizing Data:</strong><br>
+- Using <strong>mean, median, and standard deviation</strong> to understand distributions<br>
+- Examining <strong>category counts</strong> (e.g., how many customers fall into different spending brackets)</p>
+<p>🔹 <strong>Visualizing Data:</strong><br>
+- <strong>Histograms</strong> → Show the distribution of purchase amounts<br>
+- <strong>Scatter Plots</strong> → Identify trends between marketing spend and revenue<br>
+- <strong>Bar Charts</strong> → Compare sales performance across different product categories</p>
+<p>EDA ensures that <strong>we choose the right features</strong> and <strong>eliminate irrelevant data</strong>, setting the stage for accurate ML models. Now, let’s see how data insights translate into business strategy.</p>
+<hr>
+</section>
+<section id="how-data-insights-shape-business-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="how-data-insights-shape-business-strategy">How Data Insights Shape Business Strategy</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Finding actionable insights from data<br>
+</li>
+<li>Case study: Using EDA to predict customer churn<br>
+</li>
+<li>Connecting ML insights to business goals</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>Data → Insights → Business Strategy</em><br>
+Machine learning isn’t just about <strong>crunching numbers</strong>—it’s about using <strong>data insights</strong> to drive <strong>better decisions</strong>.</p>
+<p>Let’s look at a <strong>real-world case study</strong>:</p>
+<p><em>Case Study: Predicting Customer Churn</em><br>
+A <strong>telecom company</strong> wanted to <strong>predict which customers were likely to cancel their service</strong>. By analyzing their dataset, they discovered:<br>
+✔ Customers who made frequent <strong>billing complaints</strong> were <strong>twice as likely</strong> to churn.<br>
+✔ <strong>Contract length and data usage patterns</strong> had a strong correlation with customer retention.<br>
+✔ Seasonal trends impacted churn rates—holidays saw <strong>higher cancellations</strong>.</p>
+<p><strong>Business Impact:</strong><br>
+📈 By leveraging these insights, the company implemented <strong>personalized retention strategies</strong>, reducing churn by 20%.</p>
+<p><em>Key Takeaway:</em><br>
+EDA helps businesses <strong>connect patterns in data to real-world decisions</strong>, ensuring ML models focus on <strong>valuable insights</strong> instead of irrelevant noise.</p>
+<p>Now, let’s put these concepts into practice with <strong>a hands-on exercise</strong>.</p>
+<hr>
+</section>
+<section id="walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-matplotlib" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-matplotlib">Walkthrough and Exercise #2: Exploring and Preprocessing Data with Pandas &amp; Matplotlib</h2>
+<p><em>Objective:</em> By completing this exercise, you will be able to:<br>
+✅ Load and inspect a dataset using Pandas<br>
+✅ Handle missing values and clean data<br>
+✅ Create visualizations to identify key business trends</p>
+<p><em>Steps:</em> 1️⃣ <strong>Load a dataset of customer transactions using Pandas</strong><br>
+2️⃣ <strong>Check for missing values, duplicates, and inconsistent formats</strong><br>
+3️⃣ <strong>Use <code>.fillna()</code>, <code>.dropna()</code>, and <code>.astype()</code> to clean data</strong><br>
+4️⃣ <strong>Summarize key statistics using <code>.describe()</code></strong><br>
+5️⃣ <strong>Visualize relationships using histograms and scatter plots with Matplotlib</strong></p>
+<hr>
+</section>
+</section>
+<section id="module-2-supervised-learning-for-business-decisions" class="level1">
+<h1>Module 2: Supervised Learning for Business Decisions</h1>
+<section id="supervised-learning-how-machines-learn-from-examples" class="level2">
+<h2 class="anchored" data-anchor-id="supervised-learning-how-machines-learn-from-examples">Supervised Learning: How Machines Learn from Examples</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Definition of supervised learning<br>
+</li>
+<li>Role of labeled data in supervised learning<br>
+</li>
+<li>Types of supervised learning: classification and regression</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>What is Supervised Learning?</em><br>
+Imagine teaching a child how to recognize animals using <strong>flashcards</strong>. You show them a picture of a cat and say, “This is a cat.” Over time, they learn to recognize cats without being explicitly told.</p>
+<p>Supervised learning works the same way—models are trained on <strong>labeled data</strong>, where each data point has both <strong>features (independent variables)</strong> and <strong>correct outcomes (dependent variables).</strong></p>
+<p><em>Types of Supervised Learning:</em><br>
+📌 <strong>Classification</strong> → Predicts <strong>categories</strong> (e.g., classifying customers as “high-value” or “low-value”).<br>
+📌 <strong>Regression</strong> → Predicts <strong>numerical values</strong> (e.g., forecasting monthly revenue).</p>
+<p>For data analysts, supervised learning allows us to <strong>automate business decisions and uncover patterns</strong> in structured datasets.</p>
+<p>Now, let’s explore the most commonly used supervised learning algorithms.</p>
+<hr>
+</section>
+<section id="key-supervised-learning-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="key-supervised-learning-algorithms">Key Supervised Learning Algorithms</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Linear regression<br>
+</li>
+<li>Logistic regression<br>
+</li>
+<li>Decision trees<br>
+</li>
+<li>Random forests</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>Choosing the Right Algorithm for the Job</em><br>
+Think of supervised learning models as <strong>different tools in a toolbox</strong>—each one serves a specific purpose:</p>
+<p>🛠 <strong>Linear Regression</strong> → Like a <strong>trend line</strong>, it helps predict continuous values (e.g., forecasting future sales).<br>
+🛠 <strong>Logistic Regression</strong> → Like a <strong>yes/no switch</strong>, it predicts binary outcomes (e.g., Will a customer churn? Yes or No?).<br>
+🛠 <strong>Decision Trees</strong> → Like a <strong>flowchart</strong>, it splits data based on conditions to classify or predict values.<br>
+🛠 <strong>Random Forests</strong> → Like a <strong>committee of experts</strong>, it combines multiple decision trees for better accuracy.</p>
+<p>Each model has <strong>specific use cases</strong> in business, from <strong>predicting sales trends</strong> to <strong>classifying customer segments</strong>. There is no model that you should use all the time though. Random forests do tend to perform well in many situations, but the others might out-perform them in certain situations.</p>
+<p>Now, let’s practice using <strong>one of these models</strong> to optimize business decisions.</p>
+<hr>
+</section>
+<section id="walkthrough-and-exercise-3-build-a-regression-model-for-pricing-optimization" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-3-build-a-regression-model-for-pricing-optimization">Walkthrough and Exercise #3: Build a Regression Model for Pricing Optimization</h2>
+<p><em>Objective:</em> By completing this exercise, you will be able to:<br>
+✅ Use scikit-learn to build a simple linear regression model<br>
+✅ Optimize pricing based on historical data</p>
+<p><em>Steps:</em> 1️⃣ <strong>Load a dataset of historical pricing and sales data</strong><br>
+2️⃣ <strong>Preprocess the data (handle missing values, convert data types)</strong><br>
+3️⃣ <strong>Train a linear regression model using scikit-learn</strong><br>
+4️⃣ <strong>Evaluate model performance using R-squared and Mean Absolute Error</strong><br>
+5️⃣ <strong>Interpret the results</strong> – Predict the optimal price to maximize sales.</p>
+<p>After regression, let’s shift our focus to classification—another essential tool for data analysts.</p>
+<hr>
+</section>
+<section id="introduction-to-classification-techniques" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-classification-techniques">Introduction to Classification Techniques</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Definition of classification in supervised learning<br>
+</li>
+<li>Applications of classification in business</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>What is Classification?</em><br>
+Classification is like <strong>sorting emails</strong>—your inbox automatically categorizes messages into “Primary,” “Promotions,” or “Spam.”</p>
+<p>In business, classification is used to:<br>
+📌 <strong>Segment customers</strong> → Predict which customers are likely to churn.<br>
+📌 <strong>Detect fraud</strong> → Identify transactions as fraudulent or non-fraudulent.</p>
+<p>Unlike regression, classification deals with <strong>categorical predictions</strong>, making it useful for structured business problems.</p>
+<p>Now, let’s explore <strong>how to build a classification model</strong> step-by-step.</p>
+<hr>
+</section>
+<section id="walkthrough-and-exercise-4-implement-a-classification-model-for-customer-segmentation" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-4-implement-a-classification-model-for-customer-segmentation">Walkthrough and Exercise #4: Implement a Classification Model for Customer Segmentation</h2>
+<p><em>Objective:</em> By completing this exercise, you will be able to:<br>
+✅ Build a classification model to segment customers into high-value or low-value groups<br>
+✅ Evaluate the performance of the classification model</p>
+<p><em>Steps:</em> 1️⃣ <strong>Load a customer dataset with demographic features and purchasing behavior</strong><br>
+2️⃣ <strong>Preprocess the data (handle missing values, scale features)</strong><br>
+3️⃣ <strong>Train a classification model using scikit-learn (e.g., Random Forest, Logistic Regression)</strong><br>
+4️⃣ <strong>Evaluate model performance using accuracy, precision, recall, and confusion matrix</strong><br>
+5️⃣ <strong>Interpret the results</strong> – Predict whether a new customer will be high-value or low-value.</p>
+<p>With classification covered, the next key step is <strong>evaluating and tuning</strong> our models for better performance.</p>
+<hr>
+</section>
+<section id="model-evaluation-and-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="model-evaluation-and-tuning">Model Evaluation and Tuning</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Evaluating model performance with metrics
+<ul>
+<li>Accuracy, Precision, Recall, F1-score<br>
+</li>
+</ul></li>
+<li>Hyperparameter tuning</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>How Do We Know If a Model Is Performing Well?</em><br>
+Imagine hiring a <strong>new sales analyst</strong>—you wouldn’t judge their performance based on one deal. Instead, you’d track <strong>several key performance indicators (KPIs)</strong> over time.</p>
+<p>Similarly, machine learning models are evaluated using <strong>multiple metrics</strong>:<br>
+📌 <strong>Accuracy</strong> → Measures overall correctness.<br>
+📌 <strong>Precision</strong> → How many predicted positives were correct?<br>
+📌 <strong>Recall</strong> → How many actual positives were identified?<br>
+📌 <strong>F1-Score</strong> → Balances precision and recall.</p>
+<p>For data analysts, these metrics help determine if a model is <strong>actionable</strong> for business decisions.</p>
+<p><em>Fine-Tuning Models</em><br>
+Just like <strong>adjusting a camera lens</strong> to get the clearest picture, we can <strong>tune machine learning models</strong> by modifying hyperparameters such as:<br>
+🔹 <strong>Tree depth (Decision Trees)</strong> → Prevents overfitting<br>
+🔹 <strong>Learning rate (Gradient Boosting)</strong> → Adjusts model adaptability<br>
+🔹 <strong>Number of neighbors (KNN)</strong> → Controls sensitivity to new data</p>
+<p>Now, let’s see how supervised learning drives <strong>real-world business applications</strong>.</p>
+<hr>
+</section>
+<section id="business-applications-of-supervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="business-applications-of-supervised-learning">Business Applications of Supervised Learning</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Forecasting business trends<br>
+</li>
+<li>Customer segmentation for targeted marketing<br>
+</li>
+<li>Fraud detection and risk management</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>How Supervised Learning Empowers Businesses</em><br>
+Supervised learning enables businesses to <strong>make data-driven decisions</strong> by uncovering patterns in structured datasets.</p>
+<p>📈 <strong>Forecasting Business Trends</strong> → Predicting future sales, demand, and customer behavior using regression models.<br>
+🎯 <strong>Customer Segmentation</strong> → Using classification models to categorize customers for targeted marketing.<br>
+🚨 <strong>Fraud Detection</strong> → Flagging suspicious transactions before they impact revenue.</p>
+<p>For data analysts, <strong>these models bridge the gap between raw data and strategic decision-making</strong>. By understanding how to apply regression and classification, analysts can <strong>drive real business impact</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="module-3-unsupervised-learning-and-pattern-discovery-in-business" class="level1">
+<h1>Module 3: Unsupervised Learning and Pattern Discovery in Business</h1>
+<section id="exploring-unsupervised-learning-and-its-business-applications" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-unsupervised-learning-and-its-business-applications">Exploring Unsupervised Learning and Its Business Applications</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Definition of unsupervised learning<br>
+</li>
+<li>Key differences between supervised and unsupervised learning<br>
+</li>
+<li>Common applications in business</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>What is Unsupervised Learning?</em><br>
+Imagine walking into a new city with <strong>no map</strong>—you explore and start identifying neighborhoods based on their characteristics (residential, commercial, cultural districts).</p>
+<p>Similarly, <strong>unsupervised learning</strong> finds <strong>hidden patterns</strong> in data without predefined labels. Unlike <strong>supervised learning</strong>, where models predict a specific outcome, <strong>unsupervised learning groups similar data points together or finds patterns within datasets</strong>.</p>
+<p><em>Why Does Unsupervised Learning Matter for Business?</em><br>
+📌 <strong>Customer Segmentation</strong> → Group customers based on purchasing behavior.<br>
+📌 <strong>Fraud Detection</strong> → Identify unusual transaction patterns.<br>
+📌 <strong>Market Basket Analysis</strong> → Discover product associations in retail.</p>
+<p>Now, let’s dive into one of the most <strong>powerful unsupervised learning techniques</strong>—<strong>clustering</strong>.</p>
+<hr>
+</section>
+<section id="clustering-for-customer-insights" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-for-customer-insights">Clustering for Customer Insights</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Definition of clustering<br>
+</li>
+<li>Business use cases (customer segmentation, product recommendations)<br>
+</li>
+<li>Overview of K-Means clustering</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>What is Clustering?</em><br>
+Clustering is like organizing a <strong>messy wardrobe</strong>—grouping similar clothing items together (shirts, jeans, jackets).</p>
+<p>In business, clustering helps identify <strong>natural groupings</strong> in data:</p>
+<p>📌 <strong>Customer Segmentation</strong> → Grouping customers based on demographics &amp; spending habits.<br>
+📌 <strong>Market Positioning</strong> → Identifying key consumer groups for targeted marketing.<br>
+📌 <strong>Product Recommendations</strong> → Clustering products based on user preferences.</p>
+<p><em>K-Means Clustering: How It Works</em><br>
+1️⃣ <strong>Select <code>k</code> clusters (number of groups).</strong><br>
+2️⃣ <strong>Assign each data point to the nearest cluster center.</strong><br>
+3️⃣ <strong>Iteratively update cluster centers to minimize variation.</strong></p>
+<p>Now, let’s put this into practice with a real dataset.</p>
+<hr>
+</section>
+<section id="walkthrough-and-exercise-5-exploring-k-means-clustering-for-customer-segmentation" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-5-exploring-k-means-clustering-for-customer-segmentation">Walkthrough and Exercise #5: Exploring K-Means Clustering for Customer Segmentation</h2>
+<p><em>Objective:</em> By completing this exercise, you will be able to:<br>
+✅ Apply K-Means clustering to segment customers.<br>
+✅ Visualize customer groups to derive business insights.</p>
+<p><em>Steps:</em> 1️⃣ <strong>Load a dataset of customer spending behavior.</strong><br>
+2️⃣ <strong>Preprocess the data (normalize features, handle missing values).</strong><br>
+3️⃣ <strong>Choose the optimal number of clusters using the Elbow Method.</strong><br>
+4️⃣ <strong>Train a K-Means model and visualize the clusters.</strong><br>
+5️⃣ <strong>Interpret results to tailor marketing strategies.</strong></p>
+<p>Now that we’ve covered clustering, let’s move to another <strong>powerful business application—Market Basket Analysis</strong>.</p>
+<hr>
+</section>
+<section id="association-rule-learning-for-market-basket-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="association-rule-learning-for-market-basket-analysis">Association Rule Learning for Market Basket Analysis</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Definition of association rule learning<br>
+</li>
+<li>Business applications (recommendation systems, cross-selling strategies)<br>
+</li>
+<li>Introduction to Apriori algorithm</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>What is Association Rule Learning?</em><br>
+Think of <strong>grocery shopping</strong>—you pick up bread, and the store suggests butter and jam.</p>
+<p>Association rule learning uncovers <strong>hidden relationships</strong> in large datasets, such as:<br>
+📌 <strong>Retail Stores</strong> → “Customers who buy milk also buy bread.”<br>
+📌 <strong>Streaming Services</strong> → “Users who watch sci-fi movies tend to watch action movies next.”<br>
+📌 <strong>E-commerce</strong> → “Customers who buy laptops often purchase accessories like wireless mice.”</p>
+<p><em>How the Apriori Algorithm Works</em><br>
+1️⃣ <strong>Finds frequent itemsets (e.g., ‘Milk &amp; Bread’) in transactions.</strong><br>
+2️⃣ <strong>Generates association rules like ‘If Milk → Then Bread’.</strong><br>
+3️⃣ <strong>Measures rule strength using support, confidence, and lift.</strong></p>
+<p>Now, let’s apply <strong>association rule learning</strong> to a retail dataset.</p>
+<hr>
+</section>
+<section id="walkthrough-and-exercise-6-market-basket-analysis-with-apriori-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-6-market-basket-analysis-with-apriori-algorithm">Walkthrough and Exercise #6: Market Basket Analysis with Apriori Algorithm</h2>
+<p><em>Objective:</em><br>
+By completing this exercise, you will be able to:<br>
+✅ Apply association rule learning to uncover purchasing patterns.<br>
+✅ Extract actionable insights for cross-selling strategies.</p>
+<p><em>Steps:</em><br>
+1️⃣ <strong>Load a dataset of retail transactions.</strong><br>
+2️⃣ <strong>Convert data into a transactional format for Apriori algorithm.</strong><br>
+3️⃣ <strong>Apply association rule learning with the <code>mlxtend</code> package.</strong><br>
+4️⃣ <strong>Interpret results using support, confidence, and lift.</strong><br>
+5️⃣ <strong>Use findings to improve product bundling strategies.</strong></p>
+<p>With these two exercises covered, let’s discuss <strong>how businesses use unsupervised learning in real-world scenarios</strong>.</p>
+<hr>
+</section>
+<section id="real-world-business-applications-of-unsupervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-business-applications-of-unsupervised-learning">Real-World Business Applications of Unsupervised Learning</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Case study: Target’s predictive analytics<br>
+</li>
+<li>How clustering helps businesses tailor marketing strategies<br>
+</li>
+<li>Best practices for applying unsupervised learning</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>Case Study: How Target Used Clustering for Predictive Analytics</em><br>
+One of the most famous <strong>clustering use cases</strong> involved <strong>Target’s customer analytics</strong>. The company used <strong>unsupervised learning</strong> to segment shoppers based on their buying behavior.</p>
+<p>📌 <strong>Unexpected Insight</strong> → The algorithm identified patterns that helped <strong>predict pregnancy before customers disclosed it</strong>—allowing Target to send targeted product recommendations.</p>
+<p><em>How Businesses Use Clustering &amp; Market Basket Analysis</em><br>
+📊 <strong>Customer Segmentation</strong> → Personalizing marketing campaigns.<br>
+🛒 <strong>Product Bundling</strong> → Placing frequently co-purchased items together.<br>
+🚨 <strong>Anomaly Detection</strong> → Identifying fraud in banking transactions.</p>
+<p>For data analysts, understanding <strong>unsupervised learning</strong> allows for better <strong>data-driven decision-making</strong> without the need for labeled datasets.</p>
+<hr>
+</section>
+</section>
+<section id="module-4-implementing-and-evaluating-ml-models" class="level1">
+<h1>Module 4: Implementing and Evaluating ML Models</h1>
+<section id="picking-the-right-ml-approach" class="level2">
+<h2 class="anchored" data-anchor-id="picking-the-right-ml-approach">Picking the Right ML Approach</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Factors influencing model selection<br>
+</li>
+<li>Trade-offs: accuracy vs.&nbsp;interpretability vs.&nbsp;complexity<br>
+</li>
+<li>Supervised vs.&nbsp;unsupervised models for business</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>How Do We Choose the Right ML Model?</em><br>
+Think of ML models like <strong>choosing a vehicle</strong>:<br>
+🚗 <strong>Linear regression</strong> → Like a <strong>compact car</strong>, simple and efficient for basic tasks.<br>
+🚛 <strong>Random forest</strong> → Like a <strong>truck</strong>, more powerful but requires more resources.<br>
+🚅 <strong>Deep learning</strong> → Like a <strong>high-speed train</strong>, fast but expensive and harder to control.</p>
+<p><em>Key Factors in Model Selection</em><br>
+📌 <strong>Type of Business Problem</strong><br>
+- <strong>Classification?</strong> (e.g., fraud detection, customer segmentation)<br>
+- <strong>Regression?</strong> (e.g., sales forecasting, pricing optimization)<br>
+- <strong>Clustering?</strong> (e.g., customer grouping, product recommendations)</p>
+<p>📌 <strong>Trade-offs</strong><br>
+- <strong>Accuracy vs.&nbsp;Interpretability</strong> → A deep learning model may be more accurate but harder to explain.<br>
+- <strong>Complexity vs.&nbsp;Scalability</strong> → Some models perform well but are <strong>computationally expensive</strong>.</p>
+<p>Selecting the right model ensures it aligns with business <strong>goals and constraints</strong>.</p>
+<hr>
+</section>
+<section id="model-training-and-evaluation-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="model-training-and-evaluation-metrics">Model Training and Evaluation Metrics</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Training and test split<br>
+</li>
+<li>Performance metrics: Accuracy, Precision, Recall, F1-Score, RMSE<br>
+</li>
+<li>Overfitting and underfitting</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>How Do We Measure a Model’s Success?</em><br>
+Imagine you’re <strong>hiring a new sales rep</strong>—you wouldn’t just look at total sales. You’d check:<br>
+📌 <strong>Conversion Rate</strong> (Accuracy) – Did they close deals efficiently?<br>
+📌 <strong>Lead Quality</strong> (Precision) – Were they selling to the right customers?<br>
+📌 <strong>Follow-Ups</strong> (Recall) – Did they miss good opportunities?</p>
+<p>Similarly, ML models are evaluated using <strong>key metrics</strong>:</p>
+<p>📌 <strong>Classification Models (Customer Segmentation, Fraud Detection)</strong><br>
+- <strong>Accuracy</strong> → How often is the model correct?<br>
+- <strong>Precision</strong> → Out of all predicted positives, how many were correct?<br>
+- <strong>Recall</strong> → Out of all actual positives, how many did we catch?<br>
+- <strong>F1-Score</strong> → Balances precision and recall for imbalanced datasets.</p>
+<p>📌 <strong>Regression Models (Pricing Optimization, Demand Forecasting)</strong><br>
+- <strong>Mean Squared Error (MSE)</strong> → Penalizes large errors.<br>
+- <strong>Root Mean Squared Error (RMSE)</strong> → More interpretable than MSE.</p>
+<p>Now, let’s practice <strong>evaluating models using cross-validation</strong>.</p>
+<hr>
+</section>
+<section id="walkthrough-and-exercise-7-exploring-cross-validation-for-model-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-7-exploring-cross-validation-for-model-evaluation">Walkthrough and Exercise #7: Exploring Cross-Validation for Model Evaluation</h2>
+<p><em>Objective:</em> By completing this exercise, you will be able to:<br>
+✅ Apply cross-validation to assess model performance.<br>
+✅ Compare multiple evaluation metrics.</p>
+<p><em>Steps:</em> 1️⃣ <strong>Load a dataset of customer purchase behavior.</strong><br>
+2️⃣ <strong>Split data into training and test sets.</strong><br>
+3️⃣ <strong>Train a classification model using logistic regression.</strong><br>
+4️⃣ <strong>Apply k-fold cross-validation to evaluate performance.</strong><br>
+5️⃣ <strong>Compare accuracy, precision, recall, and F1-score across folds.</strong></p>
+<p>Cross-validation ensures that <strong>models generalize well to new data</strong>.</p>
+<p>Next, let’s explore <strong>how we can fine-tune models to maximize their performance</strong>.</p>
+<hr>
+</section>
+<section id="hyperparameter-tuning-for-model-optimization" class="level2">
+<h2 class="anchored" data-anchor-id="hyperparameter-tuning-for-model-optimization">Hyperparameter Tuning for Model Optimization</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>What are hyperparameters?<br>
+</li>
+<li>Grid search vs.&nbsp;Randomized search<br>
+</li>
+<li>Business impact of model tuning</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>What Are Hyperparameters?</em><br>
+Think of ML models like <strong>baking a cake</strong>—you need to adjust ingredients like temperature and baking time.</p>
+<p>Similarly, ML models have <strong>hyperparameters</strong> that impact performance:<br>
+📌 <strong>Learning Rate</strong> → Like adjusting the oven temperature.<br>
+📌 <strong>Number of Decision Tree Splits</strong> → Like how many times you mix the batter.</p>
+<section id="grid-search-vs.-randomized-search" class="level3">
+<h3 class="anchored" data-anchor-id="grid-search-vs.-randomized-search">Grid Search vs.&nbsp;Randomized Search</h3>
+<p>📊 <strong>Grid Search</strong> – Tests <strong>all possible</strong> combinations (thorough but slow).<br>
+🎲 <strong>Randomized Search</strong> – Tests <strong>random</strong> combinations (faster, finds good solutions quickly).</p>
+</section>
+<section id="why-does-hyperparameter-tuning-matter" class="level3">
+<h3 class="anchored" data-anchor-id="why-does-hyperparameter-tuning-matter">Why Does Hyperparameter Tuning Matter?</h3>
+<p>✔ <strong>Prevents overfitting</strong> → A model that memorizes training data is useless in real-world scenarios.<br>
+✔ <strong>Maximizes performance</strong> → Well-tuned models provide <strong>business insights</strong> that drive profits.</p>
+<p>Now, let’s apply <strong>GridSearchCV</strong> to optimize a classification model.</p>
+<hr>
+</section>
+</section>
+<section id="walkthrough-and-exercise-8-hyperparameter-tuning-with-gridsearchcv" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-8-hyperparameter-tuning-with-gridsearchcv">Walkthrough and Exercise #8: Hyperparameter Tuning with GridSearchCV</h2>
+<p><em>Objective:</em> By completing this exercise, you will be able to:<br>
+✅ Optimize a model’s hyperparameters.<br>
+✅ Use GridSearchCV to find the best parameters.</p>
+<p><em>Steps:</em> 1️⃣ <strong>Train a Random Forest classifier on customer data.</strong><br>
+2️⃣ <strong>Apply GridSearchCV to test different parameter combinations.</strong><br>
+3️⃣ <strong>Evaluate model improvement using accuracy and recall.</strong><br>
+4️⃣ <strong>Interpret the best hyperparameter combination.</strong></p>
+<p>Tuning hyperparameters ensures that our models are <strong>efficient, scalable, and business-ready</strong>.</p>
+<hr>
+</section>
+<section id="deploying-ml-models-in-business-settings" class="level2">
+<h2 class="anchored" data-anchor-id="deploying-ml-models-in-business-settings">Deploying ML Models in Business Settings</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Steps for ML model deployment<br>
+</li>
+<li>Common deployment platforms (Flask, FastAPI, cloud services)<br>
+</li>
+<li>Challenges in deploying ML models</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>What Happens After a Model is Built?</em><br>
+Imagine building <strong>a self-driving car prototype</strong>—you need to take it <strong>from testing to real roads</strong>.</p>
+<p>Similarly, after training an ML model, we must <strong>deploy it</strong> for real-world use.</p>
+<p><em>Steps for Deploying an ML Model</em><br>
+📌 <strong>Model Packaging</strong> → Convert trained models into deployable formats (.pkl, .h5).<br>
+📌 <strong>API Development</strong> → Use <strong>Flask or FastAPI</strong> to serve predictions via web applications.<br>
+📌 <strong>Cloud Deployment</strong> → Host models using <strong>AWS, Azure, or Google Cloud</strong> for real-time business use.<br>
+📌 <strong>Monitoring &amp; Maintenance</strong> → Continuously evaluate performance on live data.</p>
+<section id="challenges-in-ml-deployment" class="level3">
+<h3 class="anchored" data-anchor-id="challenges-in-ml-deployment">Challenges in ML Deployment</h3>
+<p>⚠ <strong>Data Drift</strong> → Business conditions change, making old models obsolete.<br>
+⚠ <strong>Latency &amp; Scalability</strong> → Ensuring the model serves predictions fast enough for real-time applications.<br>
+⚠ <strong>Security &amp; Compliance</strong> → Keeping models secure and adhering to regulations (e.g., GDPR, HIPAA).</p>
+<p>Deploying ML models effectively ensures they provide <strong>value at scale</strong> in a business environment.</p>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
