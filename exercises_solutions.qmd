@@ -1,0 +1,552 @@
+---
+title: 'Walkthroughs and Exercises for *Machine Learning for Data Analytics with Python*'  
+author: "Dr. Chester Ismay"  
+format:
+  html:
+    toc: true
+    toc-floating: true 
+engine: knitr  
+---
+
+```{python}
+#| include: false
+import warnings
+warnings.filterwarnings("ignore", message="resource_tracker")
+```
+
+
+```{python}
+#| include: false
+import pandas as pd
+
+# Display all columns
+pd.set_option('display.max_columns', None)
+pd.set_option("display.width", 100)         # total width of console output
+
+# Display all outputs from each cell
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = "all"
+```
+
+
+# Intro: Getting Started with Machine Learning for Data-Driven Decisions
+
+## Walkthrough #1: Setting Up the Python Environment for ML
+
+If you haven't already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so [here](https://github.com/ismayc/oreilly-data-analysis-with-python/blob/main/README.md). 
+
+If you aren't able to do this on your machine, you may want to check out [Google Colab](https://colab.research.google.com/). It's a free service that allows you to run Jupyter notebooks in the cloud. 
+
+<!--
+Alternatively, I've set up some temporary notebooks on Binder [here](https://mybinder.org/v2/gh/ismayc/oreilly-fundamentals-of-statistics-with-python/main?urlpath=%2Fdoc%2Ftree%2Fexercises.ipynb) that you can work with online as well.
+-->
+
+```{python}
+
+```
+
+## Exercise #1: Setting Up the Python Environment
+
+By completing this exercise, you will be able to  
+- Import necessary Python packages  
+- Check for successful package loading  
+
+
+Follow the instructions above in Walkthrough #1 to check for correct installation 
+of necessary packages.
+
+---
+
+# Module 1: Data Understanding and Preprocessing for Machine Learning
+
+## Walkthrough #2: Exploring and Preprocessing Data with Pandas & Seaborn
+
+### Load and Inspect a Dataset Using Pandas
+
+```{python}
+# Load dataset
+telco_churn = pd.read_csv('telco-customer-churn.csv')
+```
+
+```{python}
+# Inspect data structure
+df
+df.info()
+```
+
+```{python}
+# Check for missing values
+df.isnull().sum()
+
+# Check for duplicate rows
+print(f"Duplicate rows: {df.duplicated().sum()}")
+```
+
+### Handle Missing Values and Clean Data
+
+```{python}
+# Handle MonthlyCharges missing values
+df['MonthlyCharges'] = df['MonthlyCharges'].fillna(df['MonthlyCharges'].median())
+df['AvgServiceUsageScore'] = df['AvgServiceUsageScore'].fillna(df['AvgServiceUsageScore'].median())
+df.info()
+
+# Standardize column formats (e.g., convert Yes/No to binary for a few columns)
+df['SeniorCitizen'] = df['SeniorCitizen'].astype('category')
+df['Churn'] = df['Churn'].map({'Yes': 1, 'No': 0})
+```
+
+### Create Visualizations to Identify Key Business Trends
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Summarize statistics
+df.describe(include='all')
+
+# Visualize distributions and relationships
+plt.clf()
+sns.violinplot(data=df, x='Churn', y='tenure', inner='quartile')
+plt.title('Violin Plot of Tenure by Churn')
+plt.show();
+
+plt.clf()
+sns.histplot(data=df, x='AvgServiceUsageScore')
+plt.title('Histogram of Average Service Usage Score')
+plt.show();
+
+plt.clf()
+sns.histplot(data=df, x='MonthlyCharges')
+plt.title('Histogram of Monthly Charges')
+plt.show();
+
+plt.clf()
+sns.scatterplot(data=df, x='AvgServiceUsageScore', y='MonthlyCharges')
+plt.title('Average Service Usage Score vs. Monthly Charges')
+plt.show();
+
+plt.clf()
+sns.countplot(data=df, x='InternetService', hue='Churn')
+plt.title('Churn Rate by Internet Service Type')
+plt.show();
+
+```
+
+
+---
+
+# Module 2: Supervised Learning for Business Decisions
+
+## Walkthrough #3: Build a Regression Model for Pricing Optimization
+
+### Split the data into training and validation sets
+
+```{python}
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+X = df[['AvgServiceUsageScore']]  # predictor
+y = df['MonthlyCharges']          # target
+
+# Best practice when working with linear models
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+X_train, X_val, y_train, y_val = train_test_split(
+  X_scaled, y, test_size=0.2, random_state=42
+)
+```
+
+### Train a linear regression model
+
+```{python}
+from sklearn.linear_model import LinearRegression
+
+lr = LinearRegression()
+lr.fit(X_train, y_train)
+
+print(f"Intercept: {lr.intercept_:.2f}")
+print(f"Coefficient (usage_scaled → price): {lr.coef_[0]:.2f}")
+```
+
+### Evaluate model performance on the validation set
+
+```{python}
+from sklearn.metrics import mean_absolute_error, r2_score
+
+y_pred = lr.predict(X_val)
+
+r2 = r2_score(y_val, y_pred)
+mae = mean_absolute_error(y_val, y_pred)
+
+print(f"R-squared: {r2:.2f}")
+print(f"Mean Absolute Error: {mae:.2f}")
+```
+
+---
+
+## Walkthrough #4: Implement a Classification Model for Customer Churn
+
+### Split the data into training and validation sets
+
+```{python}
+# Select relevant features
+features = ['tenure', 'SeniorCitizen', 'ServiceCount', 'InternetScore', 'AvgServiceUsageScore']
+X = df[features]
+y = df['Churn']
+
+# Scaling is not as important for tree-based models since they are not sensitive to
+# one feature having a larger scale than another
+
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+### Train a Random Forest classification model
+
+```{python}
+from sklearn.ensemble import RandomForestClassifier
+
+# Train Random Forest classifier
+clf = RandomForestClassifier(n_estimators=100, random_state=42)
+clf.fit(X_train, y_train)
+```
+
+### Evaluate model performance on the validation set
+
+```{python}
+from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix
+
+y_pred = clf.predict(X_test)
+
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.2f}")
+print(f"Precision: {precision_score(y_test, y_pred):.2f}")
+print(f"Recall: {recall_score(y_test, y_pred):.2f}")
+
+cm = confusion_matrix(y_test, y_pred)
+
+labels = ['No Churn', 'Churn']
+cm_df = pd.DataFrame(cm, index=labels, columns=labels)
+
+print("\nConfusion Matrix (formatted):")
+print(cm_df)
+```
+
+---
+
+# Module 3: Unsupervised Learning and Pattern Discovery in Business
+
+## Walkthrough #5: Exploring K-Means Clustering for Customer Segmentation
+
+### Apply K-Means clustering to segment customers
+
+```{python}
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+df['ContractType'] = df['Contract'].map({
+    'Month-to-month': 0, 'One year': 1, 'Two year': 2
+})
+features = ['tenure', 'ServiceCount', 'AvgServiceUsageScore', 'MonthlyCharges', 'InternetScore', 'ContractType']
+
+
+# Select relevant features
+#features = ['tenure', 'SeniorCitizen', 'ServiceCount', 'AvgServiceUsageScore']
+X = df[features]
+
+# Standardize features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+```
+
+### Determine the optimal number of clusters using the Elbow Method
+
+```{python}
+inertia = []
+k_range = range(1, 11)
+
+for k in k_range:
+    kmeans = KMeans(n_clusters=k, random_state=42)
+    kmeans.fit(X_scaled)
+    inertia.append(kmeans.inertia_)
+
+plt.clf()
+plt.plot(k_range, inertia, marker='o')
+plt.xlabel('Number of clusters (k)')
+plt.ylabel('Inertia')
+plt.title('Elbow Method for Optimal k')
+plt.show()
+```
+
+### Verify using the silhouette score (optional but recommended)
+
+```{python, warnings=FALSE}
+from sklearn.metrics import silhouette_score
+
+# Evaluate silhouette scores for k=3 to k=6
+silhouette_scores = {}
+
+for k in range(3, 7):
+    kmeans = KMeans(n_clusters=k, random_state=42)
+    labels = kmeans.fit_predict(X_scaled)
+    score = silhouette_score(X_scaled, labels)
+    silhouette_scores[k] = score
+
+silhouette_scores
+```
+
+```{python}
+# Let's assume the elbow suggested k=3
+optimal_k = 3
+kmeans = KMeans(n_clusters=optimal_k, random_state=42)
+df['Cluster'] = kmeans.fit_predict(X_scaled)
+```
+
+### Visualize customer segments using a 2D plot
+
+```{python}
+plt.clf()
+# Visualize clusters in 2D space (using tenure and MonthlyCharges)
+#sns.scatterplot(data=df, x='tenure', y='MonthlyCharges', hue='Cluster', palette='viridis')
+sns.scatterplot(data=df,  x='tenure', y='AvgServiceUsageScore', hue='Cluster', palette='viridis')
+plt.title('Customer Segments via K-Means')
+plt.show();
+```
+
+---
+
+## Walkthrough #6: Market Basket Analysis with Apriori Algorithm
+
+### Prepare transactional data (services as items)
+
+```{python}
+# Selecting binary service columns to act like "products"
+service_cols = [
+    'OnlineSecurity', 'OnlineBackup', 'DeviceProtection',
+    'TechSupport', 'StreamingTV', 'StreamingMovies', 'PhoneService'
+]
+
+# Convert service columns to boolean (preference of apriori() function)
+df_basket = df[service_cols].astype(bool)
+df_basket
+```
+
+### Apply the Apriori algorithm to identify frequent itemsets
+
+```{python}
+from mlxtend.frequent_patterns import apriori
+
+frequent_itemsets = apriori(df_basket, min_support=0.2, use_colnames=True)
+frequent_itemsets
+```
+
+### Generate association rules from frequent itemsets
+
+```{python}
+from mlxtend.frequent_patterns import association_rules
+
+rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.6)
+rules = rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']]
+rules
+```
+
+### Interpret insights
+
+🔵 Key Metrics
+
+Support:  
+Fraction of all customers who have this combination of services.  
+Example: 0.275 means 27.5% of customers bought that combination.
+
+Confidence:  
+Given the antecedent, how often does the consequent also occur?  
+Example: Confidence of 0.71 means 71% of customers with the antecedent also have the consequent.  
+
+Lift:  
+Measures how much more likely the consequent is given the antecedent compared to random chance.
+
+Lift > 1 → Positive association.   
+Lift = 1 → Independent.  
+Lift < 1 → Negative association. 
+
+🧩 Interpretation of Key Rules. 
+Rule 6. 
+If customers have StreamingTV, they also likely have StreamingMovies
+
+Confidence = 0.71. 
+71% of customers who subscribe to StreamingTV also have StreamingMovies.
+
+Lift = 1.84. 
+This is 84% more likely than random → strong association.
+
+📌 Business insight:  
+These services are good cross-sell opportunities. A bundled "Entertainment Pack" could increase uptake.
+
+Rule 2. 
+If customers have DeviceProtection, they also likely have StreamingTV
+
+Confidence = 0.65. 
+65% of DeviceProtection users also subscribe to StreamingTV.
+
+Lift = 1.68. 
+This is a significant positive relationship, suggesting that people buying protection plans may also value entertainment services.
+
+📌 Business insight:  
+Consider cross-promoting entertainment bundles during device protection sales.
+
+Rule 10. 
+If customers have DeviceProtection + PhoneService, they likely also have StreamingMovies
+
+Confidence = 0.67. 
+67% of these bundled customers also purchase StreamingMovies.
+
+Lift = 1.71. 
+Shows a strong cross-sell relationship.
+
+📌 Business insight:  
+Customers with both DeviceProtection and PhoneService are strong candidates for targeted movie streaming promotions.
+
+General pattern. 
+StreamingTV ↔ StreamingMovies repeatedly show strong relationships with lift > 1.8.  
+PhoneService often appears as a base product with high confidence but lower lift (~0.9) — this is expected since most customers (90%) already have PhoneService.
+
+🔔 Summary.  
+Look for high lift AND high confidence.  
+Focus marketing on bundles like:  
+  StreamingTV + StreamingMovies packages.  
+  Upselling StreamingMovies to customers with DeviceProtection + PhoneService.
+
+---
+
+# Module 4: Implementing and Evaluating ML Models
+
+## Walkthrough #7: Exploring Cross-Validation for Model Evaluation
+
+### Split data into training and test sets
+
+```{python}
+from sklearn.model_selection import train_test_split
+
+# Features and target
+X = df[['AvgServiceUsageScore', 'tenure', 'MonthlyCharges']]
+y = df['Churn']
+
+# Scale the features since logistic regression is a linear model
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Split into train and test sets (80% train, 20% test)
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+```
+
+### Train a classification model using logistic regression
+
+```{python}
+from sklearn.linear_model import LogisticRegression
+
+# Initialize logistic regression model
+logreg = LogisticRegression(max_iter=1000, solver='liblinear')
+```
+
+### Apply k-fold cross-validation to evaluate model performance
+
+```{python}
+from sklearn.model_selection import cross_val_score, cross_validate
+
+# Cross-validate with multiple metrics
+cv_results = cross_validate(
+    logreg, 
+    X_train, 
+    y_train, 
+    cv=5, 
+    scoring=['accuracy', 'precision', 'recall', 'f1'],
+    return_train_score=True
+)
+```
+
+### Compare metrics across folds
+
+```{python}
+# Average performance across folds
+for metric in ['test_accuracy', 'test_precision', 'test_recall', 'test_f1']:
+    print(f"{metric.split('_')[1].capitalize()}: {cv_results[metric].mean():.3f} ± {cv_results[metric].std():.3f}")
+    
+
+```
+
+📝 Interpretation
+Accuracy → Overall correctness of predictions
+
+Precision → How many predicted churns were actual churns
+
+Recall → How many churns were correctly identified
+
+F1-Score → Balances precision & recall
+
+Cross-validation ensures that your model generalizes better to unseen data by reducing the risk of overfitting on a single split.
+
+---
+
+## Walkthrough #8: Hyperparameter Tuning with Grid Search
+
+### Train a Random Forest classifier
+
+```{python}
+from sklearn.ensemble import RandomForestClassifier
+
+# Features and target
+X = df[['AvgServiceUsageScore', 'tenure', 'MonthlyCharges']]
+y = df['Churn']
+
+# Initialize Random Forest
+rf = RandomForestClassifier(random_state=42)
+```
+
+### Apply grid search to find optimal hyperparameters
+
+```{python gridsearch}
+#| cache: true
+from sklearn.model_selection import GridSearchCV
+
+# Define the hyperparameter grid
+param_grid = {
+    'n_estimators': [100, 200],
+    'max_depth': [4, 8],
+    'min_samples_split': [2, 5],
+    'min_samples_leaf': [1, 2]
+}
+
+# GridSearchCV setup
+grid_search = GridSearchCV(
+    estimator=rf,
+    param_grid=param_grid,
+    cv=5,
+    scoring='recall',
+    n_jobs=-1,
+    verbose=1
+)
+
+# Run grid search
+grid_search.fit(X, y)
+```
+
+### Evaluate model improvement using accuracy and recall
+
+```{python}
+from sklearn.metrics import accuracy_score, recall_score
+
+# Predict using the best model
+best_rf = grid_search.best_estimator_
+y_pred = best_rf.predict(X)
+
+# Evaluate
+print(f"Best Accuracy: {accuracy_score(y, y_pred):.3f}")
+print(f"Best Recall: {recall_score(y, y_pred):.3f}")
+```
+
+### Interpret the best hyperparameter combination
+
+```{python}
+print("Best Parameters Found:", grid_search.best_params_)
+```
+

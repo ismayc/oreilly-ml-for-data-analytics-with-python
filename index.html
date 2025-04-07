@@ -36,6 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="slide_content_cleaned_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -53,43 +54,48 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#python-for-machine-learning-in-business-analytics" id="toc-python-for-machine-learning-in-business-analytics" class="nav-link" data-scroll-target="#python-for-machine-learning-in-business-analytics">Python for Machine Learning in Business Analytics</a></li>
   <li><a href="#walkthrough-and-exercise-1-setting-up-the-python-environment-for-ml" id="toc-walkthrough-and-exercise-1-setting-up-the-python-environment-for-ml" class="nav-link" data-scroll-target="#walkthrough-and-exercise-1-setting-up-the-python-environment-for-ml">Walkthrough and Exercise #1: Setting Up the Python Environment for ML</a></li>
   </ul></li>
-  <li><a href="#module-1-understanding-data-and-preprocessing-for-machine-learning" id="toc-module-1-understanding-data-and-preprocessing-for-machine-learning" class="nav-link" data-scroll-target="#module-1-understanding-data-and-preprocessing-for-machine-learning">Module 1: Understanding Data and Preprocessing for Machine Learning</a>
+  <li><a href="#module-1-data-understanding-and-preprocessing-for-machine-learning" id="toc-module-1-data-understanding-and-preprocessing-for-machine-learning" class="nav-link" data-scroll-target="#module-1-data-understanding-and-preprocessing-for-machine-learning">Module 1: Data Understanding and Preprocessing for Machine Learning</a>
   <ul class="collapse">
-  <li><a href="#the-role-of-data-in-machine-learning-and-exploratory-data-analysis-eda" id="toc-the-role-of-data-in-machine-learning-and-exploratory-data-analysis-eda" class="nav-link" data-scroll-target="#the-role-of-data-in-machine-learning-and-exploratory-data-analysis-eda">The Role of Data in Machine Learning and Exploratory Data Analysis (EDA)</a></li>
+  <li><a href="#the-role-of-data-in-machine-learning" id="toc-the-role-of-data-in-machine-learning" class="nav-link" data-scroll-target="#the-role-of-data-in-machine-learning">The Role of Data in Machine Learning</a></li>
   <li><a href="#how-data-is-collected-and-prepared-for-ml" id="toc-how-data-is-collected-and-prepared-for-ml" class="nav-link" data-scroll-target="#how-data-is-collected-and-prepared-for-ml">How Data is Collected and Prepared for ML</a></li>
-  <li><a href="#exploring-and-understanding-your-data-eda" id="toc-exploring-and-understanding-your-data-eda" class="nav-link" data-scroll-target="#exploring-and-understanding-your-data-eda">Exploring and Understanding Your Data (EDA)</a></li>
+  <li><a href="#exploring-and-understanding-your-data" id="toc-exploring-and-understanding-your-data" class="nav-link" data-scroll-target="#exploring-and-understanding-your-data">Exploring and Understanding Your Data</a></li>
   <li><a href="#how-data-insights-shape-business-strategy" id="toc-how-data-insights-shape-business-strategy" class="nav-link" data-scroll-target="#how-data-insights-shape-business-strategy">How Data Insights Shape Business Strategy</a></li>
-  <li><a href="#walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-matplotlib" id="toc-walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-matplotlib" class="nav-link" data-scroll-target="#walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-matplotlib">Walkthrough and Exercise #2: Exploring and Preprocessing Data with Pandas &amp; Matplotlib</a></li>
+  <li><a href="#walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-seaborn" id="toc-walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-seaborn" class="nav-link" data-scroll-target="#walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-seaborn">Walkthrough and Exercise #2: Exploring and Preprocessing Data with Pandas &amp; Seaborn</a></li>
   </ul></li>
   <li><a href="#module-2-supervised-learning-for-business-decisions" id="toc-module-2-supervised-learning-for-business-decisions" class="nav-link" data-scroll-target="#module-2-supervised-learning-for-business-decisions">Module 2: Supervised Learning for Business Decisions</a>
   <ul class="collapse">
-  <li><a href="#supervised-learning-how-machines-learn-from-examples" id="toc-supervised-learning-how-machines-learn-from-examples" class="nav-link" data-scroll-target="#supervised-learning-how-machines-learn-from-examples">Supervised Learning: How Machines Learn from Examples</a></li>
+  <li><a href="#machines-learning-from-examples" id="toc-machines-learning-from-examples" class="nav-link" data-scroll-target="#machines-learning-from-examples">Machines Learning from Examples</a></li>
   <li><a href="#key-supervised-learning-algorithms" id="toc-key-supervised-learning-algorithms" class="nav-link" data-scroll-target="#key-supervised-learning-algorithms">Key Supervised Learning Algorithms</a></li>
-  <li><a href="#walkthrough-and-exercise-3-build-a-regression-model-for-pricing-optimization" id="toc-walkthrough-and-exercise-3-build-a-regression-model-for-pricing-optimization" class="nav-link" data-scroll-target="#walkthrough-and-exercise-3-build-a-regression-model-for-pricing-optimization">Walkthrough and Exercise #3: Build a Regression Model for Pricing Optimization</a></li>
-  <li><a href="#introduction-to-classification-techniques" id="toc-introduction-to-classification-techniques" class="nav-link" data-scroll-target="#introduction-to-classification-techniques">Introduction to Classification Techniques</a></li>
-  <li><a href="#walkthrough-and-exercise-4-implement-a-classification-model-for-customer-segmentation" id="toc-walkthrough-and-exercise-4-implement-a-classification-model-for-customer-segmentation" class="nav-link" data-scroll-target="#walkthrough-and-exercise-4-implement-a-classification-model-for-customer-segmentation">Walkthrough and Exercise #4: Implement a Classification Model for Customer Segmentation</a></li>
-  <li><a href="#model-evaluation-and-tuning" id="toc-model-evaluation-and-tuning" class="nav-link" data-scroll-target="#model-evaluation-and-tuning">Model Evaluation and Tuning</a></li>
+  <li><a href="#ensuring-model-generalization" id="toc-ensuring-model-generalization" class="nav-link" data-scroll-target="#ensuring-model-generalization">Ensuring Model Generalization</a></li>
+  <li><a href="#evaluating-regression-models" id="toc-evaluating-regression-models" class="nav-link" data-scroll-target="#evaluating-regression-models">Evaluating Regression Models</a>
+  <ul class="collapse">
+  <li><a href="#how-do-we-measure-the-accuracy-of-regression-models" id="toc-how-do-we-measure-the-accuracy-of-regression-models" class="nav-link" data-scroll-target="#how-do-we-measure-the-accuracy-of-regression-models">How Do We Measure the Accuracy of Regression Models?</a></li>
+  <li><a href="#key-metrics-for-regression-models" id="toc-key-metrics-for-regression-models" class="nav-link" data-scroll-target="#key-metrics-for-regression-models">Key Metrics for Regression Models</a></li>
+  <li><a href="#which-metric-should-you-use" id="toc-which-metric-should-you-use" class="nav-link" data-scroll-target="#which-metric-should-you-use">Which Metric Should You Use?</a></li>
+  </ul></li>
+  <li><a href="#walkthrough-and-exercise-3-build-a-regression-model-for-predicting-monthly-charge" id="toc-walkthrough-and-exercise-3-build-a-regression-model-for-predicting-monthly-charge" class="nav-link" data-scroll-target="#walkthrough-and-exercise-3-build-a-regression-model-for-predicting-monthly-charge">Walkthrough and Exercise #3: Build a Regression Model for Predicting Monthly Charge</a></li>
+  <li><a href="#primer-on-classification-techniques" id="toc-primer-on-classification-techniques" class="nav-link" data-scroll-target="#primer-on-classification-techniques">Primer on Classification Techniques</a></li>
+  <li><a href="#evaluating-classification-models" id="toc-evaluating-classification-models" class="nav-link" data-scroll-target="#evaluating-classification-models">Evaluating Classification Models</a></li>
+  <li><a href="#walkthrough-and-exercise-4-implement-a-classification-model-for-customer-churn-prediction" id="toc-walkthrough-and-exercise-4-implement-a-classification-model-for-customer-churn-prediction" class="nav-link" data-scroll-target="#walkthrough-and-exercise-4-implement-a-classification-model-for-customer-churn-prediction">Walkthrough and Exercise #4: Implement a Classification Model for Customer Churn Prediction</a></li>
   <li><a href="#business-applications-of-supervised-learning" id="toc-business-applications-of-supervised-learning" class="nav-link" data-scroll-target="#business-applications-of-supervised-learning">Business Applications of Supervised Learning</a></li>
   </ul></li>
   <li><a href="#module-3-unsupervised-learning-and-pattern-discovery-in-business" id="toc-module-3-unsupervised-learning-and-pattern-discovery-in-business" class="nav-link" data-scroll-target="#module-3-unsupervised-learning-and-pattern-discovery-in-business">Module 3: Unsupervised Learning and Pattern Discovery in Business</a>
   <ul class="collapse">
-  <li><a href="#exploring-unsupervised-learning-and-its-business-applications" id="toc-exploring-unsupervised-learning-and-its-business-applications" class="nav-link" data-scroll-target="#exploring-unsupervised-learning-and-its-business-applications">Exploring Unsupervised Learning and Its Business Applications</a></li>
+  <li><a href="#unsupervised-learning-and-its-business-applications" id="toc-unsupervised-learning-and-its-business-applications" class="nav-link" data-scroll-target="#unsupervised-learning-and-its-business-applications">Unsupervised Learning and Its Business Applications</a></li>
   <li><a href="#clustering-for-customer-insights" id="toc-clustering-for-customer-insights" class="nav-link" data-scroll-target="#clustering-for-customer-insights">Clustering for Customer Insights</a></li>
   <li><a href="#walkthrough-and-exercise-5-exploring-k-means-clustering-for-customer-segmentation" id="toc-walkthrough-and-exercise-5-exploring-k-means-clustering-for-customer-segmentation" class="nav-link" data-scroll-target="#walkthrough-and-exercise-5-exploring-k-means-clustering-for-customer-segmentation">Walkthrough and Exercise #5: Exploring K-Means Clustering for Customer Segmentation</a></li>
   <li><a href="#association-rule-learning-for-market-basket-analysis" id="toc-association-rule-learning-for-market-basket-analysis" class="nav-link" data-scroll-target="#association-rule-learning-for-market-basket-analysis">Association Rule Learning for Market Basket Analysis</a></li>
+  <li><a href="#the-apriori-algorithm-for-finding-patterns" id="toc-the-apriori-algorithm-for-finding-patterns" class="nav-link" data-scroll-target="#the-apriori-algorithm-for-finding-patterns">The Apriori Algorithm for Finding Patterns</a></li>
   <li><a href="#walkthrough-and-exercise-6-market-basket-analysis-with-apriori-algorithm" id="toc-walkthrough-and-exercise-6-market-basket-analysis-with-apriori-algorithm" class="nav-link" data-scroll-target="#walkthrough-and-exercise-6-market-basket-analysis-with-apriori-algorithm">Walkthrough and Exercise #6: Market Basket Analysis with Apriori Algorithm</a></li>
   <li><a href="#real-world-business-applications-of-unsupervised-learning" id="toc-real-world-business-applications-of-unsupervised-learning" class="nav-link" data-scroll-target="#real-world-business-applications-of-unsupervised-learning">Real-World Business Applications of Unsupervised Learning</a></li>
   </ul></li>
   <li><a href="#module-4-implementing-and-evaluating-ml-models" id="toc-module-4-implementing-and-evaluating-ml-models" class="nav-link" data-scroll-target="#module-4-implementing-and-evaluating-ml-models">Module 4: Implementing and Evaluating ML Models</a>
   <ul class="collapse">
   <li><a href="#picking-the-right-ml-approach" id="toc-picking-the-right-ml-approach" class="nav-link" data-scroll-target="#picking-the-right-ml-approach">Picking the Right ML Approach</a></li>
-  <li><a href="#model-training-and-evaluation-metrics" id="toc-model-training-and-evaluation-metrics" class="nav-link" data-scroll-target="#model-training-and-evaluation-metrics">Model Training and Evaluation Metrics</a></li>
+  <li><a href="#cross-validation-fundamentals" id="toc-cross-validation-fundamentals" class="nav-link" data-scroll-target="#cross-validation-fundamentals">Cross-Validation Fundamentals</a></li>
+  <li><a href="#applying-performance-metrics-with-cross-validation" id="toc-applying-performance-metrics-with-cross-validation" class="nav-link" data-scroll-target="#applying-performance-metrics-with-cross-validation">Applying Performance Metrics with Cross-Validation</a></li>
   <li><a href="#walkthrough-and-exercise-7-exploring-cross-validation-for-model-evaluation" id="toc-walkthrough-and-exercise-7-exploring-cross-validation-for-model-evaluation" class="nav-link" data-scroll-target="#walkthrough-and-exercise-7-exploring-cross-validation-for-model-evaluation">Walkthrough and Exercise #7: Exploring Cross-Validation for Model Evaluation</a></li>
-  <li><a href="#hyperparameter-tuning-for-model-optimization" id="toc-hyperparameter-tuning-for-model-optimization" class="nav-link" data-scroll-target="#hyperparameter-tuning-for-model-optimization">Hyperparameter Tuning for Model Optimization</a>
-  <ul class="collapse">
-  <li><a href="#grid-search-vs.-randomized-search" id="toc-grid-search-vs.-randomized-search" class="nav-link" data-scroll-target="#grid-search-vs.-randomized-search">Grid Search vs.&nbsp;Randomized Search</a></li>
-  <li><a href="#why-does-hyperparameter-tuning-matter" id="toc-why-does-hyperparameter-tuning-matter" class="nav-link" data-scroll-target="#why-does-hyperparameter-tuning-matter">Why Does Hyperparameter Tuning Matter?</a></li>
-  </ul></li>
+  <li><a href="#hyperparameter-tuning-for-model-optimization" id="toc-hyperparameter-tuning-for-model-optimization" class="nav-link" data-scroll-target="#hyperparameter-tuning-for-model-optimization">Hyperparameter Tuning for Model Optimization</a></li>
   <li><a href="#walkthrough-and-exercise-8-hyperparameter-tuning-with-gridsearchcv" id="toc-walkthrough-and-exercise-8-hyperparameter-tuning-with-gridsearchcv" class="nav-link" data-scroll-target="#walkthrough-and-exercise-8-hyperparameter-tuning-with-gridsearchcv">Walkthrough and Exercise #8: Hyperparameter Tuning with GridSearchCV</a></li>
   <li><a href="#deploying-ml-models-in-business-settings" id="toc-deploying-ml-models-in-business-settings" class="nav-link" data-scroll-target="#deploying-ml-models-in-business-settings">Deploying ML Models in Business Settings</a></li>
   </ul></li>
@@ -217,10 +223,10 @@ Python is the <strong>leading</strong> programming language for machine learning
 <hr>
 </section>
 </section>
-<section id="module-1-understanding-data-and-preprocessing-for-machine-learning" class="level1">
-<h1>Module 1: Understanding Data and Preprocessing for Machine Learning</h1>
-<section id="the-role-of-data-in-machine-learning-and-exploratory-data-analysis-eda" class="level2">
-<h2 class="anchored" data-anchor-id="the-role-of-data-in-machine-learning-and-exploratory-data-analysis-eda">The Role of Data in Machine Learning and Exploratory Data Analysis (EDA)</h2>
+<section id="module-1-data-understanding-and-preprocessing-for-machine-learning" class="level1">
+<h1>Module 1: Data Understanding and Preprocessing for Machine Learning</h1>
+<section id="the-role-of-data-in-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="the-role-of-data-in-machine-learning">The Role of Data in Machine Learning</h2>
 <p><strong>Content</strong></p>
 <ul>
 <li>Machine learning (ML) depends on high-quality data<br>
@@ -266,11 +272,11 @@ Imagine you’re making <strong>a fruit smoothie</strong>. If the ingredients ar
 <p>Once data is clean, the next step is <strong>understanding its patterns</strong> through <strong>Exploratory Data Analysis (EDA)</strong>.</p>
 <hr>
 </section>
-<section id="exploring-and-understanding-your-data-eda" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-and-understanding-your-data-eda">Exploring and Understanding Your Data (EDA)</h2>
+<section id="exploring-and-understanding-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-and-understanding-your-data">Exploring and Understanding Your Data</h2>
 <p><strong>Content</strong></p>
 <ul>
-<li>Exploratory Data Analysis (EDA) is essential for ML<br>
+<li>Exploratory Data Analysis (EDA) is vital for ML<br>
 </li>
 <li>Methods for summarizing and visualizing data<br>
 </li>
@@ -320,8 +326,8 @@ EDA helps businesses <strong>connect patterns in data to real-world decisions</s
 <p>Now, let’s put these concepts into practice with <strong>a hands-on exercise</strong>.</p>
 <hr>
 </section>
-<section id="walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-matplotlib" class="level2">
-<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-matplotlib">Walkthrough and Exercise #2: Exploring and Preprocessing Data with Pandas &amp; Matplotlib</h2>
+<section id="walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-seaborn" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-2-exploring-and-preprocessing-data-with-pandas-seaborn">Walkthrough and Exercise #2: Exploring and Preprocessing Data with Pandas &amp; Seaborn</h2>
 <p><em>Objective:</em> By completing this exercise, you will be able to:<br>
 ✅ Load and inspect a dataset using Pandas<br>
 ✅ Handle missing values and clean data<br>
@@ -330,14 +336,14 @@ EDA helps businesses <strong>connect patterns in data to real-world decisions</s
 2️⃣ <strong>Check for missing values, duplicates, and inconsistent formats</strong><br>
 3️⃣ <strong>Use <code>.fillna()</code>, <code>.dropna()</code>, and <code>.astype()</code> to clean data</strong><br>
 4️⃣ <strong>Summarize key statistics using <code>.describe()</code></strong><br>
-5️⃣ <strong>Visualize relationships using histograms and scatter plots with Matplotlib</strong></p>
+5️⃣ <strong>Visualize relationships using histograms and scatter plots with Seaborn</strong></p>
 <hr>
 </section>
 </section>
 <section id="module-2-supervised-learning-for-business-decisions" class="level1">
 <h1>Module 2: Supervised Learning for Business Decisions</h1>
-<section id="supervised-learning-how-machines-learn-from-examples" class="level2">
-<h2 class="anchored" data-anchor-id="supervised-learning-how-machines-learn-from-examples">Supervised Learning: How Machines Learn from Examples</h2>
+<section id="machines-learning-from-examples" class="level2">
+<h2 class="anchored" data-anchor-id="machines-learning-from-examples">Machines Learning from Examples</h2>
 <p><strong>Content</strong></p>
 <ul>
 <li>Definition of supervised learning<br>
@@ -377,24 +383,99 @@ Think of supervised learning models as <strong>different tools in a toolbox</str
 🛠 <strong>Decision Trees</strong> → Like a <strong>flowchart</strong>, it splits data based on conditions to classify or predict values.<br>
 🛠 <strong>Random Forests</strong> → Like a <strong>committee of experts</strong>, it combines multiple decision trees for better accuracy.</p>
 <p>Each model has <strong>specific use cases</strong> in business, from <strong>predicting sales trends</strong> to <strong>classifying customer segments</strong>. There is no model that you should use all the time though. Random forests do tend to perform well in many situations, but the others might out-perform them in certain situations.</p>
-<p>Now, let’s practice using <strong>one of these models</strong> to optimize business decisions.</p>
 <hr>
 </section>
-<section id="walkthrough-and-exercise-3-build-a-regression-model-for-pricing-optimization" class="level2">
-<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-3-build-a-regression-model-for-pricing-optimization">Walkthrough and Exercise #3: Build a Regression Model for Pricing Optimization</h2>
-<p><em>Objective:</em> By completing this exercise, you will be able to:<br>
+<section id="ensuring-model-generalization" class="level2">
+<h2 class="anchored" data-anchor-id="ensuring-model-generalization">Ensuring Model Generalization</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>The difference between training and validation data<br>
+</li>
+<li>Why we don’t evaluate models on the same data they were trained on<br>
+</li>
+<li>How validation data helps assess model performance</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>Why Do We Need Training and Validation Data?</em><br>
+Imagine studying for an exam using only <strong>practice questions from a textbook</strong>. If the exam contains the <strong>exact same questions</strong>, you’ll do well—but that doesn’t mean you truly understand the material. However, if the exam contains <strong>new questions</strong>, your score will reflect your actual understanding.</p>
+<p>Machine learning models work the same way. <strong>If we only test on training data, the model might appear to perform well but fail on new data.</strong></p>
+<p><em>How We Split Data in Supervised Learning</em><br>
+📌 <strong>Training Data</strong> → Used to teach the model patterns in the data.<br>
+📌 <strong>Validation Data</strong> → Used to check how well the model performs on unseen data before final testing.</p>
+<p><em>Why Is This Important?</em><br>
+- Helps detect <strong>overfitting</strong>, where a model memorizes patterns but fails to generalize.<br>
+- Ensures the model is <strong>not just learning noise</strong> from the training data.<br>
+- Allows us to fine-tune models before deployment for <strong>better real-world accuracy</strong>.</p>
+<p>How do we know how well our model is performing on the testing data?</p>
+<hr>
+</section>
+<section id="evaluating-regression-models" class="level2">
+<h2 class="anchored" data-anchor-id="evaluating-regression-models">Evaluating Regression Models</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>How to assess model performance in regression<br>
+</li>
+<li>Understanding <strong>R-squared</strong> and <strong>Mean Absolute Error (MAE)</strong><br>
+</li>
+<li>Choosing the right metric for business applications</li>
+</ul>
+<p><strong>Script</strong></p>
+<p>Here’s your revised version with all bolding and italicizing removed, plus the analogies added for R-squared and MAE:</p>
+<hr>
+<section id="how-do-we-measure-the-accuracy-of-regression-models" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-we-measure-the-accuracy-of-regression-models">How Do We Measure the Accuracy of Regression Models?</h3>
+<p>Unlike classification models, regression models predict continuous values—like sales revenue or customer lifetime value. To ensure our predictions are reliable, we need to evaluate model performance on our testing or validation data.</p>
+</section>
+<section id="key-metrics-for-regression-models" class="level3">
+<h3 class="anchored" data-anchor-id="key-metrics-for-regression-models">Key Metrics for Regression Models</h3>
+<p>📊 <strong>R-Squared (R²)</strong><br>
+R-squared measures how well the model explains variance in the data.</p>
+<ul>
+<li>Range: 0 to 1<br>
+</li>
+<li>Closer to 1 → The model explains most of the variability in the target variable<br>
+</li>
+<li>Closer to 0 → The model does not capture the relationship well<br>
+</li>
+<li>Analogy: Think of R-squared like throwing darts at a dartboard. If your predictions land close to the bullseye (actual values) and are tightly grouped, your model has a high R-squared. If they’re scattered all over the board, R-squared will be low.<br>
+</li>
+<li>Example: An R² of 0.85 in a sales forecast model means 85% of sales variation is explained by the model.</li>
+</ul>
+<p>📊 <strong>Mean Absolute Error (MAE)</strong><br>
+MAE measures the average absolute difference between predicted and actual values.</p>
+<ul>
+<li>Lower MAE → More accurate predictions<br>
+</li>
+<li>Analogy: Imagine a runner trying to stay on a narrow path. MAE is like measuring how far, on average, the runner veers off course. Smaller deviations mean better accuracy.<br>
+</li>
+<li>Example: If a pricing model has an MAE of $500, it means that on average, predictions are $500 off from actual prices.</li>
+</ul>
+</section>
+<section id="which-metric-should-you-use" class="level3">
+<h3 class="anchored" data-anchor-id="which-metric-should-you-use">Which Metric Should You Use?</h3>
+<p>✔ Use R-squared when you want to understand how well the model fits the data overall<br>
+✔ Use MAE when you need to quantify errors in business terms (e.g., predicting sales revenue with minimal dollar deviation)</p>
+<p>Both metrics help business analysts determine whether a regression model is useful for decision-making or if further tuning is needed.</p>
+<p>Now, let’s apply this by building a regression model, training it, and evaluating performance using a validation set.</p>
+<hr>
+</section>
+</section>
+<section id="walkthrough-and-exercise-3-build-a-regression-model-for-predicting-monthly-charge" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-3-build-a-regression-model-for-predicting-monthly-charge">Walkthrough and Exercise #3: Build a Regression Model for Predicting Monthly Charge</h2>
+<p><em>Objective:</em><br>
+By completing this exercise, you will be able to:<br>
 ✅ Use scikit-learn to build a simple linear regression model<br>
+✅ Train the model using training data and evaluate it on validation data<br>
 ✅ Optimize pricing based on historical data</p>
-<p><em>Steps:</em> 1️⃣ <strong>Load a dataset of historical pricing and sales data</strong><br>
-2️⃣ <strong>Preprocess the data (handle missing values, convert data types)</strong><br>
-3️⃣ <strong>Train a linear regression model using scikit-learn</strong><br>
-4️⃣ <strong>Evaluate model performance using R-squared and Mean Absolute Error</strong><br>
-5️⃣ <strong>Interpret the results</strong> – Predict the optimal price to maximize sales.</p>
+<p><em>Steps:</em><br>
+1️⃣ <strong>Split the data into training (80%) and validation (20%) sets</strong><br>
+2️⃣ <strong>Train a linear regression model using scikit-learn</strong> 3️⃣ <strong>Evaluate model performance on the validation set using R-squared and Mean Absolute Error</strong> 4️⃣ <strong>Interpret the results</strong> – Predict the optimal price to maximize sales.</p>
+<p>By incorporating <strong>training and validation data</strong>, we ensure the model performs well not just on past data, but on future, unseen business scenarios.</p>
 <p>After regression, let’s shift our focus to classification—another essential tool for data analysts.</p>
 <hr>
 </section>
-<section id="introduction-to-classification-techniques" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-to-classification-techniques">Introduction to Classification Techniques</h2>
+<section id="primer-on-classification-techniques" class="level2">
+<h2 class="anchored" data-anchor-id="primer-on-classification-techniques">Primer on Classification Techniques</h2>
 <p><strong>Content</strong></p>
 <ul>
 <li>Definition of classification in supervised learning<br>
@@ -408,48 +489,48 @@ Classification is like <strong>sorting emails</strong>—your inbox automaticall
 📌 <strong>Segment customers</strong> → Predict which customers are likely to churn.<br>
 📌 <strong>Detect fraud</strong> → Identify transactions as fraudulent or non-fraudulent.</p>
 <p>Unlike regression, classification deals with <strong>categorical predictions</strong>, making it useful for structured business problems.</p>
+<hr>
+</section>
+<section id="evaluating-classification-models" class="level2">
+<h2 class="anchored" data-anchor-id="evaluating-classification-models">Evaluating Classification Models</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Understanding model evaluation metrics on validation data<br>
+</li>
+<li>The role of the confusion matrix<br>
+</li>
+<li>Accuracy vs.&nbsp;precision vs.&nbsp;recall in business decisions</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>How Do We Measure a Classification Model’s Performance?</em><br>
+Not all correct predictions are equal! Imagine a fraud detection system:<br>
+✔ <strong>Catching fraud</strong> (true positives) is critical.<br>
+❌ <strong>Failing to catch fraud</strong> (false negatives) is costly.<br>
+❌ <strong>Flagging legitimate transactions as fraud</strong> (false positives) frustrates customers.</p>
+<p>The <strong>Confusion Matrix</strong> helps us analyze model errors:<br>
+- <strong>True Positives (TP):</strong> Correctly predicted fraud cases.<br>
+- <strong>False Positives (FP):</strong> Flagged fraud where no fraud exists.<br>
+- <strong>True Negatives (TN):</strong> Correctly predicted non-fraud cases.<br>
+- <strong>False Negatives (FN):</strong> Fraud cases that were missed.</p>
+<p><em>Key Evaluation Metrics:</em><br>
+📊 <strong>Accuracy</strong> → Overall correctness of predictions. Good when classes are balanced.<br>
+📊 <strong>Precision</strong> → How many predicted fraud cases were actually fraud? Important when false positives are costly.<br>
+📊 <strong>Recall</strong> → How many actual fraud cases were detected? Important when missing fraud is risky.</p>
+<p>Selecting the right metric depends on the <strong>business impact of errors</strong>—whether minimizing false positives (customer experience) or false negatives (risk management) is more critical.</p>
 <p>Now, let’s explore <strong>how to build a classification model</strong> step-by-step.</p>
 <hr>
 </section>
-<section id="walkthrough-and-exercise-4-implement-a-classification-model-for-customer-segmentation" class="level2">
-<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-4-implement-a-classification-model-for-customer-segmentation">Walkthrough and Exercise #4: Implement a Classification Model for Customer Segmentation</h2>
-<p><em>Objective:</em> By completing this exercise, you will be able to:<br>
-✅ Build a classification model to segment customers into high-value or low-value groups<br>
-✅ Evaluate the performance of the classification model</p>
-<p><em>Steps:</em> 1️⃣ <strong>Load a customer dataset with demographic features and purchasing behavior</strong><br>
-2️⃣ <strong>Preprocess the data (handle missing values, scale features)</strong><br>
-3️⃣ <strong>Train a classification model using scikit-learn (e.g., Random Forest, Logistic Regression)</strong><br>
-4️⃣ <strong>Evaluate model performance using accuracy, precision, recall, and confusion matrix</strong><br>
-5️⃣ <strong>Interpret the results</strong> – Predict whether a new customer will be high-value or low-value.</p>
-<p>With classification covered, the next key step is <strong>evaluating and tuning</strong> our models for better performance.</p>
-<hr>
-</section>
-<section id="model-evaluation-and-tuning" class="level2">
-<h2 class="anchored" data-anchor-id="model-evaluation-and-tuning">Model Evaluation and Tuning</h2>
-<p><strong>Content</strong></p>
-<ul>
-<li>Evaluating model performance with metrics
-<ul>
-<li>Accuracy, Precision, Recall, F1-score<br>
-</li>
-</ul></li>
-<li>Hyperparameter tuning</li>
-</ul>
-<p><strong>Script</strong></p>
-<p><em>How Do We Know If a Model Is Performing Well?</em><br>
-Imagine hiring a <strong>new sales analyst</strong>—you wouldn’t judge their performance based on one deal. Instead, you’d track <strong>several key performance indicators (KPIs)</strong> over time.</p>
-<p>Similarly, machine learning models are evaluated using <strong>multiple metrics</strong>:<br>
-📌 <strong>Accuracy</strong> → Measures overall correctness.<br>
-📌 <strong>Precision</strong> → How many predicted positives were correct?<br>
-📌 <strong>Recall</strong> → How many actual positives were identified?<br>
-📌 <strong>F1-Score</strong> → Balances precision and recall.</p>
-<p>For data analysts, these metrics help determine if a model is <strong>actionable</strong> for business decisions.</p>
-<p><em>Fine-Tuning Models</em><br>
-Just like <strong>adjusting a camera lens</strong> to get the clearest picture, we can <strong>tune machine learning models</strong> by modifying hyperparameters such as:<br>
-🔹 <strong>Tree depth (Decision Trees)</strong> → Prevents overfitting<br>
-🔹 <strong>Learning rate (Gradient Boosting)</strong> → Adjusts model adaptability<br>
-🔹 <strong>Number of neighbors (KNN)</strong> → Controls sensitivity to new data</p>
-<p>Now, let’s see how supervised learning drives <strong>real-world business applications</strong>.</p>
+<section id="walkthrough-and-exercise-4-implement-a-classification-model-for-customer-churn-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-and-exercise-4-implement-a-classification-model-for-customer-churn-prediction">Walkthrough and Exercise #4: Implement a Classification Model for Customer Churn Prediction</h2>
+<p><em>Objective:</em><br>
+By completing this exercise, you will be able to:<br>
+- Build a classification model to predict whether a customer will churn - Split data into <strong>training and testing sets</strong> to assess model generalization<br>
+- Evaluate model performance using key classification metrics</p>
+<p><em>Steps:</em><br>
+- <strong>Split the data into training (80%) and testing (20%) sets</strong> - <strong>Train a classification model using scikit-learn (e.g., Random Forest, Logistic Regression)</strong><br>
+- <strong>Evaluate model performance on the test set using accuracy, precision, recall, and confusion matrix</strong><br>
+- <strong>Interpret the results</strong> – Predict whether a new customer will churn or not.</p>
+<p>By incorporating <strong>training and testing sets</strong>, we ensure that our classification model is not just memorizing patterns but is capable of making <strong>accurate predictions on unseen data</strong>. 🚀</p>
 <hr>
 </section>
 <section id="business-applications-of-supervised-learning" class="level2">
@@ -474,8 +555,8 @@ Supervised learning enables businesses to <strong>make data-driven decisions</st
 </section>
 <section id="module-3-unsupervised-learning-and-pattern-discovery-in-business" class="level1">
 <h1>Module 3: Unsupervised Learning and Pattern Discovery in Business</h1>
-<section id="exploring-unsupervised-learning-and-its-business-applications" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-unsupervised-learning-and-its-business-applications">Exploring Unsupervised Learning and Its Business Applications</h2>
+<section id="unsupervised-learning-and-its-business-applications" class="level2">
+<h2 class="anchored" data-anchor-id="unsupervised-learning-and-its-business-applications">Unsupervised Learning and Its Business Applications</h2>
 <p><strong>Content</strong></p>
 <ul>
 <li>Definition of unsupervised learning<br>
@@ -487,7 +568,7 @@ Supervised learning enables businesses to <strong>make data-driven decisions</st
 <p><strong>Script</strong></p>
 <p><em>What is Unsupervised Learning?</em><br>
 Imagine walking into a new city with <strong>no map</strong>—you explore and start identifying neighborhoods based on their characteristics (residential, commercial, cultural districts).</p>
-<p>Similarly, <strong>unsupervised learning</strong> finds <strong>hidden patterns</strong> in data without predefined labels. Unlike <strong>supervised learning</strong>, where models predict a specific outcome, <strong>unsupervised learning groups similar data points together or finds patterns within datasets</strong>.</p>
+<p>Similarly, <strong>unsupervised learning</strong> finds <strong>hidden patterns</strong> in data without predefined labels. Unlike <strong>supervised learning</strong>, where models predict a specific outcome, <strong>unsupervised learning groups similar data points together or finds patterns within datasets</strong>. The training and testing splits are not as common in unsupervised learning because we are not trying to predict a specific outcome. We are trying to find patterns in the data that we can use to make business decisions going forward on future data.</p>
 <p><em>Why Does Unsupervised Learning Matter for Business?</em><br>
 📌 <strong>Customer Segmentation</strong> → Group customers based on purchasing behavior.<br>
 📌 <strong>Fraud Detection</strong> → Identify unusual transaction patterns.<br>
@@ -524,11 +605,9 @@ Clustering is like organizing a <strong>messy wardrobe</strong>—grouping simil
 <p><em>Objective:</em> By completing this exercise, you will be able to:<br>
 ✅ Apply K-Means clustering to segment customers.<br>
 ✅ Visualize customer groups to derive business insights.</p>
-<p><em>Steps:</em> 1️⃣ <strong>Load a dataset of customer spending behavior.</strong><br>
-2️⃣ <strong>Preprocess the data (normalize features, handle missing values).</strong><br>
-3️⃣ <strong>Choose the optimal number of clusters using the Elbow Method.</strong><br>
-4️⃣ <strong>Train a K-Means model and visualize the clusters.</strong><br>
-5️⃣ <strong>Interpret results to tailor marketing strategies.</strong></p>
+<p><em>Steps:</em> - <strong>Choose the optimal number of clusters using the Elbow Method.</strong><br>
+- <strong>Train a K-Means model and visualize the clusters.</strong><br>
+- <strong>Interpret results to tailor marketing strategies.</strong></p>
 <p>Now that we’ve covered clustering, let’s move to another <strong>powerful business application—Market Basket Analysis</strong>.</p>
 <hr>
 </section>
@@ -538,21 +617,41 @@ Clustering is like organizing a <strong>messy wardrobe</strong>—grouping simil
 <ul>
 <li>Definition of association rule learning<br>
 </li>
-<li>Business applications (recommendation systems, cross-selling strategies)<br>
-</li>
-<li>Introduction to Apriori algorithm</li>
+<li>Business applications (recommendation systems, cross-selling strategies)</li>
 </ul>
 <p><strong>Script</strong></p>
 <p><em>What is Association Rule Learning?</em><br>
 Think of <strong>grocery shopping</strong>—you pick up bread, and the store suggests butter and jam.</p>
-<p>Association rule learning uncovers <strong>hidden relationships</strong> in large datasets, such as:<br>
+<p>Association rule learning uncovers <strong>hidden relationships</strong> in large datasets, helping businesses make <strong>data-driven recommendations</strong>.</p>
+<p><em>Examples of Association Rule Learning in Business</em>:<br>
 📌 <strong>Retail Stores</strong> → “Customers who buy milk also buy bread.”<br>
 📌 <strong>Streaming Services</strong> → “Users who watch sci-fi movies tend to watch action movies next.”<br>
 📌 <strong>E-commerce</strong> → “Customers who buy laptops often purchase accessories like wireless mice.”</p>
-<p><em>How the Apriori Algorithm Works</em><br>
-1️⃣ <strong>Finds frequent itemsets (e.g., ‘Milk &amp; Bread’) in transactions.</strong><br>
-2️⃣ <strong>Generates association rules like ‘If Milk → Then Bread’.</strong><br>
-3️⃣ <strong>Measures rule strength using support, confidence, and lift.</strong></p>
+<p>By understanding these patterns, businesses can improve <strong>marketing, inventory management, and customer experience.</strong></p>
+<hr>
+</section>
+<section id="the-apriori-algorithm-for-finding-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="the-apriori-algorithm-for-finding-patterns">The Apriori Algorithm for Finding Patterns</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>Steps in discovering association rules
+<ol type="1">
+<li>Find frequent itemsets</li>
+<li>Generate association rules</li>
+<li>Measure rule strength</li>
+</ol></li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>How Does the Apriori Algorithm Work?</em><br>
+The <strong>Apriori algorithm</strong> is a method for finding relationships between items in large transaction datasets.</p>
+<p><em>Steps in Apriori</em>:<br>
+1️⃣ <strong>Find frequent itemsets</strong> → Identify which items are commonly bought together (e.g., “Milk &amp; Bread”).<br>
+2️⃣ <strong>Generate association rules</strong> → Create rules such as <strong>“If Milk, then Bread”</strong> to make predictions.<br>
+3️⃣ <strong>Measure rule strength</strong> using:<br>
+- <strong>Support</strong> → How often items appear together.<br>
+- <strong>Confidence</strong> → How often “Bread” is purchased when “Milk” is bought.<br>
+- <strong>Lift</strong> → The strength of the relationship compared to chance.</p>
+<p>Using <strong>Apriori</strong>, businesses can enhance <strong>cross-selling strategies</strong>, improve <strong>store layouts</strong>, and refine <strong>recommendation engines</strong> to increase sales. 🚀</p>
 <p>Now, let’s apply <strong>association rule learning</strong> to a retail dataset.</p>
 <hr>
 </section>
@@ -575,21 +674,31 @@ By completing this exercise, you will be able to:<br>
 <h2 class="anchored" data-anchor-id="real-world-business-applications-of-unsupervised-learning">Real-World Business Applications of Unsupervised Learning</h2>
 <p><strong>Content</strong></p>
 <ul>
-<li>Case study: Target’s predictive analytics<br>
-</li>
-<li>How clustering helps businesses tailor marketing strategies<br>
-</li>
+<li>Case study: Amazon’s staff-less stores and personalization</li>
+<li>How clustering helps businesses tailor marketing strategies</li>
 <li>Best practices for applying unsupervised learning</li>
 </ul>
 <p><strong>Script</strong></p>
-<p><em>Case Study: How Target Used Clustering for Predictive Analytics</em><br>
-One of the most famous <strong>clustering use cases</strong> involved <strong>Target’s customer analytics</strong>. The company used <strong>unsupervised learning</strong> to segment shoppers based on their buying behavior.</p>
-<p>📌 <strong>Unexpected Insight</strong> → The algorithm identified patterns that helped <strong>predict pregnancy before customers disclosed it</strong>—allowing Target to send targeted product recommendations.</p>
-<p><em>How Businesses Use Clustering &amp; Market Basket Analysis</em><br>
-📊 <strong>Customer Segmentation</strong> → Personalizing marketing campaigns.<br>
-🛒 <strong>Product Bundling</strong> → Placing frequently co-purchased items together.<br>
-🚨 <strong>Anomaly Detection</strong> → Identifying fraud in banking transactions.</p>
-<p>For data analysts, understanding <strong>unsupervised learning</strong> allows for better <strong>data-driven decision-making</strong> without the need for labeled datasets.</p>
+<p><em>Case Study: How Amazon Utilizes Unsupervised Learning for Personalization</em></p>
+<p>Amazon has implemented unsupervised learning techniques to enhance customer experiences through personalization. By analyzing user activity and preferences, Amazon’s machine learning algorithms can deliver highly relevant product suggestions, further improving customer satisfaction and increasing the likelihood of a purchase. https://www.akkio.com/post/machine-learning-in-retail</p>
+<p><em>How Businesses Use Clustering &amp; Market Basket Analysis</em></p>
+<ul>
+<li><strong>Customer Segmentation</strong> → Personalizing marketing campaigns.</li>
+<li><strong>Product Bundling</strong> → Placing frequently co-purchased items together.</li>
+<li><strong>Anomaly Detection</strong> → Identifying fraud in banking transactions.</li>
+</ul>
+<p><em>Best Practices for Applying Unsupervised Learning</em>:</p>
+<p><strong>1️⃣ Define Clear Business Objectives</strong><br>
+- Before applying clustering or association rule learning, <strong>understand what business problem you want to solve</strong> (e.g., increasing customer retention, improving fraud detection).</p>
+<p><strong>2️⃣ Choose the Right Features</strong><br>
+- Selecting <strong>meaningful variables</strong> (e.g., purchase history, browsing patterns, transaction frequency) improves the quality of clustering results.</p>
+<p><strong>3️⃣ Optimize the Number of Clusters</strong><br>
+- Use methods like the <strong>Elbow Method</strong> or <strong>Silhouette Score</strong> to determine the optimal number of clusters and avoid over-segmentation.</p>
+<p><strong>4️⃣ Validate and Interpret Results</strong><br>
+- Clustering results should be <strong>interpretable and actionable</strong>. Always validate that <strong>business insights align with domain knowledge</strong> before implementing changes.</p>
+<p><strong>5️⃣ Combine Unsupervised and Supervised Learning</strong><br>
+- Use <strong>unsupervised learning</strong> to <strong>segment customers</strong> and then apply <strong>supervised models</strong> to predict behaviors within each segment (e.g., identifying high-value customers likely to churn).</p>
+<p>For data analysts, understanding unsupervised learning allows for better data-driven decision-making without the need for labeled datasets.</p>
 <hr>
 </section>
 </section>
@@ -619,35 +728,51 @@ Think of ML models like <strong>choosing a vehicle</strong>:<br>
 <p>📌 <strong>Trade-offs</strong><br>
 - <strong>Accuracy vs.&nbsp;Interpretability</strong> → A deep learning model may be more accurate but harder to explain.<br>
 - <strong>Complexity vs.&nbsp;Scalability</strong> → Some models perform well but are <strong>computationally expensive</strong>.</p>
-<p>Selecting the right model ensures it aligns with business <strong>goals and constraints</strong>.</p>
+<p>Selecting the right model ensures it aligns with business <strong>goals and constraints</strong>. However, even the best model won’t perform well if it doesn’t generalize to new data. This is where <strong>cross-validation</strong> comes in—it helps us evaluate how well a model will perform on unseen data before deploying it in a real business setting. It’s an extension of the idea of a training-validation split. Let’s take a closer look at how cross-validation improves model reliability.</p>
 <hr>
 </section>
-<section id="model-training-and-evaluation-metrics" class="level2">
-<h2 class="anchored" data-anchor-id="model-training-and-evaluation-metrics">Model Training and Evaluation Metrics</h2>
+<section id="cross-validation-fundamentals" class="level2">
+<h2 class="anchored" data-anchor-id="cross-validation-fundamentals">Cross-Validation Fundamentals</h2>
 <p><strong>Content</strong></p>
 <ul>
-<li>Training and test split<br>
+<li>What is cross-validation?<br>
 </li>
-<li>Performance metrics: Accuracy, Precision, Recall, F1-Score, RMSE<br>
+<li>Why is it better than a single train-test split?<br>
 </li>
-<li>Overfitting and underfitting</li>
+<li>How it helps prevent overfitting</li>
 </ul>
 <p><strong>Script</strong></p>
-<p><em>How Do We Measure a Model’s Success?</em><br>
-Imagine you’re <strong>hiring a new sales rep</strong>—you wouldn’t just look at total sales. You’d check:<br>
-📌 <strong>Conversion Rate</strong> (Accuracy) – Did they close deals efficiently?<br>
-📌 <strong>Lead Quality</strong> (Precision) – Were they selling to the right customers?<br>
-📌 <strong>Follow-Ups</strong> (Recall) – Did they miss good opportunities?</p>
-<p>Similarly, ML models are evaluated using <strong>key metrics</strong>:</p>
+<p><em>Why Do We Need Cross-Validation?</em><br>
+Imagine training for a <strong>marathon</strong>—if you only practice on the same track every day, you might struggle on race day. Similarly, if an ML model is only tested on a <strong>single train-test split</strong>, it might not generalize well to new data.</p>
+<p><em>What is Cross-Validation?</em><br>
+Cross-validation is a <strong>technique that splits data multiple times</strong> to train and test a model on different subsets. Instead of relying on <strong>one</strong> train-test split, we rotate through multiple test sets to get a more <strong>reliable performance estimate</strong>.</p>
+<p>📌 <strong>Key Benefit</strong> → Helps prevent <strong>overfitting</strong>, ensuring the model works well on unseen data.</p>
+<p>📌 <strong>Common Approach</strong> → <strong>k-Fold Cross-Validation</strong><br>
+- Data is split into <strong>k parts</strong> (e.g., 5 folds).<br>
+- The model is trained on <strong>k-1</strong> folds and tested on the remaining fold.<br>
+- This repeats <strong>k times</strong>, and the results are averaged for a final evaluation.</p>
+<hr>
+</section>
+<section id="applying-performance-metrics-with-cross-validation" class="level2">
+<h2 class="anchored" data-anchor-id="applying-performance-metrics-with-cross-validation">Applying Performance Metrics with Cross-Validation</h2>
+<p><strong>Content</strong></p>
+<ul>
+<li>How accuracy, precision, recall, and RMSE are used with cross-validation<br>
+</li>
+<li>Avoiding misleading model performance metrics</li>
+</ul>
+<p><strong>Script</strong></p>
+<p><em>How Do We Measure a Model’s Success with Cross-Validation?</em><br>
+When using cross-validation, we don’t evaluate the model on <strong>just one test set</strong>—instead, we calculate performance metrics <strong>for each fold</strong> and take an average.</p>
 <p>📌 <strong>Classification Models (Customer Segmentation, Fraud Detection)</strong><br>
-- <strong>Accuracy</strong> → How often is the model correct?<br>
-- <strong>Precision</strong> → Out of all predicted positives, how many were correct?<br>
-- <strong>Recall</strong> → Out of all actual positives, how many did we catch?<br>
-- <strong>F1-Score</strong> → Balances precision and recall for imbalanced datasets.</p>
+- <strong>Accuracy</strong> → Average across folds to check consistency.<br>
+- <strong>Precision</strong> → Ensures the model isn’t making too many false positives.<br>
+- <strong>Recall</strong> → Helps measure how well the model detects all actual positives.<br>
+- <strong>F1-Score</strong> → Balances precision and recall, especially for imbalanced datasets.</p>
 <p>📌 <strong>Regression Models (Pricing Optimization, Demand Forecasting)</strong><br>
-- <strong>Mean Squared Error (MSE)</strong> → Penalizes large errors.<br>
-- <strong>Root Mean Squared Error (RMSE)</strong> → More interpretable than MSE.</p>
-<p>Now, let’s practice <strong>evaluating models using cross-validation</strong>.</p>
+- <strong>Mean Squared Error (MSE)</strong> → Evaluates the average squared error per fold.<br>
+- <strong>Root Mean Squared Error (RMSE)</strong> → Averages RMSE across folds to ensure stable performance.</p>
+<p>By averaging <strong>performance metrics across multiple test sets</strong>, cross-validation provides a <strong>more accurate reflection of how a model will perform in real-world business scenarios</strong>. 🚀</p>
 <hr>
 </section>
 <section id="walkthrough-and-exercise-7-exploring-cross-validation-for-model-evaluation" class="level2">
@@ -680,18 +805,13 @@ Think of ML models like <strong>baking a cake</strong>—you need to adjust ingr
 <p>Similarly, ML models have <strong>hyperparameters</strong> that impact performance:<br>
 📌 <strong>Learning Rate</strong> → Like adjusting the oven temperature.<br>
 📌 <strong>Number of Decision Tree Splits</strong> → Like how many times you mix the batter.</p>
-<section id="grid-search-vs.-randomized-search" class="level3">
-<h3 class="anchored" data-anchor-id="grid-search-vs.-randomized-search">Grid Search vs.&nbsp;Randomized Search</h3>
-<p>📊 <strong>Grid Search</strong> – Tests <strong>all possible</strong> combinations (thorough but slow).<br>
+<p><em>Grid Search vs.&nbsp;Randomized Search</em>:<br>
+📊 <strong>Grid Search</strong> – Tests <strong>all possible</strong> combinations (thorough but slow).<br>
 🎲 <strong>Randomized Search</strong> – Tests <strong>random</strong> combinations (faster, finds good solutions quickly).</p>
-</section>
-<section id="why-does-hyperparameter-tuning-matter" class="level3">
-<h3 class="anchored" data-anchor-id="why-does-hyperparameter-tuning-matter">Why Does Hyperparameter Tuning Matter?</h3>
-<p>✔ <strong>Prevents overfitting</strong> → A model that memorizes training data is useless in real-world scenarios.<br>
+<p><em>Why Does Hyperparameter Tuning Matter?</em>: ✔ <strong>Prevents overfitting</strong> → A model that memorizes training data is useless in real-world scenarios.<br>
 ✔ <strong>Maximizes performance</strong> → Well-tuned models provide <strong>business insights</strong> that drive profits.</p>
 <p>Now, let’s apply <strong>GridSearchCV</strong> to optimize a classification model.</p>
 <hr>
-</section>
 </section>
 <section id="walkthrough-and-exercise-8-hyperparameter-tuning-with-gridsearchcv" class="level2">
 <h2 class="anchored" data-anchor-id="walkthrough-and-exercise-8-hyperparameter-tuning-with-gridsearchcv">Walkthrough and Exercise #8: Hyperparameter Tuning with GridSearchCV</h2>

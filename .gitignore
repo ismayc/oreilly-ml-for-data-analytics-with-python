@@ -3,6 +3,10 @@
 .RData
 .Ruserdata
 clean_headers.R
-slide_content.Rmd
-slide_content_cleaned-old.Rmd
+archive/
 slide_content_cleaned.qmd
+index.html
+.DS_Store
+.ipynb_checkpoints/
+slide_content.Rmd
+temp-walkthroughs.md
