@@ -10,3 +10,7 @@ index.html
 .ipynb_checkpoints/
 slide_content.Rmd
 temp-walkthroughs.md
+marketing-wrangling.py
+marketing_campaign_ORIGINAL.csv
+telco-customer-churn_ORIGINAL.csv
+telco-wrangling.py
