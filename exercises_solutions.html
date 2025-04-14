@@ -150,14 +150,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#prepare-transactional-data-services-as-items" id="toc-prepare-transactional-data-services-as-items" class="nav-link" data-scroll-target="#prepare-transactional-data-services-as-items">Prepare transactional data (services as items)</a></li>
   <li><a href="#apply-the-apriori-algorithm-to-identify-frequent-itemsets" id="toc-apply-the-apriori-algorithm-to-identify-frequent-itemsets" class="nav-link" data-scroll-target="#apply-the-apriori-algorithm-to-identify-frequent-itemsets">Apply the Apriori algorithm to identify frequent itemsets</a></li>
   <li><a href="#generate-association-rules-from-frequent-itemsets" id="toc-generate-association-rules-from-frequent-itemsets" class="nav-link" data-scroll-target="#generate-association-rules-from-frequent-itemsets">Generate association rules from frequent itemsets</a></li>
-  <li><a href="#interpret-insights" id="toc-interpret-insights" class="nav-link" data-scroll-target="#interpret-insights">Interpret insights</a></li>
   </ul></li>
   <li><a href="#exercise-6-market-basket-analysis-with-apriori-algorithm" id="toc-exercise-6-market-basket-analysis-with-apriori-algorithm" class="nav-link" data-scroll-target="#exercise-6-market-basket-analysis-with-apriori-algorithm">Exercise #6: Market Basket Analysis with Apriori Algorithm</a>
   <ul class="collapse">
   <li><a href="#prepare-transactional-data-product-categories-as-items" id="toc-prepare-transactional-data-product-categories-as-items" class="nav-link" data-scroll-target="#prepare-transactional-data-product-categories-as-items">Prepare transactional data (product categories as items)</a></li>
   <li><a href="#apply-the-apriori-algorithm-to-identify-frequent-itemsets-1" id="toc-apply-the-apriori-algorithm-to-identify-frequent-itemsets-1" class="nav-link" data-scroll-target="#apply-the-apriori-algorithm-to-identify-frequent-itemsets-1">Apply the Apriori algorithm to identify frequent itemsets</a></li>
   <li><a href="#generate-association-rules-from-frequent-itemsets-1" id="toc-generate-association-rules-from-frequent-itemsets-1" class="nav-link" data-scroll-target="#generate-association-rules-from-frequent-itemsets-1">Generate association rules from frequent itemsets</a></li>
-  <li><a href="#interpret-insights-1" id="toc-interpret-insights-1" class="nav-link" data-scroll-target="#interpret-insights-1">Interpret insights</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#module-4-implementing-and-evaluating-ml-models" id="toc-module-4-implementing-and-evaluating-ml-models" class="nav-link" data-scroll-target="#module-4-implementing-and-evaluating-ml-models">Module 4: Implementing and Evaluating ML Models</a>
@@ -661,31 +659,31 @@ max                42.896068     1.000000  </code></pre>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect data structure</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      Year_Birth   Education Marital_Status   Income  Kidhome  Teenhome  \
-0           1957  Graduation         Single  58138.0        0         0   
-1           1954  Graduation         Single  46344.0        1         1   
-2           1965  Graduation       Together  71613.0        0         0   
-3           1984  Graduation       Together  26646.0        1         0   
-4           1981         PhD        Married  58293.0        1         0   
-...          ...         ...            ...      ...      ...       ...   
-2235        1967  Graduation        Married  61223.0        0         1   
-2236        1946         PhD       Together  64014.0        2         1   
-2237        1981  Graduation       Divorced      NaN        0         0   
-2238        1956      Master       Together  69245.0        0         1   
-2239        1954         PhD        Married  52869.0        1         1   
+<pre><code>         ID  Year_Birth   Education Marital_Status   Income  Kidhome  \
+0      5524        1957  Graduation         Single  58138.0        0   
+1      2174        1954  Graduation         Single  46344.0        1   
+2      4141        1965  Graduation       Together  71613.0        0   
+3      6182        1984  Graduation       Together  26646.0        1   
+4      5324        1981         PhD        Married  58293.0        1   
+...     ...         ...         ...            ...      ...      ...   
+2235  10870        1967  Graduation        Married  61223.0        0   
+2236   4001        1946         PhD       Together  64014.0        2   
+2237   7270        1981  Graduation       Divorced      NaN        0   
+2238   8235        1956      Master       Together  69245.0        0   
+2239   9405        1954         PhD        Married  52869.0        1   
 
-     Dt_Customer  Recency  MntWines  MntFruits  MntMeatProducts  \
-0     2012-09-04       58       635         88              546   
-1     2014-03-08       38        11          1                6   
-2     2013-08-21       26       426         49              127   
-3     2014-02-10       26        11          4               20   
-4     2014-01-19       94       173         43              118   
-...          ...      ...       ...        ...              ...   
-2235  2013-06-13       46       709         43              182   
-2236  2014-06-10       56       406          0               30   
-2237  2014-01-25       91       908         48              217   
-2238  2014-01-24        8       428         30              214   
-2239  2012-10-15       40        84          3               61   
+      Teenhome Dt_Customer  Recency  MntWines  MntFruits  MntMeatProducts  \
+0            0  2012-09-04       58       635         88              546   
+1            1  2014-03-08       38        11          1                6   
+2            0  2013-08-21       26       426         49              127   
+3            0  2014-02-10       26        11          4               20   
+4            0  2014-01-19       94       173         43              118   
+...        ...         ...      ...       ...        ...              ...   
+2235         1  2013-06-13       46       709         43              182   
+2236         1  2014-06-10       56       406          0               30   
+2237         0  2014-01-25       91       908         48              217   
+2238         1  2014-01-24        8       428         30              214   
+2239         1  2012-10-15       40        84          3               61   
 
       MntFishProducts  MntSweetProducts  MntGoldProds  NumDealsPurchases  \
 0                 172                88            88                  3   
@@ -752,52 +750,54 @@ max                42.896068     1.000000  </code></pre>
 2238         843  
 2239         172  
 
-[2240 rows x 28 columns]</code></pre>
+[2240 rows x 29 columns]</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 2240 entries, 0 to 2239
-Data columns (total 28 columns):
+Data columns (total 29 columns):
  #   Column               Non-Null Count  Dtype  
 ---  ------               --------------  -----  
- 0   Year_Birth           2240 non-null   int64  
- 1   Education            2240 non-null   object 
- 2   Marital_Status       2240 non-null   object 
- 3   Income               1994 non-null   float64
- 4   Kidhome              2240 non-null   int64  
- 5   Teenhome             2240 non-null   int64  
- 6   Dt_Customer          2240 non-null   object 
- 7   Recency              2240 non-null   int64  
- 8   MntWines             2240 non-null   int64  
- 9   MntFruits            2240 non-null   int64  
- 10  MntMeatProducts      2240 non-null   int64  
- 11  MntFishProducts      2240 non-null   int64  
- 12  MntSweetProducts     2240 non-null   int64  
- 13  MntGoldProds         2240 non-null   int64  
- 14  NumDealsPurchases    2240 non-null   int64  
- 15  NumWebPurchases      2240 non-null   int64  
- 16  NumCatalogPurchases  2240 non-null   int64  
- 17  NumStorePurchases    2240 non-null   int64  
- 18  NumWebVisitsMonth    2240 non-null   int64  
- 19  AcceptedCmp3         2240 non-null   int64  
- 20  AcceptedCmp4         2240 non-null   int64  
- 21  AcceptedCmp5         2240 non-null   int64  
- 22  AcceptedCmp1         2240 non-null   int64  
- 23  AcceptedCmp2         2240 non-null   int64  
- 24  Complain             2240 non-null   int64  
- 25  Response             2240 non-null   int64  
- 26  TotalChildren        2240 non-null   int64  
- 27  TotalSpent           2240 non-null   int64  
-dtypes: float64(1), int64(24), object(3)
-memory usage: 490.1+ KB</code></pre>
+ 0   ID                   2240 non-null   int64  
+ 1   Year_Birth           2240 non-null   int64  
+ 2   Education            2240 non-null   object 
+ 3   Marital_Status       2240 non-null   object 
+ 4   Income               1994 non-null   float64
+ 5   Kidhome              2240 non-null   int64  
+ 6   Teenhome             2240 non-null   int64  
+ 7   Dt_Customer          2240 non-null   object 
+ 8   Recency              2240 non-null   int64  
+ 9   MntWines             2240 non-null   int64  
+ 10  MntFruits            2240 non-null   int64  
+ 11  MntMeatProducts      2240 non-null   int64  
+ 12  MntFishProducts      2240 non-null   int64  
+ 13  MntSweetProducts     2240 non-null   int64  
+ 14  MntGoldProds         2240 non-null   int64  
+ 15  NumDealsPurchases    2240 non-null   int64  
+ 16  NumWebPurchases      2240 non-null   int64  
+ 17  NumCatalogPurchases  2240 non-null   int64  
+ 18  NumStorePurchases    2240 non-null   int64  
+ 19  NumWebVisitsMonth    2240 non-null   int64  
+ 20  AcceptedCmp3         2240 non-null   int64  
+ 21  AcceptedCmp4         2240 non-null   int64  
+ 22  AcceptedCmp5         2240 non-null   int64  
+ 23  AcceptedCmp1         2240 non-null   int64  
+ 24  AcceptedCmp2         2240 non-null   int64  
+ 25  Complain             2240 non-null   int64  
+ 26  Response             2240 non-null   int64  
+ 27  TotalChildren        2240 non-null   int64  
+ 28  TotalSpent           2240 non-null   int64  
+dtypes: float64(1), int64(25), object(3)
+memory usage: 507.6+ KB</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Year_Birth               0
+<pre><code>ID                       0
+Year_Birth               0
 Education                0
 Marital_Status           0
 Income                 246
@@ -830,7 +830,7 @@ dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for duplicate rows</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw.duplicated().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>146</code></pre>
+<pre><code>0</code></pre>
 </div>
 </div>
 </section>
@@ -860,39 +860,40 @@ dtype: int64</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 2240 entries, 0 to 2239
-Data columns (total 28 columns):
+Data columns (total 29 columns):
  #   Column               Non-Null Count  Dtype         
 ---  ------               --------------  -----         
- 0   Year_Birth           2240 non-null   int64         
- 1   Education            2240 non-null   object        
- 2   Marital_Status       2240 non-null   object        
- 3   Income               2240 non-null   float64       
- 4   Kidhome              2240 non-null   int64         
- 5   Teenhome             2240 non-null   int64         
- 6   Dt_Customer          2240 non-null   datetime64[ns]
- 7   Recency              2240 non-null   int64         
- 8   MntWines             2240 non-null   int64         
- 9   MntFruits            2240 non-null   int64         
- 10  MntMeatProducts      2240 non-null   int64         
- 11  MntFishProducts      2240 non-null   int64         
- 12  MntSweetProducts     2240 non-null   int64         
- 13  MntGoldProds         2240 non-null   int64         
- 14  NumDealsPurchases    2240 non-null   int64         
- 15  NumWebPurchases      2240 non-null   int64         
- 16  NumCatalogPurchases  2240 non-null   int64         
- 17  NumStorePurchases    2240 non-null   int64         
- 18  NumWebVisitsMonth    2240 non-null   int64         
- 19  AcceptedCmp3         2240 non-null   int64         
- 20  AcceptedCmp4         2240 non-null   int64         
- 21  AcceptedCmp5         2240 non-null   int64         
- 22  AcceptedCmp1         2240 non-null   int64         
- 23  AcceptedCmp2         2240 non-null   int64         
- 24  Complain             2240 non-null   int64         
- 25  Response             2240 non-null   int64         
- 26  TotalChildren        2240 non-null   int64         
- 27  TotalSpent           2240 non-null   int64         
-dtypes: datetime64[ns](1), float64(1), int64(24), object(2)
-memory usage: 490.1+ KB</code></pre>
+ 0   ID                   2240 non-null   int64         
+ 1   Year_Birth           2240 non-null   int64         
+ 2   Education            2240 non-null   object        
+ 3   Marital_Status       2240 non-null   object        
+ 4   Income               2240 non-null   float64       
+ 5   Kidhome              2240 non-null   int64         
+ 6   Teenhome             2240 non-null   int64         
+ 7   Dt_Customer          2240 non-null   datetime64[ns]
+ 8   Recency              2240 non-null   int64         
+ 9   MntWines             2240 non-null   int64         
+ 10  MntFruits            2240 non-null   int64         
+ 11  MntMeatProducts      2240 non-null   int64         
+ 12  MntFishProducts      2240 non-null   int64         
+ 13  MntSweetProducts     2240 non-null   int64         
+ 14  MntGoldProds         2240 non-null   int64         
+ 15  NumDealsPurchases    2240 non-null   int64         
+ 16  NumWebPurchases      2240 non-null   int64         
+ 17  NumCatalogPurchases  2240 non-null   int64         
+ 18  NumStorePurchases    2240 non-null   int64         
+ 19  NumWebVisitsMonth    2240 non-null   int64         
+ 20  AcceptedCmp3         2240 non-null   int64         
+ 21  AcceptedCmp4         2240 non-null   int64         
+ 22  AcceptedCmp5         2240 non-null   int64         
+ 23  AcceptedCmp1         2240 non-null   int64         
+ 24  AcceptedCmp2         2240 non-null   int64         
+ 25  Complain             2240 non-null   int64         
+ 26  Response             2240 non-null   int64         
+ 27  TotalChildren        2240 non-null   int64         
+ 28  TotalSpent           2240 non-null   int64         
+dtypes: datetime64[ns](1), float64(1), int64(25), object(2)
+memory usage: 507.6+ KB</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -900,110 +901,110 @@ memory usage: 490.1+ KB</code></pre>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;string&gt;:2: FutureWarning: Treating datetime data as categorical rather than numeric in `.describe` is deprecated and will be removed in a future version of pandas. Specify `datetime_is_numeric=True` to silence this warning and adopt the future behavior now.
-         Year_Birth   Education Marital_Status         Income      Kidhome  \
-count   2240.000000        2240           2240    2240.000000  2240.000000   
-unique          NaN           5              8            NaN          NaN   
-top             NaN  Graduation        Married            NaN          NaN   
-freq            NaN        1127            864            NaN          NaN   
-first           NaN         NaN            NaN            NaN          NaN   
-last            NaN         NaN            NaN            NaN          NaN   
-mean    1968.805804         NaN            NaN   51986.616071     0.444196   
-std       11.984069         NaN            NaN   24229.835690     0.538398   
-min     1893.000000         NaN            NaN    1730.000000     0.000000   
-25%     1959.000000         NaN            NaN   36892.500000     0.000000   
-50%     1970.000000         NaN            NaN   51132.500000     0.000000   
-75%     1977.000000         NaN            NaN   65755.250000     1.000000   
-max     1996.000000         NaN            NaN  666666.000000     2.000000   
+                  ID   Year_Birth   Education Marital_Status         Income  \
+count    2240.000000  2240.000000        2240           2240    2240.000000   
+unique           NaN          NaN           5              8            NaN   
+top              NaN          NaN  Graduation        Married            NaN   
+freq             NaN          NaN        1127            864            NaN   
+first            NaN          NaN         NaN            NaN            NaN   
+last             NaN          NaN         NaN            NaN            NaN   
+mean     5592.159821  1968.805804         NaN            NaN   51986.616071   
+std      3246.662198    11.984069         NaN            NaN   24229.835690   
+min         0.000000  1893.000000         NaN            NaN    1730.000000   
+25%      2828.250000  1959.000000         NaN            NaN   36892.500000   
+50%      5458.500000  1970.000000         NaN            NaN   51132.500000   
+75%      8427.750000  1977.000000         NaN            NaN   65755.250000   
+max     11191.000000  1996.000000         NaN            NaN  666666.000000   
 
-           Teenhome          Dt_Customer      Recency     MntWines  \
-count   2240.000000                 2240  2240.000000  2240.000000   
-unique          NaN                  663          NaN          NaN   
-top             NaN  2012-08-31 00:00:00          NaN          NaN   
-freq            NaN                   12          NaN          NaN   
-first           NaN  2012-07-30 00:00:00          NaN          NaN   
-last            NaN  2014-06-29 00:00:00          NaN          NaN   
-mean       0.506250                  NaN    49.109375   303.935714   
-std        0.544538                  NaN    28.962453   336.597393   
-min        0.000000                  NaN     0.000000     0.000000   
-25%        0.000000                  NaN    24.000000    23.750000   
-50%        0.000000                  NaN    49.000000   173.500000   
-75%        1.000000                  NaN    74.000000   504.250000   
-max        2.000000                  NaN    99.000000  1493.000000   
+            Kidhome     Teenhome          Dt_Customer      Recency  \
+count   2240.000000  2240.000000                 2240  2240.000000   
+unique          NaN          NaN                  663          NaN   
+top             NaN          NaN  2012-08-31 00:00:00          NaN   
+freq            NaN          NaN                   12          NaN   
+first           NaN          NaN  2012-07-30 00:00:00          NaN   
+last            NaN          NaN  2014-06-29 00:00:00          NaN   
+mean       0.444196     0.506250                  NaN    49.109375   
+std        0.538398     0.544538                  NaN    28.962453   
+min        0.000000     0.000000                  NaN     0.000000   
+25%        0.000000     0.000000                  NaN    24.000000   
+50%        0.000000     0.000000                  NaN    49.000000   
+75%        1.000000     1.000000                  NaN    74.000000   
+max        2.000000     2.000000                  NaN    99.000000   
 
-          MntFruits  MntMeatProducts  MntFishProducts  MntSweetProducts  \
-count   2240.000000      2240.000000      2240.000000       2240.000000   
-unique          NaN              NaN              NaN               NaN   
-top             NaN              NaN              NaN               NaN   
-freq            NaN              NaN              NaN               NaN   
-first           NaN              NaN              NaN               NaN   
-last            NaN              NaN              NaN               NaN   
-mean      26.302232       166.950000        37.525446         27.062946   
-std       39.773434       225.715373        54.628979         41.280498   
-min        0.000000         0.000000         0.000000          0.000000   
-25%        1.000000        16.000000         3.000000          1.000000   
-50%        8.000000        67.000000        12.000000          8.000000   
-75%       33.000000       232.000000        50.000000         33.000000   
-max      199.000000      1725.000000       259.000000        263.000000   
+           MntWines    MntFruits  MntMeatProducts  MntFishProducts  \
+count   2240.000000  2240.000000      2240.000000      2240.000000   
+unique          NaN          NaN              NaN              NaN   
+top             NaN          NaN              NaN              NaN   
+freq            NaN          NaN              NaN              NaN   
+first           NaN          NaN              NaN              NaN   
+last            NaN          NaN              NaN              NaN   
+mean     303.935714    26.302232       166.950000        37.525446   
+std      336.597393    39.773434       225.715373        54.628979   
+min        0.000000     0.000000         0.000000         0.000000   
+25%       23.750000     1.000000        16.000000         3.000000   
+50%      173.500000     8.000000        67.000000        12.000000   
+75%      504.250000    33.000000       232.000000        50.000000   
+max     1493.000000   199.000000      1725.000000       259.000000   
 
-        MntGoldProds  NumDealsPurchases  NumWebPurchases  NumCatalogPurchases  \
-count    2240.000000        2240.000000      2240.000000          2240.000000   
-unique           NaN                NaN              NaN                  NaN   
-top              NaN                NaN              NaN                  NaN   
-freq             NaN                NaN              NaN                  NaN   
-first            NaN                NaN              NaN                  NaN   
-last             NaN                NaN              NaN                  NaN   
-mean       44.021875           2.325000         4.084821             2.662054   
-std        52.167439           1.932238         2.778714             2.923101   
-min         0.000000           0.000000         0.000000             0.000000   
-25%         9.000000           1.000000         2.000000             0.000000   
-50%        24.000000           2.000000         4.000000             2.000000   
-75%        56.000000           3.000000         6.000000             4.000000   
-max       362.000000          15.000000        27.000000            28.000000   
+        MntSweetProducts  MntGoldProds  NumDealsPurchases  NumWebPurchases  \
+count        2240.000000   2240.000000        2240.000000      2240.000000   
+unique               NaN           NaN                NaN              NaN   
+top                  NaN           NaN                NaN              NaN   
+freq                 NaN           NaN                NaN              NaN   
+first                NaN           NaN                NaN              NaN   
+last                 NaN           NaN                NaN              NaN   
+mean           27.062946     44.021875           2.325000         4.084821   
+std            41.280498     52.167439           1.932238         2.778714   
+min             0.000000      0.000000           0.000000         0.000000   
+25%             1.000000      9.000000           1.000000         2.000000   
+50%             8.000000     24.000000           2.000000         4.000000   
+75%            33.000000     56.000000           3.000000         6.000000   
+max           263.000000    362.000000          15.000000        27.000000   
 
-        NumStorePurchases  NumWebVisitsMonth  AcceptedCmp3  AcceptedCmp4  \
-count         2240.000000        2240.000000   2240.000000   2240.000000   
-unique                NaN                NaN           NaN           NaN   
-top                   NaN                NaN           NaN           NaN   
-freq                  NaN                NaN           NaN           NaN   
-first                 NaN                NaN           NaN           NaN   
-last                  NaN                NaN           NaN           NaN   
-mean             5.790179           5.316518      0.072768      0.074554   
-std              3.250958           2.426645      0.259813      0.262728   
-min              0.000000           0.000000      0.000000      0.000000   
-25%              3.000000           3.000000      0.000000      0.000000   
-50%              5.000000           6.000000      0.000000      0.000000   
-75%              8.000000           7.000000      0.000000      0.000000   
-max             13.000000          20.000000      1.000000      1.000000   
+        NumCatalogPurchases  NumStorePurchases  NumWebVisitsMonth  \
+count           2240.000000        2240.000000        2240.000000   
+unique                  NaN                NaN                NaN   
+top                     NaN                NaN                NaN   
+freq                    NaN                NaN                NaN   
+first                   NaN                NaN                NaN   
+last                    NaN                NaN                NaN   
+mean               2.662054           5.790179           5.316518   
+std                2.923101           3.250958           2.426645   
+min                0.000000           0.000000           0.000000   
+25%                0.000000           3.000000           3.000000   
+50%                2.000000           5.000000           6.000000   
+75%                4.000000           8.000000           7.000000   
+max               28.000000          13.000000          20.000000   
 
-        AcceptedCmp5  AcceptedCmp1  AcceptedCmp2     Complain     Response  \
-count    2240.000000   2240.000000   2240.000000  2240.000000  2240.000000   
-unique           NaN           NaN           NaN          NaN          NaN   
-top              NaN           NaN           NaN          NaN          NaN   
-freq             NaN           NaN           NaN          NaN          NaN   
-first            NaN           NaN           NaN          NaN          NaN   
-last             NaN           NaN           NaN          NaN          NaN   
-mean        0.072768      0.064286      0.013393     0.009375     0.149107   
-std         0.259813      0.245316      0.114976     0.096391     0.356274   
-min         0.000000      0.000000      0.000000     0.000000     0.000000   
-25%         0.000000      0.000000      0.000000     0.000000     0.000000   
-50%         0.000000      0.000000      0.000000     0.000000     0.000000   
-75%         0.000000      0.000000      0.000000     0.000000     0.000000   
-max         1.000000      1.000000      1.000000     1.000000     1.000000   
+        AcceptedCmp3  AcceptedCmp4  AcceptedCmp5  AcceptedCmp1  AcceptedCmp2  \
+count    2240.000000   2240.000000   2240.000000   2240.000000   2240.000000   
+unique           NaN           NaN           NaN           NaN           NaN   
+top              NaN           NaN           NaN           NaN           NaN   
+freq             NaN           NaN           NaN           NaN           NaN   
+first            NaN           NaN           NaN           NaN           NaN   
+last             NaN           NaN           NaN           NaN           NaN   
+mean        0.072768      0.074554      0.072768      0.064286      0.013393   
+std         0.259813      0.262728      0.259813      0.245316      0.114976   
+min         0.000000      0.000000      0.000000      0.000000      0.000000   
+25%         0.000000      0.000000      0.000000      0.000000      0.000000   
+50%         0.000000      0.000000      0.000000      0.000000      0.000000   
+75%         0.000000      0.000000      0.000000      0.000000      0.000000   
+max         1.000000      1.000000      1.000000      1.000000      1.000000   
 
-        TotalChildren   TotalSpent  
-count     2240.000000  2240.000000  
-unique            NaN          NaN  
-top               NaN          NaN  
-freq              NaN          NaN  
-first             NaN          NaN  
-last              NaN          NaN  
-mean         0.950446   605.798214  
-std          0.751803   602.249288  
-min          0.000000     5.000000  
-25%          0.000000    68.750000  
-50%          1.000000   396.000000  
-75%          1.000000  1045.500000  
-max          3.000000  2525.000000  </code></pre>
+           Complain     Response  TotalChildren   TotalSpent  
+count   2240.000000  2240.000000    2240.000000  2240.000000  
+unique          NaN          NaN            NaN          NaN  
+top             NaN          NaN            NaN          NaN  
+freq            NaN          NaN            NaN          NaN  
+first           NaN          NaN            NaN          NaN  
+last            NaN          NaN            NaN          NaN  
+mean       0.009375     0.149107       0.950446   605.798214  
+std        0.096391     0.356274       0.751803   602.249288  
+min        0.000000     0.000000       0.000000     5.000000  
+25%        0.000000     0.000000       0.000000    68.750000  
+50%        0.000000     0.000000       1.000000   396.000000  
+75%        0.000000     0.000000       1.000000  1045.500000  
+max        1.000000     1.000000       3.000000  2525.000000  </code></pre>
 </div>
 </div>
 </section>
@@ -4049,17 +4050,17 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 4   0.384353                                      (StreamingTV)
 5   0.387903                                  (StreamingMovies)
 6   0.903166                                     (PhoneService)
-7   0.246486                     (PhoneService, OnlineSecurity)
+7   0.246486                     (OnlineSecurity, PhoneService)
 8   0.304132                       (OnlineBackup, PhoneService)
 9   0.222490                    (StreamingTV, DeviceProtection)
-10  0.226466                (DeviceProtection, StreamingMovies)
-11  0.300582                   (DeviceProtection, PhoneService)
-12  0.249184                        (TechSupport, PhoneService)
+10  0.226466                (StreamingMovies, DeviceProtection)
+11  0.300582                   (PhoneService, DeviceProtection)
+12  0.249184                        (PhoneService, TechSupport)
 13  0.275451                     (StreamingTV, StreamingMovies)
 14  0.343888                        (StreamingTV, PhoneService)
-15  0.345591                    (PhoneService, StreamingMovies)
-16  0.200057  (DeviceProtection, PhoneService, StreamingMovies)
-17  0.247054       (StreamingTV, PhoneService, StreamingMovies)</code></pre>
+15  0.345591                    (StreamingMovies, PhoneService)
+16  0.200057  (StreamingMovies, PhoneService, DeviceProtection)
+17  0.247054       (StreamingTV, StreamingMovies, PhoneService)</code></pre>
 </div>
 </div>
 </section>
@@ -4081,12 +4082,12 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 7                     (StreamingMovies)                    (StreamingTV)   
 8                         (StreamingTV)                   (PhoneService)   
 9                     (StreamingMovies)                   (PhoneService)   
-10     (DeviceProtection, PhoneService)                (StreamingMovies)   
-11  (DeviceProtection, StreamingMovies)                   (PhoneService)   
-12          (StreamingTV, PhoneService)                (StreamingMovies)   
-13       (StreamingTV, StreamingMovies)                   (PhoneService)   
-14      (PhoneService, StreamingMovies)                    (StreamingTV)   
-15                        (StreamingTV)  (PhoneService, StreamingMovies)   
+10  (StreamingMovies, DeviceProtection)                   (PhoneService)   
+11     (PhoneService, DeviceProtection)                (StreamingMovies)   
+12       (StreamingTV, StreamingMovies)                   (PhoneService)   
+13          (StreamingTV, PhoneService)                (StreamingMovies)   
+14      (StreamingMovies, PhoneService)                    (StreamingTV)   
+15                        (StreamingTV)  (StreamingMovies, PhoneService)   
 16                    (StreamingMovies)      (StreamingTV, PhoneService)   
 
      support  confidence      lift  
@@ -4100,52 +4101,15 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 7   0.275451    0.710102  1.847526  
 8   0.343888    0.894717  0.990645  
 9   0.345591    0.890922  0.986443  
-10  0.200057    0.665564  1.715802  
-11  0.200057    0.883386  0.978099  
-12  0.247054    0.718415  1.852047  
-13  0.247054    0.896907  0.993070  
+10  0.200057    0.883386  0.978099  
+11  0.200057    0.665564  1.715802  
+12  0.247054    0.896907  0.993070  
+13  0.247054    0.718415  1.852047  
 14  0.247054    0.714873  1.859936  
 15  0.247054    0.642778  1.859936  
 16  0.247054    0.636896  1.852047  </code></pre>
 </div>
 </div>
-</section>
-<section id="interpret-insights" class="level3">
-<h3 class="anchored" data-anchor-id="interpret-insights">Interpret insights</h3>
-<p>🔵 Key Metrics</p>
-<p>Support:<br>
-Fraction of all customers who have this combination of services.<br>
-Example: 0.275 means 27.5% of customers bought that combination.</p>
-<p>Confidence:<br>
-Given the antecedent, how often does the consequent also occur?<br>
-Example: Confidence of 0.71 means 71% of customers with the antecedent also have the consequent.</p>
-<p>Lift:<br>
-Measures how much more likely the consequent is given the antecedent compared to random chance.</p>
-<p>Lift &gt; 1 → Positive association.<br>
-Lift = 1 → Independent.<br>
-Lift &lt; 1 → Negative association.</p>
-<p>🧩 Interpretation of Key Rules. Rule 6. If customers have StreamingTV, they also likely have StreamingMovies</p>
-<p>Confidence = 0.71. 71% of customers who subscribe to StreamingTV also have StreamingMovies.</p>
-<p>Lift = 1.84. This is 84% more likely than random → strong association.</p>
-<p>📌 Business insight:<br>
-These services are good cross-sell opportunities. A bundled “Entertainment Pack” could increase uptake.</p>
-<p>Rule 2. If customers have DeviceProtection, they also likely have StreamingTV</p>
-<p>Confidence = 0.65. 65% of DeviceProtection users also subscribe to StreamingTV.</p>
-<p>Lift = 1.68. This is a significant positive relationship, suggesting that people buying protection plans may also value entertainment services.</p>
-<p>📌 Business insight:<br>
-Consider cross-promoting entertainment bundles during device protection sales.</p>
-<p>Rule 10. If customers have DeviceProtection + PhoneService, they likely also have StreamingMovies</p>
-<p>Confidence = 0.67. 67% of these bundled customers also purchase StreamingMovies.</p>
-<p>Lift = 1.71. Shows a strong cross-sell relationship.</p>
-<p>📌 Business insight:<br>
-Customers with both DeviceProtection and PhoneService are strong candidates for targeted movie streaming promotions.</p>
-<p>General pattern. StreamingTV ↔︎ StreamingMovies repeatedly show strong relationships with lift &gt; 1.8.<br>
-PhoneService often appears as a base product with high confidence but lower lift (~0.9) — this is expected since most customers (90%) already have PhoneService.</p>
-<p>🔔 Summary.<br>
-Look for high lift AND high confidence.<br>
-Focus marketing on bundles like:<br>
-StreamingTV + StreamingMovies packages.<br>
-Upselling StreamingMovies to customers with DeviceProtection + PhoneService.</p>
 <hr>
 </section>
 </section>
@@ -4192,13 +4156,13 @@ Upselling StreamingMovies to customers with DeviceProtection + PhoneService.</p>
 0   0.994196                                    (Wines)
 7   0.994196                              (Wines, Meat)
 5   0.972768                                     (Gold)
-17  0.972321                               (Gold, Meat)
+17  0.972321                               (Meat, Gold)
 ..       ...                                        ...
-44  0.656696              (Fruits, Sweets, Fish, Wines)
-54  0.650000               (Fruits, Sweets, Fish, Gold)
-61  0.650000         (Fruits, Fish, Gold, Meat, Sweets)
-59  0.646875        (Fruits, Fish, Gold, Wines, Sweets)
-62  0.646875  (Fruits, Fish, Gold, Wines, Meat, Sweets)
+44  0.656696              (Wines, Sweets, Fish, Fruits)
+54  0.650000               (Fruits, Fish, Gold, Sweets)
+61  0.650000         (Fruits, Fish, Meat, Gold, Sweets)
+59  0.646875        (Wines, Fruits, Fish, Gold, Sweets)
+62  0.646875  (Wines, Fruits, Fish, Meat, Gold, Sweets)
 
 [63 rows x 2 columns]</code></pre>
 </div>
@@ -4215,17 +4179,17 @@ Upselling StreamingMovies to customers with DeviceProtection + PhoneService.</p>
 <span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>rules</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     antecedents            consequents   support  confidence  \
-0          (Sweets, Gold, Wines)         (Fruits, Fish)  0.646875    0.816338   
-1          (Sweets, Gold, Wines)   (Fruits, Fish, Meat)  0.646875    0.816338   
-2                 (Fruits, Fish)  (Sweets, Gold, Wines)  0.646875    0.879248   
-3    (Sweets, Gold, Wines, Meat)         (Fruits, Fish)  0.646875    0.816338   
-4           (Fruits, Fish, Meat)  (Sweets, Gold, Wines)  0.646875    0.879248   
+0    (Wines, Meat, Gold, Sweets)         (Fruits, Fish)  0.646875    0.816338   
+1           (Fruits, Meat, Fish)  (Wines, Gold, Sweets)  0.646875    0.879248   
+2          (Wines, Gold, Sweets)   (Fruits, Meat, Fish)  0.646875    0.816338   
+3          (Wines, Gold, Sweets)         (Fruits, Fish)  0.646875    0.816338   
+4                 (Fruits, Fish)  (Wines, Gold, Sweets)  0.646875    0.879248   
 ..                           ...                    ...       ...         ...   
-597                (Wines, Meat)         (Sweets, Fish)  0.727679    0.731926   
-598                (Wines, Meat)   (Sweets, Gold, Fish)  0.714286    0.718455   
-599         (Sweets, Fish, Gold)                (Wines)  0.714286    0.992556   
-600                      (Wines)   (Sweets, Fish, Gold)  0.714286    0.718455   
-601         (Sweets, Gold, Fish)          (Wines, Meat)  0.714286    0.992556   
+597               (Fish, Sweets)                (Wines)  0.727679    0.992692   
+598                      (Wines)   (Fish, Gold, Sweets)  0.714286    0.718455   
+599                (Wines, Meat)   (Fish, Gold, Sweets)  0.714286    0.718455   
+600         (Fish, Gold, Sweets)                (Wines)  0.714286    0.992556   
+601         (Fish, Gold, Sweets)          (Wines, Meat)  0.714286    0.992556   
 
          lift  
 0    1.109586  
@@ -4245,73 +4209,6 @@ Upselling StreamingMovies to customers with DeviceProtection + PhoneService.</p>
 </div>
 <hr>
 </section>
-<section id="interpret-insights-1" class="level3">
-<h3 class="anchored" data-anchor-id="interpret-insights-1">Interpret insights</h3>
-<p>Here are three example rules from the output:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show top 3 rules for manual interpretation</span></span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>rules.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>             antecedents            consequents   support  confidence  \
-0  (Sweets, Gold, Wines)         (Fruits, Fish)  0.646875    0.816338   
-1  (Sweets, Gold, Wines)   (Fruits, Fish, Meat)  0.646875    0.816338   
-2         (Fruits, Fish)  (Sweets, Gold, Wines)  0.646875    0.879248   
-
-       lift  
-0  1.109586  
-1  1.109586  
-2  1.109586  </code></pre>
-</div>
-</div>
-<p>🔍 Key Metrics Recap:</p>
-<ul>
-<li><strong>Support</strong>: How often the itemset appears in the dataset<br>
-</li>
-<li><strong>Confidence</strong>: Likelihood that the consequent is purchased when the antecedent is<br>
-</li>
-<li><strong>Lift</strong>: Strength of the association
-<ul>
-<li><strong>Lift &gt; 1</strong> → Positive association<br>
-</li>
-<li><strong>Lift = 1</strong> → No association (independent)<br>
-</li>
-<li><strong>Lift &lt; 1</strong> → Negative association</li>
-</ul></li>
-</ul>
-<p>🧩 Example Interpretations Based on Top 3 Rules:</p>
-<p><strong>Rule 1</strong><br>
-If customers purchase <strong>Wines, Meat, Sweets, and Gold</strong>, they also likely purchase <strong>Fish and Fruits</strong></p>
-<ul>
-<li><strong>Confidence = 0.82</strong> → 82% of customers who buy Wines, Meat, Sweets, and Gold also buy Fish and Fruits<br>
-</li>
-<li><strong>Lift = 1.11</strong> → Slightly stronger than random chance (11% more likely)<br>
-📌 <strong>Business Insight</strong>: Customers who spend across luxury (Gold), indulgent (Sweets), and staple (Meat, Wine) categories are good targets for bundled offers that include <strong>Fish and Fruits</strong> as healthy complements.</li>
-</ul>
-<p><strong>Rule 2</strong><br>
-If customers purchase <strong>Wines, Sweets, and Gold</strong>, they also likely purchase <strong>Fish, Meat, and Fruits</strong></p>
-<ul>
-<li><strong>Confidence = 0.82</strong><br>
-</li>
-<li><strong>Lift = 1.11</strong><br>
-📌 <strong>Business Insight</strong>: This pattern suggests customers with a taste for fine items (Gold + Wines + Sweets) are highly likely to also buy a variety of essentials (Fish, Meat, Fruits). Consider <strong>creating gourmet bundles</strong> featuring these combinations.</li>
-</ul>
-<p><strong>Rule 3</strong><br>
-If customers purchase <strong>Fish, Meat, and Fruits</strong>, they also likely purchase <strong>Wines, Sweets, and Gold</strong></p>
-<ul>
-<li><strong>Confidence = 0.88</strong> → Very strong rule<br>
-</li>
-<li><strong>Lift = 1.11</strong><br>
-📌 <strong>Business Insight</strong>: Customers who stock up on protein and fresh produce often also spend on indulgent and luxury products. <strong>Upsell Wines, Sweets, and Gold items</strong> to shoppers purchasing staples — strong potential for increasing average order value.</li>
-</ul>
-<p>🔔 Summary:</p>
-<p>Focus on rules with: - <strong>High confidence</strong>: Indicates consistent purchasing behavior<br>
-- <strong>Lift &gt; 1</strong>: Indicates a real association beyond chance</p>
-<p>💡 Marketing Strategy Ideas:<br>
-- Target luxury buyers of <strong>Wines + Sweets + Gold</strong> with healthy add-ons like <strong>Fish + Fruits</strong><br>
-- Promote <strong>“Gourmet Essentials Packs”</strong> that include <strong>Fish, Meat, Fruits, and Wine</strong><br>
-- Use Rule 3 to <strong>upsell luxury products</strong> to customers starting with staple categories</p>
-<hr>
-</section>
 </section>
 </section>
 <section id="module-4-implementing-and-evaluating-ml-models" class="level1">
@@ -4321,45 +4218,45 @@ If customers purchase <strong>Fish, Meat, and Fruits</strong>, they also likely 
 <section id="split-data-into-training-and-validation-sets" class="level3">
 <h3 class="anchored" data-anchor-id="split-data-into-training-and-validation-sets">Split data into training and validation sets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
-<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> telco_churn[[<span class="st">'AvgServiceUsageScore'</span>, <span class="st">'tenure'</span>, <span class="st">'MonthlyCharges'</span>]]</span>
-<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> telco_churn[<span class="st">'Churn'</span>]</span>
-<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale the features since logistic regression is a linear model</span></span>
-<span id="cb112-6"><a href="#cb112-6" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb112-7"><a href="#cb112-7" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> scaler.fit_transform(X)</span>
-<span id="cb112-8"><a href="#cb112-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb112-9"><a href="#cb112-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into train and test sets (80% train, 20% test)</span></span>
-<span id="cb112-10"><a href="#cb112-10" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X_scaled, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">2025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> telco_churn[[<span class="st">'AvgServiceUsageScore'</span>, <span class="st">'tenure'</span>, <span class="st">'MonthlyCharges'</span>]]</span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> telco_churn[<span class="st">'Churn'</span>]</span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale the features since logistic regression is a linear model</span></span>
+<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> scaler.fit_transform(X)</span>
+<span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into train and test sets (80% train, 20% test)</span></span>
+<span id="cb110-10"><a href="#cb110-10" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X_scaled, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">2025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="train-a-classification-model-using-logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-classification-model-using-logistic-regression">Train a classification model using logistic regression</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize logistic regression model</span></span>
-<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>logreg <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>, solver<span class="op">=</span><span class="st">'liblinear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize logistic regression model</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>logreg <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>, solver<span class="op">=</span><span class="st">'liblinear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="apply-k-fold-cross-validation-to-evaluate-model-performance" class="level3">
 <h3 class="anchored" data-anchor-id="apply-k-fold-cross-validation-to-evaluate-model-performance">Apply k-fold cross-validation to evaluate model performance</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-validate with multiple metrics</span></span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>cv_results <span class="op">=</span> cross_validate(</span>
-<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>    logreg, </span>
-<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>    X_train, </span>
-<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a>    y_train, </span>
-<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>, </span>
-<span id="cb114-7"><a href="#cb114-7" aria-hidden="true" tabindex="-1"></a>    scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'precision'</span>, <span class="st">'recall'</span>, <span class="st">'f1'</span>],</span>
-<span id="cb114-8"><a href="#cb114-8" aria-hidden="true" tabindex="-1"></a>    return_train_score<span class="op">=</span><span class="va">True</span></span>
-<span id="cb114-9"><a href="#cb114-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-validate with multiple metrics</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>cv_results <span class="op">=</span> cross_validate(</span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>    logreg, </span>
+<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>    X_train, </span>
+<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a>    y_train, </span>
+<span id="cb112-6"><a href="#cb112-6" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>, </span>
+<span id="cb112-7"><a href="#cb112-7" aria-hidden="true" tabindex="-1"></a>    scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'precision'</span>, <span class="st">'recall'</span>, <span class="st">'f1'</span>],</span>
+<span id="cb112-8"><a href="#cb112-8" aria-hidden="true" tabindex="-1"></a>    return_train_score<span class="op">=</span><span class="va">True</span></span>
+<span id="cb112-9"><a href="#cb112-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="compare-metrics-across-folds" class="level3">
 <h3 class="anchored" data-anchor-id="compare-metrics-across-folds">Compare metrics across folds</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average performance across folds</span></span>
-<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> metric <span class="kw">in</span> [<span class="st">'test_accuracy'</span>, <span class="st">'test_precision'</span>, <span class="st">'test_recall'</span>, <span class="st">'test_f1'</span>]:</span>
-<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>metric<span class="sc">.</span>split(<span class="st">'_'</span>)[<span class="dv">1</span>]<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>cv_results[metric]<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss"> ± </span><span class="sc">{</span>cv_results[metric]<span class="sc">.</span>std()<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average performance across folds</span></span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> metric <span class="kw">in</span> [<span class="st">'test_accuracy'</span>, <span class="st">'test_precision'</span>, <span class="st">'test_recall'</span>, <span class="st">'test_f1'</span>]:</span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>metric<span class="sc">.</span>split(<span class="st">'_'</span>)[<span class="dv">1</span>]<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>cv_results[metric]<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss"> ± </span><span class="sc">{</span>cv_results[metric]<span class="sc">.</span>std()<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.782 ± 0.008
 Precision: 0.632 ± 0.021
@@ -4367,7 +4264,8 @@ Recall: 0.447 ± 0.020
 F1: 0.524 ± 0.018</code></pre>
 </div>
 </div>
-<p>📝 Interpretation Accuracy → Overall correctness of predictions</p>
+<p><strong>Interpretation</strong></p>
+<p>Accuracy → Overall correctness of predictions</p>
 <p>Precision → How many predicted churns were actual churns</p>
 <p>Recall → How many churns were correctly identified</p>
 <p>F1-Score → Balances precision &amp; recall</p>
@@ -4380,39 +4278,39 @@ F1: 0.524 ± 0.018</code></pre>
 <section id="split-data-into-training-and-validation-sets-1" class="level3">
 <h3 class="anchored" data-anchor-id="split-data-into-training-and-validation-sets-1">Split data into training and validation sets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
-<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>X_m <span class="op">=</span> marketing_campaign[[<span class="st">'Income'</span>, <span class="st">'TotalSpent'</span>, <span class="st">'TotalChildren'</span>]]</span>
-<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>y_m <span class="op">=</span> marketing_campaign[<span class="st">'Response'</span>]</span>
-<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale features</span></span>
-<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a>X_m_scaled <span class="op">=</span> scaler.fit_transform(X_m)</span>
-<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Train-test split</span></span>
-<span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a>X_m_train, X_m_test, y_m_train, y_m_test <span class="op">=</span> train_test_split(</span>
-<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a>    X_m_scaled, y_m, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">2025</span></span>
-<span id="cb117-12"><a href="#cb117-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>X_m <span class="op">=</span> marketing_campaign[[<span class="st">'Income'</span>, <span class="st">'TotalSpent'</span>, <span class="st">'TotalChildren'</span>]]</span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>y_m <span class="op">=</span> marketing_campaign[<span class="st">'Response'</span>]</span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale features</span></span>
+<span id="cb115-6"><a href="#cb115-6" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb115-7"><a href="#cb115-7" aria-hidden="true" tabindex="-1"></a>X_m_scaled <span class="op">=</span> scaler.fit_transform(X_m)</span>
+<span id="cb115-8"><a href="#cb115-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Train-test split</span></span>
+<span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a>X_m_train, X_m_test, y_m_train, y_m_test <span class="op">=</span> train_test_split(</span>
+<span id="cb115-11"><a href="#cb115-11" aria-hidden="true" tabindex="-1"></a>    X_m_scaled, y_m, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">2025</span></span>
+<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="train-a-classification-model-using-logistic-regression-1" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-classification-model-using-logistic-regression-1">Train a classification model using logistic regression</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize logistic regression model</span></span>
-<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>logreg_m <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>, solver<span class="op">=</span><span class="st">'liblinear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize logistic regression model</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>logreg_m <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>, solver<span class="op">=</span><span class="st">'liblinear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="apply-k-fold-cross-validation-to-evaluate-model-performance-1" class="level3">
 <h3 class="anchored" data-anchor-id="apply-k-fold-cross-validation-to-evaluate-model-performance-1">Apply k-fold cross-validation to evaluate model performance</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5-fold cross-validation with multiple metrics</span></span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>cv_results_m <span class="op">=</span> cross_validate(</span>
-<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>    logreg_m, </span>
-<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>    X_m_train, </span>
-<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>    y_m_train, </span>
-<span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>, </span>
-<span id="cb119-7"><a href="#cb119-7" aria-hidden="true" tabindex="-1"></a>    scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'precision'</span>, <span class="st">'recall'</span>, <span class="st">'f1'</span>],</span>
-<span id="cb119-8"><a href="#cb119-8" aria-hidden="true" tabindex="-1"></a>    return_train_score<span class="op">=</span><span class="va">True</span></span>
-<span id="cb119-9"><a href="#cb119-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5-fold cross-validation with multiple metrics</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>cv_results_m <span class="op">=</span> cross_validate(</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>    logreg_m, </span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>    X_m_train, </span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>    y_m_train, </span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>, </span>
+<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a>    scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'precision'</span>, <span class="st">'recall'</span>, <span class="st">'f1'</span>],</span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a>    return_train_score<span class="op">=</span><span class="va">True</span></span>
+<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/Users/chesterismay/.virtualenvs/r-reticulate/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))</code></pre>
@@ -4422,9 +4320,9 @@ F1: 0.524 ± 0.018</code></pre>
 <section id="compare-metrics-across-folds-1" class="level3">
 <h3 class="anchored" data-anchor-id="compare-metrics-across-folds-1">Compare metrics across folds</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average performance across folds</span></span>
-<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> metric <span class="kw">in</span> [<span class="st">'test_accuracy'</span>, <span class="st">'test_precision'</span>, <span class="st">'test_recall'</span>, <span class="st">'test_f1'</span>]:</span>
-<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>metric<span class="sc">.</span>split(<span class="st">'_'</span>)[<span class="dv">1</span>]<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>cv_results_m[metric]<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss"> ± </span><span class="sc">{</span>cv_results_m[metric]<span class="sc">.</span>std()<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average performance across folds</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> metric <span class="kw">in</span> [<span class="st">'test_accuracy'</span>, <span class="st">'test_precision'</span>, <span class="st">'test_recall'</span>, <span class="st">'test_f1'</span>]:</span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>metric<span class="sc">.</span>split(<span class="st">'_'</span>)[<span class="dv">1</span>]<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>cv_results_m[metric]<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss"> ± </span><span class="sc">{</span>cv_results_m[metric]<span class="sc">.</span>std()<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.843 ± 0.010
 Precision: 0.443 ± 0.364
@@ -4432,7 +4330,8 @@ Recall: 0.032 ± 0.029
 F1: 0.060 ± 0.053</code></pre>
 </div>
 </div>
-<p>📝 Interpretation Accuracy → Overall correctness of predictions</p>
+<p><strong>Interpretation</strong></p>
+<p>Accuracy → Overall correctness of predictions</p>
 <p>Precision → How many predicted responders were actual responders</p>
 <p>Recall → How many actual responders were correctly identified</p>
 <p>F1-Score → Harmonic mean of precision and recall</p>
@@ -4444,37 +4343,37 @@ F1: 0.060 ± 0.053</code></pre>
 <section id="train-a-random-forest-classifier" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-random-forest-classifier">Train a Random Forest classifier</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> telco_churn[[<span class="st">'AvgServiceUsageScore'</span>, <span class="st">'tenure'</span>, <span class="st">'MonthlyCharges'</span>]]</span>
-<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> telco_churn[<span class="st">'Churn'</span>]</span>
-<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize Random Forest</span></span>
-<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier(random_state<span class="op">=</span><span class="dv">2025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> telco_churn[[<span class="st">'AvgServiceUsageScore'</span>, <span class="st">'tenure'</span>, <span class="st">'MonthlyCharges'</span>]]</span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> telco_churn[<span class="st">'Churn'</span>]</span>
+<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize Random Forest</span></span>
+<span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier(random_state<span class="op">=</span><span class="dv">2025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="apply-grid-search-to-find-optimal-hyperparameters" class="level3">
 <h3 class="anchored" data-anchor-id="apply-grid-search-to-find-optimal-hyperparameters">Apply grid search to find optimal hyperparameters</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the hyperparameter grid</span></span>
-<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {</span>
-<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_estimators'</span>: [<span class="dv">100</span>, <span class="dv">200</span>],</span>
-<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: [<span class="dv">4</span>, <span class="dv">8</span>],</span>
-<span id="cb124-5"><a href="#cb124-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_split'</span>: [<span class="dv">2</span>, <span class="dv">5</span>],</span>
-<span id="cb124-6"><a href="#cb124-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_leaf'</span>: [<span class="dv">1</span>, <span class="dv">2</span>]</span>
-<span id="cb124-7"><a href="#cb124-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb124-8"><a href="#cb124-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-9"><a href="#cb124-9" aria-hidden="true" tabindex="-1"></a><span class="co"># GridSearchCV setup</span></span>
-<span id="cb124-10"><a href="#cb124-10" aria-hidden="true" tabindex="-1"></a>grid_search <span class="op">=</span> GridSearchCV(</span>
-<span id="cb124-11"><a href="#cb124-11" aria-hidden="true" tabindex="-1"></a>    estimator<span class="op">=</span>rf,</span>
-<span id="cb124-12"><a href="#cb124-12" aria-hidden="true" tabindex="-1"></a>    param_grid<span class="op">=</span>param_grid,</span>
-<span id="cb124-13"><a href="#cb124-13" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>,</span>
-<span id="cb124-14"><a href="#cb124-14" aria-hidden="true" tabindex="-1"></a>    scoring<span class="op">=</span><span class="st">'recall'</span>,</span>
-<span id="cb124-15"><a href="#cb124-15" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span>,</span>
-<span id="cb124-16"><a href="#cb124-16" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb124-17"><a href="#cb124-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb124-18"><a href="#cb124-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-19"><a href="#cb124-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Run grid search</span></span>
-<span id="cb124-20"><a href="#cb124-20" aria-hidden="true" tabindex="-1"></a>grid_search.fit(X, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the hyperparameter grid</span></span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {</span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_estimators'</span>: [<span class="dv">100</span>, <span class="dv">200</span>],</span>
+<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: [<span class="dv">4</span>, <span class="dv">8</span>],</span>
+<span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_split'</span>: [<span class="dv">2</span>, <span class="dv">5</span>],</span>
+<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_leaf'</span>: [<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb122-7"><a href="#cb122-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb122-8"><a href="#cb122-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-9"><a href="#cb122-9" aria-hidden="true" tabindex="-1"></a><span class="co"># GridSearchCV setup</span></span>
+<span id="cb122-10"><a href="#cb122-10" aria-hidden="true" tabindex="-1"></a>grid_search <span class="op">=</span> GridSearchCV(</span>
+<span id="cb122-11"><a href="#cb122-11" aria-hidden="true" tabindex="-1"></a>    estimator<span class="op">=</span>rf,</span>
+<span id="cb122-12"><a href="#cb122-12" aria-hidden="true" tabindex="-1"></a>    param_grid<span class="op">=</span>param_grid,</span>
+<span id="cb122-13"><a href="#cb122-13" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb122-14"><a href="#cb122-14" aria-hidden="true" tabindex="-1"></a>    scoring<span class="op">=</span><span class="st">'recall'</span>,</span>
+<span id="cb122-15"><a href="#cb122-15" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span>,</span>
+<span id="cb122-16"><a href="#cb122-16" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb122-17"><a href="#cb122-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb122-18"><a href="#cb122-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-19"><a href="#cb122-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Run grid search</span></span>
+<span id="cb122-20"><a href="#cb122-20" aria-hidden="true" tabindex="-1"></a>grid_search.fit(X, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <style>#sk-container-id-7 {
   /* Definition of color scheme common for light and dark mode */
@@ -4910,16 +4809,16 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="evaluate-model-improvement-using-accuracy-and-recall" class="level3">
 <h3 class="anchored" data-anchor-id="evaluate-model-improvement-using-accuracy-and-recall">Evaluate model improvement using accuracy and recall</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict using the best model</span></span>
-<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>best_rf <span class="op">=</span> grid_search.best_estimator_</span>
-<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> best_rf.predict(X)</span>
-<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-5"><a href="#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
-<span id="cb125-6"><a href="#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Accuracy: </span><span class="sc">{</span>accuracy_score(y, y_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict using the best model</span></span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>best_rf <span class="op">=</span> grid_search.best_estimator_</span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> best_rf.predict(X)</span>
+<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
+<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Accuracy: </span><span class="sc">{</span>accuracy_score(y, y_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Accuracy: 0.817</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Recall: </span><span class="sc">{</span>recall_score(y, y_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Recall: </span><span class="sc">{</span>recall_score(y, y_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Recall: 0.478</code></pre>
 </div>
@@ -4928,7 +4827,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="interpret-the-best-hyperparameter-combination" class="level3">
 <h3 class="anchored" data-anchor-id="interpret-the-best-hyperparameter-combination">Interpret the best hyperparameter combination</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best Parameters Found:"</span>, grid_search.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best Parameters Found:"</span>, grid_search.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Parameters Found: {'max_depth': 8, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 200}</code></pre>
 </div>
@@ -4941,37 +4840,37 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="train-a-random-forest-classifier-1" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-random-forest-classifier-1">Train a Random Forest classifier</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
-<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>X_m <span class="op">=</span> marketing_campaign[[<span class="st">'Income'</span>, <span class="st">'TotalSpent'</span>, <span class="st">'TotalChildren'</span>]]</span>
-<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a>y_m <span class="op">=</span> marketing_campaign[<span class="st">'Response'</span>]</span>
-<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-5"><a href="#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize Random Forest</span></span>
-<span id="cb131-6"><a href="#cb131-6" aria-hidden="true" tabindex="-1"></a>rf_m <span class="op">=</span> RandomForestClassifier(random_state<span class="op">=</span><span class="dv">2025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>X_m <span class="op">=</span> marketing_campaign[[<span class="st">'Income'</span>, <span class="st">'TotalSpent'</span>, <span class="st">'TotalChildren'</span>]]</span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a>y_m <span class="op">=</span> marketing_campaign[<span class="st">'Response'</span>]</span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize Random Forest</span></span>
+<span id="cb129-6"><a href="#cb129-6" aria-hidden="true" tabindex="-1"></a>rf_m <span class="op">=</span> RandomForestClassifier(random_state<span class="op">=</span><span class="dv">2025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="apply-grid-search-to-find-optimal-hyperparameters-1" class="level3">
 <h3 class="anchored" data-anchor-id="apply-grid-search-to-find-optimal-hyperparameters-1">Apply grid search to find optimal hyperparameters</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the hyperparameter grid</span></span>
-<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>param_grid_m <span class="op">=</span> {</span>
-<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_estimators'</span>: [<span class="dv">100</span>, <span class="dv">200</span>],</span>
-<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: [<span class="dv">4</span>, <span class="dv">8</span>],</span>
-<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_split'</span>: [<span class="dv">2</span>, <span class="dv">5</span>],</span>
-<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_leaf'</span>: [<span class="dv">1</span>, <span class="dv">2</span>]</span>
-<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb132-9"><a href="#cb132-9" aria-hidden="true" tabindex="-1"></a><span class="co"># GridSearchCV setup</span></span>
-<span id="cb132-10"><a href="#cb132-10" aria-hidden="true" tabindex="-1"></a>grid_search_m <span class="op">=</span> GridSearchCV(</span>
-<span id="cb132-11"><a href="#cb132-11" aria-hidden="true" tabindex="-1"></a>    estimator<span class="op">=</span>rf_m,</span>
-<span id="cb132-12"><a href="#cb132-12" aria-hidden="true" tabindex="-1"></a>    param_grid<span class="op">=</span>param_grid_m,</span>
-<span id="cb132-13"><a href="#cb132-13" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>,</span>
-<span id="cb132-14"><a href="#cb132-14" aria-hidden="true" tabindex="-1"></a>    scoring<span class="op">=</span><span class="st">'recall'</span>,</span>
-<span id="cb132-15"><a href="#cb132-15" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span>,</span>
-<span id="cb132-16"><a href="#cb132-16" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb132-17"><a href="#cb132-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb132-18"><a href="#cb132-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb132-19"><a href="#cb132-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Run grid search</span></span>
-<span id="cb132-20"><a href="#cb132-20" aria-hidden="true" tabindex="-1"></a>grid_search_m.fit(X_m, y_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the hyperparameter grid</span></span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>param_grid_m <span class="op">=</span> {</span>
+<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_estimators'</span>: [<span class="dv">100</span>, <span class="dv">200</span>],</span>
+<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: [<span class="dv">4</span>, <span class="dv">8</span>],</span>
+<span id="cb130-5"><a href="#cb130-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_split'</span>: [<span class="dv">2</span>, <span class="dv">5</span>],</span>
+<span id="cb130-6"><a href="#cb130-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_leaf'</span>: [<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb130-7"><a href="#cb130-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb130-8"><a href="#cb130-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-9"><a href="#cb130-9" aria-hidden="true" tabindex="-1"></a><span class="co"># GridSearchCV setup</span></span>
+<span id="cb130-10"><a href="#cb130-10" aria-hidden="true" tabindex="-1"></a>grid_search_m <span class="op">=</span> GridSearchCV(</span>
+<span id="cb130-11"><a href="#cb130-11" aria-hidden="true" tabindex="-1"></a>    estimator<span class="op">=</span>rf_m,</span>
+<span id="cb130-12"><a href="#cb130-12" aria-hidden="true" tabindex="-1"></a>    param_grid<span class="op">=</span>param_grid_m,</span>
+<span id="cb130-13"><a href="#cb130-13" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb130-14"><a href="#cb130-14" aria-hidden="true" tabindex="-1"></a>    scoring<span class="op">=</span><span class="st">'recall'</span>,</span>
+<span id="cb130-15"><a href="#cb130-15" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span>,</span>
+<span id="cb130-16"><a href="#cb130-16" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb130-17"><a href="#cb130-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb130-18"><a href="#cb130-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-19"><a href="#cb130-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Run grid search</span></span>
+<span id="cb130-20"><a href="#cb130-20" aria-hidden="true" tabindex="-1"></a>grid_search_m.fit(X_m, y_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <style>#sk-container-id-8 {
   /* Definition of color scheme common for light and dark mode */
@@ -5405,16 +5304,16 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="evaluate-model-improvement-using-accuracy-and-recall-1" class="level3">
 <h3 class="anchored" data-anchor-id="evaluate-model-improvement-using-accuracy-and-recall-1">Evaluate model improvement using accuracy and recall</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict using the best model</span></span>
-<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a>best_rf_m <span class="op">=</span> grid_search_m.best_estimator_</span>
-<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a>y_m_pred <span class="op">=</span> best_rf_m.predict(X_m)</span>
-<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
-<span id="cb133-6"><a href="#cb133-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Accuracy: </span><span class="sc">{</span>accuracy_score(y_m, y_m_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict using the best model</span></span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>best_rf_m <span class="op">=</span> grid_search_m.best_estimator_</span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a>y_m_pred <span class="op">=</span> best_rf_m.predict(X_m)</span>
+<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-5"><a href="#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
+<span id="cb131-6"><a href="#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Accuracy: </span><span class="sc">{</span>accuracy_score(y_m, y_m_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Accuracy: 0.890</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Recall: </span><span class="sc">{</span>recall_score(y_m, y_m_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Recall: </span><span class="sc">{</span>recall_score(y_m, y_m_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Recall: 0.287</code></pre>
 </div>
@@ -5423,7 +5322,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="interpret-the-best-hyperparameter-combination-1" class="level3">
 <h3 class="anchored" data-anchor-id="interpret-the-best-hyperparameter-combination-1">Interpret the best hyperparameter combination</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best Parameters Found:"</span>, grid_search_m.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best Parameters Found:"</span>, grid_search_m.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Parameters Found: {'max_depth': 8, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}</code></pre>
 </div>

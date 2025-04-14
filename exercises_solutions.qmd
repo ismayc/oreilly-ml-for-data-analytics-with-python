@@ -622,72 +622,6 @@ rules = rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']]
 rules
 ```
 
-### Interpret insights
-
-🔵 Key Metrics
-
-Support:  
-Fraction of all customers who have this combination of services.  
-Example: 0.275 means 27.5% of customers bought that combination.
-
-Confidence:  
-Given the antecedent, how often does the consequent also occur?  
-Example: Confidence of 0.71 means 71% of customers with the antecedent also have the consequent.  
-
-Lift:  
-Measures how much more likely the consequent is given the antecedent compared to random chance.
-
-Lift > 1 → Positive association.   
-Lift = 1 → Independent.  
-Lift < 1 → Negative association. 
-
-🧩 Interpretation of Key Rules. 
-Rule 6. 
-If customers have StreamingTV, they also likely have StreamingMovies
-
-Confidence = 0.71. 
-71% of customers who subscribe to StreamingTV also have StreamingMovies.
-
-Lift = 1.84. 
-This is 84% more likely than random → strong association.
-
-📌 Business insight:  
-These services are good cross-sell opportunities. A bundled "Entertainment Pack" could increase uptake.
-
-Rule 2. 
-If customers have DeviceProtection, they also likely have StreamingTV
-
-Confidence = 0.65. 
-65% of DeviceProtection users also subscribe to StreamingTV.
-
-Lift = 1.68. 
-This is a significant positive relationship, suggesting that people buying protection plans may also value entertainment services.
-
-📌 Business insight:  
-Consider cross-promoting entertainment bundles during device protection sales.
-
-Rule 10. 
-If customers have DeviceProtection + PhoneService, they likely also have StreamingMovies
-
-Confidence = 0.67. 
-67% of these bundled customers also purchase StreamingMovies.
-
-Lift = 1.71. 
-Shows a strong cross-sell relationship.
-
-📌 Business insight:  
-Customers with both DeviceProtection and PhoneService are strong candidates for targeted movie streaming promotions.
-
-General pattern. 
-StreamingTV ↔ StreamingMovies repeatedly show strong relationships with lift > 1.8.  
-PhoneService often appears as a base product with high confidence but lower lift (~0.9) — this is expected since most customers (90%) already have PhoneService.
-
-🔔 Summary.  
-Look for high lift AND high confidence.  
-Focus marketing on bundles like:  
-  StreamingTV + StreamingMovies packages.  
-  Upselling StreamingMovies to customers with DeviceProtection + PhoneService.
-
 ---
 
 ## Exercise #6: Market Basket Analysis with Apriori Algorithm
@@ -733,63 +667,6 @@ rules = rules.sort_values(by='lift', ascending=False)
 rules.reset_index(drop=True, inplace=True)
 rules
 ```
-
----
-
-### Interpret insights
-
-Here are three example rules from the output:
-
-```{python}
-# Show top 3 rules for manual interpretation
-rules.head(3)
-```
-
-🔍 Key Metrics Recap:
-
-- **Support**: How often the itemset appears in the dataset  
-- **Confidence**: Likelihood that the consequent is purchased when the antecedent is  
-- **Lift**: Strength of the association  
-  - **Lift > 1** → Positive association  
-  - **Lift = 1** → No association (independent)  
-  - **Lift < 1** → Negative association
-
-🧩 Example Interpretations Based on Top 3 Rules:
-
-
-**Rule 1**  
-If customers purchase **Wines, Meat, Sweets, and Gold**, they also likely purchase **Fish and Fruits**
-
-- **Confidence = 0.82** → 82% of customers who buy Wines, Meat, Sweets, and Gold also buy Fish and Fruits  
-- **Lift = 1.11** → Slightly stronger than random chance (11% more likely)  
-📌 **Business Insight**: Customers who spend across luxury (Gold), indulgent (Sweets), and staple (Meat, Wine) categories are good targets for bundled offers that include **Fish and Fruits** as healthy complements.
-
-
-**Rule 2**  
-If customers purchase **Wines, Sweets, and Gold**, they also likely purchase **Fish, Meat, and Fruits**
-
-- **Confidence = 0.82**  
-- **Lift = 1.11**  
-📌 **Business Insight**: This pattern suggests customers with a taste for fine items (Gold + Wines + Sweets) are highly likely to also buy a variety of essentials (Fish, Meat, Fruits). Consider **creating gourmet bundles** featuring these combinations.
-
-
-**Rule 3**  
-If customers purchase **Fish, Meat, and Fruits**, they also likely purchase **Wines, Sweets, and Gold**
-
-- **Confidence = 0.88** → Very strong rule  
-- **Lift = 1.11**  
-📌 **Business Insight**: Customers who stock up on protein and fresh produce often also spend on indulgent and luxury products. **Upsell Wines, Sweets, and Gold items** to shoppers purchasing staples — strong potential for increasing average order value.
-
-🔔 Summary:
-
-Focus on rules with:
-- **High confidence**: Indicates consistent purchasing behavior  
-- **Lift > 1**: Indicates a real association beyond chance  
-
-💡 Marketing Strategy Ideas:  
-- Target luxury buyers of **Wines + Sweets + Gold** with healthy add-ons like **Fish + Fruits**  
-- Promote **"Gourmet Essentials Packs"** that include **Fish, Meat, Fruits, and Wine**  
-- Use Rule 3 to **upsell luxury products** to customers starting with staple categories  
 
 ---
 
@@ -842,7 +719,8 @@ for metric in ['test_accuracy', 'test_precision', 'test_recall', 'test_f1']:
 
 ```
 
-📝 Interpretation
+**Interpretation**
+
 Accuracy → Overall correctness of predictions
 
 Precision → How many predicted churns were actual churns
@@ -904,7 +782,8 @@ for metric in ['test_accuracy', 'test_precision', 'test_recall', 'test_f1']:
     print(f"{metric.split('_')[1].capitalize()}: {cv_results_m[metric].mean():.3f} ± {cv_results_m[metric].std():.3f}")
 ```
 
-📝 Interpretation
+**Interpretation**
+
 Accuracy → Overall correctness of predictions
 
 Precision → How many predicted responders were actual responders

@@ -9,6 +9,17 @@ format:
 engine: knitr  
 ---
 
+```{python}
+import pandas as pd
+
+# Display all columns
+pd.set_option('display.max_columns', None)
+
+# Display all outputs from each cell
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = "all"
+```
+
 # Intro: Getting Started with Machine Learning for Data-Driven Decisions
 
 ## Walkthrough #1: Setting Up the Python Environment for ML
