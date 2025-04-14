@@ -1,0 +1,264 @@
+---
+title: "<h2> Machine Learning for Data Analytics with Python </h2>"
+subtitle: "Review Questions"
+author: "<small> Dr. Chester Ismay</small>" 
+format: 
+  revealjs:
+    width: 1500       # <-- Set your desired width here
+    height: 1000       # <-- Set your desired height here
+#    css: style.css
+---
+
+
+# Review Questions
+
+Welcome to the quiz!  
+- Each slide contains a question with multiple-choice answers.  
+- Enter the letter of your response into the chat.  
+- Test your brain's understanding! It helps with learning and retention.
+
+---
+
+
+# Review of Modules 1 and 2
+
+## Question 1
+
+What does the phrase "Garbage In, Garbage Out" mean in the context of machine learning?
+
+- A) Low-quality input data can result in inaccurate predictions.  
+- B) Poor model architecture leads to bad data.  
+- C) Too much data overwhelms machine learning models.  
+- D) Only binary data can be used for predictive modeling.  
+- E) Neural networks are resistant to poor data quality.
+
+---
+
+## Question 2
+
+Why is data preprocessing compared to preparing ingredients for a smoothie?
+
+- A) Preprocessing removes the need for modeling.  
+- B) Data must be frozen before it can be processed.  
+- C) Preprocessing adds artificial flavor to raw data.  
+- D) Cleaning and standardizing data ensures better model performance.  
+- E) Preprocessing helps reduce the file size.
+
+---
+
+## Question 3
+
+Which of the following is NOT a standard data cleaning technique in machine learning?
+
+- A) Duplicating records to increase dataset size  
+- B) Filling missing values  
+- C) Converting data to a uniform format  
+- D) Identifying and managing outliers  
+- E) Removing duplicate entries
+
+---
+
+## Question 4
+
+Which of the following best describes the goal of Exploratory Data Analysis (EDA)?
+
+- A) Train and evaluate machine learning models  
+- B) Summarize and visualize data to uncover insights  
+- C) Predict future outcomes using past trends  
+- D) Clean the dataset by removing errors  
+- E) Encrypt data for secure storage
+
+---
+
+## Question 5
+
+What distinguishes supervised learning from other types of machine learning?
+
+- A) It uses labeled data to learn patterns between inputs and known outputs.  
+- B) It relies on trial-and-error feedback from the environment.  
+- C) It uses data without any labels or outcomes.  
+- D) It clusters data based on similarity without knowing labels.  
+- E) It only works with image and audio data.
+
+---
+
+## Question 6
+
+Which of the following is a regression task rather than a classification task?
+
+- A) Classifying applicants as "approved" or "denied"  
+- B) Predicting the selling price of a used car based on mileage  
+- C) Detecting fraudulent credit card transactions  
+- D) Categorizing customer reviews as positive or negative  
+- E) Predicting whether an email is spam or not
+
+---
+
+## Question 7
+
+Which algorithm is best suited for predicting binary outcomes, such as customer churn (Yes/No)?
+
+- A) Linear regression  
+- B) K-means clustering  
+- C) Principal Component Analysis (PCA)  
+- D) Logistic regression  
+- E) Naive Bayes regression
+
+---
+
+## Question 8
+
+Why do we evaluate models on validation or test data instead of just the training data?
+
+- A) Training data is always smaller than validation data.  
+- B) Evaluation on training data tends to overestimate performance on new data.  
+- C) Validation data is needed to verify that the model learned noise.  
+- D) Test data contains only errors for model debugging.  
+- E) Models are only optimized on validation data, not training data.
+
+---
+
+## Question 9
+
+Which best describes the purpose of R-squared in regression evaluation?
+
+- A) It counts the number of outliers in the data.  
+- B) It indicates whether predictions are biased high or low.  
+- C) It measures the total error between predicted and actual values.  
+- D) It explains the proportion of variance in the target variable explained by the model.  
+- E) It represents the average prediction error in original units.
+
+---
+
+## Question 10
+
+Which of the following is most critical when evaluating a classification model for fraud detection?
+
+- A) High accuracy  
+- B) High R-squared  
+- C) High recall  
+- D) High MAE  
+- E) Low variance
+
+---
+
+# Review of Modules 3 and 4
+
+## Question 1
+
+Which of the following best describes the trade-off between model accuracy and interpretability?
+
+- A) Models with higher accuracy are always easier to interpret.  
+- B) The most interpretable models always deliver the highest accuracy.  
+- C) Accuracy and interpretability are always positively correlated.  
+- D) Interpretability has no effect on model selection.  
+- E) Highly accurate models may be complex and harder to explain.
+
+---
+
+## Question 2
+
+Which of the following is an example of a business application of unsupervised learning?
+
+- A) Grouping customers based on purchasing behavior  
+- B) Estimating next month’s revenue  
+- C) Determining the price elasticity of a product  
+- D) Forecasting seasonal trends in demand  
+- E) Predicting whether a customer will churn
+
+---
+
+## Question 3
+
+Which metric would be most appropriate to evaluate a classification model on a highly imbalanced dataset?
+
+- A) Accuracy  
+- B) R-squared  
+- C) Mean Absolute Error  
+- D) RMSE  
+- E) F1-Score
+
+---
+
+## Question 4
+
+What is the first step in applying the K-Means clustering algorithm?
+
+- A) Predicting future values using cluster labels  
+- B) Splitting the data into training and testing sets  
+- C) Choosing the number of clusters  
+- D) Calculating the correlation between variables  
+- E) Randomly assigning data points to categories
+
+---
+
+## Question 5
+
+What is the main advantage of cross-validation over a single train-test split?
+
+- A) It allows for data encryption during training.  
+- B) It uses all data for training and avoids testing.  
+- C) It guarantees higher accuracy on future data.  
+- D) It increases training speed by using fewer samples.  
+- E) It provides a more reliable estimate of model performance.
+
+---
+
+## Question 6
+
+Which analogy best describes the concept of clustering?
+
+- A) Estimating the value of a home based on square footage  
+- B) Predicting the likelihood of credit card fraud  
+- C) Teaching a student to solve math problems with flashcards  
+- D) Sorting clothes into groups based on type and style  
+- E) Categorizing emails as spam or not spam
+
+---
+
+## Question 7
+
+Which metric in association rule learning measures how frequently items appear together?
+
+- A) Precision  
+- B) Lift  
+- C) Support  
+- D) Recall  
+- E) Confidence
+
+---
+
+## Question 8
+
+What does the Elbow Method help determine in clustering?
+
+- A) The cause of outliers in the data  
+- B) Whether the data has missing values  
+- C) Which items have the highest lift in association rules  
+- D) The optimal number of clusters  
+- E) Which algorithm has the highest accuracy
+
+---
+
+## Question 9
+
+Which of the following is the best example of association rule learning in business?
+
+- A) Segmenting customers based on age and income  
+- B) Calculating average sales per region  
+- C) Predicting employee turnover using demographic data  
+- D) Grouping products by color and style for display  
+- E) Discovering that customers who buy peanut butter often buy jelly
+
+---
+
+## Question 10
+
+Which cross-validation method involves dividing the dataset into equal parts and rotating the test set?
+
+- A) Holdout validation  
+- B) Leave-one-out cross-validation  
+- C) k-Fold cross-validation
+- D) Bootstrap resampling  
+- E) Stratified sampling 
+

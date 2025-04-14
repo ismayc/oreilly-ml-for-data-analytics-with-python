@@ -9,16 +9,6 @@ format:
 engine: knitr  
 ---
 
-```{python}
-import pandas as pd
-
-# Display all columns
-pd.set_option('display.max_columns', None)
-
-# Expand width of console output
-pd.set_option("display.width", 100)
-```
-
 # Intro: Getting Started with Machine Learning for Data-Driven Decisions
 
 ## Walkthrough #1: Setting Up the Python Environment for ML
@@ -28,7 +18,6 @@ If you haven't already installed Python, Jupyter, and the necessary packages, th
 You can also install the packages directly in a Jupyter notebook with
 
 ```{python}
-#| eval: false
 !pip install pandas seaborn matplotlib scikit-learn mlxtend
 ```
 
