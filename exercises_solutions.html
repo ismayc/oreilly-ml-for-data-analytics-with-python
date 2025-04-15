@@ -4050,17 +4050,17 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 4   0.384353                                      (StreamingTV)
 5   0.387903                                  (StreamingMovies)
 6   0.903166                                     (PhoneService)
-7   0.246486                     (OnlineSecurity, PhoneService)
+7   0.246486                     (PhoneService, OnlineSecurity)
 8   0.304132                       (OnlineBackup, PhoneService)
 9   0.222490                    (StreamingTV, DeviceProtection)
 10  0.226466                (StreamingMovies, DeviceProtection)
 11  0.300582                   (PhoneService, DeviceProtection)
-12  0.249184                        (PhoneService, TechSupport)
-13  0.275451                     (StreamingTV, StreamingMovies)
-14  0.343888                        (StreamingTV, PhoneService)
+12  0.249184                        (TechSupport, PhoneService)
+13  0.275451                     (StreamingMovies, StreamingTV)
+14  0.343888                        (PhoneService, StreamingTV)
 15  0.345591                    (StreamingMovies, PhoneService)
 16  0.200057  (StreamingMovies, PhoneService, DeviceProtection)
-17  0.247054       (StreamingTV, StreamingMovies, PhoneService)</code></pre>
+17  0.247054       (PhoneService, StreamingMovies, StreamingTV)</code></pre>
 </div>
 </div>
 </section>
@@ -4078,17 +4078,17 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 3                    (DeviceProtection)                (StreamingMovies)   
 4                    (DeviceProtection)                   (PhoneService)   
 5                         (TechSupport)                   (PhoneService)   
-6                         (StreamingTV)                (StreamingMovies)   
-7                     (StreamingMovies)                    (StreamingTV)   
+6                     (StreamingMovies)                    (StreamingTV)   
+7                         (StreamingTV)                (StreamingMovies)   
 8                         (StreamingTV)                   (PhoneService)   
 9                     (StreamingMovies)                   (PhoneService)   
 10  (StreamingMovies, DeviceProtection)                   (PhoneService)   
 11     (PhoneService, DeviceProtection)                (StreamingMovies)   
-12       (StreamingTV, StreamingMovies)                   (PhoneService)   
+12      (StreamingMovies, PhoneService)                    (StreamingTV)   
 13          (StreamingTV, PhoneService)                (StreamingMovies)   
-14      (StreamingMovies, PhoneService)                    (StreamingTV)   
-15                        (StreamingTV)  (StreamingMovies, PhoneService)   
-16                    (StreamingMovies)      (StreamingTV, PhoneService)   
+14       (StreamingMovies, StreamingTV)                   (PhoneService)   
+15                    (StreamingMovies)      (StreamingTV, PhoneService)   
+16                        (StreamingTV)  (StreamingMovies, PhoneService)   
 
      support  confidence      lift  
 0   0.246486    0.859832  0.952019  
@@ -4097,17 +4097,17 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 3   0.226466    0.658547  1.697710  
 4   0.300582    0.874071  0.967785  
 5   0.249184    0.858611  0.950667  
-6   0.275451    0.716661  1.847526  
-7   0.275451    0.710102  1.847526  
+6   0.275451    0.710102  1.847526  
+7   0.275451    0.716661  1.847526  
 8   0.343888    0.894717  0.990645  
 9   0.345591    0.890922  0.986443  
 10  0.200057    0.883386  0.978099  
 11  0.200057    0.665564  1.715802  
-12  0.247054    0.896907  0.993070  
+12  0.247054    0.714873  1.859936  
 13  0.247054    0.718415  1.852047  
-14  0.247054    0.714873  1.859936  
-15  0.247054    0.642778  1.859936  
-16  0.247054    0.636896  1.852047  </code></pre>
+14  0.247054    0.896907  0.993070  
+15  0.247054    0.636896  1.852047  
+16  0.247054    0.642778  1.859936  </code></pre>
 </div>
 </div>
 <hr>
@@ -4156,13 +4156,13 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 0   0.994196                                    (Wines)
 7   0.994196                              (Wines, Meat)
 5   0.972768                                     (Gold)
-17  0.972321                               (Meat, Gold)
+17  0.972321                               (Gold, Meat)
 ..       ...                                        ...
-44  0.656696              (Wines, Sweets, Fish, Fruits)
-54  0.650000               (Fruits, Fish, Gold, Sweets)
-61  0.650000         (Fruits, Fish, Meat, Gold, Sweets)
-59  0.646875        (Wines, Fruits, Fish, Gold, Sweets)
-62  0.646875  (Wines, Fruits, Fish, Meat, Gold, Sweets)
+44  0.656696              (Fruits, Wines, Fish, Sweets)
+54  0.650000               (Fruits, Gold, Fish, Sweets)
+61  0.650000         (Fish, Sweets, Fruits, Gold, Meat)
+59  0.646875        (Fish, Sweets, Fruits, Gold, Wines)
+62  0.646875  (Fish, Sweets, Fruits, Gold, Wines, Meat)
 
 [63 rows x 2 columns]</code></pre>
 </div>
@@ -4178,18 +4178,18 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>rules.reset_index(drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>rules</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                     antecedents            consequents   support  confidence  \
-0    (Wines, Meat, Gold, Sweets)         (Fruits, Fish)  0.646875    0.816338   
-1           (Fruits, Meat, Fish)  (Wines, Gold, Sweets)  0.646875    0.879248   
-2          (Wines, Gold, Sweets)   (Fruits, Meat, Fish)  0.646875    0.816338   
-3          (Wines, Gold, Sweets)         (Fruits, Fish)  0.646875    0.816338   
-4                 (Fruits, Fish)  (Wines, Gold, Sweets)  0.646875    0.879248   
-..                           ...                    ...       ...         ...   
-597               (Fish, Sweets)                (Wines)  0.727679    0.992692   
-598                      (Wines)   (Fish, Gold, Sweets)  0.714286    0.718455   
-599                (Wines, Meat)   (Fish, Gold, Sweets)  0.714286    0.718455   
-600         (Fish, Gold, Sweets)                (Wines)  0.714286    0.992556   
-601         (Fish, Gold, Sweets)          (Wines, Meat)  0.714286    0.992556   
+<pre><code>               antecedents                  consequents   support  confidence  \
+0           (Fruits, Fish)        (Wines, Gold, Sweets)  0.646875    0.879248   
+1    (Wines, Gold, Sweets)               (Fruits, Fish)  0.646875    0.816338   
+2     (Fruits, Fish, Meat)        (Wines, Gold, Sweets)  0.646875    0.879248   
+3    (Wines, Gold, Sweets)         (Fruits, Fish, Meat)  0.646875    0.816338   
+4           (Fruits, Fish)  (Wines, Gold, Meat, Sweets)  0.646875    0.879248   
+..                     ...                          ...       ...         ...   
+597         (Fish, Sweets)                      (Wines)  0.727679    0.992692   
+598   (Gold, Fish, Sweets)                      (Wines)  0.714286    0.992556   
+599                (Wines)         (Gold, Fish, Sweets)  0.714286    0.718455   
+600          (Wines, Meat)         (Gold, Fish, Sweets)  0.714286    0.718455   
+601   (Gold, Fish, Sweets)                (Wines, Meat)  0.714286    0.992556   
 
          lift  
 0    1.109586  
