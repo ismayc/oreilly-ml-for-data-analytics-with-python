@@ -3,7 +3,7 @@
 # Course content
 
 The major files in this repository are
-- `slides_2025-04.pdf`: PDF version of the slides used in this course to motivate the code.
+- `slides.pdf`: PDF version of the slides used in this course to motivate the code.
 - `telco-customer-churn.csv`: Data for code walkthroughs, one as Comma-Separated Values and the other as a Microsoft Excel file
 - `marketing_campaign.csv`: Data for student exercises.
 - `exercises.ipynb`: A Jupyter Notebook with pseudocode/instructions provide to be filled in for code walkthroughs and student exercises

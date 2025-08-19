@@ -1,0 +1,1634 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: 'Walkthroughs and Exercises for Machine Learning for Data Analytics with Python'  \n",
+        "author: \"Dr. Chester Ismay\"  \n",
+        "format:\n",
+        "  html:\n",
+        "    theme: flatly\n",
+        "    toc: true\n",
+        "    toc-floating: true \n",
+        "jupyter: python3 \n",
+        "---"
+      ],
+      "id": "85219846"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "# Display all columns\n",
+        "pd.set_option('display.max_columns', None)\n",
+        "\n",
+        "# Display all outputs from each cell\n",
+        "from IPython.core.interactiveshell import InteractiveShell\n",
+        "InteractiveShell.ast_node_interactivity = \"all\""
+      ],
+      "id": "58d3c288",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Intro: Getting Started with Machine Learning for Data-Driven Decisions\n",
+        "\n",
+        "## Walkthrough #1: Setting Up the Python Environment for ML\n",
+        "\n",
+        "If you haven't already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so [here](https://github.com/ismayc/oreilly-data-analysis-with-python/blob/main/README.md). \n",
+        "\n",
+        "You can also install the packages directly in a Jupyter notebook with\n"
+      ],
+      "id": "b790df35"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "!pip install pandas seaborn matplotlib scikit-learn mlxtend"
+      ],
+      "id": "eaec8516",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "If you aren't able to do this on your machine, you may want to check out [Google Colab](https://colab.research.google.com/). It's a free service that allows you to run Jupyter notebooks in the cloud. Alternatively, I've set up some temporary notebooks on Binder [here](https://mybinder.org/v2/gh/ismayc/oreilly-ml-for-data-analytics-with-python/HEAD?urlpath=%2Fdoc%2Ftree%2Fexercises.ipynb) that you can work with online as well.\n",
+        "\n",
+        "Run the following code to check that each of the needed packages are installed. If you get an error, you may need to install the package(s) again.\n"
+      ],
+      "id": "ac5ed32a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.preprocessing import StandardScaler\n",
+        "from sklearn.linear_model import LinearRegression\n",
+        "from sklearn.metrics import mean_absolute_error, r2_score\n",
+        "from sklearn.ensemble import RandomForestClassifier\n",
+        "from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix\n",
+        "from sklearn.cluster import KMeans\n",
+        "from sklearn.metrics import silhouette_score\n",
+        "from mlxtend.frequent_patterns import apriori, association_rules\n",
+        "from sklearn.linear_model import LogisticRegression\n",
+        "from sklearn.model_selection import cross_val_score, cross_validate\n",
+        "from sklearn.model_selection import GridSearchCV"
+      ],
+      "id": "c5ca3ffe",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Load dataset\n",
+        "telco_churn_raw = pd.read_csv('telco-customer-churn.csv')"
+      ],
+      "id": "6e01027c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Exercise #1: Setting Up the Python Environment\n",
+        "\n",
+        "By completing this exercise, you will be able to  \n",
+        "\n",
+        "- Import necessary Python packages  \n",
+        "- Check for successful package loading  \n",
+        "- Load datasets into Python\n",
+        "\n",
+        "Follow the instructions above in Walkthrough #1 to check for correct installation \n",
+        "of necessary packages.\n"
+      ],
+      "id": "3719e6e5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Load dataset\n",
+        "marketing_campaign_raw = pd.read_csv('marketing_campaign.csv')"
+      ],
+      "id": "284373bb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "# Module 1: Data Understanding and Preprocessing for Machine Learning\n",
+        "\n",
+        "\n",
+        "## Walkthrough #2: Exploring and Preprocessing Data with Pandas & Seaborn\n",
+        "\n",
+        "### Inspect a dataset using Pandas\n"
+      ],
+      "id": "4ee8ae67"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Inspect data structure\n",
+        "telco_churn_raw\n",
+        "telco_churn_raw.info()"
+      ],
+      "id": "7a5162ed",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Check for missing values\n",
+        "telco_churn_raw.isnull().sum()\n",
+        "\n",
+        "# Check for duplicate rows\n",
+        "telco_churn_raw.duplicated().sum()"
+      ],
+      "id": "c014c80d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Handle missing values and clean data\n"
+      ],
+      "id": "fe50a3a6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Make a copy of the data to fix and clean\n",
+        "telco_churn = telco_churn_raw.copy()\n",
+        "\n",
+        "# Handle missing values\n",
+        "telco_churn['MonthlyCharges'] = telco_churn['MonthlyCharges']\\\n",
+        "  .fillna(telco_churn['MonthlyCharges']\\\n",
+        "  .median())\n",
+        "telco_churn['AvgServiceUsageScore'] = telco_churn['AvgServiceUsageScore']\\\n",
+        "  .fillna(telco_churn['AvgServiceUsageScore']\\\n",
+        "  .median())\n",
+        "telco_churn.info()"
+      ],
+      "id": "d9c2ed19",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Standardize column formats (e.g., convert Yes/No to binary for a few columns)\n",
+        "telco_churn['SeniorCitizen'] = telco_churn['SeniorCitizen'].astype('category')\n",
+        "telco_churn['Churn'] = telco_churn['Churn'].map({'Yes': 1, 'No': 0})"
+      ],
+      "id": "aadea330",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Summarize statistics\n",
+        "telco_churn.describe(include='all')"
+      ],
+      "id": "f0da1b6a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Create visualizations to identify key business trends\n"
+      ],
+      "id": "e2ab7558"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Visualize distributions and relationships\n",
+        "plt.clf()\n",
+        "sns.violinplot(data=telco_churn, x='Churn', y='tenure', inner='quartile')\n",
+        "plt.title('Violin Plot of Tenure by Churn')\n",
+        "plt.show();"
+      ],
+      "id": "ccb2c5c9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.clf()\n",
+        "sns.histplot(data=telco_churn, x='AvgServiceUsageScore')\n",
+        "plt.title('Histogram of Average Service Usage Score')\n",
+        "plt.show();"
+      ],
+      "id": "efe73171",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.clf()\n",
+        "sns.histplot(data=telco_churn, x='MonthlyCharges')\n",
+        "plt.title('Histogram of Monthly Charges')\n",
+        "plt.show();"
+      ],
+      "id": "eca2ffd6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.clf()\n",
+        "sns.scatterplot(data=telco_churn, x='AvgServiceUsageScore', y='MonthlyCharges')\n",
+        "plt.title('Average Service Usage Score vs. Monthly Charges')\n",
+        "plt.show();"
+      ],
+      "id": "179a78d4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.clf()\n",
+        "sns.countplot(data=telco_churn, x='InternetService', hue='Churn')\n",
+        "plt.title('Churn Rate by Internet Service Type')\n",
+        "plt.show();"
+      ],
+      "id": "d765463f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "\n",
+        "\n",
+        "## Exercise #2: Exploring and Preprocessing Data with Pandas & Seaborn\n",
+        "\n",
+        "### Inspect a dataset using Pandas\n"
+      ],
+      "id": "6eb1028a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Inspect data structure\n",
+        "marketing_campaign_raw\n",
+        "marketing_campaign_raw.info()"
+      ],
+      "id": "bd36f730",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Check for missing values\n",
+        "marketing_campaign_raw.isnull().sum()\n",
+        "\n",
+        "# Check for duplicate rows\n",
+        "marketing_campaign_raw.duplicated().sum()"
+      ],
+      "id": "ce2f8d04",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Handle missing values and clean data\n"
+      ],
+      "id": "0215f4cf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a clean working copy\n",
+        "marketing_campaign = marketing_campaign_raw.copy()\n",
+        "\n",
+        "# Handle missing values of Income\n",
+        "marketing_campaign['Income'] = marketing_campaign['Income']\\\n",
+        "  .fillna(\n",
+        "    marketing_campaign['Income'].median()\n",
+        "  )\n",
+        "\n",
+        "# Add new features\n",
+        "marketing_campaign[\"TotalChildren\"] = marketing_campaign[\"Kidhome\"] + marketing_campaign[\"Teenhome\"]\n",
+        "marketing_campaign[\"TotalSpent\"] = (\n",
+        "    marketing_campaign[\"MntWines\"] + marketing_campaign[\"MntFruits\"] +\n",
+        "    marketing_campaign[\"MntMeatProducts\"] + marketing_campaign[\"MntFishProducts\"] +\n",
+        "    marketing_campaign[\"MntSweetProducts\"] + marketing_campaign[\"MntGoldProds\"]\n",
+        ")\n",
+        "\n",
+        "# Convert to datetime\n",
+        "marketing_campaign[\"Dt_Customer\"] = pd.to_datetime(marketing_campaign[\"Dt_Customer\"], errors='coerce')\n",
+        "marketing_campaign.info()"
+      ],
+      "id": "441c4660",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Summarize structure\n",
+        "marketing_campaign.describe(include='all')"
+      ],
+      "id": "267cb869",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Create visualizations to identify key business trends\n"
+      ],
+      "id": "f93a4da0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.close('all')\n",
+        "plt.clf()\n",
+        "sns.violinplot(data=marketing_campaign, x='Response', y='Income', inner='quartile')\n",
+        "plt.title('Violin Plot of Income by Campaign Response')\n",
+        "plt.show();"
+      ],
+      "id": "0002353d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.close('all')\n",
+        "plt.clf()\n",
+        "sns.histplot(data=marketing_campaign, x='TotalSpent')\n",
+        "plt.title('Histogram of Total Spent')\n",
+        "plt.show();"
+      ],
+      "id": "53f7e3ae",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.close('all')\n",
+        "plt.clf()\n",
+        "sns.scatterplot(data=marketing_campaign, x='Income', y='TotalSpent', hue='Response', alpha=0.7)\n",
+        "plt.title('Income vs. Total Spent by Campaign Response')\n",
+        "plt.show();"
+      ],
+      "id": "f75c6ee4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.close('all')\n",
+        "plt.clf()\n",
+        "sns.countplot(data=marketing_campaign, x='Education', hue='Response')\n",
+        "plt.title('Campaign Response by Education Level')\n",
+        "#plt.xticks(rotation=30)\n",
+        "plt.show();"
+      ],
+      "id": "a2c631c2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "\n",
+        "# Module 2: Supervised Learning for Business Decisions\n",
+        "\n",
+        "## Walkthrough #3: Build a Regression Model for Pricing Optimization\n",
+        "\n",
+        "### Split the data into training and validation sets\n"
+      ],
+      "id": "d03c643d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "X = telco_churn[['AvgServiceUsageScore']]  # predictor\n",
+        "y = telco_churn['MonthlyCharges']          # target\n",
+        "\n",
+        "# Best practice when working with linear models\n",
+        "scaler = StandardScaler()\n",
+        "X_scaled = scaler.fit_transform(X)\n",
+        "\n",
+        "X_train, X_val, y_train, y_val = train_test_split(\n",
+        "  X_scaled, y, test_size=0.2, random_state=2025\n",
+        ")"
+      ],
+      "id": "d871c87c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Train a linear regression model\n"
+      ],
+      "id": "dec8bd40"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "lr = LinearRegression()\n",
+        "lr.fit(X_train, y_train)\n",
+        "\n",
+        "print(f\"Intercept: {lr.intercept_:.2f}\")\n",
+        "print(f\"Coefficient (usage_scaled → price): {lr.coef_[0]:.2f}\")"
+      ],
+      "id": "1432d790",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Evaluate model performance on the validation set\n"
+      ],
+      "id": "3b372b55"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "y_pred = lr.predict(X_val)\n",
+        "\n",
+        "r2 = r2_score(y_val, y_pred)\n",
+        "mae = mean_absolute_error(y_val, y_pred)\n",
+        "\n",
+        "print(f\"R-squared: {r2:.2f}\")\n",
+        "print(f\"Mean Absolute Error: {mae:.2f}\")"
+      ],
+      "id": "86537871",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "## Exercise #3: Build a Regression Model for Pricing Optimization\n",
+        "\n",
+        "### Split the data into training and validation sets\n"
+      ],
+      "id": "ee443944"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Predictor and target\n",
+        "X_m = marketing_campaign[['Income']]  # predictor\n",
+        "y_m = marketing_campaign['TotalSpent'] # target\n",
+        "\n",
+        "y_m = y_m.reset_index(drop=True)\n",
+        "\n",
+        "\n",
+        "# Standardize the predictor\n",
+        "scaler_m = StandardScaler()\n",
+        "X_m_scaled = scaler_m.fit_transform(X_m)\n",
+        "\n",
+        "# Train-test split\n",
+        "X_m_train, X_m_val, y_m_train, y_m_val = train_test_split(\n",
+        "    X_m_scaled, y_m, test_size=0.2, random_state=2025\n",
+        ")"
+      ],
+      "id": "193c197f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Train a linear regression model\n"
+      ],
+      "id": "53793e80"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "lr_m = LinearRegression()\n",
+        "lr_m.fit(X_m_train, y_m_train)\n",
+        "\n",
+        "print(f\"Intercept: {lr_m.intercept_:.2f}\")\n",
+        "print(f\"Coefficient (Income_scaled → TotalSpent): {lr_m.coef_[0]:.2f}\")"
+      ],
+      "id": "9a9dcf8d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Evaluate model performance on the validation set\n"
+      ],
+      "id": "65ecde13"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "y_m_pred = lr_m.predict(X_m_val)\n",
+        "\n",
+        "r2_m = r2_score(y_m_val, y_m_pred)\n",
+        "mae_m = mean_absolute_error(y_m_val, y_m_pred)\n",
+        "\n",
+        "print(f\"R-squared: {r2_m:.2f}\")\n",
+        "print(f\"Mean Absolute Error: {mae_m:.2f}\")"
+      ],
+      "id": "5e689368",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "## Walkthrough #4: Implement a Classification Model for Customer Churn\n",
+        "\n",
+        "### Split the data into training and validation sets\n"
+      ],
+      "id": "c103ac0a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Select relevant features\n",
+        "features = ['tenure', 'SeniorCitizen', 'ServiceCount', 'InternetScore', 'AvgServiceUsageScore']\n",
+        "X = telco_churn[features]\n",
+        "y = telco_churn['Churn']\n",
+        "\n",
+        "# Scaling is not as important for tree-based models since they are not sensitive to\n",
+        "# one feature having a larger scale than another\n",
+        "\n",
+        "# Train-test split\n",
+        "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=2025)"
+      ],
+      "id": "447e8a2c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Train a Random Forest classification model\n"
+      ],
+      "id": "be7a4983"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Train Random Forest classifier\n",
+        "clf = RandomForestClassifier(n_estimators=100, random_state=2025)\n",
+        "clf.fit(X_train, y_train)"
+      ],
+      "id": "e38e94ae",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Evaluate model performance on the validation set\n"
+      ],
+      "id": "522d07f6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "y_pred = clf.predict(X_test)\n",
+        "\n",
+        "print(f\"Accuracy: {accuracy_score(y_test, y_pred):.2f}\")\n",
+        "print(f\"Precision: {precision_score(y_test, y_pred):.2f}\")\n",
+        "print(f\"Recall: {recall_score(y_test, y_pred):.2f}\")\n",
+        "\n",
+        "cm = confusion_matrix(y_test, y_pred)\n",
+        "\n",
+        "labels = ['No Churn', 'Churn']\n",
+        "cm_telco_churn = pd.DataFrame(cm, index=labels, columns=labels)\n",
+        "\n",
+        "print(\"\\nConfusion Matrix (formatted):\")\n",
+        "print(cm_telco_churn)"
+      ],
+      "id": "f71b2ca9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "## Exercise #4: Implement a Classification Model for Customer Churn\n",
+        "\n",
+        "### Split the data into training and validation sets\n"
+      ],
+      "id": "20d53d18"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Select relevant features\n",
+        "features_m = ['Income', 'TotalSpent', 'TotalChildren']\n",
+        "X_m_class = marketing_campaign[features_m]\n",
+        "y_m_class = marketing_campaign['Response']\n",
+        "\n",
+        "# Split into training and validation sets\n",
+        "X_m_train_class, X_m_val_class, y_m_train_class, y_m_val_class = train_test_split(\n",
+        "    X_m_class, y_m_class, test_size=0.2, random_state=2025\n",
+        ")"
+      ],
+      "id": "eabc3f42",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Train a Random Forest classification model\n"
+      ],
+      "id": "06574dfd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Train Random Forest classifier\n",
+        "clf_m = RandomForestClassifier(n_estimators=100, random_state=2025)\n",
+        "clf_m.fit(X_m_train_class, y_m_train_class)"
+      ],
+      "id": "e4cd3009",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Evaluate model performance on the validation set\n"
+      ],
+      "id": "cdf093fd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "y_m_pred_class = clf_m.predict(X_m_val_class)\n",
+        "\n",
+        "print(f\"Accuracy: {accuracy_score(y_m_val_class, y_m_pred_class):.2f}\")\n",
+        "print(f\"Precision: {precision_score(y_m_val_class, y_m_pred_class):.2f}\")\n",
+        "print(f\"Recall: {recall_score(y_m_val_class, y_m_pred_class):.2f}\")\n",
+        "\n",
+        "labels = ['No Response', 'Response']\n",
+        "cm_marketing_response = pd.DataFrame(confusion_matrix(y_m_val_class, y_m_pred_class), \n",
+        "                                     index=labels, columns=labels)\n",
+        "\n",
+        "print(\"\\nConfusion Matrix (formatted):\")\n",
+        "print(cm_marketing_response)"
+      ],
+      "id": "7d48bd73",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "# Module 3: Unsupervised Learning and Pattern Discovery in Business\n",
+        "\n",
+        "## Walkthrough #5: Exploring K-Means Clustering for Customer Segmentation\n",
+        "\n",
+        "### Apply K-Means clustering to segment customers\n"
+      ],
+      "id": "7e37ef10"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Select relevant features\n",
+        "telco_churn['ContractType'] = telco_churn['Contract'].map({\n",
+        "    'Month-to-month': 0, 'One year': 1, 'Two year': 2\n",
+        "})\n",
+        "features = ['tenure', 'ServiceCount', 'AvgServiceUsageScore', 'MonthlyCharges', 'InternetScore', 'ContractType']\n",
+        "X = telco_churn[features]\n",
+        "\n",
+        "# Standardize features\n",
+        "scaler = StandardScaler()\n",
+        "X_scaled = scaler.fit_transform(X)"
+      ],
+      "id": "8cfcd423",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Determine the optimal number of clusters using the Elbow Method\n"
+      ],
+      "id": "a492f923"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "inertia = []\n",
+        "k_range = range(1, 11)\n",
+        "\n",
+        "for k in k_range:\n",
+        "    kmeans = KMeans(n_clusters=k, random_state=2025)\n",
+        "    kmeans.fit(X_scaled)\n",
+        "    inertia.append(kmeans.inertia_)\n",
+        "\n",
+        "plt.clf()\n",
+        "plt.plot(k_range, inertia, marker='o')\n",
+        "plt.xlabel('Number of clusters (k)')\n",
+        "plt.ylabel('Inertia')\n",
+        "plt.title('Elbow Method for Optimal k')\n",
+        "plt.show()"
+      ],
+      "id": "9868acb2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Verify using the silhouette score (optional but recommended)\n"
+      ],
+      "id": "bdaec129"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Evaluate silhouette scores for k=3 to k=6\n",
+        "silhouette_scores = {}\n",
+        "\n",
+        "for k in range(3, 7):\n",
+        "    kmeans = KMeans(n_clusters=k, random_state=2025)\n",
+        "    labels = kmeans.fit_predict(X_scaled)\n",
+        "    score = silhouette_score(X_scaled, labels)\n",
+        "    silhouette_scores[k] = score\n",
+        "\n",
+        "silhouette_scores"
+      ],
+      "id": "a949356e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Fit K-means and assign cluster labels to each customer\n"
+      ],
+      "id": "c292d41e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Let's assume the elbow suggested k=3\n",
+        "optimal_k = 3\n",
+        "kmeans = KMeans(n_clusters=optimal_k, random_state=2025)\n",
+        "telco_churn['Cluster'] = kmeans.fit_predict(X_scaled)"
+      ],
+      "id": "6a778300",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Visualize customer segments using a 2D plot\n"
+      ],
+      "id": "62fa7397"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.clf()\n",
+        "# Visualize clusters in 2D space (using tenure and MonthlyCharges)\n",
+        "sns.scatterplot(data=telco_churn,  x='tenure', y='AvgServiceUsageScore', hue='Cluster', palette='viridis')\n",
+        "plt.title('Customer Segments via K-Means')\n",
+        "plt.show();"
+      ],
+      "id": "b06f8727",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "## Exercise #5: Exploring K-Means Clustering for Customer Segmentation\n",
+        "\n",
+        "### Apply K-Means clustering to segment customers\n"
+      ],
+      "id": "c5c4335c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Select relevant features\n",
+        "features_cluster = ['Income', 'TotalSpent', 'TotalChildren']\n",
+        "X_cluster = marketing_campaign[features_cluster]\n",
+        "\n",
+        "# Standardize features\n",
+        "scaler = StandardScaler()\n",
+        "X_cluster_scaled = scaler.fit_transform(X_cluster)"
+      ],
+      "id": "6afbf5eb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Determine the optimal number of clusters using the Elbow Method\n"
+      ],
+      "id": "77c590b6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "inertia = []\n",
+        "k_range = range(1, 11)\n",
+        "\n",
+        "for k in k_range:\n",
+        "    kmeans = KMeans(n_clusters=k, random_state=2025)\n",
+        "    kmeans.fit(X_cluster_scaled)\n",
+        "    inertia.append(kmeans.inertia_)\n",
+        "\n",
+        "plt.clf()\n",
+        "plt.plot(k_range, inertia, marker='o')\n",
+        "plt.xlabel('Number of clusters (k)')\n",
+        "plt.ylabel('Inertia')\n",
+        "plt.title('Elbow Method for Optimal k')\n",
+        "plt.show();"
+      ],
+      "id": "d96454e2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Verify using the silhouette score (optional but recommended)\n"
+      ],
+      "id": "b7895b6b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "silhouette_scores = {}\n",
+        "\n",
+        "for k in range(3, 7):\n",
+        "    kmeans = KMeans(n_clusters=k, random_state=2025)\n",
+        "    labels = kmeans.fit_predict(X_cluster_scaled)\n",
+        "    score = silhouette_score(X_cluster_scaled, labels)\n",
+        "    silhouette_scores[k] = score\n",
+        "\n",
+        "silhouette_scores"
+      ],
+      "id": "baf53f88",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Fit K-means and assign cluster labels to each customer\n"
+      ],
+      "id": "1d7f007c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Assume optimal k is 5 (can be adjusted based on elbow or silhouette)\n",
+        "optimal_k = 5\n",
+        "kmeans_final = KMeans(n_clusters=optimal_k, random_state=2025)\n",
+        "marketing_campaign['Cluster'] = kmeans_final.fit_predict(X_cluster_scaled)"
+      ],
+      "id": "2fc43276",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Visualize customer segments using a 2D plot\n"
+      ],
+      "id": "6d54510d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import matplotlib.ticker as ticker\n",
+        "plt.clf()\n",
+        "sns.scatterplot(data=marketing_campaign, x='TotalChildren', y='TotalSpent', hue='Cluster', palette='viridis')\n",
+        "plt.title('Customer Segments via K-Means Clustering')\n",
+        "\n",
+        "# Set x-axis to integer ticks only\n",
+        "plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(1))\n",
+        "\n",
+        "plt.show();"
+      ],
+      "id": "6dba71c5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "## Walkthrough #6: Market Basket Analysis with Apriori Algorithm\n",
+        "\n",
+        "### Prepare transactional data (services as items)\n"
+      ],
+      "id": "18af5ba1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Selecting binary service columns to act like \"products\"\n",
+        "service_cols = [\n",
+        "    'OnlineSecurity', 'OnlineBackup', 'DeviceProtection',\n",
+        "    'TechSupport', 'StreamingTV', 'StreamingMovies', 'PhoneService'\n",
+        "]\n",
+        "\n",
+        "# Convert service columns to boolean (preference of apriori() function)\n",
+        "telco_churn_basket = telco_churn[service_cols].astype(bool)\n",
+        "telco_churn_basket"
+      ],
+      "id": "2c809abf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Apply the Apriori algorithm to identify frequent itemsets\n"
+      ],
+      "id": "3ce0cdd5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "frequent_itemsets = apriori(telco_churn_basket, min_support=0.2, use_colnames=True)\n",
+        "frequent_itemsets"
+      ],
+      "id": "68c93a19",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Generate association rules from frequent itemsets\n"
+      ],
+      "id": "38b94eea"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "rules = association_rules(frequent_itemsets, metric=\"confidence\", min_threshold=0.6)\n",
+        "rules = rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']]\n",
+        "rules"
+      ],
+      "id": "fe89092e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "## Exercise #6: Market Basket Analysis with Apriori Algorithm\n",
+        "\n",
+        "### Prepare transactional data (product categories as items)\n"
+      ],
+      "id": "5b42544d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Select binary columns representing product purchases\n",
+        "product_cols = [\n",
+        "    'MntWines', 'MntFruits', 'MntMeatProducts',\n",
+        "    'MntFishProducts', 'MntSweetProducts', 'MntGoldProds'\n",
+        "]\n",
+        "\n",
+        "# Convert product columns to binary: 1 if any amount was spent, else 0\n",
+        "basket = marketing_campaign[product_cols].applymap(lambda x: 1 if x > 0 else 0)\n",
+        "\n",
+        "# Rename columns for cleaner output\n",
+        "basket.columns = [\n",
+        "    'Wines', 'Fruits', 'Meat', 'Fish', 'Sweets', 'Gold'\n",
+        "]\n",
+        "\n",
+        "basket = basket.astype(bool)\n",
+        "basket.head()"
+      ],
+      "id": "e0b21047",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "### Apply the Apriori algorithm to identify frequent itemsets\n"
+      ],
+      "id": "fef75aa7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "frequent_itemsets = apriori(basket, min_support=0.2, use_colnames=True)\n",
+        "frequent_itemsets.sort_values(by='support', ascending=False)"
+      ],
+      "id": "4c53411c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "### Generate association rules from frequent itemsets\n"
+      ],
+      "id": "14a463ef"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "rules = association_rules(frequent_itemsets, metric=\"confidence\", min_threshold=0.6)\n",
+        "rules = rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']]\n",
+        "rules = rules.sort_values(by='lift', ascending=False)\n",
+        "rules.reset_index(drop=True, inplace=True)\n",
+        "rules"
+      ],
+      "id": "e202fdf1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "# Module 4: Implementing and Evaluating ML Models\n",
+        "\n",
+        "## Walkthrough #7: Exploring Cross-Validation for Model Evaluation\n",
+        "\n",
+        "### Split data into training and validation sets\n"
+      ],
+      "id": "0d46125d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Features and target\n",
+        "X = telco_churn[['AvgServiceUsageScore', 'tenure', 'MonthlyCharges']]\n",
+        "y = telco_churn['Churn']\n",
+        "\n",
+        "# Scale the features since logistic regression is a linear model\n",
+        "scaler = StandardScaler()\n",
+        "X_scaled = scaler.fit_transform(X)\n",
+        "\n",
+        "# Split into train and test sets (80% train, 20% test)\n",
+        "X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=2025)"
+      ],
+      "id": "bc334fb1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Train a classification model using logistic regression\n"
+      ],
+      "id": "2571db25"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Initialize logistic regression model\n",
+        "logreg = LogisticRegression(max_iter=1000, solver='liblinear')"
+      ],
+      "id": "85055ab0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Apply k-fold cross-validation to evaluate model performance\n"
+      ],
+      "id": "73fe900d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Cross-validate with multiple metrics\n",
+        "cv_results = cross_validate(\n",
+        "    logreg, \n",
+        "    X_train, \n",
+        "    y_train, \n",
+        "    cv=5, \n",
+        "    scoring=['accuracy', 'precision', 'recall', 'f1'],\n",
+        "    return_train_score=True\n",
+        ")"
+      ],
+      "id": "15ddd74e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Compare metrics across folds\n"
+      ],
+      "id": "1284241b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Average performance across folds\n",
+        "for metric in ['test_accuracy', 'test_precision', 'test_recall', 'test_f1']:\n",
+        "    print(f\"{metric.split('_')[1].capitalize()}: {cv_results[metric].mean():.3f} ± {cv_results[metric].std():.3f}\")"
+      ],
+      "id": "fe805afb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "**Interpretation**\n",
+        "\n",
+        "Accuracy → Overall correctness of predictions\n",
+        "\n",
+        "Precision → How many predicted churns were actual churns\n",
+        "\n",
+        "Recall → How many churns were correctly identified\n",
+        "\n",
+        "F1-Score → Balances precision & recall\n",
+        "\n",
+        "Cross-validation ensures that your model generalizes better to unseen data by reducing the risk of overfitting on a single split.\n",
+        "\n",
+        "---\n",
+        "\n",
+        "## Exercise #7: Exploring Cross-Validation for Model Evaluation\n",
+        "\n",
+        "### Split data into training and validation sets\n"
+      ],
+      "id": "84e08cf2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Features and target\n",
+        "X_m = marketing_campaign[['Income', 'TotalSpent', 'TotalChildren']]\n",
+        "y_m = marketing_campaign['Response']\n",
+        "\n",
+        "# Scale features\n",
+        "scaler = StandardScaler()\n",
+        "X_m_scaled = scaler.fit_transform(X_m)\n",
+        "\n",
+        "# Train-test split\n",
+        "X_m_train, X_m_test, y_m_train, y_m_test = train_test_split(\n",
+        "    X_m_scaled, y_m, test_size=0.2, random_state=2025\n",
+        ")"
+      ],
+      "id": "81cbd7df",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Train a classification model using logistic regression\n"
+      ],
+      "id": "bb268a1e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Initialize logistic regression model\n",
+        "logreg_m = LogisticRegression(max_iter=1000, solver='liblinear')"
+      ],
+      "id": "abd85ad5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Apply k-fold cross-validation to evaluate model performance\n"
+      ],
+      "id": "7497f60e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# 5-fold cross-validation with multiple metrics\n",
+        "cv_results_m = cross_validate(\n",
+        "    logreg_m, \n",
+        "    X_m_train, \n",
+        "    y_m_train, \n",
+        "    cv=5, \n",
+        "    scoring=['accuracy', 'precision', 'recall', 'f1'],\n",
+        "    return_train_score=True\n",
+        ")"
+      ],
+      "id": "eba28cf6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Compare metrics across folds\n"
+      ],
+      "id": "e7a3a654"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Average performance across folds\n",
+        "for metric in ['test_accuracy', 'test_precision', 'test_recall', 'test_f1']:\n",
+        "    print(f\"{metric.split('_')[1].capitalize()}: {cv_results_m[metric].mean():.3f} ± {cv_results_m[metric].std():.3f}\")"
+      ],
+      "id": "7e77af12",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "**Interpretation**\n",
+        "\n",
+        "Accuracy → Overall correctness of predictions\n",
+        "\n",
+        "Precision → How many predicted responders were actual responders\n",
+        "\n",
+        "Recall → How many actual responders were correctly identified\n",
+        "\n",
+        "F1-Score → Harmonic mean of precision and recall\n",
+        "\n",
+        "---\n",
+        "\n",
+        "## Walkthrough #8: Hyperparameter Tuning with Grid Search\n",
+        "\n",
+        "### Train a Random Forest classifier\n"
+      ],
+      "id": "5674206c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Features and target\n",
+        "X = telco_churn[['AvgServiceUsageScore', 'tenure', 'MonthlyCharges']]\n",
+        "y = telco_churn['Churn']\n",
+        "\n",
+        "# Initialize Random Forest\n",
+        "rf = RandomForestClassifier(random_state=2025)"
+      ],
+      "id": "47bd94a3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Apply grid search to find optimal hyperparameters\n"
+      ],
+      "id": "922d12f5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Define the hyperparameter grid\n",
+        "param_grid = {\n",
+        "    'n_estimators': [100, 200],\n",
+        "    'max_depth': [4, 8],\n",
+        "    'min_samples_split': [2, 5],\n",
+        "    'min_samples_leaf': [1, 2]\n",
+        "}\n",
+        "\n",
+        "# GridSearchCV setup\n",
+        "grid_search = GridSearchCV(\n",
+        "    estimator=rf,\n",
+        "    param_grid=param_grid,\n",
+        "    cv=5,\n",
+        "    scoring='recall',\n",
+        "    n_jobs=-1,\n",
+        "    verbose=1\n",
+        ")\n",
+        "\n",
+        "# Run grid search\n",
+        "grid_search.fit(X, y)"
+      ],
+      "id": "5ed017de",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Evaluate model improvement using accuracy and recall\n"
+      ],
+      "id": "dfbcbcca"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Predict using the best model\n",
+        "best_rf = grid_search.best_estimator_\n",
+        "y_pred = best_rf.predict(X)\n",
+        "\n",
+        "# Evaluate\n",
+        "print(f\"Best Accuracy: {accuracy_score(y, y_pred):.3f}\")\n",
+        "print(f\"Best Recall: {recall_score(y, y_pred):.3f}\")"
+      ],
+      "id": "97b06d80",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Interpret the best hyperparameter combination\n"
+      ],
+      "id": "b24b7204"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(\"Best Parameters Found:\", grid_search.best_params_)"
+      ],
+      "id": "e3409610",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "## Exercise #8: Hyperparameter Tuning with Grid Search\n",
+        "\n",
+        "### Train a Random Forest classifier\n"
+      ],
+      "id": "7be7592c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Features and target\n",
+        "X_m = marketing_campaign[['Income', 'TotalSpent', 'TotalChildren']]\n",
+        "y_m = marketing_campaign['Response']\n",
+        "\n",
+        "# Initialize Random Forest\n",
+        "rf_m = RandomForestClassifier(random_state=2025)"
+      ],
+      "id": "6e7f449c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Apply grid search to find optimal hyperparameters\n"
+      ],
+      "id": "efe34c40"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Define the hyperparameter grid\n",
+        "param_grid_m = {\n",
+        "    'n_estimators': [100, 200],\n",
+        "    'max_depth': [4, 8],\n",
+        "    'min_samples_split': [2, 5],\n",
+        "    'min_samples_leaf': [1, 2]\n",
+        "}\n",
+        "\n",
+        "# GridSearchCV setup\n",
+        "grid_search_m = GridSearchCV(\n",
+        "    estimator=rf_m,\n",
+        "    param_grid=param_grid_m,\n",
+        "    cv=5,\n",
+        "    scoring='recall',\n",
+        "    n_jobs=-1,\n",
+        "    verbose=1\n",
+        ")\n",
+        "\n",
+        "# Run grid search\n",
+        "grid_search_m.fit(X_m, y_m)"
+      ],
+      "id": "2c955a54",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Evaluate model improvement using accuracy and recall\n"
+      ],
+      "id": "2524f149"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Predict using the best model\n",
+        "best_rf_m = grid_search_m.best_estimator_\n",
+        "y_m_pred = best_rf_m.predict(X_m)\n",
+        "\n",
+        "# Evaluate\n",
+        "print(f\"Best Accuracy: {accuracy_score(y_m, y_m_pred):.3f}\")\n",
+        "print(f\"Best Recall: {recall_score(y_m, y_m_pred):.3f}\")"
+      ],
+      "id": "6af45d91",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Interpret the best hyperparameter combination\n"
+      ],
+      "id": "aca3238c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(\"Best Parameters Found:\", grid_search_m.best_params_)"
+      ],
+      "id": "c660e0df",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

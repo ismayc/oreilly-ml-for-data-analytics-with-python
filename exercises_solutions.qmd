@@ -1,5 +1,5 @@
 ---
-title: 'Walkthroughs and Exercises for *Machine Learning for Data Analytics with Python*'  
+title: 'Walkthroughs and Exercises for Machine Learning for Data Analytics with Python'  
 author: "Dr. Chester Ismay"  
 format:
   html:
