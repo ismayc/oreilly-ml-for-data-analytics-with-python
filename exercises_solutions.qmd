@@ -6,7 +6,9 @@ format:
     theme: flatly
     toc: true
     toc-floating: true 
-engine: knitr  
+engine: knitr 
+execute:
+  warning: false
 ---
 
 ```{python}
@@ -111,11 +113,9 @@ telco_churn = telco_churn_raw.copy()
 
 # Handle missing values
 telco_churn['MonthlyCharges'] = telco_churn['MonthlyCharges']\
-  .fillna(telco_churn['MonthlyCharges']\
-  .median())
+  .fillna(telco_churn['MonthlyCharges'].median())
 telco_churn['AvgServiceUsageScore'] = telco_churn['AvgServiceUsageScore']\
-  .fillna(telco_churn['AvgServiceUsageScore']\
-  .median())
+  .fillna(telco_churn['AvgServiceUsageScore'].median())
 telco_churn.info()
 ```
 
@@ -134,35 +134,30 @@ telco_churn.describe(include='all')
 
 ```{python}
 # Visualize distributions and relationships
-plt.clf()
 sns.violinplot(data=telco_churn, x='Churn', y='tenure', inner='quartile')
 plt.title('Violin Plot of Tenure by Churn')
 plt.show();
 ```
 
 ```{python}
-plt.clf()
 sns.histplot(data=telco_churn, x='AvgServiceUsageScore')
 plt.title('Histogram of Average Service Usage Score')
 plt.show();
 ```
 
 ```{python}
-plt.clf()
 sns.histplot(data=telco_churn, x='MonthlyCharges')
 plt.title('Histogram of Monthly Charges')
 plt.show();
 ```
 
 ```{python}
-plt.clf()
 sns.scatterplot(data=telco_churn, x='AvgServiceUsageScore', y='MonthlyCharges')
 plt.title('Average Service Usage Score vs. Monthly Charges')
 plt.show();
 ```
 
 ```{python}
-plt.clf()
 sns.countplot(data=telco_churn, x='InternetService', hue='Churn')
 plt.title('Churn Rate by Internet Service Type')
 plt.show();
@@ -225,32 +220,25 @@ marketing_campaign.describe(include='all')
 ### Create visualizations to identify key business trends
 
 ```{python}
-plt.close('all')
-plt.clf()
 sns.violinplot(data=marketing_campaign, x='Response', y='Income', inner='quartile')
 plt.title('Violin Plot of Income by Campaign Response')
 plt.show();
 ```
 
 ```{python}
-plt.close('all')
-plt.clf()
 sns.histplot(data=marketing_campaign, x='TotalSpent')
 plt.title('Histogram of Total Spent')
 plt.show();
 ```
 
 ```{python}
-plt.close('all')
-plt.clf()
-sns.scatterplot(data=marketing_campaign, x='Income', y='TotalSpent', hue='Response', alpha=0.7)
+sns.scatterplot(data=marketing_campaign, x='Income', y='TotalSpent', 
+                hue='Response', alpha=0.7)
 plt.title('Income vs. Total Spent by Campaign Response')
 plt.show();
 ```
 
 ```{python}
-plt.close('all')
-plt.clf()
 sns.countplot(data=marketing_campaign, x='Education', hue='Response')
 plt.title('Campaign Response by Education Level')
 #plt.xticks(rotation=30)
@@ -269,6 +257,10 @@ plt.show();
 ```{python}
 X = telco_churn[['AvgServiceUsageScore']]  # predictor
 y = telco_churn['MonthlyCharges']          # target
+
+# Reset index to avoid potential issues later
+X = X.reset_index(drop=True)
+y = y.reset_index(drop=True)
 
 # Best practice when working with linear models
 scaler = StandardScaler()
@@ -312,8 +304,9 @@ print(f"Mean Absolute Error: {mae:.2f}")
 X_m = marketing_campaign[['Income']]  # predictor
 y_m = marketing_campaign['TotalSpent'] # target
 
+# Reset index to avoid potential issues later
+X_m = X_m.reset_index(drop=True)
 y_m = y_m.reset_index(drop=True)
-
 
 # Standardize the predictor
 scaler_m = StandardScaler()
@@ -475,7 +468,6 @@ for k in k_range:
     kmeans.fit(X_scaled)
     inertia.append(kmeans.inertia_)
 
-plt.clf()
 plt.plot(k_range, inertia, marker='o')
 plt.xlabel('Number of clusters (k)')
 plt.ylabel('Inertia')
@@ -510,9 +502,9 @@ telco_churn['Cluster'] = kmeans.fit_predict(X_scaled)
 ### Visualize customer segments using a 2D plot
 
 ```{python}
-plt.clf()
 # Visualize clusters in 2D space (using tenure and MonthlyCharges)
-sns.scatterplot(data=telco_churn,  x='tenure', y='AvgServiceUsageScore', hue='Cluster', palette='viridis')
+sns.scatterplot(data=telco_churn,  x='tenure', y='AvgServiceUsageScore', 
+                hue='Cluster', palette='viridis')
 plt.title('Customer Segments via K-Means')
 plt.show();
 ```
@@ -544,7 +536,6 @@ for k in k_range:
     kmeans.fit(X_cluster_scaled)
     inertia.append(kmeans.inertia_)
 
-plt.clf()
 plt.plot(k_range, inertia, marker='o')
 plt.xlabel('Number of clusters (k)')
 plt.ylabel('Inertia')
@@ -579,8 +570,8 @@ marketing_campaign['Cluster'] = kmeans_final.fit_predict(X_cluster_scaled)
 
 ```{python}
 import matplotlib.ticker as ticker
-plt.clf()
-sns.scatterplot(data=marketing_campaign, x='TotalChildren', y='TotalSpent', hue='Cluster', palette='viridis')
+sns.scatterplot(data=marketing_campaign, x='TotalChildren', y='TotalSpent', 
+                hue='Cluster', palette='viridis')
 plt.title('Customer Segments via K-Means Clustering')
 
 # Set x-axis to integer ticks only
@@ -686,7 +677,9 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
 # Split into train and test sets (80% train, 20% test)
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=2025)
+X_train, X_test, y_train, y_test = train_test_split(
+  X_scaled, y, test_size=0.2, random_state=2025
+)
 ```
 
 ### Train a classification model using logistic regression
@@ -713,9 +706,13 @@ cv_results = cross_validate(
 ### Compare metrics across folds
 
 ```{python}
+def show_metric(name, results):
+    scores = results[f"test_{name}"]
+    print(f"{name.capitalize()}: {scores.mean():.3f} ± {scores.std():.3f}")
+
 # Average performance across folds
-for metric in ['test_accuracy', 'test_precision', 'test_recall', 'test_f1']:
-    print(f"{metric.split('_')[1].capitalize()}: {cv_results[metric].mean():.3f} ± {cv_results[metric].std():.3f}")
+for metric in ['accuracy', 'precision', 'recall', 'f1']:
+    show_metric(metric, cv_results)
 
 ```
 
@@ -778,8 +775,8 @@ cv_results_m = cross_validate(
 
 ```{python}
 # Average performance across folds
-for metric in ['test_accuracy', 'test_precision', 'test_recall', 'test_f1']:
-    print(f"{metric.split('_')[1].capitalize()}: {cv_results_m[metric].mean():.3f} ± {cv_results_m[metric].std():.3f}")
+for m in ["accuracy", "precision", "recall", "f1"]:
+    show_metric(m, cv_results_m)
 ```
 
 **Interpretation**
