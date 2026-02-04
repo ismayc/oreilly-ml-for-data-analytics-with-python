@@ -1,17 +1,15 @@
 ---
-title: 'Walkthroughs and Exercises for Machine Learning for Data Analytics with Python'  
+title: 'Solutions with Notes for Walkthroughs and Exercises for *Machine Learning for Data Analytics with Python*'  
 author: "Dr. Chester Ismay"  
 format:
   html:
     theme: flatly
     toc: true
     toc-floating: true 
-engine: knitr 
+engine: knitr  
 execute:
   warning: false
 ---
-
-<!-- https://ismay-oreilly-ml.netlify.app/exercises_solutions.html -->
 
 ```{python}
 import pandas as pd
@@ -86,163 +84,156 @@ marketing_campaign_raw = pd.read_csv('marketing_campaign.csv')
 
 # Module 1: Data Understanding and Preprocessing for Machine Learning
 
-
 ## Walkthrough #2: Exploring and Preprocessing Data with Pandas & Seaborn
 
 ### Inspect a dataset using Pandas
 
+> 🕵️‍♂️ *"Let's start by getting a feel for our data. `.info()` gives us the full structure: how many rows, columns, and the types of each one."*
 
 ```{python}
-# Inspect data structure
 telco_churn_raw
 telco_churn_raw.info()
 ```
 
-```{python}
-# Check for missing values
-telco_churn_raw.isnull().sum()
+> 🔎 *"Now let's do a quality control check. Missing values are like potholes in our data road."*
 
-# Check for duplicate rows
+```{python}
+telco_churn_raw.isnull().sum()
 telco_churn_raw.duplicated().sum()
 ```
 
 ### Handle missing values and clean data
 
-```{python}
-# Make a copy of the data to fix and clean
-telco_churn = telco_churn_raw.copy()
+> 🧼 *"Always make a copy before modifying. Think of it like 'Save As' for data."*
 
-# Handle missing values
-telco_churn['MonthlyCharges'] = telco_churn['MonthlyCharges']\
-  .fillna(telco_churn['MonthlyCharges'].median())
-telco_churn['AvgServiceUsageScore'] = telco_churn['AvgServiceUsageScore']\
-  .fillna(telco_churn['AvgServiceUsageScore'].median())
+```{python}
+telco_churn = telco_churn_raw.copy()
+```
+
+> 💡 *"Let's patch those potholes using the median. It's less sensitive to extreme outliers than the mean."*
+
+```{python}
+telco_churn['MonthlyCharges'] = telco_churn['MonthlyCharges'].\
+    fillna(telco_churn['MonthlyCharges'].median())
+telco_churn['AvgServiceUsageScore'] = telco_churn['AvgServiceUsageScore'].\
+    fillna(telco_churn['AvgServiceUsageScore'].median())
 telco_churn.info()
 ```
 
 ```{python}
-# Standardize column formats (e.g., convert Yes/No to binary for a few columns)
 telco_churn['SeniorCitizen'] = telco_churn['SeniorCitizen'].astype('category')
 telco_churn['Churn'] = telco_churn['Churn'].map({'Yes': 1, 'No': 0})
 ```
 
 ```{python}
-# Summarize statistics
 telco_churn.describe(include='all')
 ```
 
 ### Create visualizations to identify key business trends
 
 ```{python}
-# Visualize distributions and relationships
+plt.clf()
 sns.violinplot(data=telco_churn, x='Churn', y='tenure', inner='quartile')
 plt.title('Violin Plot of Tenure by Churn')
 plt.show();
 ```
 
 ```{python}
+plt.clf()
 sns.histplot(data=telco_churn, x='AvgServiceUsageScore')
 plt.title('Histogram of Average Service Usage Score')
 plt.show();
 ```
 
 ```{python}
+plt.clf()
 sns.histplot(data=telco_churn, x='MonthlyCharges')
 plt.title('Histogram of Monthly Charges')
 plt.show();
 ```
 
 ```{python}
+plt.clf()
 sns.scatterplot(data=telco_churn, x='AvgServiceUsageScore', y='MonthlyCharges')
 plt.title('Average Service Usage Score vs. Monthly Charges')
 plt.show();
 ```
 
 ```{python}
+plt.clf()
 sns.countplot(data=telco_churn, x='InternetService', hue='Churn')
 plt.title('Churn Rate by Internet Service Type')
 plt.show();
 ```
 
-
 ---
-
-
 
 ## Exercise #2: Exploring and Preprocessing Data with Pandas & Seaborn
 
 ### Inspect a dataset using Pandas
 
 ```{python}
-# Inspect data structure
 marketing_campaign_raw
 marketing_campaign_raw.info()
 ```
 
 ```{python}
-# Check for missing values
 marketing_campaign_raw.isnull().sum()
-
-# Check for duplicate rows
 marketing_campaign_raw.duplicated().sum()
 ```
 
 ### Handle missing values and clean data
 
 ```{python}
-# Create a clean working copy
 marketing_campaign = marketing_campaign_raw.copy()
+marketing_campaign['Income'] = marketing_campaign['Income'].fillna(marketing_campaign['Income'].median())
+```
 
-# Handle missing values of Income
-marketing_campaign['Income'] = marketing_campaign['Income']\
-  .fillna(
-    marketing_campaign['Income'].median()
-  )
-
-# Add new features
+```{python}
 marketing_campaign["TotalChildren"] = marketing_campaign["Kidhome"] + marketing_campaign["Teenhome"]
 marketing_campaign["TotalSpent"] = (
     marketing_campaign["MntWines"] + marketing_campaign["MntFruits"] +
     marketing_campaign["MntMeatProducts"] + marketing_campaign["MntFishProducts"] +
     marketing_campaign["MntSweetProducts"] + marketing_campaign["MntGoldProds"]
 )
+```
 
-# Convert to datetime
+```{python}
 marketing_campaign["Dt_Customer"] = pd.to_datetime(marketing_campaign["Dt_Customer"], errors='coerce')
 marketing_campaign.info()
 ```
 
 ```{python}
-# Summarize structure
 marketing_campaign.describe(include='all')
 ```
-
 
 ### Create visualizations to identify key business trends
 
 ```{python}
+plt.clf()
 sns.violinplot(data=marketing_campaign, x='Response', y='Income', inner='quartile')
 plt.title('Violin Plot of Income by Campaign Response')
 plt.show();
 ```
 
 ```{python}
+plt.clf()
 sns.histplot(data=marketing_campaign, x='TotalSpent')
 plt.title('Histogram of Total Spent')
 plt.show();
 ```
 
 ```{python}
-sns.scatterplot(data=marketing_campaign, x='Income', y='TotalSpent', 
-                hue='Response', alpha=0.7)
+plt.clf()
+sns.scatterplot(data=marketing_campaign, x='Income', y='TotalSpent', hue='Response', alpha=0.7)
 plt.title('Income vs. Total Spent by Campaign Response')
 plt.show();
 ```
 
 ```{python}
+plt.clf()
 sns.countplot(data=marketing_campaign, x='Education', hue='Response')
 plt.title('Campaign Response by Education Level')
-#plt.xticks(rotation=30)
 plt.show();
 ```
 
@@ -252,8 +243,23 @@ plt.show();
 2. Based on your scatter plot, do higher-income customers tend to spend more? Is this relationship strong or weak?
 3. Which education level shows the highest response rate? What marketing implications might this have?
 
----
+> 💡 **Sample Answers:**
+>
+> 1. Non-responders have a long tail on the high end, indicating more variability in income compared to responders.
+>
+> 2. Not necessarily. There is a positive trend for both responders and non-responders but it is hard to detect trends because of the outliers in income.
+>
+> 3. Estimated Response Rates:
 
+> PhD: ~100 responders out of ~485 total ≈ 21%
+> Graduation: ~150 responders out of ~1,125 total ≈ 13%
+> Master: ~55 responders out of ~370 total ≈ 15%
+> 2n Cycle: ~25 responders out of ~205 total ≈ 12%
+> Basic: Nearly 0 responders out of ~55 total ≈ ~0%
+
+> PhD holders show the highest response rate at roughly 21%. PhD holders are the most receptive audience. If marketing budgets are limited, focusing resources on this segment would likely yield the best return on investment. The near-zero response rate for Basic suggests either a mismatch between the offering and this demographic, or possibly that the sample size is too small to draw conclusions. Before abandoning this segment entirely, it would be worth investigating why.
+
+---
 
 # Module 2: Supervised Learning for Business Decisions
 
@@ -262,20 +268,13 @@ plt.show();
 ### Split the data into training and validation sets
 
 ```{python}
-X = telco_churn[['AvgServiceUsageScore']]  # predictor
-y = telco_churn['MonthlyCharges']          # target
+X = telco_churn[['AvgServiceUsageScore']]
+y = telco_churn['MonthlyCharges']
 
-# Reset index to avoid potential issues later
-X = X.reset_index(drop=True)
-y = y.reset_index(drop=True)
-
-# Best practice when working with linear models
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-X_train, X_val, y_train, y_val = train_test_split(
-  X_scaled, y, test_size=0.2, random_state=2025
-)
+X_train, X_val, y_train, y_val = train_test_split(X_scaled, y, test_size=0.2, random_state=2025)
 ```
 
 ### Train a linear regression model
@@ -307,35 +306,26 @@ print(f"Mean Absolute Error: {mae:.2f}")
 ### Split the data into training and validation sets
 
 ```{python}
-# Predictor and target
-X_m = marketing_campaign[['Income']]  # predictor
-y_m = marketing_campaign['TotalSpent'] # target
+X_m = marketing_campaign[['Income']]
+y_m = marketing_campaign['TotalSpent']
 
-# Reset index to avoid potential issues later
-X_m = X_m.reset_index(drop=True)
 y_m = y_m.reset_index(drop=True)
 
-# Standardize the predictor
 scaler_m = StandardScaler()
 X_m_scaled = scaler_m.fit_transform(X_m)
 
-# Train-test split
-X_m_train, X_m_val, y_m_train, y_m_val = train_test_split(
-    X_m_scaled, y_m, test_size=0.2, random_state=2025
-)
+X_m_train, X_m_val, y_m_train, y_m_val = train_test_split(X_m_scaled, y_m, test_size=0.2, random_state=2025)
 ```
-
 
 ### Train a linear regression model
 
-```{python reg_marketing}
+```{python}
 lr_m = LinearRegression()
 lr_m.fit(X_m_train, y_m_train)
 
 print(f"Intercept: {lr_m.intercept_:.2f}")
 print(f"Coefficient (Income_scaled → TotalSpent): {lr_m.coef_[0]:.2f}")
 ```
-
 
 ### Evaluate model performance on the validation set
 
@@ -355,6 +345,31 @@ print(f"Mean Absolute Error: {mae_m:.2f}")
 2. If MAE is $200, what does that mean in practical terms for predicting customer spending?
 3. Would you trust this model for making budget decisions? Why or why not?
 
+> 💡 **Sample Answers:**
+>
+> 1. The Exercise #3 regression model (marketing campaign) has an R² of 0.48, while the Walkthrough #3 telco churn model has an R² of 0.80. So the marketing model's R-squared is substantially lower.
+Possible explanations for this difference:
+
+> Weaker linear relationship: Income and TotalSpent in the marketing data may not have as strong or as linear a relationship as AvgServiceUsageScore and MonthlyCharges in the telco data.
+>
+> Different domains: Telecom service usage is more directly tied to charges (usage-based pricing), whereas retail spending behavior is more discretionary and varied.
+
+> 2. On average, the model's predictions of customer spending (TotalSpent) are off by about $200 in either direction. Given that the mean TotalSpent is approximately $606 and the median is $396, an error of $200 represents a significant portion of a typical customer's spending. For practical purposes, predictions could easily be 30-50% off for many customers, making precise individual-level forecasting challenging.
+>
+> 3. I would be cautious about using this model for budget decisions. Here's why:
+
+> R² of 0.48 means the model only explains about 48% of the variance in customer spending. More than half of the variation remains unexplained.
+> MAE of ~$324 is quite large relative to typical spending amounts, suggesting predictions could be significantly off for individual customers.
+> Single predictor limitation: Using only Income ignores other important factors like purchase history, demographics, or engagement metrics that likely influence spending.
+
+> However, the model might still be useful for:
+
+> Rough directional guidance or segmentation (higher income generally means higher spending)
+> Identifying broad trends rather than precise individual predictions
+> A baseline to improve upon by adding more features
+
+> For high-stakes budget decisions, I would recommend incorporating additional predictors, testing more sophisticated models, and validating against held-out data before relying on these predictions.
+
 ---
 
 ## Walkthrough #4: Implement a Classification Model for Customer Churn
@@ -362,22 +377,16 @@ print(f"Mean Absolute Error: {mae_m:.2f}")
 ### Split the data into training and validation sets
 
 ```{python}
-# Select relevant features
 features = ['tenure', 'SeniorCitizen', 'ServiceCount', 'InternetScore', 'AvgServiceUsageScore']
 X = telco_churn[features]
 y = telco_churn['Churn']
 
-# Scaling is not as important for tree-based models since they are not sensitive to
-# one feature having a larger scale than another
-
-# Train-test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=2025)
 ```
 
 ### Train a Random Forest classification model
 
 ```{python}
-# Train Random Forest classifier
 clf = RandomForestClassifier(n_estimators=100, random_state=2025)
 clf.fit(X_train, y_train)
 ```
@@ -392,7 +401,6 @@ print(f"Precision: {precision_score(y_test, y_pred):.2f}")
 print(f"Recall: {recall_score(y_test, y_pred):.2f}")
 
 cm = confusion_matrix(y_test, y_pred)
-
 labels = ['No Churn', 'Churn']
 cm_telco_churn = pd.DataFrame(cm, index=labels, columns=labels)
 
@@ -410,6 +418,7 @@ print(cm_telco_churn)
 | Cost of false negatives is high | Recall | Catch all actual positives |
 | Need balance | F1-Score | Harmonic mean of precision/recall |
 
+
 ---
 
 ## Exercise #4: Implement a Classification Model for Customer Churn
@@ -417,26 +426,21 @@ print(cm_telco_churn)
 ### Split the data into training and validation sets
 
 ```{python}
-# Select relevant features
 features_m = ['Income', 'TotalSpent', 'TotalChildren']
 X_m_class = marketing_campaign[features_m]
 y_m_class = marketing_campaign['Response']
 
-# Split into training and validation sets
 X_m_train_class, X_m_val_class, y_m_train_class, y_m_val_class = train_test_split(
     X_m_class, y_m_class, test_size=0.2, random_state=2025
 )
 ```
 
-
 ### Train a Random Forest classification model
 
 ```{python}
-# Train Random Forest classifier
 clf_m = RandomForestClassifier(n_estimators=100, random_state=2025)
 clf_m.fit(X_m_train_class, y_m_train_class)
 ```
-
 
 ### Evaluate model performance on the validation set
 
@@ -448,8 +452,7 @@ print(f"Precision: {precision_score(y_m_val_class, y_m_pred_class):.2f}")
 print(f"Recall: {recall_score(y_m_val_class, y_m_pred_class):.2f}")
 
 labels = ['No Response', 'Response']
-cm_marketing_response = pd.DataFrame(confusion_matrix(y_m_val_class, y_m_pred_class), 
-                                     index=labels, columns=labels)
+cm_marketing_response = pd.DataFrame(confusion_matrix(y_m_val_class, y_m_pred_class), index=labels, columns=labels)
 
 print("\nConfusion Matrix (formatted):")
 print(cm_marketing_response)
@@ -461,6 +464,41 @@ print(cm_marketing_response)
 2. Looking at your confusion matrix, is the model better at identifying responders or non-responders?
 3. If running a marketing campaign costs $50 per contact, which metric matters more: precision or recall?
 
+> 💡 **Sample Answers:**
+>
+> 1. Precision is slightly higher than recall, though both are quite low.
+What this implies:
+
+> Low recall (20%) means the model is missing 80% of actual responders. It's very conservative about predicting someone will respond.
+> Low precision (27%) means that when the model does predict a response, it's only correct about 27% of the time.
+> The model has a strong tendency to predict "No Response" for most customers. It's essentially playing it safe by defaulting to the majority class, which results in missing most of the actual responders.
+>
+> 2. The model is much better at identifying non-responders.
+Breaking this down:
+
+> Non-responders correctly identified: 364 out of 394 (92%)
+> Responders correctly identified: 11 out of 54 (20%)
+
+> This is a classic pattern with imbalanced datasets. The marketing campaign data has far more non-responders than responders (about 85% vs 15%), so the model learns to predict the majority class most of the time. It achieves high overall accuracy (84%) by being good at the easy task (identifying non-responders) while largely failing at the harder, more valuable task (identifying responders).
+>
+> 3. It depends on the value of a successful conversion, but generally precision matters more in this scenario.
+> Here's the reasoning:
+> If precision matters more (cost-focused scenario):
+
+> Each contact costs $50, so you want to minimize wasted spending on people who won't respond.
+> Higher precision means a larger proportion of the people you contact will actually respond.
+With current precision of 27%, you're spending $50 on roughly 4 people for every 1 actual responder. That's about $200 cost per successful contact.
+Improving precision reduces your cost per acquisition.
+
+> When recall would matter more:
+
+> If the lifetime value of a customer is extremely high (say, $5,000+), missing potential responders becomes very costly.
+If you have a limited-time offer or a one-shot opportunity where you can't reach out again.
+If market share or growth is more important than campaign efficiency.
+
+> Practical recommendation:
+Calculate the break-even point. If a successful response generates more than $185 in value (since $50 / 0.27 precision ≈ $185 cost per true positive), the campaign could still be profitable despite the low precision. But improving precision would make the campaign more efficient and reduce the risk of overspending on unlikely responders.
+
 ---
 
 # Module 3: Unsupervised Learning and Pattern Discovery in Business
@@ -470,14 +508,10 @@ print(cm_marketing_response)
 ### Apply K-Means clustering to segment customers
 
 ```{python}
-# Select relevant features
-telco_churn['ContractType'] = telco_churn['Contract'].map({
-    'Month-to-month': 0, 'One year': 1, 'Two year': 2
-})
+telco_churn['ContractType'] = telco_churn['Contract'].map({'Month-to-month': 0, 'One year': 1, 'Two year': 2})
 features = ['tenure', 'ServiceCount', 'AvgServiceUsageScore', 'MonthlyCharges', 'InternetScore', 'ContractType']
 X = telco_churn[features]
 
-# Standardize features
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 ```
@@ -493,6 +527,7 @@ for k in k_range:
     kmeans.fit(X_scaled)
     inertia.append(kmeans.inertia_)
 
+plt.clf()
 plt.plot(k_range, inertia, marker='o')
 plt.xlabel('Number of clusters (k)')
 plt.ylabel('Inertia')
@@ -500,10 +535,9 @@ plt.title('Elbow Method for Optimal k')
 plt.show()
 ```
 
-### Verify using the silhouette score (optional but recommended)
+### Verify using the silhouette score
 
-```{python, warnings=FALSE}
-# Evaluate silhouette scores for k=3 to k=6
+```{python}
 silhouette_scores = {}
 
 for k in range(3, 7):
@@ -515,21 +549,19 @@ for k in range(3, 7):
 silhouette_scores
 ```
 
-### Fit K-means and assign cluster labels to each customer
+### Fit K-means and assign cluster labels
 
 ```{python}
-# Let's assume the elbow suggested k=3
 optimal_k = 3
 kmeans = KMeans(n_clusters=optimal_k, random_state=2025)
 telco_churn['Cluster'] = kmeans.fit_predict(X_scaled)
 ```
 
-### Visualize customer segments using a 2D plot
+### Visualize customer segments
 
 ```{python}
-# Visualize clusters in 2D space (using tenure and MonthlyCharges)
-sns.scatterplot(data=telco_churn,  x='tenure', y='AvgServiceUsageScore', 
-                hue='Cluster', palette='viridis')
+plt.clf()
+sns.scatterplot(data=telco_churn, x='tenure', y='AvgServiceUsageScore', hue='Cluster', palette='viridis')
 plt.title('Customer Segments via K-Means')
 plt.show();
 ```
@@ -541,16 +573,14 @@ plt.show();
 ### Apply K-Means clustering to segment customers
 
 ```{python}
-# Select relevant features
 features_cluster = ['Income', 'TotalSpent', 'TotalChildren']
 X_cluster = marketing_campaign[features_cluster]
 
-# Standardize features
 scaler = StandardScaler()
 X_cluster_scaled = scaler.fit_transform(X_cluster)
 ```
 
-### Determine the optimal number of clusters using the Elbow Method
+### Determine the optimal number of clusters
 
 ```{python}
 inertia = []
@@ -561,6 +591,7 @@ for k in k_range:
     kmeans.fit(X_cluster_scaled)
     inertia.append(kmeans.inertia_)
 
+plt.clf()
 plt.plot(k_range, inertia, marker='o')
 plt.xlabel('Number of clusters (k)')
 plt.ylabel('Inertia')
@@ -568,7 +599,7 @@ plt.title('Elbow Method for Optimal k')
 plt.show();
 ```
 
-### Verify using the silhouette score (optional but recommended)
+### Verify using the silhouette score
 
 ```{python}
 silhouette_scores = {}
@@ -582,26 +613,22 @@ for k in range(3, 7):
 silhouette_scores
 ```
 
-### Fit K-means and assign cluster labels to each customer
+### Fit K-means and assign cluster labels
 
 ```{python}
-# Assume optimal k is 5 (can be adjusted based on elbow or silhouette)
 optimal_k = 5
 kmeans_final = KMeans(n_clusters=optimal_k, random_state=2025)
 marketing_campaign['Cluster'] = kmeans_final.fit_predict(X_cluster_scaled)
 ```
 
-### Visualize customer segments using a 2D plot
+### Visualize customer segments
 
 ```{python}
 import matplotlib.ticker as ticker
-sns.scatterplot(data=marketing_campaign, x='TotalChildren', y='TotalSpent', 
-                hue='Cluster', palette='viridis')
+plt.clf()
+sns.scatterplot(data=marketing_campaign, x='TotalChildren', y='TotalSpent', hue='Cluster', palette='viridis')
 plt.title('Customer Segments via K-Means Clustering')
-
-# Set x-axis to integer ticks only
 plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(1))
-
 plt.show();
 ```
 
@@ -609,34 +636,43 @@ plt.show();
 
 1. How did you decide on the optimal k? Did the elbow method and silhouette scores agree?
 2. Looking at your 2D visualization, do the clusters seem well-separated or do they overlap?
-3. Can you describe what "type" of customer each cluster might represent based on their TotalChildren and TotalSpent values?
+
+> 💡 **Sample Answers:**
+>
+> 1. The silhouette scores for k=3 through k=6 were:
+
+> k=3: 0.435
+> k=4: 0.438
+> k=5: 0.443
+> k=6: 0.429
+
+> The elbow plot shows a gradual bend around k=4 or k=5, without a sharp "elbow." The silhouette scores peak at k=5 (0.443), which is what was chosen.
+> They roughly agree, though neither gives a definitive answer. The elbow is subtle, and silhouette scores are very close for k=3 through k=5. The choice of k=5 is reasonable but somewhat subjective.
+
+> 2. The boundaries between clusters aren't crisp, suggesting customers near cluster edges share characteristics with neighboring segments
+>
+> 3. You might see: high-income/high-spend families, budget-conscious parents, childless high-spenders, low-engagement customers, etc.
 
 ---
 
 ## Walkthrough #6: Market Basket Analysis with Apriori Algorithm
 
-### Prepare transactional data (services as items)
+### Prepare transactional data
 
 ```{python}
-# Selecting binary service columns to act like "products"
-service_cols = [
-    'OnlineSecurity', 'OnlineBackup', 'DeviceProtection',
-    'TechSupport', 'StreamingTV', 'StreamingMovies', 'PhoneService'
-]
-
-# Convert service columns to boolean (preference of apriori() function)
+service_cols = ['OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'PhoneService']
 telco_churn_basket = telco_churn[service_cols].astype(bool)
 telco_churn_basket
 ```
 
-### Apply the Apriori algorithm to identify frequent itemsets
+### Apply the Apriori algorithm
 
 ```{python}
 frequent_itemsets = apriori(telco_churn_basket, min_support=0.2, use_colnames=True)
 frequent_itemsets
 ```
 
-### Generate association rules from frequent itemsets
+### Generate association rules
 
 ```{python}
 rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.6)
@@ -648,39 +684,24 @@ rules
 
 ## Exercise #6: Market Basket Analysis with Apriori Algorithm
 
-### Prepare transactional data (product categories as items)
+### Prepare transactional data
 
 ```{python}
-# Select binary columns representing product purchases
-product_cols = [
-    'MntWines', 'MntFruits', 'MntMeatProducts',
-    'MntFishProducts', 'MntSweetProducts', 'MntGoldProds'
-]
-
-# Convert product columns to binary: 1 if any amount was spent, else 0
+product_cols = ['MntWines', 'MntFruits', 'MntMeatProducts', 'MntFishProducts', 'MntSweetProducts', 'MntGoldProds']
 basket = marketing_campaign[product_cols].applymap(lambda x: 1 if x > 0 else 0)
-
-# Rename columns for cleaner output
-basket.columns = [
-    'Wines', 'Fruits', 'Meat', 'Fish', 'Sweets', 'Gold'
-]
-
+basket.columns = ['Wines', 'Fruits', 'Meat', 'Fish', 'Sweets', 'Gold']
 basket = basket.astype(bool)
 basket.head()
 ```
 
----
-
-### Apply the Apriori algorithm to identify frequent itemsets
+### Apply the Apriori algorithm
 
 ```{python}
 frequent_itemsets = apriori(basket, min_support=0.2, use_colnames=True)
 frequent_itemsets.sort_values(by='support', ascending=False)
 ```
 
----
-
-### Generate association rules from frequent itemsets
+### Generate association rules
 
 ```{python}
 rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.6)
@@ -692,11 +713,17 @@ rules
 
 ### Interpretation Questions
 
-1. Which product category appears in the most frequent itemsets? What does this suggest about purchasing patterns?
-2. Find a rule with high confidence but low lift. Why might this rule be less useful despite high confidence?
-3. Identify one actionable insight: what product bundle would you recommend based on these rules?
+1. Which product category appears in the most frequent itemsets?
+2. Find a rule with high confidence but low lift. Why might this rule be less useful?
+3. Identify one actionable insight: what product bundle would you recommend?
 
----
+> 💡 **Sample Answers:**
+>
+> 1. Meat and Wines appear most frequently. These are core products that almost everyone buys.
+>
+> 2. Rules with lift ~1 are no better than random chance, even if confidence is high. The consequent is just commonly purchased anyway.
+>
+> 3. Bundle Fruits + Fish together (they have lift > 1), or create a premium box with Sweets, Gold, and Fish for customers who already buy Wines and Meat.
 
 # Module 4: Implementing and Evaluating ML Models
 
@@ -704,32 +731,29 @@ rules
 
 ### Split data into training and validation sets
 
+> 🧪 *"We're back to modeling churn, but this time with an extra layer of rigor. First, we prep our feature set for a logistic regression model, which means scaling is a must."*
+
 ```{python}
-# Features and target
 X = telco_churn[['AvgServiceUsageScore', 'tenure', 'MonthlyCharges']]
 y = telco_churn['Churn']
 
-# Scale the features since logistic regression is a linear model
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Split into train and test sets (80% train, 20% test)
-X_train, X_test, y_train, y_test = train_test_split(
-  X_scaled, y, test_size=0.2, random_state=2025
-)
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=2025)
 ```
 
 ### Train a classification model using logistic regression
 
 ```{python}
-# Initialize logistic regression model
 logreg = LogisticRegression(max_iter=1000, solver='liblinear')
 ```
 
-### Apply k-fold cross-validation to evaluate model performance
+### Apply k-fold cross-validation
+
+> 🔁 *"Here's the magic: cross-validation. Instead of one train/test split, we split the training set into 5 folds and rotate through them. This helps us get a much more stable estimate of how the model performs."*
 
 ```{python}
-# Cross-validate with multiple metrics
 cv_results = cross_validate(
     logreg, 
     X_train, 
@@ -747,21 +771,16 @@ def show_metric(name, results):
     scores = results[f"test_{name}"]
     print(f"{name.capitalize()}: {scores.mean():.3f} ± {scores.std():.3f}")
 
-# Average performance across folds
 for metric in ['accuracy', 'precision', 'recall', 'f1']:
     show_metric(metric, cv_results)
-
 ```
 
 **Interpretation**
 
-Accuracy → Overall correctness of predictions
-
-Precision → How many predicted churns were actual churns
-
-Recall → How many churns were correctly identified
-
-F1-Score → Balances precision & recall
+- Accuracy → Overall correctness of predictions
+- Precision → How many predicted churns were actual churns
+- Recall → How many churns were correctly identified
+- F1-Score → Balances precision & recall
 
 Cross-validation ensures that your model generalizes better to unseen data by reducing the risk of overfitting on a single split.
 
@@ -772,31 +791,24 @@ Cross-validation ensures that your model generalizes better to unseen data by re
 ### Split data into training and validation sets
 
 ```{python}
-# Features and target
 X_m = marketing_campaign[['Income', 'TotalSpent', 'TotalChildren']]
 y_m = marketing_campaign['Response']
 
-# Scale features
 scaler = StandardScaler()
 X_m_scaled = scaler.fit_transform(X_m)
 
-# Train-test split
-X_m_train, X_m_test, y_m_train, y_m_test = train_test_split(
-    X_m_scaled, y_m, test_size=0.2, random_state=2025
-)
+X_m_train, X_m_test, y_m_train, y_m_test = train_test_split(X_m_scaled, y_m, test_size=0.2, random_state=2025)
 ```
 
 ### Train a classification model using logistic regression
 
 ```{python}
-# Initialize logistic regression model
 logreg_m = LogisticRegression(max_iter=1000, solver='liblinear')
 ```
 
-### Apply k-fold cross-validation to evaluate model performance
+### Apply k-fold cross-validation
 
 ```{python}
-# 5-fold cross-validation with multiple metrics
 cv_results_m = cross_validate(
     logreg_m, 
     X_m_train, 
@@ -807,30 +819,35 @@ cv_results_m = cross_validate(
 )
 ```
 
-
 ### Compare metrics across folds
 
 ```{python}
-# Average performance across folds
 for m in ["accuracy", "precision", "recall", "f1"]:
     show_metric(m, cv_results_m)
 ```
 
 **Interpretation**
 
-Accuracy → Overall correctness of predictions
+- Accuracy → Overall correctness of predictions
+- Precision → How many predicted responders were actual responders
+- Recall → How many actual responders were correctly identified
+- F1-Score → Harmonic mean of precision and recall
 
-Precision → How many predicted responders were actual responders
-
-Recall → How many actual responders were correctly identified
-
-F1-Score → Harmonic mean of precision and recall
-
+<!--
 ### Interpretation Questions
 
 1. How consistent are your metrics across folds? (Look at the ± values)
 2. Which metric shows the most variability? What might cause this?
 3. Compare your cross-validation results to the single train-test split in Exercise #4. Are they similar?
+
+> 💡 **Sample Answers:**
+>
+> 1. Accuracy is very consistent (small ±). Recall and F1 show more variability due to class imbalance.
+>
+> 2. Recall typically shows the most variability because it depends heavily on correctly identifying the minority class (responders), which varies across folds.
+>
+> 3. Cross-validation results should be similar but provide confidence intervals. If the single split was lucky/unlucky, CV gives a more honest estimate.
+-->
 
 ---
 
@@ -838,19 +855,20 @@ F1-Score → Harmonic mean of precision and recall
 
 ### Train a Random Forest classifier
 
+> 🌲 *"Let's build on what we've learned with Random Forests and now **optimize** them. We'll use GridSearchCV to find the best hyperparameters."*
+
 ```{python}
-# Features and target
 X = telco_churn[['AvgServiceUsageScore', 'tenure', 'MonthlyCharges']]
 y = telco_churn['Churn']
 
-# Initialize Random Forest
 rf = RandomForestClassifier(random_state=2025)
 ```
 
 ### Apply grid search to find optimal hyperparameters
 
-```{python gridsearch}
-# Define the hyperparameter grid
+> 🧮 *"Grid Search systematically tries every combination of parameters we define in `param_grid`. We're scoring using **recall** because in churn, catching as many actual churners as possible can be more valuable than just overall accuracy."*
+
+```{python}
 param_grid = {
     'n_estimators': [100, 200],
     'max_depth': [4, 8],
@@ -858,7 +876,6 @@ param_grid = {
     'min_samples_leaf': [1, 2]
 }
 
-# GridSearchCV setup
 grid_search = GridSearchCV(
     estimator=rf,
     param_grid=param_grid,
@@ -868,18 +885,15 @@ grid_search = GridSearchCV(
     verbose=1
 )
 
-# Run grid search
 grid_search.fit(X, y)
 ```
 
-### Evaluate model improvement using accuracy and recall
+### Evaluate model improvement
 
 ```{python}
-# Predict using the best model
 best_rf = grid_search.best_estimator_
 y_pred = best_rf.predict(X)
 
-# Evaluate
 print(f"Best Accuracy: {accuracy_score(y, y_pred):.3f}")
 print(f"Best Recall: {recall_score(y, y_pred):.3f}")
 ```
@@ -897,19 +911,15 @@ print("Best Parameters Found:", grid_search.best_params_)
 ### Train a Random Forest classifier
 
 ```{python}
-# Features and target
 X_m = marketing_campaign[['Income', 'TotalSpent', 'TotalChildren']]
 y_m = marketing_campaign['Response']
 
-# Initialize Random Forest
 rf_m = RandomForestClassifier(random_state=2025)
 ```
-
 
 ### Apply grid search to find optimal hyperparameters
 
 ```{python}
-# Define the hyperparameter grid
 param_grid_m = {
     'n_estimators': [100, 200],
     'max_depth': [4, 8],
@@ -917,7 +927,6 @@ param_grid_m = {
     'min_samples_leaf': [1, 2]
 }
 
-# GridSearchCV setup
 grid_search_m = GridSearchCV(
     estimator=rf_m,
     param_grid=param_grid_m,
@@ -927,19 +936,15 @@ grid_search_m = GridSearchCV(
     verbose=1
 )
 
-# Run grid search
 grid_search_m.fit(X_m, y_m)
 ```
 
-
-### Evaluate model improvement using accuracy and recall
+### Evaluate model improvement
 
 ```{python}
-# Predict using the best model
 best_rf_m = grid_search_m.best_estimator_
 y_m_pred = best_rf_m.predict(X_m)
 
-# Evaluate
 print(f"Best Accuracy: {accuracy_score(y_m, y_m_pred):.3f}")
 print(f"Best Recall: {recall_score(y_m, y_m_pred):.3f}")
 ```
@@ -950,11 +955,21 @@ print(f"Best Recall: {recall_score(y_m, y_m_pred):.3f}")
 print("Best Parameters Found:", grid_search_m.best_params_)
 ```
 
+<!--
 ### Interpretation Questions
 
 1. Did hyperparameter tuning improve recall compared to the default model in Exercise #4?
 2. Look at the best parameters found. Are they at the edges of your grid (suggesting you should expand the search)?
 3. Was the computational cost of grid search worth the performance improvement?
+
+> 💡 **Sample Answers:**
+>
+> 1. Compare your recall here to Exercise #4. Grid search often improves recall by 5-15% through better hyperparameter choices.
+>
+> 2. If `max_depth=8` (the max in your grid) was selected, you might want to try higher values like 12 or 16. If values are in the middle, the grid was appropriate.
+>
+> 3. For this small dataset, grid search runs quickly. The improvement in recall is worth it if catching responders has business value. For larger datasets, consider RandomizedSearchCV.
+-->
 
 ---
 
@@ -974,7 +989,29 @@ If you finish early or want additional practice, try this integration challenge 
 
 This is open-ended. There's no single right answer. The goal is to practice the full workflow.
 
-```{python}
-# Your code here
-
-```
+> 💡 **Sample Solution Approach:**
+>
+> ```python
+> # 1. Feature Engineering
+> marketing_campaign['SpendingPerChild'] = marketing_campaign['TotalSpent'] / (marketing_campaign['TotalChildren'] + 1)
+> marketing_campaign['DaysSinceJoin'] = (pd.Timestamp('2024-01-01') - marketing_campaign['Dt_Customer']).dt.days
+>
+> # 2. Model Comparison with CV
+> features = ['Income', 'TotalSpent', 'TotalChildren', 'SpendingPerChild', 'DaysSinceJoin']
+> X = marketing_campaign[features].fillna(0)
+> y = marketing_campaign['Response']
+>
+> X_scaled = StandardScaler().fit_transform(X)
+>
+> # Compare models
+> logreg = LogisticRegression(max_iter=1000)
+> rf = RandomForestClassifier(random_state=2025)
+>
+> for name, model in [('Logistic Regression', logreg), ('Random Forest', rf)]:
+>     scores = cross_val_score(model, X_scaled, y, cv=5, scoring='recall')
+>     print(f"{name}: {scores.mean():.3f} ± {scores.std():.3f}")
+>
+> # 3. Grid Search on winner
+> # 4. Interpretation: "I'd recommend Random Forest because it achieved 
+> #    higher recall with consistent performance across folds..."
+> ```

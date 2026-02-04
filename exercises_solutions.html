@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -62,14 +62,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="exercises_solutions_files/libs/clipboard/clipboard.min.js"></script>
 <script src="exercises_solutions_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="exercises_solutions_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="exercises_solutions_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="exercises_solutions_files/libs/quarto-html/popper.min.js"></script>
 <script src="exercises_solutions_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="exercises_solutions_files/libs/quarto-html/anchor.min.js"></script>
 <link href="exercises_solutions_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="exercises_solutions_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="exercises_solutions_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="exercises_solutions_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="exercises_solutions_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="exercises_solutions_files/libs/bootstrap/bootstrap-769b268fb290e116fe386cf5612ac759.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="exercises_solutions_files/libs/bootstrap/bootstrap-82a8e0681529fff444bbc39736ff6b3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -100,6 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#inspect-a-dataset-using-pandas-1" id="toc-inspect-a-dataset-using-pandas-1" class="nav-link" data-scroll-target="#inspect-a-dataset-using-pandas-1">Inspect a dataset using Pandas</a></li>
   <li><a href="#handle-missing-values-and-clean-data-1" id="toc-handle-missing-values-and-clean-data-1" class="nav-link" data-scroll-target="#handle-missing-values-and-clean-data-1">Handle missing values and clean data</a></li>
   <li><a href="#create-visualizations-to-identify-key-business-trends-1" id="toc-create-visualizations-to-identify-key-business-trends-1" class="nav-link" data-scroll-target="#create-visualizations-to-identify-key-business-trends-1">Create visualizations to identify key business trends</a></li>
+  <li><a href="#interpretation-questions" id="toc-interpretation-questions" class="nav-link" data-scroll-target="#interpretation-questions">Interpretation Questions</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#module-2-supervised-learning-for-business-decisions" id="toc-module-2-supervised-learning-for-business-decisions" class="nav-link" data-scroll-target="#module-2-supervised-learning-for-business-decisions">Module 2: Supervised Learning for Business Decisions</a>
@@ -115,18 +117,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#split-the-data-into-training-and-validation-sets-1" id="toc-split-the-data-into-training-and-validation-sets-1" class="nav-link" data-scroll-target="#split-the-data-into-training-and-validation-sets-1">Split the data into training and validation sets</a></li>
   <li><a href="#train-a-linear-regression-model-1" id="toc-train-a-linear-regression-model-1" class="nav-link" data-scroll-target="#train-a-linear-regression-model-1">Train a linear regression model</a></li>
   <li><a href="#evaluate-model-performance-on-the-validation-set-1" id="toc-evaluate-model-performance-on-the-validation-set-1" class="nav-link" data-scroll-target="#evaluate-model-performance-on-the-validation-set-1">Evaluate model performance on the validation set</a></li>
+  <li><a href="#interpretation-questions-1" id="toc-interpretation-questions-1" class="nav-link" data-scroll-target="#interpretation-questions-1">Interpretation Questions</a></li>
   </ul></li>
   <li><a href="#walkthrough-4-implement-a-classification-model-for-customer-churn" id="toc-walkthrough-4-implement-a-classification-model-for-customer-churn" class="nav-link" data-scroll-target="#walkthrough-4-implement-a-classification-model-for-customer-churn">Walkthrough #4: Implement a Classification Model for Customer Churn</a>
   <ul class="collapse">
   <li><a href="#split-the-data-into-training-and-validation-sets-2" id="toc-split-the-data-into-training-and-validation-sets-2" class="nav-link" data-scroll-target="#split-the-data-into-training-and-validation-sets-2">Split the data into training and validation sets</a></li>
   <li><a href="#train-a-random-forest-classification-model" id="toc-train-a-random-forest-classification-model" class="nav-link" data-scroll-target="#train-a-random-forest-classification-model">Train a Random Forest classification model</a></li>
   <li><a href="#evaluate-model-performance-on-the-validation-set-2" id="toc-evaluate-model-performance-on-the-validation-set-2" class="nav-link" data-scroll-target="#evaluate-model-performance-on-the-validation-set-2">Evaluate model performance on the validation set</a></li>
+  <li><a href="#quick-reference-when-to-use-which-metric" id="toc-quick-reference-when-to-use-which-metric" class="nav-link" data-scroll-target="#quick-reference-when-to-use-which-metric">Quick Reference: When to Use Which Metric</a></li>
   </ul></li>
   <li><a href="#exercise-4-implement-a-classification-model-for-customer-churn" id="toc-exercise-4-implement-a-classification-model-for-customer-churn" class="nav-link" data-scroll-target="#exercise-4-implement-a-classification-model-for-customer-churn">Exercise #4: Implement a Classification Model for Customer Churn</a>
   <ul class="collapse">
   <li><a href="#split-the-data-into-training-and-validation-sets-3" id="toc-split-the-data-into-training-and-validation-sets-3" class="nav-link" data-scroll-target="#split-the-data-into-training-and-validation-sets-3">Split the data into training and validation sets</a></li>
   <li><a href="#train-a-random-forest-classification-model-1" id="toc-train-a-random-forest-classification-model-1" class="nav-link" data-scroll-target="#train-a-random-forest-classification-model-1">Train a Random Forest classification model</a></li>
   <li><a href="#evaluate-model-performance-on-the-validation-set-3" id="toc-evaluate-model-performance-on-the-validation-set-3" class="nav-link" data-scroll-target="#evaluate-model-performance-on-the-validation-set-3">Evaluate model performance on the validation set</a></li>
+  <li><a href="#interpretation-questions-2" id="toc-interpretation-questions-2" class="nav-link" data-scroll-target="#interpretation-questions-2">Interpretation Questions</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#module-3-unsupervised-learning-and-pattern-discovery-in-business" id="toc-module-3-unsupervised-learning-and-pattern-discovery-in-business" class="nav-link" data-scroll-target="#module-3-unsupervised-learning-and-pattern-discovery-in-business">Module 3: Unsupervised Learning and Pattern Discovery in Business</a>
@@ -146,6 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#verify-using-the-silhouette-score-optional-but-recommended-1" id="toc-verify-using-the-silhouette-score-optional-but-recommended-1" class="nav-link" data-scroll-target="#verify-using-the-silhouette-score-optional-but-recommended-1">Verify using the silhouette score (optional but recommended)</a></li>
   <li><a href="#fit-k-means-and-assign-cluster-labels-to-each-customer-1" id="toc-fit-k-means-and-assign-cluster-labels-to-each-customer-1" class="nav-link" data-scroll-target="#fit-k-means-and-assign-cluster-labels-to-each-customer-1">Fit K-means and assign cluster labels to each customer</a></li>
   <li><a href="#visualize-customer-segments-using-a-2d-plot-1" id="toc-visualize-customer-segments-using-a-2d-plot-1" class="nav-link" data-scroll-target="#visualize-customer-segments-using-a-2d-plot-1">Visualize customer segments using a 2D plot</a></li>
+  <li><a href="#interpretation-questions-3" id="toc-interpretation-questions-3" class="nav-link" data-scroll-target="#interpretation-questions-3">Interpretation Questions</a></li>
   </ul></li>
   <li><a href="#walkthrough-6-market-basket-analysis-with-apriori-algorithm" id="toc-walkthrough-6-market-basket-analysis-with-apriori-algorithm" class="nav-link" data-scroll-target="#walkthrough-6-market-basket-analysis-with-apriori-algorithm">Walkthrough #6: Market Basket Analysis with Apriori Algorithm</a>
   <ul class="collapse">
@@ -158,6 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#prepare-transactional-data-product-categories-as-items" id="toc-prepare-transactional-data-product-categories-as-items" class="nav-link" data-scroll-target="#prepare-transactional-data-product-categories-as-items">Prepare transactional data (product categories as items)</a></li>
   <li><a href="#apply-the-apriori-algorithm-to-identify-frequent-itemsets-1" id="toc-apply-the-apriori-algorithm-to-identify-frequent-itemsets-1" class="nav-link" data-scroll-target="#apply-the-apriori-algorithm-to-identify-frequent-itemsets-1">Apply the Apriori algorithm to identify frequent itemsets</a></li>
   <li><a href="#generate-association-rules-from-frequent-itemsets-1" id="toc-generate-association-rules-from-frequent-itemsets-1" class="nav-link" data-scroll-target="#generate-association-rules-from-frequent-itemsets-1">Generate association rules from frequent itemsets</a></li>
+  <li><a href="#interpretation-questions-4" id="toc-interpretation-questions-4" class="nav-link" data-scroll-target="#interpretation-questions-4">Interpretation Questions</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#module-4-implementing-and-evaluating-ml-models" id="toc-module-4-implementing-and-evaluating-ml-models" class="nav-link" data-scroll-target="#module-4-implementing-and-evaluating-ml-models">Module 4: Implementing and Evaluating ML Models</a>
@@ -175,6 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#train-a-classification-model-using-logistic-regression-1" id="toc-train-a-classification-model-using-logistic-regression-1" class="nav-link" data-scroll-target="#train-a-classification-model-using-logistic-regression-1">Train a classification model using logistic regression</a></li>
   <li><a href="#apply-k-fold-cross-validation-to-evaluate-model-performance-1" id="toc-apply-k-fold-cross-validation-to-evaluate-model-performance-1" class="nav-link" data-scroll-target="#apply-k-fold-cross-validation-to-evaluate-model-performance-1">Apply k-fold cross-validation to evaluate model performance</a></li>
   <li><a href="#compare-metrics-across-folds-1" id="toc-compare-metrics-across-folds-1" class="nav-link" data-scroll-target="#compare-metrics-across-folds-1">Compare metrics across folds</a></li>
+  <li><a href="#interpretation-questions-5" id="toc-interpretation-questions-5" class="nav-link" data-scroll-target="#interpretation-questions-5">Interpretation Questions</a></li>
   </ul></li>
   <li><a href="#walkthrough-8-hyperparameter-tuning-with-grid-search" id="toc-walkthrough-8-hyperparameter-tuning-with-grid-search" class="nav-link" data-scroll-target="#walkthrough-8-hyperparameter-tuning-with-grid-search">Walkthrough #8: Hyperparameter Tuning with Grid Search</a>
   <ul class="collapse">
@@ -189,8 +197,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#apply-grid-search-to-find-optimal-hyperparameters-1" id="toc-apply-grid-search-to-find-optimal-hyperparameters-1" class="nav-link" data-scroll-target="#apply-grid-search-to-find-optimal-hyperparameters-1">Apply grid search to find optimal hyperparameters</a></li>
   <li><a href="#evaluate-model-improvement-using-accuracy-and-recall-1" id="toc-evaluate-model-improvement-using-accuracy-and-recall-1" class="nav-link" data-scroll-target="#evaluate-model-improvement-using-accuracy-and-recall-1">Evaluate model improvement using accuracy and recall</a></li>
   <li><a href="#interpret-the-best-hyperparameter-combination-1" id="toc-interpret-the-best-hyperparameter-combination-1" class="nav-link" data-scroll-target="#interpret-the-best-hyperparameter-combination-1">Interpret the best hyperparameter combination</a></li>
+  <li><a href="#interpretation-questions-6" id="toc-interpretation-questions-6" class="nav-link" data-scroll-target="#interpretation-questions-6">Interpretation Questions</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#bonus-challenge-end-to-end-ml-pipeline" id="toc-bonus-challenge-end-to-end-ml-pipeline" class="nav-link" data-scroll-target="#bonus-challenge-end-to-end-ml-pipeline">Bonus Challenge: End-to-End ML Pipeline</a></li>
   </ul>
 </nav>
 </div>
@@ -222,14 +232,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Display all columns</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_columns'</span>, <span class="va">None</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display all outputs from each cell</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.interactiveshell <span class="im">import</span> InteractiveShell</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>InteractiveShell.ast_node_interactivity <span class="op">=</span> <span class="st">"all"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>InteractiveShell.ast_node_interactivity <span class="op">=</span> <span class="st">"all"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="intro-getting-started-with-machine-learning-for-data-driven-decisions" class="level1">
 <h1>Intro: Getting Started with Machine Learning for Data-Driven Decisions</h1>
@@ -238,31 +248,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you haven’t already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so <a href="https://github.com/ismayc/oreilly-data-analysis-with-python/blob/main/README.md">here</a>.</p>
 <p>You can also install the packages directly in a Jupyter notebook with</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas seaborn matplotlib scikit<span class="op">-</span>learn mlxtend</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas seaborn matplotlib scikit<span class="op">-</span>learn mlxtend</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If you aren’t able to do this on your machine, you may want to check out <a href="https://colab.research.google.com/">Google Colab</a>. It’s a free service that allows you to run Jupyter notebooks in the cloud. Alternatively, I’ve set up some temporary notebooks on Binder <a href="https://mybinder.org/v2/gh/ismayc/oreilly-ml-for-data-analytics-with-python/HEAD?urlpath=%2Fdoc%2Ftree%2Fexercises.ipynb">here</a> that you can work with online as well.</p>
 <p>Run the following code to check that each of the needed packages are installed. If you get an error, you may need to install the package(s) again.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_error, r2_score</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score, confusion_matrix</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlxtend.frequent_patterns <span class="im">import</span> apriori, association_rules</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score, cross_validate</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_error, r2_score</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score, confusion_matrix</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlxtend.frequent_patterns <span class="im">import</span> apriori, association_rules</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score, cross_validate</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>telco_churn_raw <span class="op">=</span> pd.read_csv(<span class="st">'telco-customer-churn.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>telco_churn_raw <span class="op">=</span> pd.read_csv(<span class="st">'telco-customer-churn.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="exercise-1-setting-up-the-python-environment" class="level2">
@@ -277,8 +286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Follow the instructions above in Walkthrough #1 to check for correct installation of necessary packages.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw <span class="op">=</span> pd.read_csv(<span class="st">'marketing_campaign.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw <span class="op">=</span> pd.read_csv(<span class="st">'marketing_campaign.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 </section>
@@ -290,8 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="inspect-a-dataset-using-pandas" class="level3">
 <h3 class="anchored" data-anchor-id="inspect-a-dataset-using-pandas">Inspect a dataset using Pandas</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect data structure</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>telco_churn_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect data structure</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>telco_churn_raw</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      customerID  gender  SeniorCitizen Partner Dependents  tenure  \
 0     7590-VHVEG  Female              0     Yes         No       1   
@@ -373,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 [7043 rows x 24 columns]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>telco_churn_raw.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>telco_churn_raw.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 7043 entries, 0 to 7042
@@ -409,8 +418,8 @@ memory usage: 1.3+ MB</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>telco_churn_raw.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>telco_churn_raw.isnull().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>customerID                0
 gender                    0
@@ -438,8 +447,8 @@ AvgServiceUsageScore    619
 Churn                     0
 dtype: int64</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for duplicate rows</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>telco_churn_raw.duplicated().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for duplicate rows</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>telco_churn_raw.duplicated().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.int64(0)</code></pre>
 </div>
@@ -448,7 +457,7 @@ dtype: int64</code></pre>
 <section id="handle-missing-values-and-clean-data" class="level3">
 <h3 class="anchored" data-anchor-id="handle-missing-values-and-clean-data">Handle missing values and clean data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a copy of the data to fix and clean</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a copy of the data to fix and clean</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>telco_churn <span class="op">=</span> telco_churn_raw.copy()</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle missing values</span></span>
@@ -456,7 +465,7 @@ dtype: int64</code></pre>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  .fillna(telco_churn[<span class="st">'MonthlyCharges'</span>].median())</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>telco_churn[<span class="st">'AvgServiceUsageScore'</span>] <span class="op">=</span> telco_churn[<span class="st">'AvgServiceUsageScore'</span>]<span class="op">\</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  .fillna(telco_churn[<span class="st">'AvgServiceUsageScore'</span>].median())</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>telco_churn.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>telco_churn.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 7043 entries, 0 to 7042
@@ -492,13 +501,13 @@ memory usage: 1.3+ MB</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize column formats (e.g., convert Yes/No to binary for a few columns)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize column formats (e.g., convert Yes/No to binary for a few columns)</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>telco_churn[<span class="st">'SeniorCitizen'</span>] <span class="op">=</span> telco_churn[<span class="st">'SeniorCitizen'</span>].astype(<span class="st">'category'</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>telco_churn[<span class="st">'Churn'</span>] <span class="op">=</span> telco_churn[<span class="st">'Churn'</span>].<span class="bu">map</span>({<span class="st">'Yes'</span>: <span class="dv">1</span>, <span class="st">'No'</span>: <span class="dv">0</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>telco_churn[<span class="st">'Churn'</span>] <span class="op">=</span> telco_churn[<span class="st">'Churn'</span>].<span class="bu">map</span>({<span class="st">'Yes'</span>: <span class="dv">1</span>, <span class="st">'No'</span>: <span class="dv">0</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize statistics</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>telco_churn.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize statistics</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>telco_churn.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        customerID gender  SeniorCitizen Partner Dependents       tenure  \
 count         7043   7043         7043.0    7043       7043  7043.000000   
@@ -583,10 +592,10 @@ max                42.896068     1.000000  </code></pre>
 <section id="create-visualizations-to-identify-key-business-trends" class="level3">
 <h3 class="anchored" data-anchor-id="create-visualizations-to-identify-key-business-trends">Create visualizations to identify key business trends</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize distributions and relationships</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize distributions and relationships</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>sns.violinplot(data<span class="op">=</span>telco_churn, x<span class="op">=</span><span class="st">'Churn'</span>, y<span class="op">=</span><span class="st">'tenure'</span>, inner<span class="op">=</span><span class="st">'quartile'</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Violin Plot of Tenure by Churn'</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -596,9 +605,9 @@ max                42.896068     1.000000  </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>telco_churn, x<span class="op">=</span><span class="st">'AvgServiceUsageScore'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>telco_churn, x<span class="op">=</span><span class="st">'AvgServiceUsageScore'</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of Average Service Usage Score'</span>)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -608,9 +617,9 @@ max                42.896068     1.000000  </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>telco_churn, x<span class="op">=</span><span class="st">'MonthlyCharges'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>telco_churn, x<span class="op">=</span><span class="st">'MonthlyCharges'</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of Monthly Charges'</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -620,9 +629,9 @@ max                42.896068     1.000000  </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>telco_churn, x<span class="op">=</span><span class="st">'AvgServiceUsageScore'</span>, y<span class="op">=</span><span class="st">'MonthlyCharges'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>telco_churn, x<span class="op">=</span><span class="st">'AvgServiceUsageScore'</span>, y<span class="op">=</span><span class="st">'MonthlyCharges'</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average Service Usage Score vs. Monthly Charges'</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -632,9 +641,9 @@ max                42.896068     1.000000  </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>telco_churn, x<span class="op">=</span><span class="st">'InternetService'</span>, hue<span class="op">=</span><span class="st">'Churn'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>telco_churn, x<span class="op">=</span><span class="st">'InternetService'</span>, hue<span class="op">=</span><span class="st">'Churn'</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Churn Rate by Internet Service Type'</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -651,8 +660,8 @@ max                42.896068     1.000000  </code></pre>
 <section id="inspect-a-dataset-using-pandas-1" class="level3">
 <h3 class="anchored" data-anchor-id="inspect-a-dataset-using-pandas-1">Inspect a dataset using Pandas</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect data structure</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect data structure</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         ID  Year_Birth   Education Marital_Status   Income  Kidhome  \
 0      5524        1957  Graduation         Single  58138.0        0   
@@ -747,7 +756,7 @@ max                42.896068     1.000000  </code></pre>
 
 [2240 rows x 29 columns]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 2240 entries, 0 to 2239
@@ -788,8 +797,8 @@ memory usage: 507.6+ KB</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw.isnull().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ID                       0
 Year_Birth               0
@@ -822,8 +831,8 @@ TotalChildren            0
 TotalSpent               0
 dtype: int64</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for duplicate rows</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw.duplicated().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for duplicate rows</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign_raw.duplicated().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.int64(0)</code></pre>
 </div>
@@ -832,7 +841,7 @@ dtype: int64</code></pre>
 <section id="handle-missing-values-and-clean-data-1" class="level3">
 <h3 class="anchored" data-anchor-id="handle-missing-values-and-clean-data-1">Handle missing values and clean data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a clean working copy</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a clean working copy</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign <span class="op">=</span> marketing_campaign_raw.copy()</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle missing values of Income</span></span>
@@ -851,7 +860,7 @@ dtype: int64</code></pre>
 <span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to datetime</span></span>
 <span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>marketing_campaign[<span class="st">"Dt_Customer"</span>] <span class="op">=</span> pd.to_datetime(marketing_campaign[<span class="st">"Dt_Customer"</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>marketing_campaign.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>marketing_campaign.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 2240 entries, 0 to 2239
@@ -892,8 +901,8 @@ memory usage: 507.6+ KB</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize structure</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize structure</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>marketing_campaign.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  ID   Year_Birth   Education Marital_Status         Income  \
 count    2240.000000  2240.000000        2240           2240    2240.000000   
@@ -991,9 +1000,9 @@ std        0.096391     0.356274       0.751803   602.249288  </code></pre>
 <section id="create-visualizations-to-identify-key-business-trends-1" class="level3">
 <h3 class="anchored" data-anchor-id="create-visualizations-to-identify-key-business-trends-1">Create visualizations to identify key business trends</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sns.violinplot(data<span class="op">=</span>marketing_campaign, x<span class="op">=</span><span class="st">'Response'</span>, y<span class="op">=</span><span class="st">'Income'</span>, inner<span class="op">=</span><span class="st">'quartile'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sns.violinplot(data<span class="op">=</span>marketing_campaign, x<span class="op">=</span><span class="st">'Response'</span>, y<span class="op">=</span><span class="st">'Income'</span>, inner<span class="op">=</span><span class="st">'quartile'</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Violin Plot of Income by Campaign Response'</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1003,9 +1012,9 @@ std        0.096391     0.356274       0.751803   602.249288  </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>marketing_campaign, x<span class="op">=</span><span class="st">'TotalSpent'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>marketing_campaign, x<span class="op">=</span><span class="st">'TotalSpent'</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of Total Spent'</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1015,10 +1024,10 @@ std        0.096391     0.356274       0.751803   602.249288  </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>marketing_campaign, x<span class="op">=</span><span class="st">'Income'</span>, y<span class="op">=</span><span class="st">'TotalSpent'</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>marketing_campaign, x<span class="op">=</span><span class="st">'Income'</span>, y<span class="op">=</span><span class="st">'TotalSpent'</span>, </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span><span class="st">'Response'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Income vs. Total Spent by Campaign Response'</span>)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1028,10 +1037,10 @@ std        0.096391     0.356274       0.751803   602.249288  </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>marketing_campaign, x<span class="op">=</span><span class="st">'Education'</span>, hue<span class="op">=</span><span class="st">'Response'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>marketing_campaign, x<span class="op">=</span><span class="st">'Education'</span>, hue<span class="op">=</span><span class="st">'Response'</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Campaign Response by Education Level'</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.xticks(rotation=30)</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1040,6 +1049,14 @@ std        0.096391     0.356274       0.751803   602.249288  </code></pre>
 </div>
 </div>
 </div>
+</section>
+<section id="interpretation-questions" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-questions">Interpretation Questions</h3>
+<ol type="1">
+<li>Looking at the violin plot of Income by Response, which group (responders or non-responders) shows more variability in income?</li>
+<li>Based on your scatter plot, do higher-income customers tend to spend more? Is this relationship strong or weak?</li>
+<li>Which education level shows the highest response rate? What marketing implications might this have?</li>
+</ol>
 <hr>
 </section>
 </section>
@@ -1051,7 +1068,7 @@ std        0.096391     0.356274       0.751803   602.249288  </code></pre>
 <section id="split-the-data-into-training-and-validation-sets" class="level3">
 <h3 class="anchored" data-anchor-id="split-the-data-into-training-and-validation-sets">Split the data into training and validation sets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> telco_churn[[<span class="st">'AvgServiceUsageScore'</span>]]  <span class="co"># predictor</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> telco_churn[[<span class="st">'AvgServiceUsageScore'</span>]]  <span class="co"># predictor</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> telco_churn[<span class="st">'MonthlyCharges'</span>]          <span class="co"># target</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset index to avoid potential issues later</span></span>
@@ -1064,14 +1081,14 @@ std        0.096391     0.356274       0.751803   602.249288  </code></pre>
 <span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>X_train, X_val, y_train, y_val <span class="op">=</span> train_test_split(</span>
 <span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  X_scaled, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">2025</span></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="train-a-linear-regression-model" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-linear-regression-model">Train a linear regression model</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>lr.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>lr.fit(X_train, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <style>#sk-container-id-1 {
   /* Definition of color scheme common for light and dark mode */
@@ -1490,11 +1507,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 }
 </style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LinearRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Intercept: </span><span class="sc">{</span>lr<span class="sc">.</span>intercept_<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Intercept: </span><span class="sc">{</span>lr<span class="sc">.</span>intercept_<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Intercept: 64.88</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Coefficient (usage_scaled → price): </span><span class="sc">{</span>lr<span class="sc">.</span>coef_[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Coefficient (usage_scaled → price): </span><span class="sc">{</span>lr<span class="sc">.</span>coef_[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Coefficient (usage_scaled → price): 25.85</code></pre>
 </div>
@@ -1503,16 +1520,16 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="evaluate-model-performance-on-the-validation-set" class="level3">
 <h3 class="anchored" data-anchor-id="evaluate-model-performance-on-the-validation-set">Evaluate model performance on the validation set</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> lr.predict(X_val)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> lr.predict(X_val)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> r2_score(y_val, y_pred)</span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>mae <span class="op">=</span> mean_absolute_error(y_val, y_pred)</span>
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>r2<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>r2<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R-squared: 0.80</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Absolute Error: </span><span class="sc">{</span>mae<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Absolute Error: </span><span class="sc">{</span>mae<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean Absolute Error: 8.25</code></pre>
 </div>
@@ -1525,7 +1542,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="split-the-data-into-training-and-validation-sets-1" class="level3">
 <h3 class="anchored" data-anchor-id="split-the-data-into-training-and-validation-sets-1">Split the data into training and validation sets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictor and target</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictor and target</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>X_m <span class="op">=</span> marketing_campaign[[<span class="st">'Income'</span>]]  <span class="co"># predictor</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>y_m <span class="op">=</span> marketing_campaign[<span class="st">'TotalSpent'</span>] <span class="co"># target</span></span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1540,14 +1557,14 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Train-test split</span></span>
 <span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>X_m_train, X_m_val, y_m_train, y_m_val <span class="op">=</span> train_test_split(</span>
 <span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>    X_m_scaled, y_m, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">2025</span></span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="train-a-linear-regression-model-1" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-linear-regression-model-1">Train a linear regression model</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>lr_m <span class="op">=</span> LinearRegression()</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>lr_m.fit(X_m_train, y_m_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>lr_m <span class="op">=</span> LinearRegression()</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>lr_m.fit(X_m_train, y_m_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <style>#sk-container-id-2 {
   /* Definition of color scheme common for light and dark mode */
@@ -1966,11 +1983,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 }
 </style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked=""><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LinearRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Intercept: </span><span class="sc">{</span>lr_m<span class="sc">.</span>intercept_<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Intercept: </span><span class="sc">{</span>lr_m<span class="sc">.</span>intercept_<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Intercept: 610.82</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Coefficient (Income_scaled → TotalSpent): </span><span class="sc">{</span>lr_m<span class="sc">.</span>coef_[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Coefficient (Income_scaled → TotalSpent): </span><span class="sc">{</span>lr_m<span class="sc">.</span>coef_[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Coefficient (Income_scaled → TotalSpent): 349.61</code></pre>
 </div>
@@ -1979,20 +1996,28 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="evaluate-model-performance-on-the-validation-set-1" class="level3">
 <h3 class="anchored" data-anchor-id="evaluate-model-performance-on-the-validation-set-1">Evaluate model performance on the validation set</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>y_m_pred <span class="op">=</span> lr_m.predict(X_m_val)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>y_m_pred <span class="op">=</span> lr_m.predict(X_m_val)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>r2_m <span class="op">=</span> r2_score(y_m_val, y_m_pred)</span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>mae_m <span class="op">=</span> mean_absolute_error(y_m_val, y_m_pred)</span>
 <span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>r2_m<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>r2_m<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R-squared: 0.48</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Absolute Error: </span><span class="sc">{</span>mae_m<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Absolute Error: </span><span class="sc">{</span>mae_m<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean Absolute Error: 323.76</code></pre>
 </div>
 </div>
+</section>
+<section id="interpretation-questions-1" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-questions-1">Interpretation Questions</h3>
+<ol type="1">
+<li>Is your R-squared higher or lower than the telco churn model? What might explain the difference?</li>
+<li>If MAE is $200, what does that mean in practical terms for predicting customer spending?</li>
+<li>Would you trust this model for making budget decisions? Why or why not?</li>
+</ol>
 <hr>
 </section>
 </section>
@@ -2001,7 +2026,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="split-the-data-into-training-and-validation-sets-2" class="level3">
 <h3 class="anchored" data-anchor-id="split-the-data-into-training-and-validation-sets-2">Split the data into training and validation sets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> [<span class="st">'tenure'</span>, <span class="st">'SeniorCitizen'</span>, <span class="st">'ServiceCount'</span>, <span class="st">'InternetScore'</span>, <span class="st">'AvgServiceUsageScore'</span>]</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> telco_churn[features]</span>
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> telco_churn[<span class="st">'Churn'</span>]</span>
@@ -2010,15 +2035,15 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="co"># one feature having a larger scale than another</span></span>
 <span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Train-test split</span></span>
-<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">2025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">2025</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="train-a-random-forest-classification-model" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-random-forest-classification-model">Train a Random Forest classification model</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Random Forest classifier</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Random Forest classifier</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">100</span>, random_state<span class="op">=</span><span class="dv">2025</span>)</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>clf.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>clf.fit(X_train, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <style>#sk-container-id-3 {
   /* Definition of color scheme common for light and dark mode */
@@ -2442,37 +2467,81 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="evaluate-model-performance-on-the-validation-set-2" class="level3">
 <h3 class="anchored" data-anchor-id="evaluate-model-performance-on-the-validation-set-2">Evaluate model performance on the validation set</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy: </span><span class="sc">{</span>accuracy_score(y_test, y_pred)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy: </span><span class="sc">{</span>accuracy_score(y_test, y_pred)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.76</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision_score(y_test, y_pred)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision_score(y_test, y_pred)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Precision: 0.54</code></pre>
+<pre><code>Precision: 0.53</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Recall: </span><span class="sc">{</span>recall_score(y_test, y_pred)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Recall: </span><span class="sc">{</span>recall_score(y_test, y_pred)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Recall: 0.48</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">'No Churn'</span>, <span class="st">'Churn'</span>]</span>
 <span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>cm_telco_churn <span class="op">=</span> pd.DataFrame(cm, index<span class="op">=</span>labels, columns<span class="op">=</span>labels)</span>
 <span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Confusion Matrix (formatted):"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Confusion Matrix (formatted):"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Confusion Matrix (formatted):</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cm_telco_churn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cm_telco_churn)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          No Churn  Churn
-No Churn       907    146
-Churn          186    170</code></pre>
+No Churn       904    149
+Churn          185    171</code></pre>
 </div>
 </div>
+</section>
+<section id="quick-reference-when-to-use-which-metric" class="level3">
+<h3 class="anchored" data-anchor-id="quick-reference-when-to-use-which-metric">Quick Reference: When to Use Which Metric</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 33%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Metric</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Predicting continuous values</td>
+<td>R², MAE</td>
+<td>Measures prediction error</td>
+</tr>
+<tr class="even">
+<td>Balanced classes</td>
+<td>Accuracy</td>
+<td>Overall correctness</td>
+</tr>
+<tr class="odd">
+<td>Cost of false positives is high</td>
+<td>Precision</td>
+<td>Minimize wrong positive predictions</td>
+</tr>
+<tr class="even">
+<td>Cost of false negatives is high</td>
+<td>Recall</td>
+<td>Catch all actual positives</td>
+</tr>
+<tr class="odd">
+<td>Need balance</td>
+<td>F1-Score</td>
+<td>Harmonic mean of precision/recall</td>
+</tr>
+</tbody>
+</table>
 <hr>
 </section>
 </section>
@@ -2481,7 +2550,7 @@ Churn          186    170</code></pre>
 <section id="split-the-data-into-training-and-validation-sets-3" class="level3">
 <h3 class="anchored" data-anchor-id="split-the-data-into-training-and-validation-sets-3">Split the data into training and validation sets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>features_m <span class="op">=</span> [<span class="st">'Income'</span>, <span class="st">'TotalSpent'</span>, <span class="st">'TotalChildren'</span>]</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>X_m_class <span class="op">=</span> marketing_campaign[features_m]</span>
 <span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>y_m_class <span class="op">=</span> marketing_campaign[<span class="st">'Response'</span>]</span>
@@ -2489,15 +2558,15 @@ Churn          186    170</code></pre>
 <span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into training and validation sets</span></span>
 <span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>X_m_train_class, X_m_val_class, y_m_train_class, y_m_val_class <span class="op">=</span> train_test_split(</span>
 <span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>    X_m_class, y_m_class, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">2025</span></span>
-<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="train-a-random-forest-classification-model-1" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-random-forest-classification-model-1">Train a Random Forest classification model</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Random Forest classifier</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Random Forest classifier</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>clf_m <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">100</span>, random_state<span class="op">=</span><span class="dv">2025</span>)</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>clf_m.fit(X_m_train_class, y_m_train_class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>clf_m.fit(X_m_train_class, y_m_train_class)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <style>#sk-container-id-4 {
   /* Definition of color scheme common for light and dark mode */
@@ -2921,36 +2990,44 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="evaluate-model-performance-on-the-validation-set-3" class="level3">
 <h3 class="anchored" data-anchor-id="evaluate-model-performance-on-the-validation-set-3">Evaluate model performance on the validation set</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>y_m_pred_class <span class="op">=</span> clf_m.predict(X_m_val_class)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>y_m_pred_class <span class="op">=</span> clf_m.predict(X_m_val_class)</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy: </span><span class="sc">{</span>accuracy_score(y_m_val_class, y_m_pred_class)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy: </span><span class="sc">{</span>accuracy_score(y_m_val_class, y_m_pred_class)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.84</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision_score(y_m_val_class, y_m_pred_class)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision_score(y_m_val_class, y_m_pred_class)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Precision: 0.27</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Recall: </span><span class="sc">{</span>recall_score(y_m_val_class, y_m_pred_class)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Recall: </span><span class="sc">{</span>recall_score(y_m_val_class, y_m_pred_class)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Recall: 0.20</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">'No Response'</span>, <span class="st">'Response'</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">'No Response'</span>, <span class="st">'Response'</span>]</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>cm_marketing_response <span class="op">=</span> pd.DataFrame(confusion_matrix(y_m_val_class, y_m_pred_class), </span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>                                     index<span class="op">=</span>labels, columns<span class="op">=</span>labels)</span>
 <span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Confusion Matrix (formatted):"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Confusion Matrix (formatted):"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Confusion Matrix (formatted):</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cm_marketing_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cm_marketing_response)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             No Response  Response
 No Response          364        30
 Response              43        11</code></pre>
 </div>
 </div>
+</section>
+<section id="interpretation-questions-2" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-questions-2">Interpretation Questions</h3>
+<ol type="1">
+<li>Compare your precision and recall. Which is higher, and what does that imply about the model’s tendencies?</li>
+<li>Looking at your confusion matrix, is the model better at identifying responders or non-responders?</li>
+<li>If running a marketing campaign costs $50 per contact, which metric matters more: precision or recall?</li>
+</ol>
 <hr>
 </section>
 </section>
@@ -2962,7 +3039,7 @@ Response              43        11</code></pre>
 <section id="apply-k-means-clustering-to-segment-customers" class="level3">
 <h3 class="anchored" data-anchor-id="apply-k-means-clustering-to-segment-customers">Apply K-Means clustering to segment customers</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features</span></span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>telco_churn[<span class="st">'ContractType'</span>] <span class="op">=</span> telco_churn[<span class="st">'Contract'</span>].<span class="bu">map</span>({</span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Month-to-month'</span>: <span class="dv">0</span>, <span class="st">'One year'</span>: <span class="dv">1</span>, <span class="st">'Two year'</span>: <span class="dv">2</span></span>
 <span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>})</span>
@@ -2971,19 +3048,19 @@ Response              43        11</code></pre>
 <span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize features</span></span>
 <span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> scaler.fit_transform(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> scaler.fit_transform(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="determine-the-optimal-number-of-clusters-using-the-elbow-method" class="level3">
 <h3 class="anchored" data-anchor-id="determine-the-optimal-number-of-clusters-using-the-elbow-method">Determine the optimal number of clusters using the Elbow Method</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>inertia <span class="op">=</span> []</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>inertia <span class="op">=</span> []</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>k_range <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> k_range:</span>
 <span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">2025</span>)</span>
 <span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>    kmeans.fit(X_scaled)</span>
-<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>    inertia.append(kmeans.inertia_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>    inertia.append(kmeans.inertia_)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <style>#sk-container-id-5 {
   /* Definition of color scheme common for light and dark mode */
@@ -3402,11 +3479,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 }
 </style><div id="sk-container-id-5" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KMeans(n_clusters=10, random_state=2025)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" checked=""><label for="sk-estimator-id-5" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>KMeans</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.cluster.KMeans.html">?<span>Documentation for KMeans</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>KMeans(n_clusters=10, random_state=2025)</pre></div> </div></div></div></div>
 </div>
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>plt.plot(k_range, inertia, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>plt.plot(k_range, inertia, marker<span class="op">=</span><span class="st">'o'</span>)</span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of clusters (k)'</span>)</span>
 <span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Inertia'</span>)</span>
 <span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Elbow Method for Optimal k'</span>)</span>
-<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3419,7 +3496,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="verify-using-the-silhouette-score-optional-but-recommended" class="level3">
 <h3 class="anchored" data-anchor-id="verify-using-the-silhouette-score-optional-but-recommended">Verify using the silhouette score (optional but recommended)</h3>
 <div class="cell" data-warnings="false">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate silhouette scores for k=3 to k=6</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate silhouette scores for k=3 to k=6</span></span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>silhouette_scores <span class="op">=</span> {}</span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>, <span class="dv">7</span>):</span>
@@ -3428,29 +3505,29 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> silhouette_score(X_scaled, labels)</span>
 <span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a>    silhouette_scores[k] <span class="op">=</span> score</span>
 <span id="cb87-9"><a href="#cb87-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-10"><a href="#cb87-10" aria-hidden="true" tabindex="-1"></a>silhouette_scores</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb87-10"><a href="#cb87-10" aria-hidden="true" tabindex="-1"></a>silhouette_scores</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{3: np.float64(0.359378998600167), 4: np.float64(0.3426379222067103), 5: np.float64(0.335649047934005), 6: np.float64(0.32896586148507484)}</code></pre>
+<pre><code>{3: np.float64(0.35937899860016687), 4: np.float64(0.3426379222067103), 5: np.float64(0.335649047934005), 6: np.float64(0.3289658614850748)}</code></pre>
 </div>
 </div>
 </section>
 <section id="fit-k-means-and-assign-cluster-labels-to-each-customer" class="level3">
 <h3 class="anchored" data-anchor-id="fit-k-means-and-assign-cluster-labels-to-each-customer">Fit K-means and assign cluster labels to each customer</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's assume the elbow suggested k=3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's assume the elbow suggested k=3</span></span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>optimal_k <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>optimal_k, random_state<span class="op">=</span><span class="dv">2025</span>)</span>
-<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>telco_churn[<span class="st">'Cluster'</span>] <span class="op">=</span> kmeans.fit_predict(X_scaled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>telco_churn[<span class="st">'Cluster'</span>] <span class="op">=</span> kmeans.fit_predict(X_scaled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="visualize-customer-segments-using-a-2d-plot" class="level3">
 <h3 class="anchored" data-anchor-id="visualize-customer-segments-using-a-2d-plot">Visualize customer segments using a 2D plot</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize clusters in 2D space (using tenure and MonthlyCharges)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize clusters in 2D space (using tenure and MonthlyCharges)</span></span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>telco_churn,  x<span class="op">=</span><span class="st">'tenure'</span>, y<span class="op">=</span><span class="st">'AvgServiceUsageScore'</span>, </span>
 <span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span><span class="st">'Cluster'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
 <span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Customer Segments via K-Means'</span>)</span>
-<span id="cb90-5"><a href="#cb90-5" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb90-5"><a href="#cb90-5" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3467,25 +3544,25 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="apply-k-means-clustering-to-segment-customers-1" class="level3">
 <h3 class="anchored" data-anchor-id="apply-k-means-clustering-to-segment-customers-1">Apply K-Means clustering to segment customers</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features</span></span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>features_cluster <span class="op">=</span> [<span class="st">'Income'</span>, <span class="st">'TotalSpent'</span>, <span class="st">'TotalChildren'</span>]</span>
 <span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>X_cluster <span class="op">=</span> marketing_campaign[features_cluster]</span>
 <span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize features</span></span>
 <span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>X_cluster_scaled <span class="op">=</span> scaler.fit_transform(X_cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>X_cluster_scaled <span class="op">=</span> scaler.fit_transform(X_cluster)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="determine-the-optimal-number-of-clusters-using-the-elbow-method-1" class="level3">
 <h3 class="anchored" data-anchor-id="determine-the-optimal-number-of-clusters-using-the-elbow-method-1">Determine the optimal number of clusters using the Elbow Method</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>inertia <span class="op">=</span> []</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>inertia <span class="op">=</span> []</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>k_range <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)</span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> k_range:</span>
 <span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">2025</span>)</span>
 <span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a>    kmeans.fit(X_cluster_scaled)</span>
-<span id="cb92-7"><a href="#cb92-7" aria-hidden="true" tabindex="-1"></a>    inertia.append(kmeans.inertia_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb92-7"><a href="#cb92-7" aria-hidden="true" tabindex="-1"></a>    inertia.append(kmeans.inertia_)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <style>#sk-container-id-6 {
   /* Definition of color scheme common for light and dark mode */
@@ -3904,11 +3981,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 }
 </style><div id="sk-container-id-6" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KMeans(n_clusters=10, random_state=2025)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" checked=""><label for="sk-estimator-id-6" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>KMeans</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.cluster.KMeans.html">?<span>Documentation for KMeans</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>KMeans(n_clusters=10, random_state=2025)</pre></div> </div></div></div></div>
 </div>
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>plt.plot(k_range, inertia, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>plt.plot(k_range, inertia, marker<span class="op">=</span><span class="st">'o'</span>)</span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of clusters (k)'</span>)</span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Inertia'</span>)</span>
 <span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Elbow Method for Optimal k'</span>)</span>
-<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3921,7 +3998,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="verify-using-the-silhouette-score-optional-but-recommended-1" class="level3">
 <h3 class="anchored" data-anchor-id="verify-using-the-silhouette-score-optional-but-recommended-1">Verify using the silhouette score (optional but recommended)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>silhouette_scores <span class="op">=</span> {}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>silhouette_scores <span class="op">=</span> {}</span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>, <span class="dv">7</span>):</span>
 <span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">2025</span>)</span>
@@ -3929,25 +4006,25 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> silhouette_score(X_cluster_scaled, labels)</span>
 <span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a>    silhouette_scores[k] <span class="op">=</span> score</span>
 <span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a>silhouette_scores</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a>silhouette_scores</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{3: np.float64(0.4347244975124846), 4: np.float64(0.4383664875381715), 5: np.float64(0.4433585654203904), 6: np.float64(0.42910667544920855)}</code></pre>
+<pre><code>{3: np.float64(0.4347244975124846), 4: np.float64(0.4383664875381715), 5: np.float64(0.4433585654203904), 6: np.float64(0.42910667544920844)}</code></pre>
 </div>
 </div>
 </section>
 <section id="fit-k-means-and-assign-cluster-labels-to-each-customer-1" class="level3">
 <h3 class="anchored" data-anchor-id="fit-k-means-and-assign-cluster-labels-to-each-customer-1">Fit K-means and assign cluster labels to each customer</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assume optimal k is 5 (can be adjusted based on elbow or silhouette)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assume optimal k is 5 (can be adjusted based on elbow or silhouette)</span></span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>optimal_k <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>kmeans_final <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>optimal_k, random_state<span class="op">=</span><span class="dv">2025</span>)</span>
-<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>marketing_campaign[<span class="st">'Cluster'</span>] <span class="op">=</span> kmeans_final.fit_predict(X_cluster_scaled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>marketing_campaign[<span class="st">'Cluster'</span>] <span class="op">=</span> kmeans_final.fit_predict(X_cluster_scaled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="visualize-customer-segments-using-a-2d-plot-1" class="level3">
 <h3 class="anchored" data-anchor-id="visualize-customer-segments-using-a-2d-plot-1">Visualize customer segments using a 2D plot</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>marketing_campaign, x<span class="op">=</span><span class="st">'TotalChildren'</span>, y<span class="op">=</span><span class="st">'TotalSpent'</span>, </span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span><span class="st">'Cluster'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
 <span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Customer Segments via K-Means Clustering'</span>)</span>
@@ -3955,7 +4032,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Set x-axis to integer ticks only</span></span>
 <span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a>plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(<span class="dv">1</span>))</span>
 <span id="cb97-8"><a href="#cb97-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-9"><a href="#cb97-9" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb97-9"><a href="#cb97-9" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3964,6 +4041,14 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </div>
+</section>
+<section id="interpretation-questions-3" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-questions-3">Interpretation Questions</h3>
+<ol type="1">
+<li>How did you decide on the optimal k? Did the elbow method and silhouette scores agree?</li>
+<li>Looking at your 2D visualization, do the clusters seem well-separated or do they overlap?</li>
+<li>Can you describe what “type” of customer each cluster might represent based on their TotalChildren and TotalSpent values?</li>
+</ol>
 <hr>
 </section>
 </section>
@@ -3972,7 +4057,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="prepare-transactional-data-services-as-items" class="level3">
 <h3 class="anchored" data-anchor-id="prepare-transactional-data-services-as-items">Prepare transactional data (services as items)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting binary service columns to act like "products"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting binary service columns to act like "products"</span></span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>service_cols <span class="op">=</span> [</span>
 <span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'OnlineSecurity'</span>, <span class="st">'OnlineBackup'</span>, <span class="st">'DeviceProtection'</span>,</span>
 <span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'TechSupport'</span>, <span class="st">'StreamingTV'</span>, <span class="st">'StreamingMovies'</span>, <span class="st">'PhoneService'</span></span>
@@ -3980,7 +4065,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert service columns to boolean (preference of apriori() function)</span></span>
 <span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a>telco_churn_basket <span class="op">=</span> telco_churn[service_cols].astype(<span class="bu">bool</span>)</span>
-<span id="cb98-9"><a href="#cb98-9" aria-hidden="true" tabindex="-1"></a>telco_churn_basket</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb98-9"><a href="#cb98-9" aria-hidden="true" tabindex="-1"></a>telco_churn_basket</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      OnlineSecurity  OnlineBackup  DeviceProtection  TechSupport  \
 0              False          True             False        False   
@@ -4015,8 +4100,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="apply-the-apriori-algorithm-to-identify-frequent-itemsets" class="level3">
 <h3 class="anchored" data-anchor-id="apply-the-apriori-algorithm-to-identify-frequent-itemsets">Apply the Apriori algorithm to identify frequent itemsets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>frequent_itemsets <span class="op">=</span> apriori(telco_churn_basket, min_support<span class="op">=</span><span class="fl">0.2</span>, use_colnames<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>frequent_itemsets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>frequent_itemsets <span class="op">=</span> apriori(telco_churn_basket, min_support<span class="op">=</span><span class="fl">0.2</span>, use_colnames<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>frequent_itemsets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     support                                           itemsets
 0   0.286668                                   (OnlineSecurity)
@@ -4027,25 +4112,25 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 5   0.387903                                  (StreamingMovies)
 6   0.903166                                     (PhoneService)
 7   0.246486                     (PhoneService, OnlineSecurity)
-8   0.304132                       (OnlineBackup, PhoneService)
+8   0.304132                       (PhoneService, OnlineBackup)
 9   0.222490                    (StreamingTV, DeviceProtection)
-10  0.226466                (StreamingMovies, DeviceProtection)
+10  0.226466                (DeviceProtection, StreamingMovies)
 11  0.300582                   (PhoneService, DeviceProtection)
-12  0.249184                        (TechSupport, PhoneService)
+12  0.249184                        (PhoneService, TechSupport)
 13  0.275451                     (StreamingTV, StreamingMovies)
 14  0.343888                        (StreamingTV, PhoneService)
-15  0.345591                    (StreamingMovies, PhoneService)
-16  0.200057  (StreamingMovies, PhoneService, DeviceProtection)
-17  0.247054       (StreamingTV, StreamingMovies, PhoneService)</code></pre>
+15  0.345591                    (PhoneService, StreamingMovies)
+16  0.200057  (PhoneService, DeviceProtection, StreamingMovies)
+17  0.247054       (StreamingTV, PhoneService, StreamingMovies)</code></pre>
 </div>
 </div>
 </section>
 <section id="generate-association-rules-from-frequent-itemsets" class="level3">
 <h3 class="anchored" data-anchor-id="generate-association-rules-from-frequent-itemsets">Generate association rules from frequent itemsets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>rules <span class="op">=</span> association_rules(frequent_itemsets, metric<span class="op">=</span><span class="st">"confidence"</span>, min_threshold<span class="op">=</span><span class="fl">0.6</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>rules <span class="op">=</span> association_rules(frequent_itemsets, metric<span class="op">=</span><span class="st">"confidence"</span>, min_threshold<span class="op">=</span><span class="fl">0.6</span>)</span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>rules <span class="op">=</span> rules[[<span class="st">'antecedents'</span>, <span class="st">'consequents'</span>, <span class="st">'support'</span>, <span class="st">'confidence'</span>, <span class="st">'lift'</span>]]</span>
-<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>rules</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>rules</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            antecedents                      consequents  \
 0                      (OnlineSecurity)                   (PhoneService)   
@@ -4058,12 +4143,12 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 7                     (StreamingMovies)                    (StreamingTV)   
 8                         (StreamingTV)                   (PhoneService)   
 9                     (StreamingMovies)                   (PhoneService)   
-10  (StreamingMovies, DeviceProtection)                   (PhoneService)   
-11     (PhoneService, DeviceProtection)                (StreamingMovies)   
-12       (StreamingTV, StreamingMovies)                   (PhoneService)   
-13          (StreamingTV, PhoneService)                (StreamingMovies)   
-14      (StreamingMovies, PhoneService)                    (StreamingTV)   
-15                        (StreamingTV)  (StreamingMovies, PhoneService)   
+10     (PhoneService, DeviceProtection)                (StreamingMovies)   
+11  (DeviceProtection, StreamingMovies)                   (PhoneService)   
+12          (StreamingTV, PhoneService)                (StreamingMovies)   
+13       (StreamingTV, StreamingMovies)                   (PhoneService)   
+14      (PhoneService, StreamingMovies)                    (StreamingTV)   
+15                        (StreamingTV)  (PhoneService, StreamingMovies)   
 16                    (StreamingMovies)      (StreamingTV, PhoneService)   
 
      support  confidence      lift  
@@ -4077,10 +4162,10 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 7   0.275451    0.710102  1.847526  
 8   0.343888    0.894717  0.990645  
 9   0.345591    0.890922  0.986443  
-10  0.200057    0.883386  0.978099  
-11  0.200057    0.665564  1.715802  
-12  0.247054    0.896907  0.993070  
-13  0.247054    0.718415  1.852047  
+10  0.200057    0.665564  1.715802  
+11  0.200057    0.883386  0.978099  
+12  0.247054    0.718415  1.852047  
+13  0.247054    0.896907  0.993070  
 14  0.247054    0.714873  1.859936  
 15  0.247054    0.642778  1.859936  
 16  0.247054    0.636896  1.852047  </code></pre>
@@ -4094,7 +4179,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="prepare-transactional-data-product-categories-as-items" class="level3">
 <h3 class="anchored" data-anchor-id="prepare-transactional-data-product-categories-as-items">Prepare transactional data (product categories as items)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select binary columns representing product purchases</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select binary columns representing product purchases</span></span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>product_cols <span class="op">=</span> [</span>
 <span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MntWines'</span>, <span class="st">'MntFruits'</span>, <span class="st">'MntMeatProducts'</span>,</span>
 <span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MntFishProducts'</span>, <span class="st">'MntSweetProducts'</span>, <span class="st">'MntGoldProds'</span></span>
@@ -4109,7 +4194,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb104-13"><a href="#cb104-13" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb104-14"><a href="#cb104-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb104-15"><a href="#cb104-15" aria-hidden="true" tabindex="-1"></a>basket <span class="op">=</span> basket.astype(<span class="bu">bool</span>)</span>
-<span id="cb104-16"><a href="#cb104-16" aria-hidden="true" tabindex="-1"></a>basket.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb104-16"><a href="#cb104-16" aria-hidden="true" tabindex="-1"></a>basket.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Wines  Fruits  Meat  Fish  Sweets  Gold
 0   True    True  True  True    True  True
@@ -4124,21 +4209,21 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="apply-the-apriori-algorithm-to-identify-frequent-itemsets-1" class="level3">
 <h3 class="anchored" data-anchor-id="apply-the-apriori-algorithm-to-identify-frequent-itemsets-1">Apply the Apriori algorithm to identify frequent itemsets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>frequent_itemsets <span class="op">=</span> apriori(basket, min_support<span class="op">=</span><span class="fl">0.2</span>, use_colnames<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>frequent_itemsets.sort_values(by<span class="op">=</span><span class="st">'support'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>frequent_itemsets <span class="op">=</span> apriori(basket, min_support<span class="op">=</span><span class="fl">0.2</span>, use_colnames<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>frequent_itemsets.sort_values(by<span class="op">=</span><span class="st">'support'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     support                                   itemsets
 2   0.999554                                     (Meat)
 0   0.994196                                    (Wines)
-7   0.994196                              (Wines, Meat)
+7   0.994196                              (Meat, Wines)
 5   0.972768                                     (Gold)
 17  0.972321                               (Gold, Meat)
 ..       ...                                        ...
-44  0.656696              (Fish, Wines, Sweets, Fruits)
-54  0.650000               (Fish, Sweets, Fruits, Gold)
-61  0.650000         (Gold, Fruits, Meat, Fish, Sweets)
-59  0.646875        (Wines, Gold, Fruits, Fish, Sweets)
-62  0.646875  (Wines, Gold, Fruits, Meat, Fish, Sweets)
+44  0.656696              (Fruits, Wines, Sweets, Fish)
+54  0.650000               (Gold, Fruits, Fish, Sweets)
+61  0.650000         (Gold, Sweets, Fruits, Meat, Fish)
+59  0.646875        (Gold, Sweets, Wines, Fruits, Fish)
+62  0.646875  (Gold, Sweets, Wines, Fruits, Meat, Fish)
 
 [63 rows x 2 columns]</code></pre>
 </div>
@@ -4148,41 +4233,49 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="generate-association-rules-from-frequent-itemsets-1" class="level3">
 <h3 class="anchored" data-anchor-id="generate-association-rules-from-frequent-itemsets-1">Generate association rules from frequent itemsets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>rules <span class="op">=</span> association_rules(frequent_itemsets, metric<span class="op">=</span><span class="st">"confidence"</span>, min_threshold<span class="op">=</span><span class="fl">0.6</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>rules <span class="op">=</span> association_rules(frequent_itemsets, metric<span class="op">=</span><span class="st">"confidence"</span>, min_threshold<span class="op">=</span><span class="fl">0.6</span>)</span>
 <span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>rules <span class="op">=</span> rules[[<span class="st">'antecedents'</span>, <span class="st">'consequents'</span>, <span class="st">'support'</span>, <span class="st">'confidence'</span>, <span class="st">'lift'</span>]]</span>
 <span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>rules <span class="op">=</span> rules.sort_values(by<span class="op">=</span><span class="st">'lift'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>rules.reset_index(drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>rules</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>rules</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     antecedents                  consequents   support  \
-0          (Wines, Gold, Sweets)               (Fish, Fruits)  0.646875   
-1                 (Fish, Fruits)  (Wines, Gold, Meat, Sweets)  0.646875   
-2                 (Fish, Fruits)        (Wines, Gold, Sweets)  0.646875   
-3    (Wines, Gold, Meat, Sweets)               (Fish, Fruits)  0.646875   
-4           (Fish, Fruits, Meat)        (Wines, Gold, Sweets)  0.646875   
+0          (Gold, Wines, Sweets)               (Fruits, Fish)  0.646875   
+1                 (Fruits, Fish)  (Gold, Meat, Wines, Sweets)  0.646875   
+2          (Gold, Wines, Sweets)         (Fruits, Meat, Fish)  0.646875   
+3           (Fruits, Meat, Fish)        (Gold, Wines, Sweets)  0.646875   
+4    (Gold, Meat, Wines, Sweets)               (Fruits, Fish)  0.646875   
 ..                           ...                          ...       ...   
-597               (Fish, Sweets)                      (Wines)  0.727679   
-598         (Fish, Sweets, Gold)                      (Wines)  0.714286   
-599                      (Wines)         (Fish, Sweets, Gold)  0.714286   
-600                (Wines, Meat)         (Fish, Gold, Sweets)  0.714286   
-601         (Fish, Gold, Sweets)                (Wines, Meat)  0.714286   
+597               (Fish, Sweets)                (Meat, Wines)  0.727679   
+598         (Gold, Fish, Sweets)                (Meat, Wines)  0.714286   
+599         (Gold, Fish, Sweets)                      (Wines)  0.714286   
+600                (Meat, Wines)         (Gold, Fish, Sweets)  0.714286   
+601                      (Wines)         (Gold, Fish, Sweets)  0.714286   
 
      confidence      lift  
 0      0.816338  1.109586  
 1      0.879248  1.109586  
-2      0.879248  1.109586  
-3      0.816338  1.109586  
-4      0.879248  1.109586  
+2      0.816338  1.109586  
+3      0.879248  1.109586  
+4      0.816338  1.109586  
 ..          ...       ...  
 597    0.992692  0.998487  
 598    0.992556  0.998350  
-599    0.718455  0.998350  
+599    0.992556  0.998350  
 600    0.718455  0.998350  
-601    0.992556  0.998350  
+601    0.718455  0.998350  
 
 [602 rows x 5 columns]</code></pre>
 </div>
 </div>
+</section>
+<section id="interpretation-questions-4" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-questions-4">Interpretation Questions</h3>
+<ol type="1">
+<li>Which product category appears in the most frequent itemsets? What does this suggest about purchasing patterns?</li>
+<li>Find a rule with high confidence but low lift. Why might this rule be less useful despite high confidence?</li>
+<li>Identify one actionable insight: what product bundle would you recommend based on these rules?</li>
+</ol>
 <hr>
 </section>
 </section>
@@ -4194,7 +4287,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="split-data-into-training-and-validation-sets" class="level3">
 <h3 class="anchored" data-anchor-id="split-data-into-training-and-validation-sets">Split data into training and validation sets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
 <span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> telco_churn[[<span class="st">'AvgServiceUsageScore'</span>, <span class="st">'tenure'</span>, <span class="st">'MonthlyCharges'</span>]]</span>
 <span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> telco_churn[<span class="st">'Churn'</span>]</span>
 <span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -4205,20 +4298,20 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into train and test sets (80% train, 20% test)</span></span>
 <span id="cb110-10"><a href="#cb110-10" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
 <span id="cb110-11"><a href="#cb110-11" aria-hidden="true" tabindex="-1"></a>  X_scaled, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">2025</span></span>
-<span id="cb110-12"><a href="#cb110-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb110-12"><a href="#cb110-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="train-a-classification-model-using-logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-classification-model-using-logistic-regression">Train a classification model using logistic regression</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize logistic regression model</span></span>
-<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>logreg <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>, solver<span class="op">=</span><span class="st">'liblinear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize logistic regression model</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>logreg <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>, solver<span class="op">=</span><span class="st">'liblinear'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="apply-k-fold-cross-validation-to-evaluate-model-performance" class="level3">
 <h3 class="anchored" data-anchor-id="apply-k-fold-cross-validation-to-evaluate-model-performance">Apply k-fold cross-validation to evaluate model performance</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-validate with multiple metrics</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-validate with multiple metrics</span></span>
 <span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>cv_results <span class="op">=</span> cross_validate(</span>
 <span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>    logreg, </span>
 <span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>    X_train, </span>
@@ -4226,19 +4319,19 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb112-6"><a href="#cb112-6" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>, </span>
 <span id="cb112-7"><a href="#cb112-7" aria-hidden="true" tabindex="-1"></a>    scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'precision'</span>, <span class="st">'recall'</span>, <span class="st">'f1'</span>],</span>
 <span id="cb112-8"><a href="#cb112-8" aria-hidden="true" tabindex="-1"></a>    return_train_score<span class="op">=</span><span class="va">True</span></span>
-<span id="cb112-9"><a href="#cb112-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb112-9"><a href="#cb112-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="compare-metrics-across-folds" class="level3">
 <h3 class="anchored" data-anchor-id="compare-metrics-across-folds">Compare metrics across folds</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_metric(name, results):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_metric(name, results):</span>
 <span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>    scores <span class="op">=</span> results[<span class="ss">f"test_</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">"</span>]</span>
 <span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>scores<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss"> ± </span><span class="sc">{</span>scores<span class="sc">.</span>std()<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
 <span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb113-5"><a href="#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Average performance across folds</span></span>
 <span id="cb113-6"><a href="#cb113-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> metric <span class="kw">in</span> [<span class="st">'accuracy'</span>, <span class="st">'precision'</span>, <span class="st">'recall'</span>, <span class="st">'f1'</span>]:</span>
-<span id="cb113-7"><a href="#cb113-7" aria-hidden="true" tabindex="-1"></a>    show_metric(metric, cv_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb113-7"><a href="#cb113-7" aria-hidden="true" tabindex="-1"></a>    show_metric(metric, cv_results)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.782 ± 0.008
 Precision: 0.632 ± 0.021
@@ -4260,7 +4353,7 @@ F1: 0.524 ± 0.018</code></pre>
 <section id="split-data-into-training-and-validation-sets-1" class="level3">
 <h3 class="anchored" data-anchor-id="split-data-into-training-and-validation-sets-1">Split data into training and validation sets</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>X_m <span class="op">=</span> marketing_campaign[[<span class="st">'Income'</span>, <span class="st">'TotalSpent'</span>, <span class="st">'TotalChildren'</span>]]</span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>y_m <span class="op">=</span> marketing_campaign[<span class="st">'Response'</span>]</span>
 <span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -4271,20 +4364,20 @@ F1: 0.524 ± 0.018</code></pre>
 <span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Train-test split</span></span>
 <span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a>X_m_train, X_m_test, y_m_train, y_m_test <span class="op">=</span> train_test_split(</span>
 <span id="cb115-11"><a href="#cb115-11" aria-hidden="true" tabindex="-1"></a>    X_m_scaled, y_m, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">2025</span></span>
-<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="train-a-classification-model-using-logistic-regression-1" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-classification-model-using-logistic-regression-1">Train a classification model using logistic regression</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize logistic regression model</span></span>
-<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>logreg_m <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>, solver<span class="op">=</span><span class="st">'liblinear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize logistic regression model</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>logreg_m <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>, solver<span class="op">=</span><span class="st">'liblinear'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="apply-k-fold-cross-validation-to-evaluate-model-performance-1" class="level3">
 <h3 class="anchored" data-anchor-id="apply-k-fold-cross-validation-to-evaluate-model-performance-1">Apply k-fold cross-validation to evaluate model performance</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5-fold cross-validation with multiple metrics</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5-fold cross-validation with multiple metrics</span></span>
 <span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>cv_results_m <span class="op">=</span> cross_validate(</span>
 <span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>    logreg_m, </span>
 <span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>    X_m_train, </span>
@@ -4292,15 +4385,15 @@ F1: 0.524 ± 0.018</code></pre>
 <span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>, </span>
 <span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a>    scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'precision'</span>, <span class="st">'recall'</span>, <span class="st">'f1'</span>],</span>
 <span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a>    return_train_score<span class="op">=</span><span class="va">True</span></span>
-<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="compare-metrics-across-folds-1" class="level3">
 <h3 class="anchored" data-anchor-id="compare-metrics-across-folds-1">Compare metrics across folds</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average performance across folds</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average performance across folds</span></span>
 <span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> [<span class="st">"accuracy"</span>, <span class="st">"precision"</span>, <span class="st">"recall"</span>, <span class="st">"f1"</span>]:</span>
-<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>    show_metric(m, cv_results_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>    show_metric(m, cv_results_m)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.843 ± 0.010
 Precision: 0.443 ± 0.364
@@ -4313,6 +4406,14 @@ F1: 0.060 ± 0.053</code></pre>
 <p>Precision → How many predicted responders were actual responders</p>
 <p>Recall → How many actual responders were correctly identified</p>
 <p>F1-Score → Harmonic mean of precision and recall</p>
+</section>
+<section id="interpretation-questions-5" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-questions-5">Interpretation Questions</h3>
+<ol type="1">
+<li>How consistent are your metrics across folds? (Look at the ± values)</li>
+<li>Which metric shows the most variability? What might cause this?</li>
+<li>Compare your cross-validation results to the single train-test split in Exercise #4. Are they similar?</li>
+</ol>
 <hr>
 </section>
 </section>
@@ -4321,18 +4422,18 @@ F1: 0.060 ± 0.053</code></pre>
 <section id="train-a-random-forest-classifier" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-random-forest-classifier">Train a Random Forest classifier</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> telco_churn[[<span class="st">'AvgServiceUsageScore'</span>, <span class="st">'tenure'</span>, <span class="st">'MonthlyCharges'</span>]]</span>
 <span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> telco_churn[<span class="st">'Churn'</span>]</span>
 <span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb120-5"><a href="#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize Random Forest</span></span>
-<span id="cb120-6"><a href="#cb120-6" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier(random_state<span class="op">=</span><span class="dv">2025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb120-6"><a href="#cb120-6" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier(random_state<span class="op">=</span><span class="dv">2025</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="apply-grid-search-to-find-optimal-hyperparameters" class="level3">
 <h3 class="anchored" data-anchor-id="apply-grid-search-to-find-optimal-hyperparameters">Apply grid search to find optimal hyperparameters</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the hyperparameter grid</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the hyperparameter grid</span></span>
 <span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {</span>
 <span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_estimators'</span>: [<span class="dv">100</span>, <span class="dv">200</span>],</span>
 <span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: [<span class="dv">4</span>, <span class="dv">8</span>],</span>
@@ -4351,7 +4452,7 @@ F1: 0.060 ± 0.053</code></pre>
 <span id="cb121-17"><a href="#cb121-17" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb121-18"><a href="#cb121-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb121-19"><a href="#cb121-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Run grid search</span></span>
-<span id="cb121-20"><a href="#cb121-20" aria-hidden="true" tabindex="-1"></a>grid_search.fit(X, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb121-20"><a href="#cb121-20" aria-hidden="true" tabindex="-1"></a>grid_search.fit(X, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <style>#sk-container-id-7 {
   /* Definition of color scheme common for light and dark mode */
@@ -4787,16 +4888,16 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="evaluate-model-improvement-using-accuracy-and-recall" class="level3">
 <h3 class="anchored" data-anchor-id="evaluate-model-improvement-using-accuracy-and-recall">Evaluate model improvement using accuracy and recall</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict using the best model</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict using the best model</span></span>
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>best_rf <span class="op">=</span> grid_search.best_estimator_</span>
 <span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> best_rf.predict(X)</span>
 <span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
-<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Accuracy: </span><span class="sc">{</span>accuracy_score(y, y_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Accuracy: </span><span class="sc">{</span>accuracy_score(y, y_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Accuracy: 0.817</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Recall: </span><span class="sc">{</span>recall_score(y, y_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Recall: </span><span class="sc">{</span>recall_score(y, y_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Recall: 0.478</code></pre>
 </div>
@@ -4805,7 +4906,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="interpret-the-best-hyperparameter-combination" class="level3">
 <h3 class="anchored" data-anchor-id="interpret-the-best-hyperparameter-combination">Interpret the best hyperparameter combination</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best Parameters Found:"</span>, grid_search.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best Parameters Found:"</span>, grid_search.best_params_)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Parameters Found: {'max_depth': 8, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 200}</code></pre>
 </div>
@@ -4818,18 +4919,18 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="train-a-random-forest-classifier-1" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-random-forest-classifier-1">Train a Random Forest classifier</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features and target</span></span>
 <span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>X_m <span class="op">=</span> marketing_campaign[[<span class="st">'Income'</span>, <span class="st">'TotalSpent'</span>, <span class="st">'TotalChildren'</span>]]</span>
 <span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>y_m <span class="op">=</span> marketing_campaign[<span class="st">'Response'</span>]</span>
 <span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize Random Forest</span></span>
-<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a>rf_m <span class="op">=</span> RandomForestClassifier(random_state<span class="op">=</span><span class="dv">2025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a>rf_m <span class="op">=</span> RandomForestClassifier(random_state<span class="op">=</span><span class="dv">2025</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="apply-grid-search-to-find-optimal-hyperparameters-1" class="level3">
 <h3 class="anchored" data-anchor-id="apply-grid-search-to-find-optimal-hyperparameters-1">Apply grid search to find optimal hyperparameters</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the hyperparameter grid</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the hyperparameter grid</span></span>
 <span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>param_grid_m <span class="op">=</span> {</span>
 <span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_estimators'</span>: [<span class="dv">100</span>, <span class="dv">200</span>],</span>
 <span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: [<span class="dv">4</span>, <span class="dv">8</span>],</span>
@@ -4848,7 +4949,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb129-17"><a href="#cb129-17" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb129-18"><a href="#cb129-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb129-19"><a href="#cb129-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Run grid search</span></span>
-<span id="cb129-20"><a href="#cb129-20" aria-hidden="true" tabindex="-1"></a>grid_search_m.fit(X_m, y_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb129-20"><a href="#cb129-20" aria-hidden="true" tabindex="-1"></a>grid_search_m.fit(X_m, y_m)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <style>#sk-container-id-8 {
   /* Definition of color scheme common for light and dark mode */
@@ -5282,16 +5383,16 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="evaluate-model-improvement-using-accuracy-and-recall-1" class="level3">
 <h3 class="anchored" data-anchor-id="evaluate-model-improvement-using-accuracy-and-recall-1">Evaluate model improvement using accuracy and recall</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict using the best model</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict using the best model</span></span>
 <span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>best_rf_m <span class="op">=</span> grid_search_m.best_estimator_</span>
 <span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a>y_m_pred <span class="op">=</span> best_rf_m.predict(X_m)</span>
 <span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb130-5"><a href="#cb130-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
-<span id="cb130-6"><a href="#cb130-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Accuracy: </span><span class="sc">{</span>accuracy_score(y_m, y_m_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb130-6"><a href="#cb130-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Accuracy: </span><span class="sc">{</span>accuracy_score(y_m, y_m_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Accuracy: 0.890</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Recall: </span><span class="sc">{</span>recall_score(y_m, y_m_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Best Recall: </span><span class="sc">{</span>recall_score(y_m, y_m_pred)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Recall: 0.287</code></pre>
 </div>
@@ -5300,13 +5401,37 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <section id="interpret-the-best-hyperparameter-combination-1" class="level3">
 <h3 class="anchored" data-anchor-id="interpret-the-best-hyperparameter-combination-1">Interpret the best hyperparameter combination</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best Parameters Found:"</span>, grid_search_m.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best Parameters Found:"</span>, grid_search_m.best_params_)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best Parameters Found: {'max_depth': 8, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}</code></pre>
 </div>
 </div>
 </section>
+<section id="interpretation-questions-6" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-questions-6">Interpretation Questions</h3>
+<ol type="1">
+<li>Did hyperparameter tuning improve recall compared to the default model in Exercise #4?</li>
+<li>Look at the best parameters found. Are they at the edges of your grid (suggesting you should expand the search)?</li>
+<li>Was the computational cost of grid search worth the performance improvement?</li>
+</ol>
+<hr>
 </section>
+</section>
+</section>
+<section id="bonus-challenge-end-to-end-ml-pipeline" class="level1">
+<h1>Bonus Challenge: End-to-End ML Pipeline</h1>
+<p>If you finish early or want additional practice, try this integration challenge using the <code>marketing_campaign</code> data:</p>
+<p><strong>Goal:</strong> Build the best model to predict <code>Response</code> using everything you’ve learned.</p>
+<ol type="1">
+<li><p><strong>Feature Engineering:</strong> Create at least one new feature beyond TotalChildren and TotalSpent (e.g., spending per child, years as customer from Dt_Customer)</p></li>
+<li><p><strong>Model Comparison:</strong> Train both Logistic Regression and Random Forest, use cross-validation to compare them fairly</p></li>
+<li><p><strong>Optimization:</strong> Use GridSearchCV on your better-performing model</p></li>
+<li><p><strong>Interpretation:</strong> Write 2-3 sentences explaining which model you’d recommend and why</p></li>
+</ol>
+<p>This is open-ended. There’s no single right answer. The goal is to practice the full workflow.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 
 </main>
@@ -5362,13 +5487,14 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
