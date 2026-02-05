@@ -4,7 +4,7 @@
 
 The major files in this repository are
 - `slides.pdf`: PDF version of the slides used in this course to motivate the code.
-- `telco-customer-churn.csv`: Data for code walkthroughs, one as Comma-Separated Values and the other as a Microsoft Excel file
+- `telco-customer-churn.csv`: Data for code walkthroughs as Comma-Separated Values
 - `marketing_campaign.csv`: Data for student exercises.
 - `exercises.ipynb`: A Jupyter Notebook with pseudocode/instructions provided to be filled in for code walkthroughs and student exercises
 - `exercises_solutions.ipynb`: A Jupyter Notebook with answers to the code walkthroughs and exercises. An HTML version of these solutions is available at https://ismay-oreilly-ml.netlify.app/exercises_solutions.html and is the recommended way to view solutions.
