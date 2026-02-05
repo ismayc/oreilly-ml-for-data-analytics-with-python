@@ -26,7 +26,7 @@ InteractiveShell.ast_node_interactivity = "all"
 
 ## Walkthrough #1: Setting Up the Python Environment for ML
 
-If you haven't already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so [here](https://github.com/ismayc/oreilly-data-analysis-with-python/blob/main/README.md). 
+If you haven't already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so [here](https://github.com/ismayc/oreilly-ml-for-data-analytics-with-python/blob/main/README.md. 
 
 You can also install the packages directly in a Jupyter notebook with
 
