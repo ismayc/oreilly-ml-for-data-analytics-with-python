@@ -17,3 +17,4 @@ telco-wrangling.py
 exercises_solutions-notes*
 mc-quarto/answers*
 mc-quarto/extract-questions.R
+*.quarto_ipynb*

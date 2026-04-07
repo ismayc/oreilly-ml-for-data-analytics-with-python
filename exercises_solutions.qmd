@@ -6,7 +6,8 @@ format:
     theme: flatly
     toc: true
     toc-floating: true 
-engine: knitr 
+  ipynb: default
+engine: jupyter 
 execute:
   warning: false
 ---
@@ -497,7 +498,7 @@ plt.plot(k_range, inertia, marker='o')
 plt.xlabel('Number of clusters (k)')
 plt.ylabel('Inertia')
 plt.title('Elbow Method for Optimal k')
-plt.show()
+plt.show();
 ```
 
 ### Verify using the silhouette score (optional but recommended)
@@ -658,7 +659,7 @@ product_cols = [
 ]
 
 # Convert product columns to binary: 1 if any amount was spent, else 0
-basket = marketing_campaign[product_cols].applymap(lambda x: 1 if x > 0 else 0)
+basket = marketing_campaign[product_cols].map(lambda x: 1 if x > 0 else 0)
 
 # Rename columns for cleaner output
 basket.columns = [
