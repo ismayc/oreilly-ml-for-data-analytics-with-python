@@ -251,11 +251,11 @@ plt.show();
 >
 > 3. Estimated Response Rates:
 
-> PhD: ~100 responders out of ~485 total ≈ 21%
-> Graduation: ~150 responders out of ~1,125 total ≈ 13%
-> Master: ~55 responders out of ~370 total ≈ 15%
-> 2n Cycle: ~25 responders out of ~205 total ≈ 12%
-> Basic: Nearly 0 responders out of ~55 total ≈ ~0%
+> PhD: ~100 responders out of ~485 total ≈ 21%. 
+> Graduation: ~150 responders out of ~1,125 total ≈ 13%. 
+> Master: ~55 responders out of ~370 total ≈ 15%.  
+> 2n Cycle: ~25 responders out of ~205 total ≈ 12%. 
+> Basic: Nearly 0 responders out of ~55 total ≈ ~0%. 
 
 > PhD holders show the highest response rate at roughly 21%. PhD holders are the most receptive audience. If marketing budgets are limited, focusing resources on this segment would likely yield the best return on investment. The near-zero response rate for Basic suggests either a mismatch between the offering and this demographic, or possibly that the sample size is too small to draw conclusions. Before abandoning this segment entirely, it would be worth investigating why.
 
