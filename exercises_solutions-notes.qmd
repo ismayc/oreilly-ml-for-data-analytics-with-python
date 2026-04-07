@@ -6,7 +6,7 @@ format:
     theme: flatly
     toc: true
     toc-floating: true 
-engine: knitr  
+engine: jupyter
 execute:
   warning: false
 ---
@@ -532,7 +532,7 @@ plt.plot(k_range, inertia, marker='o')
 plt.xlabel('Number of clusters (k)')
 plt.ylabel('Inertia')
 plt.title('Elbow Method for Optimal k')
-plt.show()
+plt.show();
 ```
 
 ### Verify using the silhouette score
@@ -688,7 +688,7 @@ rules
 
 ```{python}
 product_cols = ['MntWines', 'MntFruits', 'MntMeatProducts', 'MntFishProducts', 'MntSweetProducts', 'MntGoldProds']
-basket = marketing_campaign[product_cols].applymap(lambda x: 1 if x > 0 else 0)
+basket = marketing_campaign[product_cols].map(lambda x: 1 if x > 0 else 0)
 basket.columns = ['Wines', 'Fruits', 'Meat', 'Fish', 'Sweets', 'Gold']
 basket = basket.astype(bool)
 basket.head()

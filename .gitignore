@@ -15,6 +15,7 @@ marketing_campaign_ORIGINAL.csv
 telco-customer-churn_ORIGINAL.csv
 telco-wrangling.py
 exercises_solutions-notes*
+exercises_solutions-notes.qmd
 mc-quarto/answers*
 mc-quarto/extract-questions.R
 *.quarto_ipynb*
