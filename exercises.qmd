@@ -147,7 +147,7 @@ marketing_campaign_raw = pd.read_csv('marketing_campaign.csv')
 ```
 
 ```{python}
-# Visualize the relationship between MonthlyCharges and Churn
+# Visualize the relationship between InternetService and Churn
 
 ```
 
