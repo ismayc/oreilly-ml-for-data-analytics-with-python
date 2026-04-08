@@ -50,7 +50,6 @@ Alternatively, I've set up some temporary notebooks on Binder [here](https://myb
   - Import the libraries in the first cell of your notebook:
     ```python
     import pandas as pd
-    import seaborn as sns
     import matplotlib.pyplot as plt
     import seaborn as sns
     from sklearn.model_selection import train_test_split
