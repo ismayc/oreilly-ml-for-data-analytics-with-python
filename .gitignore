@@ -25,3 +25,6 @@ mc-quarto/extract-questions.R
 *with_notes*
 
 .jupyterlite.doit.db
+
+# Keep the browser app index pages (the broad index.html rule above drops them)
+!app/**/index.html
