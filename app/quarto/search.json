@@ -1,0 +1,261 @@
+[
+  {
+    "objectID": "solutions.html",
+    "href": "solutions.html",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "",
+    "text": "NoteAbout this page\n\n\n\n\n\nThese are the completed solutions, runnable in your browser — no install needed. Click Run Code on any cell (run the import and data-loading cells near the top first). Edit any cell to experiment.\nLooking for the blanks to fill in yourself? See the exercises page."
+  },
+  {
+    "objectID": "solutions.html#walkthrough-setting-up-the-python-environment-for-ml",
+    "href": "solutions.html#walkthrough-setting-up-the-python-environment-for-ml",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough: Setting Up the Python Environment for ML",
+    "text": "Walkthrough: Setting Up the Python Environment for ML\nIf you haven’t already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so here.\nYou can also install the packages directly in a Jupyter notebook with\n\n\n\n\n\n\nIf you aren’t able to do this on your machine, you may want to check out Google Colab. It’s a free service that allows you to run Jupyter notebooks in the cloud. Alternatively, I’ve set up some temporary notebooks on Binder here that you can work with online as well.\nRun the following code to check that each of the needed packages are installed. If you get an error, you may need to install the package(s) again."
+  },
+  {
+    "objectID": "solutions.html#exercise-setting-up-the-python-environment",
+    "href": "solutions.html#exercise-setting-up-the-python-environment",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Exercise: Setting Up the Python Environment",
+    "text": "Exercise: Setting Up the Python Environment\nBy completing this exercise, you will be able to\n\nImport necessary Python packages\nCheck for successful package loading\nLoad datasets into Python\n\nFollow the instructions above in Walkthrough to check for correct installation of necessary packages."
+  },
+  {
+    "objectID": "solutions.html#walkthrough-1.1-exploring-and-preprocessing-data-with-pandas-seaborn",
+    "href": "solutions.html#walkthrough-1.1-exploring-and-preprocessing-data-with-pandas-seaborn",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 1.1: Exploring and Preprocessing Data with Pandas & Seaborn",
+    "text": "Walkthrough 1.1: Exploring and Preprocessing Data with Pandas & Seaborn\n\nInspect a dataset using Pandas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHandle missing values and clean data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreate visualizations to identify key business trends"
+  },
+  {
+    "objectID": "solutions.html#exercise-1.1-exploring-and-preprocessing-data-with-pandas-seaborn",
+    "href": "solutions.html#exercise-1.1-exploring-and-preprocessing-data-with-pandas-seaborn",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 1.1: Exploring and Preprocessing Data with Pandas & Seaborn",
+    "text": "Exercise 1.1: Exploring and Preprocessing Data with Pandas & Seaborn\n\nInspect a dataset using Pandas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHandle missing values and clean data\n\nCommon Pitfall: The Income column has missing values. If you skip this step and try to build models later, you’ll get errors. Always re-check isnull().sum() after cleaning to verify it returns zeros.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreate visualizations to identify key business trends\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nLooking at the violin plot of Income by Response, which group (responders or non-responders) shows more variability in income?\nBased on your scatter plot, do higher-income customers tend to spend more? Is this relationship strong or weak?\nWhich education level shows the highest response rate? What marketing implications might this have?\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nLoad a dataset and inspect its structure with .info() and .describe()\nIdentify and handle missing values before modeling\nCreate at least 3 types of visualizations (histogram, scatter, violin/box)\nArticulate one business insight from your exploratory analysis"
+  },
+  {
+    "objectID": "solutions.html#walkthrough-2.1-build-a-regression-model-for-pricing-optimization",
+    "href": "solutions.html#walkthrough-2.1-build-a-regression-model-for-pricing-optimization",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 2.1: Build a Regression Model for Pricing Optimization",
+    "text": "Walkthrough 2.1: Build a Regression Model for Pricing Optimization\n\nSplit the data into training and validation sets\n\nCommon Pitfall: Fitting StandardScaler on the full dataset before the train/test split leaks information from the validation set into training. In a strict workflow, fit the scaler on the training data only (or wrap it in a Pipeline) so the validation set stays truly unseen.\n\n\n\n\n\n\n\n\n\nTrain a linear regression model\n\n\n\n\n\n\n\nCommon Pitfall: Because the predictor was standardized before fitting, this coefficient is the change in price per one-standard-deviation change in usage, not per raw unit. Keep that in mind when explaining the number to stakeholders, and convert back to raw units if you need a real-world-unit effect.\n\n\n\nEvaluate model performance on the validation set"
+  },
+  {
+    "objectID": "solutions.html#exercise-2.1-build-a-regression-model-for-pricing-optimization",
+    "href": "solutions.html#exercise-2.1-build-a-regression-model-for-pricing-optimization",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 2.1: Build a Regression Model for Pricing Optimization",
+    "text": "Exercise 2.1: Build a Regression Model for Pricing Optimization\n\nSplit the data into training and validation sets\n\n\n\n\n\n\n\n\nTrain a linear regression model\n\n\n\n\n\n\n\n\nEvaluate model performance on the validation set\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nIs your R-squared higher or lower than the telco churn model? What might explain the difference?\nIf MAE is $200, what does that mean in practical terms for predicting customer spending?\nWould you trust this model for making budget decisions? Why or why not?"
+  },
+  {
+    "objectID": "solutions.html#walkthrough-2.2-implement-a-classification-model-for-customer-churn",
+    "href": "solutions.html#walkthrough-2.2-implement-a-classification-model-for-customer-churn",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 2.2: Implement a Classification Model for Customer Churn",
+    "text": "Walkthrough 2.2: Implement a Classification Model for Customer Churn\n\nSplit the data into training and validation sets\n\nCommon Pitfall: Churn and campaign response are imbalanced (far more 0s than 1s), so accuracy alone can be misleading – a model that always predicts the majority class can still look “accurate.” Report precision and recall alongside accuracy to see how well the model catches the minority class.\n\n\n\n\n\n\n\n\n\nTrain a Random Forest classification model\n\n\n\n\n\n\n\n\nEvaluate model performance on the validation set\n\n\n\n\n\n\n\n\nQuick Reference: When to Use Which Metric\n\n\n\n\n\n\n\n\nSituation\nMetric\nWhy\n\n\n\n\nPredicting continuous values\nR-squared, MAE\nMeasures prediction error\n\n\nBalanced classes\nAccuracy\nOverall correctness\n\n\nCost of false positives is high\nPrecision\nMinimize wrong positive predictions\n\n\nCost of false negatives is high\nRecall\nCatch all actual positives\n\n\nNeed balance\nF1-Score\nHarmonic mean of precision/recall"
+  },
+  {
+    "objectID": "solutions.html#exercise-2.2-implement-a-classification-model-for-customer-churn",
+    "href": "solutions.html#exercise-2.2-implement-a-classification-model-for-customer-churn",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 2.2: Implement a Classification Model for Customer Churn",
+    "text": "Exercise 2.2: Implement a Classification Model for Customer Churn\n\nSplit the data into training and validation sets\n\n\n\n\n\n\n\n\nTrain a Random Forest classification model\n\n\n\n\n\n\n\n\nEvaluate model performance on the validation set\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nCompare your precision and recall. Which is higher, and what does that imply about the model’s tendencies?\nLooking at your confusion matrix, is the model better at identifying responders or non-responders?\nIf running a marketing campaign costs $50 per contact, which metric matters more: precision or recall?\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nExplain the difference between regression and classification\nSplit data into training and validation sets with a fixed random_state\nInterpret R-squared, MAE, accuracy, precision, and recall\nExplain why we don’t evaluate a model on its training data\nRecognize when accuracy is misleading on imbalanced classes"
+  },
+  {
+    "objectID": "solutions.html#walkthrough-3.1-exploring-k-means-clustering-for-customer-segmentation",
+    "href": "solutions.html#walkthrough-3.1-exploring-k-means-clustering-for-customer-segmentation",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 3.1: Exploring K-Means Clustering for Customer Segmentation",
+    "text": "Walkthrough 3.1: Exploring K-Means Clustering for Customer Segmentation\n\nApply K-Means clustering to segment customers\n\nCommon Pitfall: K-means uses Euclidean distance, so an unscaled feature with a large range (like MonthlyCharges) will dominate the clusters. Always standardize features before clustering, and remember the cluster labels are arbitrary integers with no inherent order.\n\n\n\n\n\n\n\n\n\nDetermine the optimal number of clusters using the Elbow Method\n\n\n\n\n\n\n\n\nVerify using the silhouette score (optional but recommended)\n\n\n\n\n\n\n\n\nFit K-means and assign cluster labels to each customer\n\n\n\n\n\n\n\n\nVisualize customer segments using a 2D plot"
+  },
+  {
+    "objectID": "solutions.html#exercise-3.1-exploring-k-means-clustering-for-customer-segmentation",
+    "href": "solutions.html#exercise-3.1-exploring-k-means-clustering-for-customer-segmentation",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 3.1: Exploring K-Means Clustering for Customer Segmentation",
+    "text": "Exercise 3.1: Exploring K-Means Clustering for Customer Segmentation\n\nApply K-Means clustering to segment customers\n\n\n\n\n\n\n\n\nDetermine the optimal number of clusters using the Elbow Method\n\n\n\n\n\n\n\n\nVerify using the silhouette score (optional but recommended)\n\n\n\n\n\n\n\n\nFit K-means and assign cluster labels to each customer\n\n\n\n\n\n\n\n\nVisualize customer segments using a 2D plot\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nHow did you decide on the optimal k? Did the elbow method and silhouette scores agree?\nLooking at your 2D visualization, do the clusters seem well-separated or do they overlap?\nCan you describe what “type” of customer each cluster might represent based on their TotalChildren and TotalSpent values?"
+  },
+  {
+    "objectID": "solutions.html#walkthrough-3.2-market-basket-analysis-with-apriori-algorithm",
+    "href": "solutions.html#walkthrough-3.2-market-basket-analysis-with-apriori-algorithm",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 3.2: Market Basket Analysis with Apriori Algorithm",
+    "text": "Walkthrough 3.2: Market Basket Analysis with Apriori Algorithm\n\nPrepare transactional data (services as items)\n\nCommon Pitfall: Setting min_support too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular – always check lift (&gt; 1) to confirm a real association rather than a coincidence.\n\n\n\n\n\n\n\n\n\nApply the Apriori algorithm to identify frequent itemsets\n\n\n\n\n\n\n\n\nGenerate association rules from frequent itemsets"
+  },
+  {
+    "objectID": "solutions.html#exercise-3.2-market-basket-analysis-with-apriori-algorithm",
+    "href": "solutions.html#exercise-3.2-market-basket-analysis-with-apriori-algorithm",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 3.2: Market Basket Analysis with Apriori Algorithm",
+    "text": "Exercise 3.2: Market Basket Analysis with Apriori Algorithm\n\nPrepare transactional data (product categories as items)\n\n\n\n\n\n\n\n\n\nApply the Apriori algorithm to identify frequent itemsets\n\n\n\n\n\n\n\n\n\nGenerate association rules from frequent itemsets\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nWhich product category appears in the most frequent itemsets? What does this suggest about purchasing patterns?\nFind a rule with high confidence but low lift. Why might this rule be less useful despite high confidence?\nIdentify one actionable insight: what product bundle would you recommend based on these rules?\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nExplain the difference between supervised and unsupervised learning\nScale features before clustering and explain why it matters\nUse the elbow method and silhouette score to choose k\nInterpret support, confidence, and lift in association rules\nDescribe a business application for clustering and market basket analysis"
+  },
+  {
+    "objectID": "solutions.html#walkthrough-4.1-exploring-cross-validation-for-model-evaluation",
+    "href": "solutions.html#walkthrough-4.1-exploring-cross-validation-for-model-evaluation",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 4.1: Exploring Cross-Validation for Model Evaluation",
+    "text": "Walkthrough 4.1: Exploring Cross-Validation for Model Evaluation\n\nSplit data into training and validation sets\n\nCommon Pitfall: Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate – and forgetting random_state makes those folds (and your results) non-reproducible.\n\n\n\n\n\n\n\n\n\nTrain a classification model using logistic regression\n\n\n\n\n\n\n\n\nApply k-fold cross-validation to evaluate model performance\n\n\n\n\n\n\n\n\nCompare metrics across folds\n\n\n\n\n\n\nInterpretation\nAccuracy -&gt; Overall correctness of predictions\nPrecision -&gt; How many predicted churns were actual churns\nRecall -&gt; How many churns were correctly identified\nF1-Score -&gt; Balances precision & recall\nCross-validation ensures that your model generalizes better to unseen data by reducing the risk of overfitting on a single split."
+  },
+  {
+    "objectID": "solutions.html#exercise-4.1-exploring-cross-validation-for-model-evaluation",
+    "href": "solutions.html#exercise-4.1-exploring-cross-validation-for-model-evaluation",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 4.1: Exploring Cross-Validation for Model Evaluation",
+    "text": "Exercise 4.1: Exploring Cross-Validation for Model Evaluation\n\nSplit data into training and validation sets\n\n\n\n\n\n\n\n\nTrain a classification model using logistic regression\n\n\n\n\n\n\n\n\nApply k-fold cross-validation to evaluate model performance\n\n\n\n\n\n\n\n\nCompare metrics across folds\n\n\n\n\n\n\nInterpretation\nAccuracy -&gt; Overall correctness of predictions\nPrecision -&gt; How many predicted responders were actual responders\nRecall -&gt; How many actual responders were correctly identified\nF1-Score -&gt; Harmonic mean of precision and recall\n\n\nInterpretation Questions\n\nHow consistent are your metrics across folds? (Look at the standard deviation values.)\nWhich metric shows the most variability? What might cause this?\nCompare your cross-validation results to the single train-test split in Exercise 2.2. Are they similar?"
+  },
+  {
+    "objectID": "solutions.html#walkthrough-4.2-hyperparameter-tuning-with-grid-search",
+    "href": "solutions.html#walkthrough-4.2-hyperparameter-tuning-with-grid-search",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 4.2: Hyperparameter Tuning with Grid Search",
+    "text": "Walkthrough 4.2: Hyperparameter Tuning with Grid Search\n\nTrain a Random Forest classifier\n\nCommon Pitfall: Tuning hyperparameters and then evaluating on the same data leaks the answer and overstates performance. The honest grid-search workflow selects parameters using cross-validation on the training set, then reports the final score on a held-out test set the search never saw.\n\n\n\n\n\n\n\n\n\nApply grid search to find optimal hyperparameters\n\n\n\n\n\n\n\n\nEvaluate model improvement using accuracy and recall\n\n\n\n\n\n\n\n\nInterpret the best hyperparameter combination"
+  },
+  {
+    "objectID": "solutions.html#exercise-4.2-hyperparameter-tuning-with-grid-search",
+    "href": "solutions.html#exercise-4.2-hyperparameter-tuning-with-grid-search",
+    "title": "Solutions — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 4.2: Hyperparameter Tuning with Grid Search",
+    "text": "Exercise 4.2: Hyperparameter Tuning with Grid Search\n\nTrain a Random Forest classifier\n\n\n\n\n\n\n\n\nApply grid search to find optimal hyperparameters\n\n\n\n\n\n\n\n\nEvaluate model improvement using accuracy and recall\n\n\n\n\n\n\n\n\nInterpret the best hyperparameter combination\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nDid hyperparameter tuning improve recall compared to the default model in Exercise 2.2?\nLook at the best parameters found. Are they at the edges of your grid (suggesting you should expand the search)?\nWas the computational cost of grid search worth the performance improvement?\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nExplain why cross-validation is better than a single train-test split\nInterpret the mean and standard deviation of cross-validation scores\nDefine what hyperparameters are and why we tune them\nUse GridSearchCV to find optimal model settings\nExplain why tuning and reporting on the same data inflates performance"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Machine Learning for Data Analytics with Python",
+    "section": "",
+    "text": "Welcome! This site lets you run all of the course code directly in your browser. Python runs locally on your own machine via Pyodide (WebAssembly) — there is nothing to install, no account to create, and no cloud server involved."
+  },
+  {
+    "objectID": "index.html#two-ways-to-work",
+    "href": "index.html#two-ways-to-work",
+    "title": "Machine Learning for Data Analytics with Python",
+    "section": "Two ways to work",
+    "text": "Two ways to work\n\n\n📝 Exercises\nThe live-coding template. Code cells start mostly empty so you can fill them in as we go. Your edits are saved automatically in this browser, so you can pick up where you left off.\n\n\n✅ Solutions\nThe completed code for every walkthrough and exercise. Run any cell to see the output, or edit a cell to experiment with your own variations."
+  },
+  {
+    "objectID": "index.html#how-it-works",
+    "href": "index.html#how-it-works",
+    "title": "Machine Learning for Data Analytics with Python",
+    "section": "How it works",
+    "text": "How it works\n\nClick Run Code on any code cell to execute it in your browser.\nRun the import cell and the data-loading cells near the top of a page first, then work top to bottom — later cells reuse variables from earlier ones.\nThe first cell you run takes a few seconds while Python and the data packages load. After that it’s fast.\nThe two datasets — marketing_campaign.csv and telco-customer-churn.csv — are bundled with the page, so pd.read_csv(...) just works.\n\n\n\n\n\n\n\nNoteNeed the originals?\n\n\n\nThe Jupyter notebooks, slides, and data are all in the course GitHub repository. You can also run the notebooks on Google Colab if you prefer a full Jupyter environment.\n\n\n\n\n\n\n\n\nTipBrowser support\n\n\n\nThe in-browser plots need a modern browser (Chrome, Edge, Firefox, or Safari, kept up to date). If a plot cell shows an OffscreenCanvas error, update your browser to the latest version."
+  },
+  {
+    "objectID": "exercises.html",
+    "href": "exercises.html",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "",
+    "text": "TipHow to use this page\n\n\n\n\n\nEverything runs in your browser — there’s no Python or Jupyter to install.\n\nClick Run Code on the import cell and the data-loading cells near the top first.\nThen work through the page top to bottom, filling in each cell as we live-code together.\nYour edits are saved automatically in this browser. Use Start Over on a cell to reset it.\nThe very first run takes a few seconds while Python loads in the background.\n\nStuck? Open the completed solutions in another tab."
+  },
+  {
+    "objectID": "exercises.html#walkthrough-setting-up-the-python-environment-for-ml",
+    "href": "exercises.html#walkthrough-setting-up-the-python-environment-for-ml",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough: Setting Up the Python Environment for ML",
+    "text": "Walkthrough: Setting Up the Python Environment for ML\nIf you haven’t already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so [here](https://github.com/ismayc/oreilly-ml-for-data-analytics-with-python/blob/main/README.md.\nYou can also install the packages directly in a Jupyter notebook with\n\n\n\n\n\n\nIf you aren’t able to do this on your machine, you may want to check out Google Colab. It’s a free service that allows you to run Jupyter notebooks in the cloud. Alternatively, I’ve set up some temporary notebooks on Binder here that you can work with online as well.\nRun the following code to check that each of the needed packages are installed. If you get an error, you may need to install the package(s) again."
+  },
+  {
+    "objectID": "exercises.html#exercise-setting-up-the-python-environment",
+    "href": "exercises.html#exercise-setting-up-the-python-environment",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Exercise: Setting Up the Python Environment",
+    "text": "Exercise: Setting Up the Python Environment\nBy completing this exercise, you will be able to\n\nImport necessary Python packages\nCheck for successful package loading\nLoad datasets into Python\n\nFollow the instructions above in Walkthrough to check for correct installation of necessary packages."
+  },
+  {
+    "objectID": "exercises.html#walkthrough-1.1-exploring-and-preprocessing-data-with-pandas-seaborn",
+    "href": "exercises.html#walkthrough-1.1-exploring-and-preprocessing-data-with-pandas-seaborn",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 1.1: Exploring and Preprocessing Data with Pandas & Seaborn",
+    "text": "Walkthrough 1.1: Exploring and Preprocessing Data with Pandas & Seaborn\n\nInspect a dataset using Pandas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHandle missing values and clean data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreate visualizations to identify key business trends"
+  },
+  {
+    "objectID": "exercises.html#exercise-1.1-exploring-and-preprocessing-data-with-pandas-seaborn",
+    "href": "exercises.html#exercise-1.1-exploring-and-preprocessing-data-with-pandas-seaborn",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 1.1: Exploring and Preprocessing Data with Pandas & Seaborn",
+    "text": "Exercise 1.1: Exploring and Preprocessing Data with Pandas & Seaborn\n\nInspect a dataset using Pandas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHandle missing values and clean data\n\n\n\n\n\n\n\n\n\n\n\n\n\nCommon Pitfall: The Income column has missing values. If you skip this step and try to build models later, you’ll get errors. Always check isnull().sum() after cleaning to verify zeros.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreate visualizations to identify key business trends\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nLooking at the violin plot of Income by Response, which group (responders or non-responders) shows more variability in income?\nBased on your scatter plot, do higher-income customers tend to spend more? Is this relationship strong or weak?\nWhich education level shows the highest response rate? What marketing implications might this have?\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nLoad a dataset and inspect its structure with .info() and .describe()\nIdentify and handle missing values before modeling\nCreate at least 3 types of visualizations (histogram, scatter, violin/box)\nArticulate one business insight from your exploratory analysis"
+  },
+  {
+    "objectID": "exercises.html#walkthrough-2.1-build-a-regression-model-for-pricing-optimization",
+    "href": "exercises.html#walkthrough-2.1-build-a-regression-model-for-pricing-optimization",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 2.1: Build a Regression Model for Pricing Optimization",
+    "text": "Walkthrough 2.1: Build a Regression Model for Pricing Optimization\n\nSplit the data into training and validation sets\n\nCommon Pitfall: Fitting StandardScaler on the full dataset before the train/test split leaks information from the validation set into training. In a strict workflow, fit the scaler on the training data only (or wrap it in a Pipeline) so the validation set stays truly unseen.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTrain a linear regression model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEvaluate model performance on the validation set"
+  },
+  {
+    "objectID": "exercises.html#exercise-2.1-build-a-regression-model-for-pricing-optimization",
+    "href": "exercises.html#exercise-2.1-build-a-regression-model-for-pricing-optimization",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 2.1: Build a Regression Model for Pricing Optimization",
+    "text": "Exercise 2.1: Build a Regression Model for Pricing Optimization\n\nSplit the data into training and validation sets\n\nCommon Pitfall: Forgetting to scale features before linear regression can work, but it makes the coefficient harder to interpret. Always scale when comparing feature importance.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTrain a linear regression model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEvaluate model performance on the validation set\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nIs your R-squared higher or lower than the telco churn model? What might explain the difference?\nIf MAE is $200, what does that mean in practical terms for predicting customer spending?\nWould you trust this model for making budget decisions? Why or why not?"
+  },
+  {
+    "objectID": "exercises.html#walkthrough-2.2-implement-a-classification-model-for-customer-churn",
+    "href": "exercises.html#walkthrough-2.2-implement-a-classification-model-for-customer-churn",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 2.2: Implement a Classification Model for Customer Churn",
+    "text": "Walkthrough 2.2: Implement a Classification Model for Customer Churn\n\nSplit the data into training and validation sets\n\n\n\n\n\n\nScaling is not as important for tree-based models.\n\n\n\n\n\n\n\n\nTrain a Random Forest classification model\n\n\n\n\n\n\n\n\nEvaluate model performance on the validation set\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuick Reference: When to Use Which Metric\n\n\n\n\n\n\n\n\nSituation\nMetric\nWhy\n\n\n\n\nPredicting continuous values\nR-squared, MAE\nMeasures prediction error\n\n\nBalanced classes\nAccuracy\nOverall correctness\n\n\nCost of false positives is high\nPrecision\nMinimize wrong positive predictions\n\n\nCost of false negatives is high\nRecall\nCatch all actual positives\n\n\nNeed balance\nF1-Score\nHarmonic mean of precision/recall"
+  },
+  {
+    "objectID": "exercises.html#exercise-2.2-implement-a-classification-model-for-customer-churn",
+    "href": "exercises.html#exercise-2.2-implement-a-classification-model-for-customer-churn",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 2.2: Implement a Classification Model for Customer Churn",
+    "text": "Exercise 2.2: Implement a Classification Model for Customer Churn\n\nSplit the data into training and validation sets\n\nCommon Pitfall: The Response column is imbalanced (many more 0s than 1s). This is why accuracy alone can be misleading. A model predicting “No Response” every time would still get ~85% accuracy!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTrain a Random Forest classification model\n\n\n\n\n\n\n\n\nEvaluate model performance on the validation set\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nCompare your precision and recall. Which is higher, and what does that imply about the model’s tendencies?\nLooking at your confusion matrix, is the model better at identifying responders or non-responders?\nIf running a marketing campaign costs $50 per contact, which metric matters more: precision or recall?\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nExplain the difference between regression and classification\nSplit data into training and validation sets with a fixed random_state\nInterpret R-squared, MAE, accuracy, precision, and recall\nExplain why we don’t evaluate a model on its training data\nRecognize when accuracy is misleading on imbalanced classes"
+  },
+  {
+    "objectID": "exercises.html#walkthrough-3.1-exploring-k-means-clustering-for-customer-segmentation",
+    "href": "exercises.html#walkthrough-3.1-exploring-k-means-clustering-for-customer-segmentation",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 3.1: Exploring K-Means Clustering for Customer Segmentation",
+    "text": "Walkthrough 3.1: Exploring K-Means Clustering for Customer Segmentation\n\nApply K-Means clustering to segment customers\n\nCommon Pitfall: K-means uses Euclidean distance, so an unscaled feature with a large range (like MonthlyCharges) will dominate the clusters. Always standardize features before clustering, and remember the cluster labels are arbitrary integers with no inherent order.\n\n\n\n\n\n\n\n\n\nDetermine the optimal number of clusters using the Elbow Method\n\n\n\n\n\n\n\n\nVerify using the silhouette score (optional but recommended)\n\n\n\n\n\n\n\n\nFit K-means and assign cluster labels to each customer\n\n\n\n\n\n\n\n\nVisualize customer segments using a 2D plot"
+  },
+  {
+    "objectID": "exercises.html#exercise-3.1-exploring-k-means-clustering-for-customer-segmentation",
+    "href": "exercises.html#exercise-3.1-exploring-k-means-clustering-for-customer-segmentation",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 3.1: Exploring K-Means Clustering for Customer Segmentation",
+    "text": "Exercise 3.1: Exploring K-Means Clustering for Customer Segmentation\n\nApply K-Means clustering to segment customers\n\n\n\n\n\n\n\n\nDetermine the optimal number of clusters using the Elbow Method\n\n\n\n\n\n\n\n\nVerify using the silhouette score (optional but recommended)\n\n\n\n\n\n\n\n\nChoosing Your Optimal k\nThe “right” answer here is somewhat subjective. Look for:\n\nWhere the elbow curve bends (typically k=3 to 5 for this data)\nThe highest silhouette score\nIf they disagree, silhouette score is often more reliable\n\nPick a k and justify your choice. There’s no single correct answer.\n\n\nFit K-means and assign cluster labels to each customer\n\n\n\n\n\n\n\n\nVisualize customer segments using a 2D plot\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nHow did you decide on the optimal k? Did the elbow method and silhouette scores agree?\nLooking at your 2D visualization, do the clusters seem well-separated or do they overlap?\nCan you describe what “type” of customer each cluster might represent based on their TotalChildren and TotalSpent values?"
+  },
+  {
+    "objectID": "exercises.html#walkthrough-3.2-market-basket-analysis-with-apriori-algorithm",
+    "href": "exercises.html#walkthrough-3.2-market-basket-analysis-with-apriori-algorithm",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 3.2: Market Basket Analysis with Apriori Algorithm",
+    "text": "Walkthrough 3.2: Market Basket Analysis with Apriori Algorithm\n\nPrepare transactional data (services as items)\n\nCommon Pitfall: Setting min_support too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular – always check lift (&gt; 1) to confirm a real association rather than a coincidence.\n\n\n\n\n\n\n\n\n\nApply the Apriori algorithm to identify frequent itemsets\n\n\n\n\n\n\n\n\nGenerate association rules from frequent itemsets\n\n\n\n\n\n\n\n\nInterpret insights\nKey Metrics:\n\nSupport: How often items appear together (0.25 = 25% of customers)\nConfidence: If A, how likely B? (0.8 = 80% chance)\nLift: How much more likely than random? (&gt;1 = positive association)\n\nExample interpretation: If rule shows {PhoneService} -&gt; {InternetService} with confidence=0.75 and lift=1.3: “Customers with phone service are 75% likely to also have internet service, and this is 30% more likely than if the purchases were independent.”"
+  },
+  {
+    "objectID": "exercises.html#exercise-3.2-market-basket-analysis-with-apriori-algorithm",
+    "href": "exercises.html#exercise-3.2-market-basket-analysis-with-apriori-algorithm",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 3.2: Market Basket Analysis with Apriori Algorithm",
+    "text": "Exercise 3.2: Market Basket Analysis with Apriori Algorithm\n\nPrepare transactional data (product categories as items)\n\n\n\n\n\n\n\n\nNote on Thresholds\nThe min_support=0.2 and min_threshold=0.6 are starting points. If you get:\n\nToo few rules: lower the thresholds\nToo many rules: raise them\nAll trivial rules: look for higher lift values\n\nFeel free to experiment with different values.\n\n\nApply the Apriori algorithm to identify frequent itemsets\n\n\n\n\n\n\n\n\nGenerate association rules from frequent itemsets\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nWhich product category appears in the most frequent itemsets? What does this suggest about purchasing patterns?\nFind a rule with high confidence but low lift. Why might this rule be less useful despite high confidence?\nIdentify one actionable insight: what product bundle would you recommend based on these rules?\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nExplain the difference between supervised and unsupervised learning\nScale features before clustering and explain why it matters\nUse the elbow method and silhouette score to choose k\nInterpret support, confidence, and lift in association rules\nDescribe a business application for clustering and market basket analysis"
+  },
+  {
+    "objectID": "exercises.html#walkthrough-4.1-exploring-cross-validation-for-model-evaluation",
+    "href": "exercises.html#walkthrough-4.1-exploring-cross-validation-for-model-evaluation",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 4.1: Exploring Cross-Validation for Model Evaluation",
+    "text": "Walkthrough 4.1: Exploring Cross-Validation for Model Evaluation\n\nSplit data into training and validation sets\n\nCommon Pitfall: Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate – and forgetting random_state makes those folds (and your results) non-reproducible.\n\n\n\n\n\n\n\n\n\nTrain a classification model using logistic regression\n\n\n\n\n\n\n\n\nApply k-fold cross-validation to evaluate model performance\n\n\n\n\n\n\n\n\nCompare metrics across folds\n\n\n\n\n\n\nInterpretation\nAccuracy -&gt; Overall correctness of predictions\nPrecision -&gt; How many predicted churns were actual churns\nRecall -&gt; How many churns were correctly identified\nF1-Score -&gt; Balances precision & recall\nCross-validation ensures that your model generalizes better to unseen data by reducing the risk of overfitting on a single split."
+  },
+  {
+    "objectID": "exercises.html#exercise-4.1-exploring-cross-validation-for-model-evaluation",
+    "href": "exercises.html#exercise-4.1-exploring-cross-validation-for-model-evaluation",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 4.1: Exploring Cross-Validation for Model Evaluation",
+    "text": "Exercise 4.1: Exploring Cross-Validation for Model Evaluation\n\nSplit data into training and validation sets\n\n\n\n\n\n\n\n\nTrain a classification model using logistic regression\n\n\n\n\n\n\n\n\nApply k-fold cross-validation to evaluate model performance\n\n\n\n\n\n\n\n\nCompare metrics across folds\n\n\n\n\n\n\nInterpretation\nAccuracy -&gt; Overall correctness of predictions\nPrecision -&gt; How many predicted responders were actual responders\nRecall -&gt; How many actual responders were correctly identified\nF1-Score -&gt; Harmonic mean of precision and recall\n\n\nInterpretation Questions\n\nHow consistent are your metrics across folds? (Look at the standard deviation values.)\nWhich metric shows the most variability? What might cause this?\nCompare your cross-validation results to the single train-test split in Exercise 2.2. Are they similar?"
+  },
+  {
+    "objectID": "exercises.html#walkthrough-4.2-hyperparameter-tuning-with-grid-search",
+    "href": "exercises.html#walkthrough-4.2-hyperparameter-tuning-with-grid-search",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Walkthrough 4.2: Hyperparameter Tuning with Grid Search",
+    "text": "Walkthrough 4.2: Hyperparameter Tuning with Grid Search\n\nTrain a Random Forest classifier\n\nCommon Pitfall: Tuning hyperparameters and then evaluating on the same data leaks the answer and overstates performance. The honest grid-search workflow selects parameters using cross-validation on the training set, then reports the final score on a held-out test set the search never saw.\n\n\n\n\n\n\n\n\n\nApply grid search to find optimal hyperparameters\n\n\n\n\n\n\n\n\nEvaluate model improvement using accuracy and recall\n\n\n\n\n\n\n\n\nInterpret the best hyperparameter combination"
+  },
+  {
+    "objectID": "exercises.html#exercise-4.2-hyperparameter-tuning-with-grid-search",
+    "href": "exercises.html#exercise-4.2-hyperparameter-tuning-with-grid-search",
+    "title": "Walkthroughs & Exercises — Machine Learning for Data Analytics with Python",
+    "section": "Exercise 4.2: Hyperparameter Tuning with Grid Search",
+    "text": "Exercise 4.2: Hyperparameter Tuning with Grid Search\n\nTrain a Random Forest classifier\n\n\n\n\n\n\n\n\nApply grid search to find optimal hyperparameters\n\n\n\n\n\n\n\n\nEvaluate model improvement using accuracy and recall\n\n\n\n\n\n\n\n\nInterpret the best hyperparameter combination\n\n\n\n\n\n\n\n\nInterpretation Questions\n\nDid hyperparameter tuning improve recall compared to the default model in Exercise 2.2?\nLook at the best parameters found. Are they at the edges of your grid (suggesting you should expand the search)?\nWas the computational cost of grid search worth the performance improvement?\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nExplain why cross-validation is better than a single train-test split\nInterpret the mean and standard deviation of cross-validation scores\nDefine what hyperparameters are and why we tune them\nUse GridSearchCV to find optimal model settings\nExplain why tuning and reporting on the same data inflates performance"
+  }
+]

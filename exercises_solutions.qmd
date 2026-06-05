@@ -1,13 +1,13 @@
 ---
-title: 'Walkthroughs and Exercises for Machine Learning for Data Analytics with Python'  
-author: "Dr. Chester Ismay"  
+title: "Walkthroughs and Exercises for Machine Learning for Data Analytics with Python"
+author: "Dr. Chester Ismay"
 format:
   html:
     theme: flatly
     toc: true
-    toc-floating: true 
+    toc-floating: true
   ipynb: default
-engine: jupyter 
+engine: jupyter
 execute:
   warning: false
 ---
@@ -27,9 +27,9 @@ InteractiveShell.ast_node_interactivity = "all"
 
 # Intro: Getting Started with Machine Learning for Data-Driven Decisions
 
-## Walkthrough #1: Setting Up the Python Environment for ML
+## Walkthrough: Setting Up the Python Environment for ML
 
-If you haven't already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so [here](https://github.com/ismayc/oreilly-data-analysis-with-python/blob/main/README.md). 
+If you haven't already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so [here](https://github.com/ismayc/oreilly-data-analysis-with-python/blob/main/README.md).
 
 You can also install the packages directly in a Jupyter notebook with
 
@@ -67,15 +67,15 @@ telco_churn_raw = pd.read_csv('telco-customer-churn.csv')
 ```
 
 
-## Exercise #1: Setting Up the Python Environment
+## Exercise: Setting Up the Python Environment
 
-By completing this exercise, you will be able to  
+By completing this exercise, you will be able to
 
-- Import necessary Python packages  
-- Check for successful package loading  
+- Import necessary Python packages
+- Check for successful package loading
 - Load datasets into Python
 
-Follow the instructions above in Walkthrough #1 to check for correct installation 
+Follow the instructions above in Walkthrough to check for correct installation
 of necessary packages.
 
 ```{python}
@@ -88,7 +88,7 @@ marketing_campaign_raw = pd.read_csv('marketing_campaign.csv')
 # Module 1: Data Understanding and Preprocessing for Machine Learning
 
 
-## Walkthrough #2: Exploring and Preprocessing Data with Pandas & Seaborn
+## Walkthrough 1.1: Exploring and Preprocessing Data with Pandas & Seaborn
 
 ### Inspect a dataset using Pandas
 
@@ -170,7 +170,7 @@ plt.show();
 
 
 
-## Exercise #2: Exploring and Preprocessing Data with Pandas & Seaborn
+## Exercise 1.1: Exploring and Preprocessing Data with Pandas & Seaborn
 
 ### Inspect a dataset using Pandas
 
@@ -189,6 +189,8 @@ marketing_campaign_raw.duplicated().sum()
 ```
 
 ### Handle missing values and clean data
+
+> **Common Pitfall:** The `Income` column has missing values. If you skip this step and try to build models later, you'll get errors. Always re-check `isnull().sum()` after cleaning to verify it returns zeros.
 
 ```{python}
 # Create a clean working copy
@@ -234,7 +236,7 @@ plt.show();
 ```
 
 ```{python}
-sns.scatterplot(data=marketing_campaign, x='Income', y='TotalSpent', 
+sns.scatterplot(data=marketing_campaign, x='Income', y='TotalSpent',
                 hue='Response', alpha=0.7)
 plt.title('Income vs. Total Spent by Campaign Response')
 plt.show();
@@ -253,14 +255,25 @@ plt.show();
 2. Based on your scatter plot, do higher-income customers tend to spend more? Is this relationship strong or weak?
 3. Which education level shows the highest response rate? What marketing implications might this have?
 
+### Self-Check
+
+By the end of this module, you should be able to:
+
+- [ ] Load a dataset and inspect its structure with `.info()` and `.describe()`
+- [ ] Identify and handle missing values before modeling
+- [ ] Create at least 3 types of visualizations (histogram, scatter, violin/box)
+- [ ] Articulate one business insight from your exploratory analysis
+
 ---
 
 
 # Module 2: Supervised Learning for Business Decisions
 
-## Walkthrough #3: Build a Regression Model for Pricing Optimization
+## Walkthrough 2.1: Build a Regression Model for Pricing Optimization
 
 ### Split the data into training and validation sets
+
+> **Common Pitfall:** Fitting `StandardScaler` on the full dataset before the train/test split leaks information from the validation set into training. In a strict workflow, fit the scaler on the training data only (or wrap it in a `Pipeline`) so the validation set stays truly unseen.
 
 ```{python}
 X = telco_churn[['AvgServiceUsageScore']]  # predictor
@@ -286,8 +299,10 @@ lr = LinearRegression()
 lr.fit(X_train, y_train)
 
 print(f"Intercept: {lr.intercept_:.2f}")
-print(f"Coefficient (usage_scaled → price): {lr.coef_[0]:.2f}")
+print(f"Coefficient (usage_scaled -> price): {lr.coef_[0]:.2f}")
 ```
+
+> **Common Pitfall:** Because the predictor was standardized before fitting, this coefficient is the change in price per one-standard-deviation change in usage, not per raw unit. Keep that in mind when explaining the number to stakeholders, and convert back to raw units if you need a real-world-unit effect.
 
 ### Evaluate model performance on the validation set
 
@@ -303,7 +318,7 @@ print(f"Mean Absolute Error: {mae:.2f}")
 
 ---
 
-## Exercise #3: Build a Regression Model for Pricing Optimization
+## Exercise 2.1: Build a Regression Model for Pricing Optimization
 
 ### Split the data into training and validation sets
 
@@ -334,7 +349,7 @@ lr_m = LinearRegression()
 lr_m.fit(X_m_train, y_m_train)
 
 print(f"Intercept: {lr_m.intercept_:.2f}")
-print(f"Coefficient (Income_scaled → TotalSpent): {lr_m.coef_[0]:.2f}")
+print(f"Coefficient (Income_scaled -> TotalSpent): {lr_m.coef_[0]:.2f}")
 ```
 
 
@@ -358,9 +373,11 @@ print(f"Mean Absolute Error: {mae_m:.2f}")
 
 ---
 
-## Walkthrough #4: Implement a Classification Model for Customer Churn
+## Walkthrough 2.2: Implement a Classification Model for Customer Churn
 
 ### Split the data into training and validation sets
+
+> **Common Pitfall:** Churn and campaign response are imbalanced (far more 0s than 1s), so accuracy alone can be misleading -- a model that always predicts the majority class can still look "accurate." Report precision and recall alongside accuracy to see how well the model catches the minority class.
 
 ```{python}
 # Select relevant features
@@ -405,7 +422,7 @@ print(cm_telco_churn)
 
 | Situation | Metric | Why |
 |-----------|--------|-----|
-| Predicting continuous values | R², MAE | Measures prediction error |
+| Predicting continuous values | R-squared, MAE | Measures prediction error |
 | Balanced classes | Accuracy | Overall correctness |
 | Cost of false positives is high | Precision | Minimize wrong positive predictions |
 | Cost of false negatives is high | Recall | Catch all actual positives |
@@ -413,7 +430,7 @@ print(cm_telco_churn)
 
 ---
 
-## Exercise #4: Implement a Classification Model for Customer Churn
+## Exercise 2.2: Implement a Classification Model for Customer Churn
 
 ### Split the data into training and validation sets
 
@@ -449,7 +466,7 @@ print(f"Precision: {precision_score(y_m_val_class, y_m_pred_class):.2f}")
 print(f"Recall: {recall_score(y_m_val_class, y_m_pred_class):.2f}")
 
 labels = ['No Response', 'Response']
-cm_marketing_response = pd.DataFrame(confusion_matrix(y_m_val_class, y_m_pred_class), 
+cm_marketing_response = pd.DataFrame(confusion_matrix(y_m_val_class, y_m_pred_class),
                                      index=labels, columns=labels)
 
 print("\nConfusion Matrix (formatted):")
@@ -462,13 +479,25 @@ print(cm_marketing_response)
 2. Looking at your confusion matrix, is the model better at identifying responders or non-responders?
 3. If running a marketing campaign costs $50 per contact, which metric matters more: precision or recall?
 
+### Self-Check
+
+By the end of this module, you should be able to:
+
+- [ ] Explain the difference between regression and classification
+- [ ] Split data into training and validation sets with a fixed `random_state`
+- [ ] Interpret R-squared, MAE, accuracy, precision, and recall
+- [ ] Explain why we don't evaluate a model on its training data
+- [ ] Recognize when accuracy is misleading on imbalanced classes
+
 ---
 
 # Module 3: Unsupervised Learning and Pattern Discovery in Business
 
-## Walkthrough #5: Exploring K-Means Clustering for Customer Segmentation
+## Walkthrough 3.1: Exploring K-Means Clustering for Customer Segmentation
 
 ### Apply K-Means clustering to segment customers
+
+> **Common Pitfall:** K-means uses Euclidean distance, so an unscaled feature with a large range (like `MonthlyCharges`) will dominate the clusters. Always standardize features before clustering, and remember the cluster labels are arbitrary integers with no inherent order.
 
 ```{python}
 # Select relevant features
@@ -503,7 +532,7 @@ plt.show();
 
 ### Verify using the silhouette score (optional but recommended)
 
-```{python, warnings=FALSE}
+```{python}
 # Evaluate silhouette scores for k=3 to k=6
 silhouette_scores = {}
 
@@ -529,7 +558,7 @@ telco_churn['Cluster'] = kmeans.fit_predict(X_scaled)
 
 ```{python}
 # Visualize clusters in 2D space (using tenure and MonthlyCharges)
-sns.scatterplot(data=telco_churn,  x='tenure', y='AvgServiceUsageScore', 
+sns.scatterplot(data=telco_churn,  x='tenure', y='AvgServiceUsageScore',
                 hue='Cluster', palette='viridis')
 plt.title('Customer Segments via K-Means')
 plt.show();
@@ -537,7 +566,7 @@ plt.show();
 
 ---
 
-## Exercise #5: Exploring K-Means Clustering for Customer Segmentation
+## Exercise 3.1: Exploring K-Means Clustering for Customer Segmentation
 
 ### Apply K-Means clustering to segment customers
 
@@ -596,7 +625,7 @@ marketing_campaign['Cluster'] = kmeans_final.fit_predict(X_cluster_scaled)
 
 ```{python}
 import matplotlib.ticker as ticker
-sns.scatterplot(data=marketing_campaign, x='TotalChildren', y='TotalSpent', 
+sns.scatterplot(data=marketing_campaign, x='TotalChildren', y='TotalSpent',
                 hue='Cluster', palette='viridis')
 plt.title('Customer Segments via K-Means Clustering')
 
@@ -614,9 +643,11 @@ plt.show();
 
 ---
 
-## Walkthrough #6: Market Basket Analysis with Apriori Algorithm
+## Walkthrough 3.2: Market Basket Analysis with Apriori Algorithm
 
 ### Prepare transactional data (services as items)
+
+> **Common Pitfall:** Setting `min_support` too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular -- always check `lift` (> 1) to confirm a real association rather than a coincidence.
 
 ```{python}
 # Selecting binary service columns to act like "products"
@@ -647,7 +678,7 @@ rules
 
 ---
 
-## Exercise #6: Market Basket Analysis with Apriori Algorithm
+## Exercise 3.2: Market Basket Analysis with Apriori Algorithm
 
 ### Prepare transactional data (product categories as items)
 
@@ -697,13 +728,25 @@ rules
 2. Find a rule with high confidence but low lift. Why might this rule be less useful despite high confidence?
 3. Identify one actionable insight: what product bundle would you recommend based on these rules?
 
+### Self-Check
+
+By the end of this module, you should be able to:
+
+- [ ] Explain the difference between supervised and unsupervised learning
+- [ ] Scale features before clustering and explain why it matters
+- [ ] Use the elbow method and silhouette score to choose k
+- [ ] Interpret support, confidence, and lift in association rules
+- [ ] Describe a business application for clustering and market basket analysis
+
 ---
 
 # Module 4: Implementing and Evaluating ML Models
 
-## Walkthrough #7: Exploring Cross-Validation for Model Evaluation
+## Walkthrough 4.1: Exploring Cross-Validation for Model Evaluation
 
 ### Split data into training and validation sets
+
+> **Common Pitfall:** Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate -- and forgetting `random_state` makes those folds (and your results) non-reproducible.
 
 ```{python}
 # Features and target
@@ -732,10 +775,10 @@ logreg = LogisticRegression(max_iter=1000, solver='liblinear')
 ```{python}
 # Cross-validate with multiple metrics
 cv_results = cross_validate(
-    logreg, 
-    X_train, 
-    y_train, 
-    cv=5, 
+    logreg,
+    X_train,
+    y_train,
+    cv=5,
     scoring=['accuracy', 'precision', 'recall', 'f1'],
     return_train_score=True
 )
@@ -756,19 +799,19 @@ for metric in ['accuracy', 'precision', 'recall', 'f1']:
 
 **Interpretation**
 
-Accuracy → Overall correctness of predictions
+Accuracy -> Overall correctness of predictions
 
-Precision → How many predicted churns were actual churns
+Precision -> How many predicted churns were actual churns
 
-Recall → How many churns were correctly identified
+Recall -> How many churns were correctly identified
 
-F1-Score → Balances precision & recall
+F1-Score -> Balances precision & recall
 
 Cross-validation ensures that your model generalizes better to unseen data by reducing the risk of overfitting on a single split.
 
 ---
 
-## Exercise #7: Exploring Cross-Validation for Model Evaluation
+## Exercise 4.1: Exploring Cross-Validation for Model Evaluation
 
 ### Split data into training and validation sets
 
@@ -799,10 +842,10 @@ logreg_m = LogisticRegression(max_iter=1000, solver='liblinear')
 ```{python}
 # 5-fold cross-validation with multiple metrics
 cv_results_m = cross_validate(
-    logreg_m, 
-    X_m_train, 
-    y_m_train, 
-    cv=5, 
+    logreg_m,
+    X_m_train,
+    y_m_train,
+    cv=5,
     scoring=['accuracy', 'precision', 'recall', 'f1'],
     return_train_score=True
 )
@@ -819,25 +862,27 @@ for m in ["accuracy", "precision", "recall", "f1"]:
 
 **Interpretation**
 
-Accuracy → Overall correctness of predictions
+Accuracy -> Overall correctness of predictions
 
-Precision → How many predicted responders were actual responders
+Precision -> How many predicted responders were actual responders
 
-Recall → How many actual responders were correctly identified
+Recall -> How many actual responders were correctly identified
 
-F1-Score → Harmonic mean of precision and recall
+F1-Score -> Harmonic mean of precision and recall
 
 ### Interpretation Questions
 
-1. How consistent are your metrics across folds? (Look at the ± values)
+1. How consistent are your metrics across folds? (Look at the standard deviation values.)
 2. Which metric shows the most variability? What might cause this?
-3. Compare your cross-validation results to the single train-test split in Exercise #4. Are they similar?
+3. Compare your cross-validation results to the single train-test split in Exercise 2.2. Are they similar?
 
 ---
 
-## Walkthrough #8: Hyperparameter Tuning with Grid Search
+## Walkthrough 4.2: Hyperparameter Tuning with Grid Search
 
 ### Train a Random Forest classifier
+
+> **Common Pitfall:** Tuning hyperparameters and then evaluating on the same data leaks the answer and overstates performance. The honest grid-search workflow selects parameters using cross-validation on the training set, then reports the final score on a held-out test set the search never saw.
 
 ```{python}
 # Features and target
@@ -893,7 +938,7 @@ print("Best Parameters Found:", grid_search.best_params_)
 
 ---
 
-## Exercise #8: Hyperparameter Tuning with Grid Search
+## Exercise 4.2: Hyperparameter Tuning with Grid Search
 
 ### Train a Random Forest classifier
 
@@ -953,9 +998,19 @@ print("Best Parameters Found:", grid_search_m.best_params_)
 
 ### Interpretation Questions
 
-1. Did hyperparameter tuning improve recall compared to the default model in Exercise #4?
+1. Did hyperparameter tuning improve recall compared to the default model in Exercise 2.2?
 2. Look at the best parameters found. Are they at the edges of your grid (suggesting you should expand the search)?
 3. Was the computational cost of grid search worth the performance improvement?
+
+### Self-Check
+
+By the end of this module, you should be able to:
+
+- [ ] Explain why cross-validation is better than a single train-test split
+- [ ] Interpret the mean and standard deviation of cross-validation scores
+- [ ] Define what hyperparameters are and why we tune them
+- [ ] Use GridSearchCV to find optimal model settings
+- [ ] Explain why tuning and reporting on the same data inflates performance
 
 ---
 

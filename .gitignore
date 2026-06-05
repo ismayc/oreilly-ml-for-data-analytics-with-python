@@ -19,3 +19,9 @@ exercises_solutions-notes.qmd
 mc-quarto/answers*
 mc-quarto/extract-questions.R
 *.quarto_ipynb*
+*.pptx
+
+# Annotated instructor edition (local working file, not committed)
+*with_notes*
+
+.jupyterlite.doit.db
