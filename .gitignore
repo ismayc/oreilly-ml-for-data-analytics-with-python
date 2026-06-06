@@ -28,3 +28,8 @@ mc-quarto/extract-questions.R
 
 # Keep the browser app index pages (the broad index.html rule above drops them)
 !app/**/index.html
+
+# iCloud Drive conflict copies (e.g. "index 2.html") and placeholder files
+* [0-9].*
+* [0-9]
+*.icloud
