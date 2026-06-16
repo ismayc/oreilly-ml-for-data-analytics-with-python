@@ -11,7 +11,7 @@
     "href": "solutions.html#walkthrough-setting-up-the-python-environment-for-ml",
     "title": "Solutions — Machine Learning for Data Analytics with Python",
     "section": "Walkthrough: Setting Up the Python Environment for ML",
-    "text": "Walkthrough: Setting Up the Python Environment for ML\nIf you haven’t already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so here.\nYou can also install the packages directly in a Jupyter notebook with\n\n\n\n\n\n\nIf you aren’t able to do this on your machine, you may want to check out Google Colab. It’s a free service that allows you to run Jupyter notebooks in the cloud. Alternatively, I’ve set up some temporary notebooks on Binder here that you can work with online as well.\nRun the following code to check that each of the needed packages are installed. If you get an error, you may need to install the package(s) again."
+    "text": "Walkthrough: Setting Up the Python Environment for ML\nIf you haven’t already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so here.\nYou can also install the packages directly in a Jupyter notebook with\n\n\n\n\n\n\nRun the following code to check that each of the needed packages are installed. If you get an error, you may need to install the package(s) again."
   },
   {
     "objectID": "solutions.html#exercise-setting-up-the-python-environment",
