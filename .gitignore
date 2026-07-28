@@ -33,3 +33,4 @@ mc-quarto/extract-questions.R
 * [0-9].*
 * [0-9]
 *.icloud
+run-sheets/
