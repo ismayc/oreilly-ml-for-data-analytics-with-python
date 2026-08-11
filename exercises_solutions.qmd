@@ -20,10 +20,6 @@ import pandas as pd
 
 # Display all columns
 pd.set_option('display.max_columns', None)
-
-# Display all outputs from each cell
-from IPython.core.interactiveshell import InteractiveShell
-InteractiveShell.ast_node_interactivity = "all"
 ```
 
 ```{python}
@@ -109,13 +105,18 @@ marketing_campaign_raw = pd.read_csv('marketing_campaign.csv')
 ```{python}
 # Inspect data structure
 telco_churn_raw
+```
+
+```{python}
 telco_churn_raw.info()
 ```
 
 ```{python}
 # Check for missing values
 telco_churn_raw.isnull().sum()
+```
 
+```{python}
 # Check for duplicate rows
 telco_churn_raw.duplicated().sum()
 ```
@@ -190,13 +191,18 @@ plt.show();
 ```{python}
 # Inspect data structure
 marketing_campaign_raw
+```
+
+```{python}
 marketing_campaign_raw.info()
 ```
 
 ```{python}
 # Check for missing values
 marketing_campaign_raw.isnull().sum()
+```
 
+```{python}
 # Check for duplicate rows
 marketing_campaign_raw.duplicated().sum()
 ```

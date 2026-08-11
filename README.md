@@ -50,8 +50,13 @@ The major files in this repository are
 - **Open Anaconda Prompt (Windows) or Terminal (macOS/Linux)** (if using Anaconda), or **open your command prompt (Windows) or terminal (macOS/Linux)** (if using Python installation).
 - **Install Required Libraries using conda (Anaconda)**:
   ```bash
-  conda install pandas seaborn matplotlib scikit-learn mlxtend
+  conda install pandas seaborn matplotlib scikit-learn
+  conda install -c conda-forge mlxtend
   ```
+  `mlxtend` is published on the **conda-forge** channel rather than Anaconda's default one, so
+  it needs the `-c conda-forge` flag. Without it, conda reports `PackagesNotFoundError`. If that
+  still fails, `pip install mlxtend` works inside a conda environment too. Only the market
+  basket analysis section (Module 3) needs this package.
 - **Install Required Libraries using pip** (if not using Anaconda):
   ```bash
   pip install pandas seaborn matplotlib scikit-learn mlxtend
