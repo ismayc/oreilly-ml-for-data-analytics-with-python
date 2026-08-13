@@ -576,7 +576,7 @@ telco_churn['Cluster'] = kmeans.fit_predict(X_scaled)
 ### Visualize customer segments using a 2D plot
 
 ```{python}
-# Visualize clusters in 2D space (using tenure and MonthlyCharges)
+# Visualize clusters in 2D space (using tenure and AvgServiceUsageScore)
 sns.scatterplot(data=telco_churn,  x='tenure', y='AvgServiceUsageScore',
                 hue='Cluster', palette='viridis')
 plt.title('Customer Segments via K-Means')
