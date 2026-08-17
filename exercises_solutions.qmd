@@ -166,7 +166,8 @@ plt.show();
 ```
 
 ```{python}
-sns.scatterplot(data=telco_churn, x='AvgServiceUsageScore', y='MonthlyCharges')
+sns.scatterplot(data=telco_churn, x='AvgServiceUsageScore', y='MonthlyCharges',
+                alpha=0.6)
 plt.title('Average Service Usage Score vs. Monthly Charges')
 plt.show();
 ```
@@ -578,8 +579,8 @@ telco_churn['Cluster'] = kmeans.fit_predict(X_scaled)
 
 ```{python}
 # Visualize clusters in 2D space (using tenure and AvgServiceUsageScore)
-sns.scatterplot(data=telco_churn,  x='tenure', y='AvgServiceUsageScore',
-                hue='Cluster', palette='viridis')
+sns.scatterplot(data=telco_churn, x='tenure', y='AvgServiceUsageScore',
+                hue='Cluster', palette='viridis', alpha=0.6)
 plt.title('Customer Segments via K-Means')
 plt.show();
 ```
@@ -646,7 +647,7 @@ marketing_campaign['Cluster'] = kmeans_final.fit_predict(X_cluster_scaled)
 ```{python}
 import matplotlib.ticker as ticker
 sns.scatterplot(data=marketing_campaign, x='TotalChildren', y='TotalSpent',
-                hue='Cluster', palette='viridis')
+                hue='Cluster', palette='viridis', alpha=0.6)
 plt.title('Customer Segments via K-Means Clustering')
 
 # Set x-axis to integer ticks only

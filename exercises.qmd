@@ -171,7 +171,8 @@ plt.show();
 
 ```{python}
 # Look at the relationship between AvgServiceUsageScore and MonthlyCharges
-sns.scatterplot(data=telco_churn, x='AvgServiceUsageScore', y='MonthlyCharges')
+sns.scatterplot(data=telco_churn, x='AvgServiceUsageScore', y='MonthlyCharges',
+                alpha=0.6)
 plt.title('Average Service Usage Score vs. Monthly Charges')
 plt.show();
 ```
@@ -618,8 +619,8 @@ silhouette_scores
 
 ```{python}
 # Visualize clusters in 2D space (using tenure and AvgServiceUsageScore)
-sns.scatterplot(data=telco_churn,  x='tenure', y='AvgServiceUsageScore',
-                hue='Cluster', palette='viridis')
+sns.scatterplot(data=telco_churn, x='tenure', y='AvgServiceUsageScore',
+                hue='Cluster', palette='viridis', alpha=0.6)
 plt.title('Customer Segments via K-Means')
 plt.show();
 ```
