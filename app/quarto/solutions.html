@@ -695,7 +695,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoieV9tX3ByZWQgPSBscl9tLnBy
 <section id="split-the-data-into-training-and-validation-sets-2" class="level3">
 <h3 class="anchored" data-anchor-id="split-the-data-into-training-and-validation-sets-2">Split the data into training and validation sets</h3>
 <blockquote class="blockquote">
-<p><strong>Common Pitfall:</strong> Churn and campaign response are imbalanced (far more 0s than 1s), so accuracy alone can be misleading – a model that always predicts the majority class can still look “accurate.” Report precision and recall alongside accuracy to see how well the model catches the minority class.</p>
+<p><strong>Common Pitfall:</strong> Churn and campaign response are imbalanced (far more 0s than 1s), so accuracy alone can be misleading, a model that always predicts the majority class can still look “accurate.” Report precision and recall alongside accuracy to see how well the model catches the minority class.</p>
 </blockquote>
 <div>
 <div id="pyodide-35" class="exercise-cell">
@@ -967,7 +967,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG1hdHBsb3RsaWIu
 <section id="prepare-transactional-data-services-as-items" class="level3">
 <h3 class="anchored" data-anchor-id="prepare-transactional-data-services-as-items">Prepare transactional data (services as items)</h3>
 <blockquote class="blockquote">
-<p><strong>Common Pitfall:</strong> Setting <code>min_support</code> too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular – always check <code>lift</code> (&gt; 1) to confirm a real association rather than a coincidence.</p>
+<p><strong>Common Pitfall:</strong> Setting <code>min_support</code> too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular: always check <code>lift</code> (&gt; 1) to confirm a real association rather than a coincidence.</p>
 </blockquote>
 <div>
 <div id="pyodide-51" class="exercise-cell">
@@ -1068,7 +1068,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoicnVsZXMgPSBhc3NvY2lhdGlv
 <section id="split-data-into-training-and-validation-sets" class="level3">
 <h3 class="anchored" data-anchor-id="split-data-into-training-and-validation-sets">Split data into training and validation sets</h3>
 <blockquote class="blockquote">
-<p><strong>Common Pitfall:</strong> Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate – and forgetting <code>random_state</code> makes those folds (and your results) non-reproducible.</p>
+<p><strong>Common Pitfall:</strong> Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate, and forgetting <code>random_state</code> makes those folds (and your results) non-reproducible.</p>
 </blockquote>
 <div>
 <div id="pyodide-57" class="exercise-cell">

@@ -1165,7 +1165,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBM
 <section id="prepare-transactional-data-services-as-items" class="level3">
 <h3 class="anchored" data-anchor-id="prepare-transactional-data-services-as-items">Prepare transactional data (services as items)</h3>
 <blockquote class="blockquote">
-<p><strong>Common Pitfall:</strong> Setting <code>min_support</code> too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular – always check <code>lift</code> (&gt; 1) to confirm a real association rather than a coincidence.</p>
+<p><strong>Common Pitfall:</strong> Setting <code>min_support</code> too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular: always check <code>lift</code> (&gt; 1) to confirm a real association rather than a coincidence.</p>
 </blockquote>
 <div>
 <div id="pyodide-73" class="exercise-cell">
@@ -1284,7 +1284,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiXG4j
 <section id="split-data-into-training-and-validation-sets" class="level3">
 <h3 class="anchored" data-anchor-id="split-data-into-training-and-validation-sets">Split data into training and validation sets</h3>
 <blockquote class="blockquote">
-<p><strong>Common Pitfall:</strong> Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate – and forgetting <code>random_state</code> makes those folds (and your results) non-reproducible.</p>
+<p><strong>Common Pitfall:</strong> Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate, and forgetting <code>random_state</code> makes those folds (and your results) non-reproducible.</p>
 </blockquote>
 <div>
 <div id="pyodide-79" class="exercise-cell">
