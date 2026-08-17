@@ -13,13 +13,6 @@ execute:
 ---
 
 ```{python}
-import pandas as pd
-
-# Display all columns
-pd.set_option('display.max_columns', None)
-```
-
-```{python}
 # Colab setup: download the course data files into this runtime so the
 # read_csv / read_excel calls below work. Runs only on Google Colab; it is a
 # no-op locally or in JupyterLite, where the data files are already present.
@@ -67,6 +60,13 @@ from mlxtend.frequent_patterns import apriori, association_rules
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score, cross_validate
 from sklearn.model_selection import GridSearchCV
+```
+
+```{python}
+import pandas as pd
+
+# Display all columns
+pd.set_option('display.max_columns', None)
 ```
 
 ```{python}
