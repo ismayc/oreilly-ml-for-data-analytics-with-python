@@ -451,6 +451,8 @@ cm = confusion_matrix(y_test, y_pred)
 # Set labels for confusion matrix and turn into DataFrame
 labels = ['No Churn', 'Churn']
 cm_telco_churn = pd.DataFrame(cm, index=labels, columns=labels)
+cm_telco_churn.index.name = 'Actual'
+cm_telco_churn.columns.name = 'Predicted'
 ```
 
 ```{python}
