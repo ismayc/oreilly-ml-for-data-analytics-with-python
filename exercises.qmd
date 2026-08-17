@@ -696,7 +696,7 @@ Pick a k and justify your choice. There's no single correct answer.
 
 ### Prepare transactional data (services as items)
 
-> **Common Pitfall:** Setting `min_support` too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular -- always check `lift` (> 1) to confirm a real association rather than a coincidence.
+> **Common Pitfall:** Setting `min_support` too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular: always check `lift` (> 1) to confirm a real association rather than a coincidence.
 
 ```{python}
 # Select binary service columns to act like "products"
@@ -822,7 +822,7 @@ By the end of this module, you should be able to:
 
 ### Split data into training and validation sets
 
-> **Common Pitfall:** Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate -- and forgetting `random_state` makes those folds (and your results) non-reproducible.
+> **Common Pitfall:** Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate, and forgetting `random_state` makes those folds (and your results) non-reproducible.
 
 ```{python}
 # Features (AvgServiceUsageScore, tenure, MonthlyCharges) and target (Churn)

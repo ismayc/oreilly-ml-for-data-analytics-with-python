@@ -394,7 +394,7 @@ print(f"Mean Absolute Error: {mae_m:.2f}")
 
 ### Split the data into training and validation sets
 
-> **Common Pitfall:** Churn and campaign response are imbalanced (far more 0s than 1s), so accuracy alone can be misleading -- a model that always predicts the majority class can still look "accurate." Report precision and recall alongside accuracy to see how well the model catches the minority class.
+> **Common Pitfall:** Churn and campaign response are imbalanced (far more 0s than 1s), so accuracy alone can be misleading, a model that always predicts the majority class can still look "accurate." Report precision and recall alongside accuracy to see how well the model catches the minority class.
 
 ```{python}
 # Select relevant features
@@ -667,7 +667,7 @@ plt.show();
 
 ### Prepare transactional data (services as items)
 
-> **Common Pitfall:** Setting `min_support` too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular -- always check `lift` (> 1) to confirm a real association rather than a coincidence.
+> **Common Pitfall:** Setting `min_support` too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular: always check `lift` (> 1) to confirm a real association rather than a coincidence.
 
 ```{python}
 # Selecting binary service columns to act like "products"
@@ -766,7 +766,7 @@ By the end of this module, you should be able to:
 
 ### Split data into training and validation sets
 
-> **Common Pitfall:** Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate -- and forgetting `random_state` makes those folds (and your results) non-reproducible.
+> **Common Pitfall:** Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate, and forgetting `random_state` makes those folds (and your results) non-reproducible.
 
 ```{python}
 # Features and target
