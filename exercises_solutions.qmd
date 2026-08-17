@@ -429,9 +429,9 @@ print(f"Recall: {recall_score(y_test, y_pred):.2f}")
 cm = confusion_matrix(y_test, y_pred)
 
 labels = ['No Churn', 'Churn']
-cm_telco_churn = pd.DataFrame(cm, index=labels, columns=labels)
-cm_telco_churn.index.name = 'Actual'
-cm_telco_churn.columns.name = 'Predicted'
+cm_telco_churn = pd.DataFrame(cm,
+                              index=['Actual ' + l for l in labels],
+                              columns=['Predicted ' + l for l in labels])
 
 print("\nConfusion Matrix (formatted):")
 print(cm_telco_churn)
@@ -486,9 +486,8 @@ print(f"Recall: {recall_score(y_m_val_class, y_m_pred_class):.2f}")
 
 labels = ['No Response', 'Response']
 cm_marketing_response = pd.DataFrame(confusion_matrix(y_m_val_class, y_m_pred_class),
-                                     index=labels, columns=labels)
-cm_marketing_response.index.name = 'Actual'
-cm_marketing_response.columns.name = 'Predicted'
+                                     index=['Actual ' + l for l in labels],
+                                     columns=['Predicted ' + l for l in labels])
 
 print("\nConfusion Matrix (formatted):")
 print(cm_marketing_response)
