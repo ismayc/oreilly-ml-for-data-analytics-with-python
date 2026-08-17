@@ -64,8 +64,6 @@ from sklearn.model_selection import GridSearchCV
 ```
 
 ```{python}
-import pandas as pd
-
 # Display all columns
 pd.set_option('display.max_columns', None)
 ```
