@@ -51,6 +51,14 @@ jobs:
           QUARTO_PYTHON: python3
         run: quarto render exercises_solutions.qmd --to html
 
+      # Marks which lines are typed live vs pre-filled for learners. Never fails
+      # the run: if a rule stops matching, the script writes nothing and we
+      # publish the plain render rather than blocking the update.
+      - name: Highlight typed-vs-given code
+        run: |
+          python3 scripts/highlight_typed_code.py || echo \
+            "::warning::Highlighting skipped, publishing the plain render. A rule in scripts/highlight_typed_code.py no longer matches exercises_solutions.html."
+
       - name: Commit & push solutions HTML if it changed
         run: |
           git config user.name  "github-actions[bot]"
