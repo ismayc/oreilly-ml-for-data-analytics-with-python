@@ -33,6 +33,8 @@ if "google.colab" in sys.modules:
             urllib.request.urlretrieve(_DATA_BASE + _fname, _fname)
 ```
 
+> **How this notebook is structured for class:** Several walkthrough cells come pre-filled so that class time goes to the core machine learning steps; read and run those, and we will write the remaining walkthrough cells together. The exercises stay mostly blank on purpose: use the walkthrough code as your guide.
+
 # Intro: Getting Started with Machine Learning for Data-Driven Decisions
 
 ## Walkthrough: Setting Up the Python Environment for ML
@@ -101,71 +103,86 @@ marketing_campaign_raw = pd.read_csv('marketing_campaign.csv')
 
 ```{python}
 # Inspect data structure
-
+telco_churn_raw
 ```
 
 ```{python}
 # Show column types and non-null counts
-
+telco_churn_raw.info()
 ```
 
 ```{python}
 # Check for missing values
-
+telco_churn_raw.isnull().sum()
 ```
 
 ```{python}
 # Check for duplicate rows
-
+telco_churn_raw.duplicated().sum()
 ```
 
 ### Handle missing values and clean data
 
 ```{python}
 # Make a copy of the data to fix and clean
-
+telco_churn = telco_churn_raw.copy()
 ```
 
 ```{python}
 # Handle missing values
-
+telco_churn['MonthlyCharges'] = telco_churn['MonthlyCharges']\
+  .fillna(telco_churn['MonthlyCharges'].median())
+telco_churn['AvgServiceUsageScore'] = telco_churn['AvgServiceUsageScore']\
+  .fillna(telco_churn['AvgServiceUsageScore'].median())
+telco_churn.info()
 ```
 
 ```{python}
 # Standardize column formats (e.g., convert Yes/No to binary for a few columns)
-
+telco_churn['SeniorCitizen'] = telco_churn['SeniorCitizen'].astype('category')
+telco_churn['Churn'] = telco_churn['Churn'].map({'Yes': 1, 'No': 0})
 ```
 
 ```{python}
 # Summarize statistics
-
+telco_churn.describe(include='all')
 ```
 
 ### Create visualizations to identify key business trends
 
 ```{python}
 # Visualize Churn by tenure in a violin plot
-
+sns.violinplot(data=telco_churn, x='Churn', y='tenure', inner='quartile')
+plt.title('Violin Plot of Tenure by Churn')
+plt.show();
 ```
 
 ```{python}
 # Visualize the distribution of AvgServiceUsageScore
-
+sns.histplot(data=telco_churn, x='AvgServiceUsageScore')
+plt.title('Histogram of Average Service Usage Score')
+plt.show();
 ```
 
 ```{python}
 # Visualize the distribution of MonthlyCharges
-
+sns.histplot(data=telco_churn, x='MonthlyCharges')
+plt.title('Histogram of Monthly Charges')
+plt.show();
 ```
 
 ```{python}
 # Look at the relationship between AvgServiceUsageScore and MonthlyCharges
-
+sns.scatterplot(data=telco_churn, x='AvgServiceUsageScore', y='MonthlyCharges')
+plt.title('Average Service Usage Score vs. Monthly Charges')
+plt.show();
 ```
 
 ```{python}
 # Visualize the relationship between InternetService and Churn
-
+sns.countplot(data=telco_churn, x='InternetService', hue='Churn')
+plt.title('Churn Rate by Internet Service Type')
+plt.show();
 ```
 
 
@@ -215,6 +232,12 @@ marketing_campaign_raw = pd.read_csv('marketing_campaign.csv')
 # Add new features for TotalChildren and
 # TotalSpent = sum of all spending (Mnt) categories
 
+
+marketing_campaign["TotalSpent"] = (
+    marketing_campaign["MntWines"] + marketing_campaign["MntFruits"] +
+    marketing_campaign["MntMeatProducts"] + marketing_campaign["MntFishProducts"] +
+    marketing_campaign["MntSweetProducts"] + marketing_campaign["MntGoldProds"]
+)
 ```
 
 ```{python}
@@ -388,13 +411,16 @@ By the end of this module, you should be able to:
 
 ```{python}
 # Select relevant features and set Churn to target
-
+features = ['tenure', 'SeniorCitizen', 'ServiceCount', 'InternetScore', 'AvgServiceUsageScore']
+X = telco_churn[features]
+y = telco_churn['Churn']
 ```
 
 Scaling is not as important for tree-based models.
 
 ```{python}
-
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=2025)
 ```
 
 ### Train a Random Forest classification model
@@ -408,27 +434,31 @@ Scaling is not as important for tree-based models.
 
 ```{python}
 # Predict on the validation set
-
+y_pred = clf.predict(X_test)
 ```
 
 ```{python}
 # Print evaluation metrics (Accuracy, Precision, Recall)
-
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.2f}")
+print(f"Precision: {precision_score(y_test, y_pred):.2f}")
+print(f"Recall: {recall_score(y_test, y_pred):.2f}")
 ```
 
 ```{python}
 # Find confusion matrix
-
+cm = confusion_matrix(y_test, y_pred)
 ```
 
 ```{python}
 # Set labels for confusion matrix and turn into DataFrame
-
+labels = ['No Churn', 'Churn']
+cm_telco_churn = pd.DataFrame(cm, index=labels, columns=labels)
 ```
 
 ```{python}
 # Print formatted confusion matrix
-
+print("\nConfusion Matrix (formatted):")
+print(cm_telco_churn)
 ```
 
 ### Quick Reference: When to Use Which Metric
@@ -516,52 +546,60 @@ By the end of this module, you should be able to:
 
 ```{python}
 # Set ContractType as a numerical variable
-
+telco_churn['ContractType'] = telco_churn['Contract'].map({
+    'Month-to-month': 0, 'One year': 1, 'Two year': 2
+})
 
 # Select relevant features
-
+features = ['tenure', 'ServiceCount', 'AvgServiceUsageScore', 'MonthlyCharges', 'InternetScore', 'ContractType']
+X = telco_churn[features]
 
 # Standardize features
-
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
 ```
 
 ### Determine the optimal number of clusters using the Elbow Method
 
 ```{python}
 # Set inertia as an empty list
+inertia = []
+k_range = range(1, 11)
 
-
-# Loop through k=1 to k=10
-
-
-# Fit KMeans for each k and append inertia to the list
-
+# Loop through k=1 to k=10,
+# fit KMeans for each k and append inertia to the list
+for k in k_range:
+    kmeans = KMeans(n_clusters=k, random_state=2025)
+    kmeans.fit(X_scaled)
+    inertia.append(kmeans.inertia_)
 
 # Plot the inertia values against the number of clusters
-
+plt.plot(k_range, inertia, marker='o')
+plt.xlabel('Number of clusters (k)')
+plt.ylabel('Inertia')
+plt.title('Elbow Method for Optimal k')
+plt.show();
 ```
 
 ### Verify using the silhouette score (optional but recommended)
 
 ```{python}
 # Evaluate silhouette scores for k=3 to k=6
+silhouette_scores = {}
 
-
-
-    # Fit KMeans for each k and calculate silhouette score
-
-
+for k in range(3, 7):
     # Fit KMeans and get labels
-
+    kmeans = KMeans(n_clusters=k, random_state=2025)
+    labels = kmeans.fit_predict(X_scaled)
 
     # Calculate silhouette score
-
+    score = silhouette_score(X_scaled, labels)
 
     # Store silhouette score
-
+    silhouette_scores[k] = score
 
 # Print silhouette scores
-
+silhouette_scores
 ```
 
 ### Fit K-means and assign cluster labels to each customer
@@ -579,9 +617,11 @@ By the end of this module, you should be able to:
 ### Visualize customer segments using a 2D plot
 
 ```{python}
-
 # Visualize clusters in 2D space (using tenure and AvgServiceUsageScore)
-
+sns.scatterplot(data=telco_churn,  x='tenure', y='AvgServiceUsageScore',
+                hue='Cluster', palette='viridis')
+plt.title('Customer Segments via K-Means')
+plt.show();
 ```
 
 ---
@@ -660,10 +700,14 @@ Pick a k and justify your choice. There's no single correct answer.
 
 ```{python}
 # Select binary service columns to act like "products"
-
+service_cols = [
+    'OnlineSecurity', 'OnlineBackup', 'DeviceProtection',
+    'TechSupport', 'StreamingTV', 'StreamingMovies', 'PhoneService'
+]
 
 # Convert service columns to boolean (preference of apriori() function)
-
+telco_churn_basket = telco_churn[service_cols].astype(bool)
+telco_churn_basket
 ```
 
 ### Apply the Apriori algorithm to identify frequent itemsets
@@ -680,7 +724,8 @@ Pick a k and justify your choice. There's no single correct answer.
 
 
 # Return columns to extract insights
-
+rules = rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']]
+rules
 ```
 
 ### Interpret insights
@@ -704,13 +749,22 @@ and this is 30% more likely than if the purchases were independent."
 
 ```{python}
 # Select binary columns representing product purchases
+product_cols = [
+    'MntWines', 'MntFruits', 'MntMeatProducts',
+    'MntFishProducts', 'MntSweetProducts', 'MntGoldProds'
+]
 
 # Convert product columns to binary: 1 if any amount was spent, else 0
+basket = marketing_campaign[product_cols].map(lambda x: 1 if x > 0 else 0)
 
 # Rename columns for cleaner output
+basket.columns = [
+    'Wines', 'Fruits', 'Meat', 'Fish', 'Sweets', 'Gold'
+]
 
 # Set columns as booleans
-
+basket = basket.astype(bool)
+basket.head()
 ```
 
 ### Note on Thresholds
@@ -772,20 +826,24 @@ By the end of this module, you should be able to:
 
 ```{python}
 # Features (AvgServiceUsageScore, tenure, MonthlyCharges) and target (Churn)
-
+X = telco_churn[['AvgServiceUsageScore', 'tenure', 'MonthlyCharges']]
+y = telco_churn['Churn']
 
 # Scale the features since logistic regression is a linear model
-
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
 
 # Split into train and test sets (80% train, 20% test)
-
+X_train, X_test, y_train, y_test = train_test_split(
+  X_scaled, y, test_size=0.2, random_state=2025
+)
 ```
 
 ### Train a classification model using logistic regression
 
 ```{python}
 # Initialize logistic regression model
-
+logreg = LogisticRegression(max_iter=1000, solver='liblinear')
 ```
 
 ### Apply k-fold cross-validation to evaluate model performance
@@ -798,8 +856,13 @@ By the end of this module, you should be able to:
 ### Compare metrics across folds
 
 ```{python}
-# Average performance across folds
+def show_metric(name, results):
+    scores = results[f"test_{name}"]
+    print(f"{name.capitalize()}: {scores.mean():.3f} ± {scores.std():.3f}")
 
+# Average performance across folds
+for metric in ['accuracy', 'precision', 'recall', 'f1']:
+    show_metric(metric, cv_results)
 ```
 
 **Interpretation**
@@ -879,10 +942,11 @@ F1-Score -> Harmonic mean of precision and recall
 
 ```{python}
 # Features (AvgServiceUsageScore, tenure, MonthlyCharges) and target Churn
-
+X = telco_churn[['AvgServiceUsageScore', 'tenure', 'MonthlyCharges']]
+y = telco_churn['Churn']
 
 # Initialize Random Forest
-
+rf = RandomForestClassifier(random_state=2025)
 ```
 
 ### Apply grid search to find optimal hyperparameters
@@ -907,16 +971,19 @@ param_grid = {
 
 ```{python}
 # Predict using the best model
+best_rf = grid_search.best_estimator_
+y_pred = best_rf.predict(X)
 
 # Show accuracy and recall for best model
-
+print(f"Best Accuracy: {accuracy_score(y, y_pred):.3f}")
+print(f"Best Recall: {recall_score(y, y_pred):.3f}")
 ```
 
 ### Interpret the best hyperparameter combination
 
 ```{python}
 # Print the best hyperparameters found
-
+print("Best Parameters Found:", grid_search.best_params_)
 ```
 
 ---
