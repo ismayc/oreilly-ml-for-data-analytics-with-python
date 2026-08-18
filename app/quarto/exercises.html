@@ -667,9 +667,15 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBC
 
 </div>
 <script type="pyodide-33-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBDaG9vc2UgQXZnU2VydmljZVVzYWdlU2NvcmUgYXMgdGhlIHByZWRpY3RvciBhbmQgTW9udGhseUNoYXJnZXMgYXMgdGhlIHRhcmdldCJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBDaG9vc2UgQXZnU2VydmljZVVzYWdlU2NvcmUgYXMgdGhlIHByZWRpY3RvciBhbmQgTW9udGhseUNoYXJnZXMgYXMgdGhlIHRhcmdldFxuXG4jIFJlc2V0IGluZGV4IHNvIHRoZSByb3cgbGFiZWxzIGFyZSBhIGNsZWFuIDAsIDEsIDIsIC4uLiJ9
 </script>
 </div>
+<blockquote class="blockquote">
+<p><strong>What is <code>reset_index</code> doing, and do we need it here?</strong> Honestly, in this notebook, no. It is a habit worth understanding rather than a fix for a problem we have.</p>
+<p>A pandas Series and DataFrame carry row <em>labels</em> (the index) separately from row <em>positions</em>. <code>reset_index(drop=True)</code> throws the old labels away and renumbers the rows 0, 1, 2, and so on. <code>drop=True</code> says discard the old labels instead of keeping them as a new column.</p>
+<p>It matters when rows have been <strong>removed</strong>, because pandas keeps the original labels of whatever survives. Drop rows 3 and 4 from a 10-row table and the index reads 0, 1, 2, 5, 6, …, with gaps. Line up that Series against a fresh NumPy array or another differently-indexed object and pandas aligns on those <em>labels</em>, not on position, which quietly produces <code>NaN</code> rows where the labels do not match.</p>
+<p>Here nothing ever removes a row. We filled the missing values in with the median rather than dropping them, so <code>telco_churn</code> still has all 7,043 rows and its index is already 0 through 7,042 with no gaps. These two lines change nothing at all, and the model comes out identical without them. Keep them as insurance for the day you add a <code>.dropna()</code> or a filter above this cell, and recognize the pattern when you meet it in real code.</p>
+</blockquote>
 <div>
 <div id="pyodide-34" class="exercise-cell">
 
@@ -747,7 +753,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBQ
 
 </div>
 <script type="pyodide-41-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBQcmVkaWN0b3IgKEluY29tZSkgYW5kIHRhcmdldCAoVG90YWxTcGVudCkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBQcmVkaWN0b3IgKEluY29tZSkgYW5kIHRhcmdldCAoVG90YWxTcGVudClcblxuIyBTYW1lIGhvdXNla2VlcGluZyBhcyB0aGUgd2Fsa3Rocm91Z2g6IGEgY2xlYW4gMCwgMSwgMiwgLi4uIGluZGV4In0=
 </script>
 </div>
 <div>
