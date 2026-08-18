@@ -125,7 +125,9 @@ telco_churn_raw.duplicated().sum()
 ```{python}
 # Make a copy of the data to fix and clean
 telco_churn = telco_churn_raw.copy()
+```
 
+```{python}
 # Handle missing values
 telco_churn['MonthlyCharges'] = telco_churn['MonthlyCharges']\
   .fillna(telco_churn['MonthlyCharges'].median())
@@ -214,22 +216,29 @@ marketing_campaign_raw.duplicated().sum()
 ```{python}
 # Create a clean working copy
 marketing_campaign = marketing_campaign_raw.copy()
+```
 
+```{python}
 # Handle missing values of Income
 marketing_campaign['Income'] = marketing_campaign['Income']\
   .fillna(
     marketing_campaign['Income'].median()
   )
+```
 
-# Add new features
+```{python}
+# Add new features for TotalChildren and
+# TotalSpent = sum of all spending (Mnt) categories
 marketing_campaign["TotalChildren"] = marketing_campaign["Kidhome"] + marketing_campaign["Teenhome"]
 marketing_campaign["TotalSpent"] = (
     marketing_campaign["MntWines"] + marketing_campaign["MntFruits"] +
     marketing_campaign["MntMeatProducts"] + marketing_campaign["MntFishProducts"] +
     marketing_campaign["MntSweetProducts"] + marketing_campaign["MntGoldProds"]
 )
+```
 
-# Convert to datetime
+```{python}
+# Convert Dt_Customer to datetime
 marketing_campaign["Dt_Customer"] = pd.to_datetime(marketing_campaign["Dt_Customer"], errors='coerce')
 marketing_campaign.info()
 ```
@@ -303,18 +312,31 @@ By the end of this module, you should be able to:
 > - **Plain OLS is the subtle case.** Ordinary least squares with no penalty is *invariant* to scaling: predictions, R-squared, and MAE come out identical either way. Only the coefficient changes, because it is now "per standard deviation" instead of "per raw unit." We scale here for interpretability and habit, not because the fit needs it.
 
 ```{python}
+# Choose AvgServiceUsageScore as the predictor and MonthlyCharges as the target
 X = telco_churn[['AvgServiceUsageScore']]  # predictor
 y = telco_churn['MonthlyCharges']          # target
 
-# Reset index to avoid potential issues later
+# Reset index so the row labels are a clean 0, 1, 2, ...
 X = X.reset_index(drop=True)
 y = y.reset_index(drop=True)
+```
 
+> **What is `reset_index` doing, and do we need it here?** Honestly, in this notebook, no. It is a habit worth understanding rather than a fix for a problem we have.
+>
+> A pandas Series and DataFrame carry row *labels* (the index) separately from row *positions*. `reset_index(drop=True)` throws the old labels away and renumbers the rows 0, 1, 2, and so on. `drop=True` says discard the old labels instead of keeping them as a new column.
+>
+> It matters when rows have been **removed**, because pandas keeps the original labels of whatever survives. Drop rows 3 and 4 from a 10-row table and the index reads 0, 1, 2, 5, 6, ..., with gaps. Line up that Series against a fresh NumPy array or another differently-indexed object and pandas aligns on those *labels*, not on position, which quietly produces `NaN` rows where the labels do not match.
+>
+> Here nothing ever removes a row. We filled the missing values in with the median rather than dropping them, so `telco_churn` still has all 7,043 rows and its index is already 0 through 7,042 with no gaps. These two lines change nothing at all, and the model comes out identical without them. Keep them as insurance for the day you add a `.dropna()` or a filter above this cell, and recognize the pattern when you meet it in real code.
+
+```{python}
 # Split FIRST, so the scaler never sees the validation rows
 X_train_raw, X_val_raw, y_train, y_val = train_test_split(
   X, y, test_size=0.2, random_state=2025
 )
+```
 
+```{python}
 # Fit the scaler on TRAINING data only, then apply that same
 # transform to the validation set. fit_transform on train,
 # transform (never fit) on validation.
@@ -326,9 +348,13 @@ X_val = scaler.transform(X_val_raw)
 ### Train a linear regression model
 
 ```{python}
+# Instantiate and fit the model
 lr = LinearRegression()
 lr.fit(X_train, y_train)
+```
 
+```{python}
+# Print the intercept and coefficient
 print(f"Intercept: {lr.intercept_:.2f}")
 print(f"Coefficient (usage_scaled -> price): {lr.coef_[0]:.2f}")
 ```
@@ -338,11 +364,18 @@ print(f"Coefficient (usage_scaled -> price): {lr.coef_[0]:.2f}")
 ### Evaluate model performance on the validation set
 
 ```{python}
+# Predict on the validation set
 y_pred = lr.predict(X_val)
+```
 
+```{python}
+# Evaluate model performance with R^2 and MAE
 r2 = r2_score(y_val, y_pred)
 mae = mean_absolute_error(y_val, y_pred)
+```
 
+```{python}
+# Print these evaluation metrics
 print(f"R-squared: {r2:.2f}")
 print(f"Mean Absolute Error: {mae:.2f}")
 ```
@@ -354,19 +387,23 @@ print(f"Mean Absolute Error: {mae:.2f}")
 ### Split the data into training and validation sets
 
 ```{python}
-# Predictor and target
+# Predictor (Income) and target (TotalSpent)
 X_m = marketing_campaign[['Income']]  # predictor
 y_m = marketing_campaign['TotalSpent'] # target
 
-# Reset index to avoid potential issues later
+# Same housekeeping as the walkthrough: a clean 0, 1, 2, ... index
 X_m = X_m.reset_index(drop=True)
 y_m = y_m.reset_index(drop=True)
+```
 
+```{python}
 # Train-test split FIRST, so the scaler never sees the validation rows
 X_m_train_raw, X_m_val_raw, y_m_train, y_m_val = train_test_split(
     X_m, y_m, test_size=0.2, random_state=2025
 )
+```
 
+```{python}
 # Standardize using TRAINING data only
 scaler_m = StandardScaler()
 X_m_train = scaler_m.fit_transform(X_m_train_raw)
@@ -377,9 +414,13 @@ X_m_val = scaler_m.transform(X_m_val_raw)
 ### Train a linear regression model
 
 ```{python reg_marketing}
+# Instantiate and fit the model
 lr_m = LinearRegression()
 lr_m.fit(X_m_train, y_m_train)
+```
 
+```{python}
+# Print the intercept and coefficient
 print(f"Intercept: {lr_m.intercept_:.2f}")
 print(f"Coefficient (Income_scaled -> TotalSpent): {lr_m.coef_[0]:.2f}")
 ```
@@ -388,11 +429,18 @@ print(f"Coefficient (Income_scaled -> TotalSpent): {lr_m.coef_[0]:.2f}")
 ### Evaluate model performance on the validation set
 
 ```{python}
+# Predict on the validation set
 y_m_pred = lr_m.predict(X_m_val)
+```
 
+```{python}
+# Get R^2 and MAE
 r2_m = r2_score(y_m_val, y_m_pred)
 mae_m = mean_absolute_error(y_m_val, y_m_pred)
+```
 
+```{python}
+# Print these evaluation metrics
 print(f"R-squared: {r2_m:.2f}")
 print(f"Mean Absolute Error: {mae_m:.2f}")
 ```
@@ -412,14 +460,16 @@ print(f"Mean Absolute Error: {mae_m:.2f}")
 > **Common Pitfall:** Churn and campaign response are imbalanced (far more 0s than 1s), so accuracy alone can be misleading, a model that always predicts the majority class can still look "accurate." Report precision and recall alongside accuracy to see how well the model catches the minority class.
 
 ```{python}
-# Select relevant features
+# Select relevant features and set Churn to target
 features = ['tenure', 'SeniorCitizen', 'ServiceCount', 'InternetScore', 'AvgServiceUsageScore']
 X = telco_churn[features]
 y = telco_churn['Churn']
 
 # Scaling is not as important for tree-based models since they are not sensitive to
 # one feature having a larger scale than another
+```
 
+```{python}
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=2025)
 ```
@@ -435,19 +485,32 @@ clf.fit(X_train, y_train)
 ### Evaluate model performance on the validation set
 
 ```{python}
+# Predict on the validation set
 y_pred = clf.predict(X_test)
+```
 
+```{python}
+# Print evaluation metrics (Accuracy, Precision, Recall)
 print(f"Accuracy: {accuracy_score(y_test, y_pred):.2f}")
 print(f"Precision: {precision_score(y_test, y_pred):.2f}")
 print(f"Recall: {recall_score(y_test, y_pred):.2f}")
+```
 
+```{python}
+# Find confusion matrix
 cm = confusion_matrix(y_test, y_pred)
+```
 
+```{python}
+# Set labels for confusion matrix and turn into DataFrame
 labels = ['No Churn', 'Churn']
 cm_telco_churn = pd.DataFrame(cm,
                               index=['Actual ' + l for l in labels],
                               columns=['Predicted ' + l for l in labels])
+```
 
+```{python}
+# Print formatted confusion matrix
 print("\nConfusion Matrix (formatted):")
 print(cm_telco_churn)
 ```
@@ -469,11 +532,14 @@ print(cm_telco_churn)
 ### Split the data into training and validation sets
 
 ```{python}
-# Select relevant features
+# Select relevant features (Income, TotalSpent, TotalChildren) and
+# set Response to target
 features_m = ['Income', 'TotalSpent', 'TotalChildren']
 X_m_class = marketing_campaign[features_m]
 y_m_class = marketing_campaign['Response']
+```
 
+```{python}
 # Split into training and validation sets
 X_m_train_class, X_m_val_class, y_m_train_class, y_m_val_class = train_test_split(
     X_m_class, y_m_class, test_size=0.2, random_state=2025
@@ -493,17 +559,25 @@ clf_m.fit(X_m_train_class, y_m_train_class)
 ### Evaluate model performance on the validation set
 
 ```{python}
+# Predict on the validation set
 y_m_pred_class = clf_m.predict(X_m_val_class)
+```
 
+```{python}
+# Get accuracy, precision, and recall
 print(f"Accuracy: {accuracy_score(y_m_val_class, y_m_pred_class):.2f}")
 print(f"Precision: {precision_score(y_m_val_class, y_m_pred_class):.2f}")
 print(f"Recall: {recall_score(y_m_val_class, y_m_pred_class):.2f}")
+```
 
+```{python}
+# Set labels and turn confusion matrix into DataFrame
 labels = ['No Response', 'Response']
 cm_marketing_response = pd.DataFrame(confusion_matrix(y_m_val_class, y_m_pred_class),
                                      index=['Actual ' + l for l in labels],
                                      columns=['Predicted ' + l for l in labels])
 
+# Print formatted confusion matrix
 print("\nConfusion Matrix (formatted):")
 print(cm_marketing_response)
 ```
