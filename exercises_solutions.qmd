@@ -61,6 +61,7 @@ from mlxtend.frequent_patterns import apriori, association_rules
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score, cross_validate
 from sklearn.model_selection import GridSearchCV
+from sklearn.pipeline import make_pipeline
 ```
 
 ```{python}
@@ -291,7 +292,15 @@ By the end of this module, you should be able to:
 
 ### Split the data into training and validation sets
 
-> **Common Pitfall:** Fitting `StandardScaler` on the full dataset before the train/test split leaks information from the validation set into training. In a strict workflow, fit the scaler on the training data only (or wrap it in a `Pipeline`) so the validation set stays truly unseen.
+> **Common Pitfall:** Fitting `StandardScaler` on the full dataset before the train/test split leaks information from the validation set into training. Scaling is not a formatting step, it is a *learned* step: the scaler learns a mean and a standard deviation from whatever you show it. Show it everything and your validation rows have helped decide how the training rows are represented. So split first, `fit_transform` on train, and `transform` (never `fit`) on validation. Module 4 shows the `Pipeline` version, which enforces this for you.
+
+> **Why scale at all, and does every model need it?** No. It depends on how the model reads a feature.
+>
+> - **Distance-based models need it.** K-means, k-NN, and SVMs measure distance between points. A feature measured in thousands (Income) swamps one measured in single digits (TotalChildren), so the large-range feature silently decides the answer. This is why we scale before k-means in Module 3.
+> - **Regularized linear models need it.** Logistic regression and ridge/lasso apply a penalty to the size of the coefficients. Coefficient size depends on feature units, so without scaling the penalty falls unevenly across features. `LogisticRegression` regularizes by default, which is why Module 4 scales.
+> - **Gradient-descent solvers converge faster with it**, and PCA needs it because it chases variance, which is unit-dependent.
+> - **Tree models do not need it.** A decision tree, random forest, or gradient booster splits one feature at a time at a threshold. Rescaling moves the threshold but produces the identical split, so the model is unchanged. Notice we do *not* scale for the Random Forest in Walkthrough 2.2 or the grid search in 4.2.
+> - **Plain OLS is the subtle case.** Ordinary least squares with no penalty is *invariant* to scaling: predictions, R-squared, and MAE come out identical either way. Only the coefficient changes, because it is now "per standard deviation" instead of "per raw unit." We scale here for interpretability and habit, not because the fit needs it.
 
 ```{python}
 X = telco_churn[['AvgServiceUsageScore']]  # predictor
@@ -301,13 +310,17 @@ y = telco_churn['MonthlyCharges']          # target
 X = X.reset_index(drop=True)
 y = y.reset_index(drop=True)
 
-# Best practice when working with linear models
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-
-X_train, X_val, y_train, y_val = train_test_split(
-  X_scaled, y, test_size=0.2, random_state=2025
+# Split FIRST, so the scaler never sees the validation rows
+X_train_raw, X_val_raw, y_train, y_val = train_test_split(
+  X, y, test_size=0.2, random_state=2025
 )
+
+# Fit the scaler on TRAINING data only, then apply that same
+# transform to the validation set. fit_transform on train,
+# transform (never fit) on validation.
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train_raw)
+X_val = scaler.transform(X_val_raw)
 ```
 
 ### Train a linear regression model
@@ -349,14 +362,15 @@ y_m = marketing_campaign['TotalSpent'] # target
 X_m = X_m.reset_index(drop=True)
 y_m = y_m.reset_index(drop=True)
 
-# Standardize the predictor
-scaler_m = StandardScaler()
-X_m_scaled = scaler_m.fit_transform(X_m)
-
-# Train-test split
-X_m_train, X_m_val, y_m_train, y_m_val = train_test_split(
-    X_m_scaled, y_m, test_size=0.2, random_state=2025
+# Train-test split FIRST, so the scaler never sees the validation rows
+X_m_train_raw, X_m_val_raw, y_m_train, y_m_val = train_test_split(
+    X_m, y_m, test_size=0.2, random_state=2025
 )
+
+# Standardize using TRAINING data only
+scaler_m = StandardScaler()
+X_m_train = scaler_m.fit_transform(X_m_train_raw)
+X_m_val = scaler_m.transform(X_m_val_raw)
 ```
 
 
@@ -774,21 +788,30 @@ By the end of this module, you should be able to:
 X = telco_churn[['AvgServiceUsageScore', 'tenure', 'MonthlyCharges']]
 y = telco_churn['Churn']
 
-# Scale the features since logistic regression is a linear model
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-
-# Split into train and test sets (80% train, 20% test)
+# Split into train and test sets (80% train, 20% test).
+# No scaling here: it moves inside the model, below.
 X_train, X_test, y_train, y_test = train_test_split(
-  X_scaled, y, test_size=0.2, random_state=2025
+  X, y, test_size=0.2, random_state=2025
 )
 ```
 
 ### Train a classification model using logistic regression
 
+> **What the `Pipeline` actually does.** `make_pipeline(StandardScaler(), LogisticRegression(...))` glues the two together into a single object that still has `.fit()` and `.predict()`, so it behaves exactly like a model. The point is that it enforces the fit/transform asymmetry for you:
+>
+> - `pipe.fit(X, y)` runs `scaler.fit_transform(X)`, then fits the logistic regression on the result. The scaler learns its mean and SD **here**, from whatever rows it was handed.
+> - `pipe.predict(X_new)` runs `scaler.transform(X_new)`, **never** `fit`, then predicts. New data is scaled using the numbers learned during `fit`.
+>
+> That matters most under cross-validation. `cross_validate` builds 5 different training sets, and it calls `.fit()` on the pipeline separately for each fold. So each fold fits its **own** scaler on that fold's 80% and applies it to that fold's held-out 20%. Scale by hand beforehand and you get one scaler fit on all the data, meaning every fold trains on rows whose scaling was informed by the rows it is about to be tested on. There is no seam to leak through here, because the scaler is part of the thing being refit.
+
 ```{python}
-# Initialize logistic regression model
-logreg = LogisticRegression(max_iter=1000, solver='liblinear')
+# Initialize logistic regression INSIDE a pipeline, so the scaler is
+# refit on each cross-validation fold's training rows rather than once
+# on everything. Same .fit()/.predict() API as a bare model.
+logreg = make_pipeline(
+    StandardScaler(),
+    LogisticRegression(max_iter=1000, solver='liblinear')
+)
 ```
 
 ### Apply k-fold cross-validation to evaluate model performance
@@ -841,21 +864,22 @@ Cross-validation ensures that your model generalizes better to unseen data by re
 X_m = marketing_campaign[['Income', 'TotalSpent', 'TotalChildren']]
 y_m = marketing_campaign['Response']
 
-# Scale features
-scaler = StandardScaler()
-X_m_scaled = scaler.fit_transform(X_m)
-
-# Train-test split
+# Train-test split. No scaling here: it goes inside the pipeline below,
+# so each cross-validation fold scales using only its own training rows.
 X_m_train, X_m_test, y_m_train, y_m_test = train_test_split(
-    X_m_scaled, y_m, test_size=0.2, random_state=2025
+    X_m, y_m, test_size=0.2, random_state=2025
 )
 ```
 
 ### Train a classification model using logistic regression
 
 ```{python}
-# Initialize logistic regression model
-logreg_m = LogisticRegression(max_iter=1000, solver='liblinear')
+# Same pipeline pattern as the walkthrough: scaler + model as one
+# object, so cross_validate refits the scaler on every fold
+logreg_m = make_pipeline(
+    StandardScaler(),
+    LogisticRegression(max_iter=1000, solver='liblinear')
+)
 ```
 
 ### Apply k-fold cross-validation to evaluate model performance

@@ -1,11 +1,19 @@
 # Packages for running this course's notebooks locally and for the GitHub Actions
 # workflow that renders exercises_solutions.html. The in-browser app (app/) installs
 # its own JupyterLite/Pyodide deps separately and does not use this file.
-numpy
-pandas
-scipy
-matplotlib
-seaborn
-scikit-learn
-mlxtend
-jupyter
+#
+# Versions are PINNED so CI and the local _tfenv render the same numbers. They had
+# drifted apart: an unpinned CI run resolved a different scikit-learn than _tfenv and
+# silently changed Walkthrough 2.2's published confusion matrix and precision, even
+# though its code never changed. The instructor reads those numbers aloud from
+# run-sheets/ask-prompts.json, so they must not move on their own. These pins match
+# _tfenv as of August 18, 2026; bump them deliberately, re-render, and re-check the
+# metrics in ask-prompts.json.
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.17.1
+matplotlib==3.10.9
+seaborn==0.13.2
+scikit-learn==1.9.0
+mlxtend==0.25.0
+jupyter==1.1.1
