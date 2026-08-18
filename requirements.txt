@@ -1,19 +1,6 @@
 # Packages for running this course's notebooks locally and for the GitHub Actions
 # workflow that renders exercises_solutions.html. The in-browser app (app/) installs
 # its own JupyterLite/Pyodide deps separately and does not use this file.
-#
-# Versions are PINNED so a CI re-render cannot silently change published numbers by
-# resolving a newer package. Pins match _tfenv as of August 18, 2026; bump them
-# deliberately, then re-render and re-check the metrics quoted in
-# run-sheets/ask-prompts.json.
-#
-# Pinning does NOT make a local macOS render match CI. Walkthrough 2.2's Random Forest
-# lands on 0.53 precision and 904/149/185/171 on CI (linux x86_64) but 0.54 and
-# 907/146/186/170 in _tfenv (macOS arm64), on identical code, seed, and package
-# versions: near-tie splits break differently across architectures. Verified
-# August 18, 2026 with scikit-learn 1.9.0 on both sides. CI is the source of truth,
-# since it renders the published exercises_solutions.html. Never copy metrics out of
-# a local macOS render into ask-prompts.json or the notebook outputs.
 numpy==2.4.6
 pandas==3.0.3
 scipy==1.17.1
