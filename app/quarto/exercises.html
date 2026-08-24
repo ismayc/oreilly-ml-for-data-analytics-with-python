@@ -78,6 +78,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -314,6 +317,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<style>
+.cell-output-display:has(.mermaid-js) { text-align: center; }
+.cell-output-display .mermaid-js { display: inline-block; max-width: 100%; }
+.cell-output-display .mermaid-js > svg { max-width: 100%; height: auto; }
+</style>
 <div>
 <div id="pyodide-1" class="exercise-cell">
 
@@ -327,6 +335,32 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBD
 </blockquote>
 <section id="intro-getting-started-with-machine-learning-for-data-driven-decisions" class="level1">
 <h1>Intro: Getting Started with Machine Learning for Data-Driven Decisions</h1>
+<!-- diagram: course-map -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  D[("Business data:&lt;br/&gt;churn, campaigns")]:::data --&gt; M1["Module 1&lt;br/&gt;Understand it&lt;br/&gt;and clean it"]:::proc
+  M1 --&gt; Q{"Is there a labeled&lt;br/&gt;answer to predict?"}:::decision
+  Q --&gt;|"yes"| SUP["Module 2: supervised&lt;br/&gt;regression and&lt;br/&gt;classification"]:::proc
+  Q --&gt;|"no"| UNS["Module 3: unsupervised&lt;br/&gt;clustering and&lt;br/&gt;market basket"]:::accent
+  SUP --&gt; M4["Module 4&lt;br/&gt;Evaluate honestly,&lt;br/&gt;then tune"]:::proc
+  UNS --&gt; M4
+  M4 --&gt; O[/"A model you would&lt;br/&gt;defend to a stakeholder"/]:::good
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> The whole course in one picture. The fork in the middle is the question that decides which family of methods you reach for.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 <section id="walkthrough-setting-up-the-python-environment-for-ml" class="level2">
 <h2 class="anchored" data-anchor-id="walkthrough-setting-up-the-python-environment-for-ml">Walkthrough: Setting Up the Python Environment for ML</h2>
 <p>If you haven’t already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so <a href="https://github.com/ismayc/oreilly-ml-for-data-analytics-with-python/blob/main/README.md">here</a>.</p>
@@ -389,6 +423,30 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBM
 <h1>Module 1: Data Understanding and Preprocessing for Machine Learning</h1>
 <section id="walkthrough-1.1-exploring-and-preprocessing-data-with-pandas-seaborn" class="level2">
 <h2 class="anchored" data-anchor-id="walkthrough-1.1-exploring-and-preprocessing-data-with-pandas-seaborn">Walkthrough 1.1: Exploring and Preprocessing Data with Pandas &amp; Seaborn</h2>
+<!-- diagram: preprocessing-pipeline -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart LR
+  R[("Raw CSV")]:::data --&gt; I["Inspect&lt;br/&gt;head, info, isnull,&lt;br/&gt;duplicated"]:::proc
+  I --&gt; F["Fix&lt;br/&gt;fill gaps,&lt;br/&gt;drop duplicates"]:::proc
+  F --&gt; E["Encode&lt;br/&gt;Yes and No&lt;br/&gt;become 1 and 0"]:::proc
+  E --&gt; N["Engineer&lt;br/&gt;TotalSpent,&lt;br/&gt;ServiceCount"]:::accent
+  N --&gt; V["Visualize&lt;br/&gt;violin, histogram,&lt;br/&gt;scatter"]:::proc
+  V --&gt; M[/"A model-ready&lt;br/&gt;table"/]:::good
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> No model appears in this module. Everything here turns a raw export into a table a model can read.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 <section id="inspect-a-dataset-using-pandas" class="level3">
 <h3 class="anchored" data-anchor-id="inspect-a-dataset-using-pandas">Inspect a dataset using Pandas</h3>
 <div>
@@ -645,8 +703,53 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBC
 </section>
 <section id="module-2-supervised-learning-for-business-decisions" class="level1">
 <h1>Module 2: Supervised Learning for Business Decisions</h1>
+<!-- diagram: regression-or-classification -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  Q{"What is the&lt;br/&gt;target column?"}:::decision
+  Q --&gt;|"a number&lt;br/&gt;MonthlyCharges, TotalSpent"| R["Regression&lt;br/&gt;LinearRegression"]:::proc
+  Q --&gt;|"a yes or no label&lt;br/&gt;Churn, Response"| C["Classification&lt;br/&gt;RandomForestClassifier"]:::proc
+  R --&gt; RM[/"Score it with&lt;br/&gt;R-squared and MAE"/]:::good
+  C --&gt; CM[/"Score it with accuracy,&lt;br/&gt;precision, and recall"/]:::good
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> One question picks both the model family and the scorecard: is the thing you are predicting a number or a label?</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 <section id="walkthrough-2.1-build-a-regression-model-for-pricing-optimization" class="level2">
 <h2 class="anchored" data-anchor-id="walkthrough-2.1-build-a-regression-model-for-pricing-optimization">Walkthrough 2.1: Build a Regression Model for Pricing Optimization</h2>
+<!-- diagram: does-it-need-scaling -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  Q{"How does the model&lt;br/&gt;read a feature?"}:::decision
+  Q --&gt;|"by distance&lt;br/&gt;k-means, k-NN, SVM"| Y1["Scale it. A big-range&lt;br/&gt;feature would otherwise&lt;br/&gt;decide the answer."]:::key
+  Q --&gt;|"with a penalty on the&lt;br/&gt;coefficients: logistic,&lt;br/&gt;ridge, lasso"| Y2["Scale it. The penalty&lt;br/&gt;is unit-dependent."]:::key
+  Q --&gt;|"one threshold at a time&lt;br/&gt;tree, random forest"| N1["No need. Rescaling moves&lt;br/&gt;the threshold and leaves&lt;br/&gt;the split identical."]:::good
+  Q --&gt;|"plain OLS, no penalty"| N2["Optional. The fit is the&lt;br/&gt;same either way; only the&lt;br/&gt;coefficient's units change."]:::accent
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef key fill:#fff3cd,stroke:#d39e00,stroke-width:2px,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> Scaling is not a formatting habit. Whether a model needs it depends on how that model reads a feature.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 <section id="split-the-data-into-training-and-validation-sets" class="level3">
 <h3 class="anchored" data-anchor-id="split-the-data-into-training-and-validation-sets">Split the data into training and validation sets</h3>
 <blockquote class="blockquote">
@@ -662,6 +765,33 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBC
 <li><strong>Plain OLS is the subtle case.</strong> Ordinary least squares with no penalty is <em>invariant</em> to scaling: predictions, R-squared, and MAE come out identical either way. Only the coefficient changes, because it is now “per standard deviation” instead of “per raw unit.” We scale here for interpretability and habit, not because the fit needs it.</li>
 </ul>
 </blockquote>
+<!-- diagram: split-then-scale -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  ALL[("All rows")]:::data --&gt; SP["train_test_split FIRST"]:::key
+  SP --&gt; TR[("Training&lt;br/&gt;80%")]:::data
+  SP --&gt; VA[("Validation&lt;br/&gt;20%")]:::data
+  TR --&gt; FT["scaler.fit_transform(X_train)&lt;br/&gt;learns the mean and SD here"]:::proc
+  FT --&gt; TF["scaler.transform(X_val)&lt;br/&gt;applies them, never re-fits"]:::proc
+  VA --&gt; TF
+  TF --&gt; OK[/"Validation stays&lt;br/&gt;genuinely unseen"/]:::good
+  LEAK["Scale before splitting and the&lt;br/&gt;validation rows help decide&lt;br/&gt;how training is represented"]:::bad -.-&gt;|"the mistake"| SP
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef key fill:#fff3cd,stroke:#d39e00,stroke-width:2px,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef bad fill:#fde0e0,stroke:#c62828,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> Split first, fit the scaler on the training rows only, then apply it. Fitting on everything leaks the validation set into training.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 <div>
 <div id="pyodide-33" class="exercise-cell">
 
@@ -864,6 +994,28 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBU
 </section>
 <section id="evaluate-model-performance-on-the-validation-set-2" class="level3">
 <h3 class="anchored" data-anchor-id="evaluate-model-performance-on-the-validation-set-2">Evaluate model performance on the validation set</h3>
+<!-- diagram: confusion-matrix-business -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart LR
+  A[/"Customer actually&lt;br/&gt;CHURNED"/]:::anchor --&gt; TP["Predicted churn:&lt;br/&gt;caught it"]:::good
+  A --&gt; FN["Predicted stay: MISSED it,&lt;br/&gt;no retention offer went out"]:::bad
+  K[/"Customer actually&lt;br/&gt;STAYED"/]:::anchor --&gt; TN["Predicted stay:&lt;br/&gt;correct"]:::good
+  K --&gt; FP["Predicted churn: false alarm,&lt;br/&gt;a discount you did not&lt;br/&gt;need to give"]:::warn
+  classDef anchor fill:#eceff1,stroke:#546e7a,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef bad fill:#fde0e0,stroke:#c62828,color:#1a1a1a
+  classDef warn fill:#ffe8cc,stroke:#e8730c,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> The confusion matrix in business terms. Recall is about the red box; precision is about the orange one.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 <div>
 <div id="pyodide-52" class="exercise-cell">
 
@@ -949,6 +1101,29 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBQ
 </tbody>
 </table>
 <hr>
+<!-- diagram: metric-choice -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  Q{"Which mistake&lt;br/&gt;costs you more?"}:::decision
+  Q --&gt;|"missing a real churner&lt;br/&gt;a false negative"| RE["Optimize RECALL&lt;br/&gt;catch them all"]:::accent
+  Q --&gt;|"chasing someone who was&lt;br/&gt;never leaving&lt;br/&gt;a false positive"| PR["Optimize PRECISION&lt;br/&gt;be right when you act"]:::proc
+  Q --&gt;|"both, about equally"| F1["Use F1"]:::good
+  Q --&gt;|"classes are balanced and&lt;br/&gt;the errors are symmetric"| AC["Accuracy is fine"]:::good
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> Accuracy is the default, not the answer. Let the cost of each kind of mistake choose the metric.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="exercise-2.2-implement-a-classification-model-for-customer-churn" class="level2">
@@ -1039,6 +1214,31 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBT
 <h1>Module 3: Unsupervised Learning and Pattern Discovery in Business</h1>
 <section id="walkthrough-3.1-exploring-k-means-clustering-for-customer-segmentation" class="level2">
 <h2 class="anchored" data-anchor-id="walkthrough-3.1-exploring-k-means-clustering-for-customer-segmentation">Walkthrough 3.1: Exploring K-Means Clustering for Customer Segmentation</h2>
+<!-- diagram: kmeans-loop -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart LR
+  X[("Customer&lt;br/&gt;features")]:::data --&gt; S["Standardize&lt;br/&gt;k-means measures&lt;br/&gt;distance"]:::key
+  S --&gt; K["Try k = 1 to 10,&lt;br/&gt;record inertia"]:::proc
+  K --&gt; E{"Elbow plot:&lt;br/&gt;where does&lt;br/&gt;it bend?"}:::decision
+  E --&gt; SIL["Silhouette score&lt;br/&gt;breaks the tie"]:::proc
+  SIL --&gt; FIT["Fit at the chosen k,&lt;br/&gt;label every customer"]:::proc
+  FIT --&gt; P[/"Segments you can&lt;br/&gt;describe and act on"/]:::good
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef key fill:#fff3cd,stroke:#d39e00,stroke-width:2px,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> Choosing k is the whole job. Scale first, let the elbow narrow the range, and let the silhouette and business sense settle it.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 <section id="apply-k-means-clustering-to-segment-customers" class="level3">
 <h3 class="anchored" data-anchor-id="apply-k-means-clustering-to-segment-customers">Apply K-Means clustering to segment customers</h3>
 <blockquote class="blockquote">
@@ -1178,6 +1378,32 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBM
 </section>
 <section id="walkthrough-3.2-market-basket-analysis-with-apriori-algorithm" class="level2">
 <h2 class="anchored" data-anchor-id="walkthrough-3.2-market-basket-analysis-with-apriori-algorithm">Walkthrough 3.2: Market Basket Analysis with Apriori Algorithm</h2>
+<!-- diagram: market-basket -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  T[("One row per customer,&lt;br/&gt;True or False per service")]:::data --&gt; AP["apriori(min_support=0.2)"]:::proc
+  AP --&gt; FI[/"Frequent itemsets:&lt;br/&gt;combinations that&lt;br/&gt;show up often"/]:::accent
+  FI --&gt; AR["association_rules(&lt;br/&gt;metric='confidence')"]:::proc
+  AR --&gt; CH{"Is lift&lt;br/&gt;above 1?"}:::decision
+  CH --&gt;|"yes"| ACT[/"A real association,&lt;br/&gt;worth acting on"/]:::good
+  CH --&gt;|"no"| SKIP["Coincidence: the&lt;br/&gt;consequent is just popular"]:::bad
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef bad fill:#fde0e0,stroke:#c62828,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> Support finds what is common, confidence finds what follows from it, and lift is the check that stops you bundling two popular things that have nothing to do with each other.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 <section id="prepare-transactional-data-services-as-items" class="level3">
 <h3 class="anchored" data-anchor-id="prepare-transactional-data-services-as-items">Prepare transactional data (services as items)</h3>
 <blockquote class="blockquote">
@@ -1297,6 +1523,32 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiXG4j
 <h1>Module 4: Implementing and Evaluating ML Models</h1>
 <section id="walkthrough-4.1-exploring-cross-validation-for-model-evaluation" class="level2">
 <h2 class="anchored" data-anchor-id="walkthrough-4.1-exploring-cross-validation-for-model-evaluation">Walkthrough 4.1: Exploring Cross-Validation for Model Evaluation</h2>
+<!-- diagram: k-fold -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  TR[("Training set")]:::data --&gt; F["Cut into 5 folds"]:::proc
+  F --&gt; R1["Round 1: fold 1 validates,&lt;br/&gt;folds 2 to 5 train"]:::proc
+  F --&gt; R2["Round 2: fold 2 validates,&lt;br/&gt;the rest train"]:::proc
+  F --&gt; R5["and so on through&lt;br/&gt;round 5"]:::proc
+  R1 --&gt; AVG["5 scores:&lt;br/&gt;a mean and a&lt;br/&gt;standard deviation"]:::accent
+  R2 --&gt; AVG
+  R5 --&gt; AVG
+  AVG --&gt; O[/"How much your score depends&lt;br/&gt;on which rows you happened&lt;br/&gt;to hold out"/]:::good
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> Every row gets a turn in validation. The spread across folds tells you how much a single split was luck.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 <section id="split-data-into-training-and-validation-sets" class="level3">
 <h3 class="anchored" data-anchor-id="split-data-into-training-and-validation-sets">Split data into training and validation sets</h3>
 <blockquote class="blockquote">
@@ -1321,6 +1573,30 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBG
 </ul>
 <p>That matters most under cross-validation. <code>cross_validate</code> builds 5 different training sets, and it calls <code>.fit()</code> on the pipeline separately for each fold. So each fold fits its <strong>own</strong> scaler on that fold’s 80% and applies it to that fold’s held-out 20%. Scale by hand beforehand and you get one scaler fit on all the data, meaning every fold trains on rows whose scaling was informed by the rows it is about to be tested on. There is no seam to leak through here, because the scaler is part of the thing being refit.</p>
 </blockquote>
+<!-- diagram: pipeline-inside-cv -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  P(["make_pipeline(StandardScaler(),&lt;br/&gt;LogisticRegression())"]):::proc --&gt; FIT["pipe.fit(X, y)&lt;br/&gt;scaler.fit_transform,&lt;br/&gt;then model.fit"]:::key
+  P --&gt; PRED["pipe.predict(X_new)&lt;br/&gt;scaler.transform only,&lt;br/&gt;never fit"]:::proc
+  FIT --&gt; CV["cross_validate refits the&lt;br/&gt;WHOLE pipeline on each fold"]:::accent
+  CV --&gt; G[/"Each fold's scaler sees only&lt;br/&gt;that fold's training rows"/]:::good
+  H["Scale by hand first and each fold&lt;br/&gt;trains on rows scaled with the&lt;br/&gt;very rows it is tested on"]:::bad -.-&gt;|"the seam this closes"| CV
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef key fill:#fff3cd,stroke:#d39e00,stroke-width:2px,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef bad fill:#fde0e0,stroke:#c62828,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> Putting the scaler in the pipeline is what makes cross-validation honest: the scaler is refit inside every fold.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 <div>
 <div id="pyodide-80" class="exercise-cell">
 
@@ -1423,6 +1699,32 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInBlcnNpc3QiOnRydWV9LCJjb2RlIjoiIyBB
 </section>
 <section id="walkthrough-4.2-hyperparameter-tuning-with-grid-search" class="level2">
 <h2 class="anchored" data-anchor-id="walkthrough-4.2-hyperparameter-tuning-with-grid-search">Walkthrough 4.2: Hyperparameter Tuning with Grid Search</h2>
+<!-- diagram: grid-search -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  G[/"param_grid:&lt;br/&gt;2 x 2 x 2 x 2 = 16&lt;br/&gt;combinations"/]:::data --&gt; S["GridSearchCV(cv=5)&lt;br/&gt;16 x 5 = 80 fits"]:::proc
+  S --&gt; B["best_params_:&lt;br/&gt;the highest mean recall"]:::accent
+  B --&gt; E["Refit on the&lt;br/&gt;training data"]:::proc
+  E --&gt; H["Score on rows the&lt;br/&gt;search never saw"]:::key
+  H --&gt; O[/"An honest estimate"/]:::good
+  L["Tune and report on the same rows&lt;br/&gt;and the number is inflated"]:::bad -.-&gt; H
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef key fill:#fff3cd,stroke:#d39e00,stroke-width:2px,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef bad fill:#fde0e0,stroke:#c62828,color:#1a1a1a
+</pre>
+</div>
+<p></p><figcaption> Grid search is brute force with a fold count attached. Keep a held-out set the search never touched.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
 <section id="train-a-random-forest-classifier" class="level3">
 <h3 class="anchored" data-anchor-id="train-a-random-forest-classifier">Train a Random Forest classifier</h3>
 <blockquote class="blockquote">
