@@ -43,3 +43,4 @@ ta-sources-extra/
 ollama-ta-log/
 persona.md
 prep_qa.md*
+__pycache__/

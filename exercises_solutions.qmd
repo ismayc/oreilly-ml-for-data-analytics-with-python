@@ -13,6 +13,14 @@ execute:
   warning: false
 ---
 
+```{=html}
+<style>
+.cell-output-display:has(.mermaid-js) { text-align: center; }
+.cell-output-display .mermaid-js { display: inline-block; max-width: 100%; }
+.cell-output-display .mermaid-js > svg { max-width: 100%; height: auto; }
+</style>
+```
+
 <!-- https://ismay-oreilly-ml.netlify.app/exercises_solutions.html -->
 
 ```{python}
@@ -30,6 +38,27 @@ if "google.colab" in sys.modules:
 ```
 
 # Intro: Getting Started with Machine Learning for Data-Driven Decisions
+
+<!-- diagram: course-map -->
+```{mermaid}
+%%| fig-cap: "The whole course in one picture. The fork in the middle is the question that decides which family of methods you reach for."
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  D[("Business data:<br/>churn, campaigns")]:::data --> M1["Module 1<br/>Understand it<br/>and clean it"]:::proc
+  M1 --> Q{"Is there a labeled<br/>answer to predict?"}:::decision
+  Q -->|"yes"| SUP["Module 2: supervised<br/>regression and<br/>classification"]:::proc
+  Q -->|"no"| UNS["Module 3: unsupervised<br/>clustering and<br/>market basket"]:::accent
+  SUP --> M4["Module 4<br/>Evaluate honestly,<br/>then tune"]:::proc
+  UNS --> M4
+  M4 --> O[/"A model you would<br/>defend to a stakeholder"/]:::good
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+```
+
 
 ## Walkthrough: Setting Up the Python Environment for ML
 
@@ -97,6 +126,25 @@ marketing_campaign_raw = pd.read_csv('marketing_campaign.csv')
 
 
 ## Walkthrough 1.1: Exploring and Preprocessing Data with Pandas & Seaborn
+
+<!-- diagram: preprocessing-pipeline -->
+```{mermaid}
+%%| fig-cap: "No model appears in this module. Everything here turns a raw export into a table a model can read."
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart LR
+  R[("Raw CSV")]:::data --> I["Inspect<br/>head, info, isnull,<br/>duplicated"]:::proc
+  I --> F["Fix<br/>fill gaps,<br/>drop duplicates"]:::proc
+  F --> E["Encode<br/>Yes and No<br/>become 1 and 0"]:::proc
+  E --> N["Engineer<br/>TotalSpent,<br/>ServiceCount"]:::accent
+  N --> V["Visualize<br/>violin, histogram,<br/>scatter"]:::proc
+  V --> M[/"A model-ready<br/>table"/]:::good
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+```
+
 
 ### Inspect a dataset using Pandas
 
@@ -297,7 +345,42 @@ By the end of this module, you should be able to:
 
 # Module 2: Supervised Learning for Business Decisions
 
+<!-- diagram: regression-or-classification -->
+```{mermaid}
+%%| fig-cap: "One question picks both the model family and the scorecard: is the thing you are predicting a number or a label?"
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  Q{"What is the<br/>target column?"}:::decision
+  Q -->|"a number<br/>MonthlyCharges, TotalSpent"| R["Regression<br/>LinearRegression"]:::proc
+  Q -->|"a yes or no label<br/>Churn, Response"| C["Classification<br/>RandomForestClassifier"]:::proc
+  R --> RM[/"Score it with<br/>R-squared and MAE"/]:::good
+  C --> CM[/"Score it with accuracy,<br/>precision, and recall"/]:::good
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+```
+
+
 ## Walkthrough 2.1: Build a Regression Model for Pricing Optimization
+
+<!-- diagram: does-it-need-scaling -->
+```{mermaid}
+%%| fig-cap: "Scaling is not a formatting habit. Whether a model needs it depends on how that model reads a feature."
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  Q{"How does the model<br/>read a feature?"}:::decision
+  Q -->|"by distance<br/>k-means, k-NN, SVM"| Y1["Scale it. A big-range<br/>feature would otherwise<br/>decide the answer."]:::key
+  Q -->|"with a penalty on the<br/>coefficients: logistic,<br/>ridge, lasso"| Y2["Scale it. The penalty<br/>is unit-dependent."]:::key
+  Q -->|"one threshold at a time<br/>tree, random forest"| N1["No need. Rescaling moves<br/>the threshold and leaves<br/>the split identical."]:::good
+  Q -->|"plain OLS, no penalty"| N2["Optional. The fit is the<br/>same either way; only the<br/>coefficient's units change."]:::accent
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef key fill:#fff3cd,stroke:#d39e00,stroke-width:2px,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+```
+
 
 ### Split the data into training and validation sets
 
@@ -310,6 +393,28 @@ By the end of this module, you should be able to:
 > - **Gradient-descent solvers converge faster with it**, and PCA needs it because it chases variance, which is unit-dependent.
 > - **Tree models do not need it.** A decision tree, random forest, or gradient booster splits one feature at a time at a threshold. Rescaling moves the threshold but produces the identical split, so the model is unchanged. Notice we do *not* scale for the Random Forest in Walkthrough 2.2 or the grid search in 4.2.
 > - **Plain OLS is the subtle case.** Ordinary least squares with no penalty is *invariant* to scaling: predictions, R-squared, and MAE come out identical either way. Only the coefficient changes, because it is now "per standard deviation" instead of "per raw unit." We scale here for interpretability and habit, not because the fit needs it.
+
+<!-- diagram: split-then-scale -->
+```{mermaid}
+%%| fig-cap: "Split first, fit the scaler on the training rows only, then apply it. Fitting on everything leaks the validation set into training."
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  ALL[("All rows")]:::data --> SP["train_test_split FIRST"]:::key
+  SP --> TR[("Training<br/>80%")]:::data
+  SP --> VA[("Validation<br/>20%")]:::data
+  TR --> FT["scaler.fit_transform(X_train)<br/>learns the mean and SD here"]:::proc
+  FT --> TF["scaler.transform(X_val)<br/>applies them, never re-fits"]:::proc
+  VA --> TF
+  TF --> OK[/"Validation stays<br/>genuinely unseen"/]:::good
+  LEAK["Scale before splitting and the<br/>validation rows help decide<br/>how training is represented"]:::bad -.->|"the mistake"| SP
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef key fill:#fff3cd,stroke:#d39e00,stroke-width:2px,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef bad fill:#fde0e0,stroke:#c62828,color:#1a1a1a
+```
+
 
 ```{python}
 # Choose AvgServiceUsageScore as the predictor and MonthlyCharges as the target
@@ -484,6 +589,23 @@ clf.fit(X_train, y_train)
 
 ### Evaluate model performance on the validation set
 
+<!-- diagram: confusion-matrix-business -->
+```{mermaid}
+%%| fig-cap: "The confusion matrix in business terms. Recall is about the red box; precision is about the orange one."
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart LR
+  A[/"Customer actually<br/>CHURNED"/]:::anchor --> TP["Predicted churn:<br/>caught it"]:::good
+  A --> FN["Predicted stay: MISSED it,<br/>no retention offer went out"]:::bad
+  K[/"Customer actually<br/>STAYED"/]:::anchor --> TN["Predicted stay:<br/>correct"]:::good
+  K --> FP["Predicted churn: false alarm,<br/>a discount you did not<br/>need to give"]:::warn
+  classDef anchor fill:#eceff1,stroke:#546e7a,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef bad fill:#fde0e0,stroke:#c62828,color:#1a1a1a
+  classDef warn fill:#ffe8cc,stroke:#e8730c,color:#1a1a1a
+```
+
+
 ```{python}
 # Predict on the validation set
 y_pred = clf.predict(X_test)
@@ -526,6 +648,24 @@ print(cm_telco_churn)
 | Need balance | F1-Score | Harmonic mean of precision/recall |
 
 ---
+
+<!-- diagram: metric-choice -->
+```{mermaid}
+%%| fig-cap: "Accuracy is the default, not the answer. Let the cost of each kind of mistake choose the metric."
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  Q{"Which mistake<br/>costs you more?"}:::decision
+  Q -->|"missing a real churner<br/>a false negative"| RE["Optimize RECALL<br/>catch them all"]:::accent
+  Q -->|"chasing someone who was<br/>never leaving<br/>a false positive"| PR["Optimize PRECISION<br/>be right when you act"]:::proc
+  Q -->|"both, about equally"| F1["Use F1"]:::good
+  Q -->|"classes are balanced and<br/>the errors are symmetric"| AC["Accuracy is fine"]:::good
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+```
+
 
 ## Exercise 2.2: Implement a Classification Model for Customer Churn
 
@@ -603,6 +743,26 @@ By the end of this module, you should be able to:
 # Module 3: Unsupervised Learning and Pattern Discovery in Business
 
 ## Walkthrough 3.1: Exploring K-Means Clustering for Customer Segmentation
+
+<!-- diagram: kmeans-loop -->
+```{mermaid}
+%%| fig-cap: "Choosing k is the whole job. Scale first, let the elbow narrow the range, and let the silhouette and business sense settle it."
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart LR
+  X[("Customer<br/>features")]:::data --> S["Standardize<br/>k-means measures<br/>distance"]:::key
+  S --> K["Try k = 1 to 10,<br/>record inertia"]:::proc
+  K --> E{"Elbow plot:<br/>where does<br/>it bend?"}:::decision
+  E --> SIL["Silhouette score<br/>breaks the tie"]:::proc
+  SIL --> FIT["Fit at the chosen k,<br/>label every customer"]:::proc
+  FIT --> P[/"Segments you can<br/>describe and act on"/]:::good
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef key fill:#fff3cd,stroke:#d39e00,stroke-width:2px,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+```
+
 
 ### Apply K-Means clustering to segment customers
 
@@ -754,6 +914,27 @@ plt.show();
 
 ## Walkthrough 3.2: Market Basket Analysis with Apriori Algorithm
 
+<!-- diagram: market-basket -->
+```{mermaid}
+%%| fig-cap: "Support finds what is common, confidence finds what follows from it, and lift is the check that stops you bundling two popular things that have nothing to do with each other."
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  T[("One row per customer,<br/>True or False per service")]:::data --> AP["apriori(min_support=0.2)"]:::proc
+  AP --> FI[/"Frequent itemsets:<br/>combinations that<br/>show up often"/]:::accent
+  FI --> AR["association_rules(<br/>metric='confidence')"]:::proc
+  AR --> CH{"Is lift<br/>above 1?"}:::decision
+  CH -->|"yes"| ACT[/"A real association,<br/>worth acting on"/]:::good
+  CH -->|"no"| SKIP["Coincidence: the<br/>consequent is just popular"]:::bad
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef decision fill:#fff3cd,stroke:#d39e00,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef bad fill:#fde0e0,stroke:#c62828,color:#1a1a1a
+```
+
+
 ### Prepare transactional data (services as items)
 
 > **Common Pitfall:** Setting `min_support` too low floods you with rules (many spurious), while setting it too high can return no itemsets at all. Also, a rule can have high confidence simply because the consequent is popular: always check `lift` (> 1) to confirm a real association rather than a coincidence.
@@ -853,6 +1034,27 @@ By the end of this module, you should be able to:
 
 ## Walkthrough 4.1: Exploring Cross-Validation for Model Evaluation
 
+<!-- diagram: k-fold -->
+```{mermaid}
+%%| fig-cap: "Every row gets a turn in validation. The spread across folds tells you how much a single split was luck."
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  TR[("Training set")]:::data --> F["Cut into 5 folds"]:::proc
+  F --> R1["Round 1: fold 1 validates,<br/>folds 2 to 5 train"]:::proc
+  F --> R2["Round 2: fold 2 validates,<br/>the rest train"]:::proc
+  F --> R5["and so on through<br/>round 5"]:::proc
+  R1 --> AVG["5 scores:<br/>a mean and a<br/>standard deviation"]:::accent
+  R2 --> AVG
+  R5 --> AVG
+  AVG --> O[/"How much your score depends<br/>on which rows you happened<br/>to hold out"/]:::good
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+```
+
+
 ### Split data into training and validation sets
 
 > **Common Pitfall:** Reporting a single train-test split can be lucky or unlucky depending on which rows land where. Cross-validation averages over several folds for a more honest estimate, and forgetting `random_state` makes those folds (and your results) non-reproducible.
@@ -877,6 +1079,25 @@ X_train, X_test, y_train, y_test = train_test_split(
 > - `pipe.predict(X_new)` runs `scaler.transform(X_new)`, **never** `fit`, then predicts. New data is scaled using the numbers learned during `fit`.
 >
 > That matters most under cross-validation. `cross_validate` builds 5 different training sets, and it calls `.fit()` on the pipeline separately for each fold. So each fold fits its **own** scaler on that fold's 80% and applies it to that fold's held-out 20%. Scale by hand beforehand and you get one scaler fit on all the data, meaning every fold trains on rows whose scaling was informed by the rows it is about to be tested on. There is no seam to leak through here, because the scaler is part of the thing being refit.
+
+<!-- diagram: pipeline-inside-cv -->
+```{mermaid}
+%%| fig-cap: "Putting the scaler in the pipeline is what makes cross-validation honest: the scaler is refit inside every fold."
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  P(["make_pipeline(StandardScaler(),<br/>LogisticRegression())"]):::proc --> FIT["pipe.fit(X, y)<br/>scaler.fit_transform,<br/>then model.fit"]:::key
+  P --> PRED["pipe.predict(X_new)<br/>scaler.transform only,<br/>never fit"]:::proc
+  FIT --> CV["cross_validate refits the<br/>WHOLE pipeline on each fold"]:::accent
+  CV --> G[/"Each fold's scaler sees only<br/>that fold's training rows"/]:::good
+  H["Scale by hand first and each fold<br/>trains on rows scaled with the<br/>very rows it is tested on"]:::bad -.->|"the seam this closes"| CV
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef key fill:#fff3cd,stroke:#d39e00,stroke-width:2px,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef bad fill:#fde0e0,stroke:#c62828,color:#1a1a1a
+```
+
 
 ```{python}
 # Initialize logistic regression INSIDE a pipeline, so the scaler is
@@ -998,6 +1219,27 @@ F1-Score -> Harmonic mean of precision and recall
 ---
 
 ## Walkthrough 4.2: Hyperparameter Tuning with Grid Search
+
+<!-- diagram: grid-search -->
+```{mermaid}
+%%| fig-cap: "Grid search is brute force with a fold count attached. Keep a held-out set the search never touched."
+%%| fig-align: center
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}, 'flowchart': {'wrappingWidth': 500}}}%%
+flowchart TD
+  G[/"param_grid:<br/>2 x 2 x 2 x 2 = 16<br/>combinations"/]:::data --> S["GridSearchCV(cv=5)<br/>16 x 5 = 80 fits"]:::proc
+  S --> B["best_params_:<br/>the highest mean recall"]:::accent
+  B --> E["Refit on the<br/>training data"]:::proc
+  E --> H["Score on rows the<br/>search never saw"]:::key
+  H --> O[/"An honest estimate"/]:::good
+  L["Tune and report on the same rows<br/>and the number is inflated"]:::bad -.-> H
+  classDef data fill:#d1f0ec,stroke:#0b7a75,color:#1a1a1a
+  classDef proc fill:#dbe9ff,stroke:#1a73e8,color:#1a1a1a
+  classDef accent fill:#ede0ff,stroke:#6a1b9a,color:#1a1a1a
+  classDef key fill:#fff3cd,stroke:#d39e00,stroke-width:2px,color:#1a1a1a
+  classDef good fill:#d8f5d8,stroke:#2e7d32,color:#1a1a1a
+  classDef bad fill:#fde0e0,stroke:#c62828,color:#1a1a1a
+```
+
 
 ### Train a Random Forest classifier
 
